@@ -1,5 +1,5 @@
 # chess_py
-# My attempt to create a console based chess engine. Currently a work in progress, and nothing is functional yet
+ My attempt to create a console based chess engine. Currently a work in progress, and nothing is functional yet
 
 # 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 # 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
