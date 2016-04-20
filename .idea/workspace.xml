@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="" />
+    <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+    </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -67,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pawn.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pawn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding>
                 <element signature="e#3506#4752#0" expanded="false" />
               </folding>
@@ -79,12 +81,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="270">
+              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="e#190#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,10 +150,10 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/pieces/piece_constants.py" />
         <option value="$PROJECT_DIR$/game.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/human.py" />
         <option value="$PROJECT_DIR$/pieces/pawn.py" />
         <option value="$PROJECT_DIR$/setup/board.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -160,8 +164,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="120" />
-    <option name="y" value="38" />
+    <option name="x" value="143" />
+    <option name="y" value="126" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -549,7 +553,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="120" y="38" width="1400" height="1000" extended-state="0" />
+    <frame x="143" y="126" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25214285" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -634,7 +638,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#190#208#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -698,7 +704,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#190#208#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -708,6 +716,34 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#633#691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#633#691#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/algebraic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <element signature="e#190#208#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -734,33 +770,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup/board.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#633#691#0" expanded="true" />
+            <element signature="e#190#208#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup/algebraic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -786,7 +798,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="12" column="31" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="e#190#208#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -876,14 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -920,10 +926,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        <state relative-caret-position="300">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
             <element signature="e#3506#4752#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#190#208#0" expanded="true" />
           </folding>
         </state>
       </provider>

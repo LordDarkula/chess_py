@@ -13,8 +13,7 @@ Chess playing program
 ——-a b c d e f g h
 """
 
-import game
-import human
+import game, human
 from setup import color
 
 
