@@ -1,6 +1,8 @@
-import algebraic
 import equality
-import board
+
+import algebraic
+from setup import board
+
 
 class Player:
     def __init__(self, color):

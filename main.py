@@ -13,9 +13,10 @@ Chess playing program
 ——-a b c d e f g h
 """
 
-import color
 import game
 import human
+from setup import color
+
 
 def main():
     print("New game creating")

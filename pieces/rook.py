@@ -1,4 +1,5 @@
-import equality
+from setup import equality
+
 
 class Rook:
     def __init__(self, color):

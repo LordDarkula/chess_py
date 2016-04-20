@@ -1,6 +1,6 @@
-import algebraic
-import equality
 import color
+
+import algebraic
 
 """
 

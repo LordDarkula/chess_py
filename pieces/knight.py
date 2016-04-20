@@ -1,5 +1,3 @@
-import equality
-
 class Knight:
     def __init__(self, color):
         """

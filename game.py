@@ -1,4 +1,5 @@
-import board
+from setup import board
+
 
 class Game:
     def __init__(self, player_white, player_black):
