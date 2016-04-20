@@ -2,7 +2,7 @@
 Class that contains all equality comparison methods specific for chess_py
 """
 
-import algebraic
+from setup import algebraic
 
 
 def location_not_none(location):

@@ -23,12 +23,7 @@ Pieces on the board are flipped so white home row is at index 0
 and black home row is at index 7
 """
 
-from pieces import bishop
-from pieces import king
-from pieces import knight
-from pieces import pawn
-from pieces import queen
-from pieces import rook
+from pieces import bishop, king, knight, pawn, queen, rook
 from setup import color
 
 

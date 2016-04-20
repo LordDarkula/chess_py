@@ -16,8 +16,7 @@ rank
 
 """
 
-from setup import color
-import algebraic
+from setup import color, algebraic
 
 
 class Pawn:
@@ -110,7 +109,7 @@ class Pawn:
             if there is a square on the right and it contains a pawn and the pawn is of opposite color
             """
             if location.shift_right().not_none and position.piece_at_square(
-                    location.shift_right()).equals(Pawn(not self.color)) and position.piece_at_square(
+                    location.shift_right()).equals(Pawn(color.Color(not self.color))) and position.piece_at_square(
                 location.shift_right()).just_moved_two_steps:
                 return True
 
@@ -118,7 +117,7 @@ class Pawn:
             else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             """
             if location.shift_left().not_none and position.piece_at_square(
-                    location.shift_left()).equals(Pawn(not self.color)) and position.piece_at_square(
+                    location.shift_left()).equals(Pawn(color.Color(not self.color))) and position.piece_at_square(
                 location.shift_left()).just_moved_two_steps:
                 return True
 

@@ -1,7 +1,5 @@
-import equality
 
-import algebraic
-from setup import board
+from setup import board, algebraic, equality
 
 
 class Player:
