@@ -180,6 +180,15 @@ class Move:
             self.rank = None
             self.file = None
         #TODO add method that checks if move is valid
+
+    def end_location(self):
+
+        """
+        Finds end location for move.
+        :rtype Location
+        """
+        return Location(self.rank,self.file)
+
     @classmethod
     def init_manual(cls, rank, file, piece):
 
