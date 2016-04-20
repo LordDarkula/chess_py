@@ -4,6 +4,7 @@ Constants for piece values in the game
 
 class Piece_values:
     def __init__(self):
+
         self.PAWN_VALUE = 1
 
         self.KNIGHT_VALUE = 3
@@ -16,6 +17,7 @@ class Piece_values:
 
     @classmethod
     def init_manual(cls, PAWN_VALUE, KNIGHT_VALUE, BISHOP_VALUE, ROOK_VALUE, QUEEN_VALUE):
+
         """
         Manual init method for external piece values
         :type PAWN_VALUE: float

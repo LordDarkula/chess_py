@@ -13,6 +13,9 @@ class Game:
         self.player_black = player_black
         self.position = board.Board.init_default()
 
+    def start(self):
+        self.white_move()
+
     def white_move(self):
         move = self.player_white.generate_move(self.position)
 

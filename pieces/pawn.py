@@ -1,7 +1,3 @@
-import color
-
-import algebraic
-
 """
 
 rank
@@ -18,20 +14,22 @@ rank
 -----0 1 2 3 4 5 6 7
 ------file
 
-class Piece:
-:type color: keyword "white" or "black"
 """
+
+from setup import color
+import algebraic
 
 
 class Pawn:
-    def __init__(self, color):
+
+    def __init__(self, input_color):
 
         """
         Initializes a Pawn that is capable of moving
-        :type color.Color
+        :type input_color color.Color
         """
         self.just_moved_two_steps = False
-        self.color = color
+        self.color = input_color
 
     def equals(self, piece):
 
