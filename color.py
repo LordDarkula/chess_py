@@ -28,3 +28,4 @@ class Color:
             return self.color == color.color
         else:
             return self.color == color
+

@@ -23,6 +23,7 @@ Pieces on the board are flipped so white home row is at index 0
 and black home row is at index 7
 """
 
+import color
 from pieces import pawn
 from pieces import knight
 from pieces import bishop
@@ -39,11 +40,11 @@ class Board:
     """
     # First rank
     default_position = \
-        [[rook.Rook("white"), knight.Knight("white"), bishop.Bishop("white"), queen.Queen("white"),
-          king.King("white"), bishop.Bishop("white"), knight.Knight("white"), rook.Rook("white")],
+        [[rook.Rook(color.Color(True)), knight.Knight(color.Color(True)), bishop.Bishop(color.Color(True)), queen.Queen(color.Color(True)),
+          king.King(color.Color(True)), bishop.Bishop(color.Color(True)), knight.Knight(color.Color(True)), rook.Rook(color.Color(True))],
          # Second rank
-         [pawn.Pawn("white"), pawn.Pawn("white"), pawn.Pawn("white"), pawn.Pawn("white"), pawn.Pawn("white"),
-          pawn.Pawn("white"), pawn.Pawn("white"), pawn.Pawn("white")],
+         [pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)),
+          pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True))],
          # Third rank
          [None, None, None, None, None, None, None, None],
          # Fourth rank
@@ -53,11 +54,11 @@ class Board:
          # Sixth rank
          [None, None, None, None, None, None, None, None],
          # Seventh rank
-         [pawn.Pawn("black"), pawn.Pawn("black"), pawn.Pawn("black"), pawn.Pawn("black"), pawn.Pawn("black"),
-          pawn.Pawn("black"), pawn.Pawn("black"), pawn.Pawn("black")],
+         [pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)),
+          pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False))],
          # Eighth rank
-         [rook.Rook("black"), knight.Knight("black"), bishop.Bishop("black"), queen.Queen("black"),
-          king.King("black"), bishop.Bishop("black"), knight.Knight("black"), rook.Rook("black")]]
+         [rook.Rook(color.Color(False)), knight.Knight(color.Color(False)), bishop.Bishop(color.Color(False)), queen.Queen(color.Color(False)),
+          king.King(color.Color(False)), bishop.Bishop(color.Color(False)), knight.Knight(color.Color(False)), rook.Rook(color.Color(False))]]
 
     def __init__(self, position):
 

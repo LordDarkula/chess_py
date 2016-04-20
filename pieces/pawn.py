@@ -34,6 +34,7 @@ class Pawn:
         self.color = color
 
     def equals(self, piece):
+
         """
         Finds out if piece is the same type and color as self
         :type piece: pieces *
@@ -55,11 +56,31 @@ class Pawn:
             return True
         elif self.color.equals(color.black) and location.rank == 6:
 
+            print("on enemy home row returned true")
             return True
         else:
 
-            print("on home row returns false")
+            print("on home row returned false")
             return False
+
+    def on_en_passant_position(self, location):
+        """
+        Finds out if pawn is on enemy center rank.
+        :type location: algebraic.Location
+        """
+        print("Running on enemy home row")
+
+        if self.color.equals(color.white) and location.rank == 4:
+
+            print("on enemy home row returned true")
+            return True
+        elif self.color.equals(color.black) and location.rank == 3:
+
+            print("on enemy home row returned true")
+            return True
+
+        print("on enemy home row returned false")
+        return False
 
     def square_in_front(self, location):
 
@@ -85,42 +106,22 @@ class Pawn:
         """
         if piece is white
         """
-        if self.color.equals(color.white) and location.rank == 4:
+        if self.on_en_passant_position(location):
 
             """
-            if there is a square on the right and it contains a pawn and the pawn is black
+            if there is a square on the right and it contains a pawn and the pawn is of opposite color
             """
-            if equality.location_not_none(location.shift_right()) and position.piece_at_square(
-                    location.shift_right()).equals(Pawn(color.black)) and position.piece_at_square(
+            if location.shift_right().not_none and position.piece_at_square(
+                    location.shift_right()).equals(Pawn(not self.color)) and position.piece_at_square(
                 location.shift_right()).just_moved_two_steps:
                 return True
 
             """
-            else if there is a square on the left and it contains a pawn and the pawn is black
+            else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             """
-            if equality.location_not_none(location.shift_left()) and position.piece_at_square(
-                    location.shift_left()).equals(Pawn(color.black)) and position.piece_at_square(
+            if location.shift_left().not_none and position.piece_at_square(
+                    location.shift_left()).equals(Pawn(not self.color)) and position.piece_at_square(
                 location.shift_left()).just_moved_two_steps:
-                return True
-
-            return False
-
-
-        elif self.color.equals(color.black) and location.rank == 3:
-            """
-            if there is a square on the right and it contains a pawn and the pawn is white
-            """
-            if equality.location_not_none(location.shift_right()) and position.piece_at_square(
-                    location.shift_right()).equals(Pawn(color.white)) and position.piece_at_square(
-                    location.shift_right).just_moved_two_steps:
-                return True
-
-            """
-            else if there is a square on the left and it contains a pawn and the pawn is white
-            """
-            if equality.location_not_none(location.shift_left()) and position.piece_at_square(
-                    location.shift_left().equals(Pawn(color.white))) and position.piece_at_square(
-                    location.shift_left).just_moved_two_steps:
                 return True
 
             return False
@@ -135,7 +136,7 @@ class Pawn:
         :param self: pieces.Pawn
         :type location: algebraic.location
         :type position: board.Board
-        :return list containing algebraic.Location of possible moves
+        :rtype list containing algebraic.Location of possible moves
         """
         print('running possible moves')
         moves = []

@@ -107,6 +107,14 @@ class Location:
 
         #TODO add method that checks if location is valid
 
+    def not_none(self):
+
+        """
+        Determines whether location exists.
+        :rtype bool
+        """
+        return self is not None and self.rank is not None and self.file is not None
+
 class Move:
     def __init__(self, algebraic_string, color):
 
@@ -123,6 +131,7 @@ class Move:
         :type algebraic_string: string
         :type color: color.Color
         """
+        #TODO add castling ability                          if algebraic_string == "00"
         if len(algebraic_string) == 2:
 
             """

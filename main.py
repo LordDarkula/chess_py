@@ -18,4 +18,5 @@ import game
 import human
 
 def main():
+    print("New game creating")
     new_game = game.Game(human.Player(color.Color(color.white)), human.Player(color.Color(color.black)))
