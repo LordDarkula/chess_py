@@ -3,7 +3,6 @@ from setup import board
 
 class Game:
     def __init__(self, player_white, player_black):
-
         """
         Creates new game given the players.
         :type player_white: human.Player or ai
@@ -18,6 +17,9 @@ class Game:
 
     def white_move(self):
         move = self.player_white.generate_move(self.position)
+        #TODO implement position change as a result of the move
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
+        # TODO implement position change as a result of the move
+

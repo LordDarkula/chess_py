@@ -18,6 +18,13 @@ from setup import color
 
 
 def main():
+    """
+    Main method
+    """
     print("New game creating")
+
+    #Creates new game with human players for both white and black.
     new_game = game.Game(human.Player(color.Color(color.white)), human.Player(color.Color(color.black)))
     new_game.start()
+
+main()

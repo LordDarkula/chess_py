@@ -22,24 +22,18 @@ rank
 
 """
 
-from pieces import pawn
-from pieces import knight
-from pieces import bishop
-from pieces import rook
-from pieces import queen
-from pieces import king
+from pieces import pawn, knight, bishop, rook, queen, king
 
 
 class Location:
     def __init__(self, rank, file):
-
         """
         Creates a location on a chessboard given x and y coordinates.
         :type rank: int
         :type file: int
         """
 
-        if -1 < rank < 8 and -1 < file < 8:
+        if self.on_board():
             self.rank = rank
             self.file = file
         else:
@@ -47,8 +41,14 @@ class Location:
             self.file = None
             print("Cannot create location not on board")
 
-    def shift_up(self):
+    def on_board(self):
 
+        if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
+            return True
+        else:
+            return False
+
+    def shift_up(self):
         """
         Finds Location shifted up by 1
         :rtype: algebraic.Location
@@ -60,7 +60,6 @@ class Location:
             return None
 
     def shift_down(self):
-
         """
         Finds Location shifted down by 1
         :rtype: algebraic.Location
@@ -72,7 +71,6 @@ class Location:
             return None
 
     def shift_right(self):
-
         """
         Finds Location shifted right by 1
         :rtype: algebraic.Location
@@ -84,7 +82,6 @@ class Location:
             return None
 
     def shift_left(self):
-
         """
         Finds Location shifted left by 1
         :rtype: algebraic.Location
@@ -108,7 +105,6 @@ class Location:
         #TODO add method that checks if location is valid
 
     def not_none(self):
-
         """
         Determines whether location exists.
         :rtype bool
@@ -117,7 +113,6 @@ class Location:
 
 class Move:
     def __init__(self, algebraic_string, color):
-
         """
         Default constructor for initializing a move using algebraic notation.
 
@@ -161,10 +156,6 @@ class Move:
                 self.piece = king.King(color)
 
 
-
-
-
-
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
 
@@ -181,24 +172,15 @@ class Move:
             self.file = None
         #TODO add method that checks if move is valid
 
-    def end_location(self):
-
-        """
-        Finds end location for move.
-        :rtype Location
-        """
-        return Location(self.rank,self.file)
-
     @classmethod
     def init_manual(cls, rank, file, piece):
-
         """
         Alternate constructor to create move using integer location
         :type rank: int
         :type file: int
-        :type piece: pieces *
+        :type piece: Pawn.pawn, Knight.knight, Bishop.bishop, Rook.rook, Queen.queen, King.king
         """
-        if -1 < rank < 8 and -1 < file < 8:
+        if cls.on_board:
             cls.rank = rank
             cls.file = file
         else:
@@ -207,4 +189,23 @@ class Move:
             cls.file = None
         cls.piece = piece
 
+    def on_board(self):
 
+        if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
+            return True
+        else:
+            return False
+
+    def end_location(self):
+        """
+        Finds end location for move.
+        :rtype Location
+        """
+        return Location(self.rank,self.file)
+
+    def not_none(self):
+        """
+        Determines whether location exists.
+        :rtype bool
+        """
+        return self is not None and self.rank is not None and self.file is not None
