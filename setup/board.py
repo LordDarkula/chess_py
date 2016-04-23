@@ -62,7 +62,6 @@ class Board:
              color.Color(False))]]
 
     def __init__(self, position):
-
         """
         Initializes 8 by 8 array of objects in file pawn.py to store a chess position.
         :type self: board.Board
@@ -72,7 +71,6 @@ class Board:
 
     @classmethod
     def init_default(cls):
-
         """
         Alternate init method for default starting position
         :return:
@@ -80,17 +78,15 @@ class Board:
         cls.position = cls.default_position
 
     def piece_at_square(self, location):
-
         """
         Finds the chess piece at a square of the position.
         :param self: list
         :type location: algebraic.Location
-        :rtype pieces *
+        :rtype Pawn.pawn, Knight.knight, Bishop.bishop, Rook.rook, Queen.queen, King.king
         """
         return self.position[location.rank][location.file]
 
     def is_square_empty(self, location):
-
         """
         Finds whether a chess piece occupies a square of the position.
         :param self: 2D 8 by 8 list occupied by objects in pawn.py

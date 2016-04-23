@@ -42,7 +42,10 @@ class Location:
             print("Cannot create location not on board")
 
     def on_board(self):
-
+        """
+        Returns if the move is on the board or not.
+        :rtype bool
+        """
         if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
             return True
         else:
@@ -109,7 +112,14 @@ class Location:
         Determines whether location exists.
         :rtype bool
         """
-        return self is not None and self.rank is not None and self.file is not None
+        return self is not None and self.rank is not None and self.file is not None and self.on_board()
+
+    def equals(self, location):
+        """
+        Finds is location on board is the same as current equation.
+        :type location: algebraic.Location
+        """
+        return location.not_none() and self.rank == location.rank and self.file == location.file
 
 class Move:
     def __init__(self, algebraic_string, color):
@@ -190,7 +200,10 @@ class Move:
         cls.piece = piece
 
     def on_board(self):
-
+        """
+        Determines whether move exists.
+        :rtype bool
+        """
         if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
             return True
         else:
@@ -208,4 +221,11 @@ class Move:
         Determines whether location exists.
         :rtype bool
         """
-        return self is not None and self.rank is not None and self.file is not None
+        return self is not None and self.rank is not None and self.file is not None and self.on_board()
+
+    def equals(self, move):
+        """
+        Finds if move is same move as this one.
+        :type move: algebraic.Move
+        """
+        return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece)
