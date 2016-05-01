@@ -22,7 +22,6 @@ from setup import color, algebraic
 class Pawn:
 
     def __init__(self, input_color):
-
         """
         Initializes a Pawn that is capable of moving
         :type input_color color.Color
@@ -31,7 +30,6 @@ class Pawn:
         self.color = input_color
 
     def equals(self, piece):
-
         """
         Finds out if piece is the same type and color as self
         :type piece: pieces *
@@ -39,7 +37,6 @@ class Pawn:
         return type(piece) is type(self) and piece.color == self.color
 
     def on_home_row(self, location):
-
         """
         Finds out if the piece is on the home row.
         :type location: location: algebraic.Location
@@ -93,7 +90,6 @@ class Pawn:
             return location.shift_down()
 
     def can_en_passant(self, location, position):
-
         """
         Finds out if pawn can en passant.
         :type location: algebraic.location
@@ -126,7 +122,6 @@ class Pawn:
         return False
 
     def possible_moves(self, location, position):
-
         """
         Finds out the locations of possible moves given board.Board position.
         :pre piece is actually on specified location on position

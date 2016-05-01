@@ -23,7 +23,7 @@ rank
 """
 
 from pieces import pawn, knight, bishop, rook, queen, king
-
+import special_notation_constants
 
 class Location:
     def __init__(self, rank, file):
@@ -97,7 +97,7 @@ class Location:
 
     def shift_up_right(self):
         """
-        Finds Location shifted right by 1
+        Finds Location shifted up right by 1
         :rtype: algebraic.Location
         """
         if self.rank < 7 and self.file < 7:
@@ -105,7 +105,15 @@ class Location:
         else:
             print("Cannot move up and right off the board")
 
-        #TODO add method that checks if location is valid
+    def shift_up_left(self):
+        """
+        Finds Location shifted up left by 1
+        :rtype: algebraic.Location
+        """
+        if self.rank < 7 and self.file > 1:
+            return self.shift_up().shift_left()
+        else:
+            print("Cannot move up and left off the board")
 
     def not_none(self):
         """
@@ -136,7 +144,8 @@ class Move:
         :type algebraic_string: string
         :type color: color.Color
         """
-        #TODO add castling ability                          if algebraic_string == "00"
+        self.capture = False
+        if algebraic_string == "00"
         if len(algebraic_string) == 2:
 
             """
@@ -145,6 +154,7 @@ class Move:
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
             self.piece = pawn.Pawn(color)
+            self.status = special
 
         elif len(algebraic_string) == 3:
             """
