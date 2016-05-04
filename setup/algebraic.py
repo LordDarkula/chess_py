@@ -23,7 +23,8 @@ rank
 """
 
 from pieces import pawn, knight, bishop, rook, queen, king
-import special_notation_constants
+from setup import special_notation_constants
+
 
 class Location:
     def __init__(self, rank, file):
@@ -129,6 +130,7 @@ class Location:
         """
         return location.not_none() and self.rank == location.rank and self.file == location.file
 
+
 class Move:
     def __init__(self, algebraic_string, color):
         """
@@ -144,42 +146,51 @@ class Move:
         :type algebraic_string: string
         :type color: color.Color
         """
-        self.capture = False
-        if algebraic_string == "00"
-        if len(algebraic_string) == 2:
+        self.color = color
+        if algebraic_string == "00":
+            self.status = special_notation_constants.KING_SIDE_CASTLE
 
+        elif algebraic_string == "000":
+            self.status = special_notation_constants.QUEEN_SIDE_CASTLE
+
+        elif len(algebraic_string) == 2:
             """
             ex a4
             """
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
             self.piece = pawn.Pawn(color)
-            self.status = special
+            self.status = special_notation_constants.MOVEMENT
 
         elif len(algebraic_string) == 3:
             """
             ex Nf3
             """
-            if algebraic_string[0] is 'R':
-                self.piece = rook.Rook(color)
-
-            if algebraic_string[0] is 'N':
-                self.piece = knight.Knight(color)
-
-            if algebraic_string[0] is 'B':
-                self.piece = bishop.Bishop(color)
-
-            if algebraic_string[0] is 'Q':
-                self.piece = queen.Queen(color)
-
-            if algebraic_string[0] is 'K':
-                self.piece = king.King(color)
-
-
+            self.set_piece(algebraic_string, color, 0)
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
+            self.status = special_notation_constants.MOVEMENT
 
-        #TODO elif:
+        elif len(algebraic_string) == 4:
+            if algebraic_string[1].upper() == "X":
+                self.set_piece(algebraic_string, color, 0)
+                self.file = ord(algebraic_string[0]) - 97
+                self.rank = int(algebraic_string[1]) - 1
+                self.status = special_notation_constants.CAPTURE
+
+            elif algebraic_string[2] == "=":
+                self.file = ord(algebraic_string[0]) - 97
+                self.rank = int(algebraic_string[1]) - 1
+                self.piece = pawn.Pawn(color)
+                self.status = special_notation_constants.PROMOTE
+
+            else:
+                self.start_rank = ord(algebraic_string[0]) - 97
+                self.set_piece(algebraic_string, color, 1)
+                self.file = ord(algebraic_string[0]) - 97
+                self.rank = int(algebraic_string[1]) - 1
+                self.status = special_notation_constants.MOVEMENT
+
             """
             Two cases:
             case 1: capture
@@ -188,9 +199,8 @@ class Move:
             """
         else:
             print("Invalid Move")
-            self.rank = None
-            self.file = None
-        #TODO add method that checks if move is valid
+            self.make_location_none()
+            # TODO add method that checks if move is valid
 
     @classmethod
     def init_manual(cls, rank, file, piece):
@@ -209,6 +219,22 @@ class Move:
             cls.file = None
         cls.piece = piece
 
+    def set_piece(self, algebraic_string, color, index):
+        if algebraic_string[index] is 'R':
+            self.piece = rook.Rook(color)
+
+        if algebraic_string[index] is 'N':
+            self.piece = knight.Knight(color)
+
+        if algebraic_string[index] is 'B':
+            self.piece = bishop.Bishop(color)
+
+        if algebraic_string[index] is 'Q':
+            self.piece = queen.Queen(color)
+
+        if algebraic_string[index] is 'K':
+            self.piece = king.King(color)
+
     def on_board(self):
         """
         Determines whether move exists.
@@ -224,7 +250,11 @@ class Move:
         Finds end location for move.
         :rtype Location
         """
-        return Location(self.rank,self.file)
+        return Location(self.rank, self.file)
+
+    def make_location_none(self):
+        self.rank = None
+        self.file = None
 
     def not_none(self):
         """
