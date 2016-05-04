@@ -2,22 +2,22 @@ from setup import equality
 
 
 class Rook:
-    def __init__(self, color):
-        if color == "white":
-            self.white = True
-
-        self.white = False
-        # TODO add rook move functionality
+    def __init__(self, input_color):
+        """
+        Initializes a rook that is capable of being compared to another rook,
+        and returning a list of possible moves.
+        :type input_color color.Color
+        """
+        self.color = input_color.color
 
     def equals(self, piece):
         """
         Finds out if piece is the same type and color as self
         :type piece: pieces *
         """
-        return type(piece) is type(self) and piece.white == self.white
+        return type(piece) is type(self) and piece.color == self.color
 
     def possible_moves(self, location, position):
-
         """
 
         :type location: algebraic.Location
