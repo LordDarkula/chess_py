@@ -1,5 +1,6 @@
 class Bishop:
     def __init__(self, color):
+        #TODO change color to color object
         if color == "white":
             self.white = True
 
