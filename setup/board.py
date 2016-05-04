@@ -96,6 +96,7 @@ class Board:
         return self.position[location.rank][location.file] is None
 
 
+# TODO decide what do do with commented out code (probably delete it)
 """
     def move(self, move):
 

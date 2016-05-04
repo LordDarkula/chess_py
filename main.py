@@ -1,5 +1,6 @@
 """
 Chess playing program
+Everything starts here
 
 8 ║♜♞♝♛♚♝♞♜
 7 ║♟♟♟♟♟♟♟♟
