@@ -16,7 +16,8 @@ rank
 
 """
 
-from setup import color, algebraic
+from setup import color
+from setup.algebraic_notation import algebraic
 
 
 class Pawn:

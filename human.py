@@ -1,5 +1,6 @@
 
-from setup import board, algebraic, equality
+from setup import board, equality
+from setup.algebraic_notation import algebraic
 
 
 class Player:

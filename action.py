@@ -1,5 +1,6 @@
 from setup import board
-from setup import algebraic
+from setup.algebraic_notation import algebraic
+
 
 def move_valid(position, move):
     """

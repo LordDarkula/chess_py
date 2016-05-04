@@ -23,7 +23,7 @@ rank
 """
 
 from pieces import pawn, knight, bishop, rook, queen, king
-from setup import special_notation_constants
+from setup.algebraic_notation import special_notation_constants
 
 
 class Location:
@@ -220,6 +220,12 @@ class Move:
         cls.piece = piece
 
     def set_piece(self, algebraic_string, color, index):
+        """
+        Creates specific piece given raw move, color, and index of piece.
+        :type algebraic_string: basestring
+        :type color: color.Color
+        :type index: int
+        """
         if algebraic_string[index] is 'R':
             self.piece = rook.Rook(color)
 
