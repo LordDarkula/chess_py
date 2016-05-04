@@ -203,7 +203,7 @@ class Move:
             # TODO add method that checks if move is valid
 
     @classmethod
-    def init_manual(cls, rank, file, piece):
+    def init_manual(cls, rank, file, piece, status):
         """
         Alternate constructor to create move using integer location
         :type rank: int
@@ -213,6 +213,7 @@ class Move:
         if cls.on_board:
             cls.rank = rank
             cls.file = file
+            cls.status = status
         else:
             print("Cannot create move not on board")
             cls.rank = None
