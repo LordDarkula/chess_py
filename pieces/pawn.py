@@ -28,7 +28,7 @@ class Pawn:
         :type input_color color.Color
         """
         self.just_moved_two_steps = False
-        self.color = input_color
+        self.color = input_color.color
 
     def equals(self, piece):
         """
