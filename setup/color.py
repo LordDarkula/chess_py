@@ -1,4 +1,7 @@
-
+"""
+Easy way to access bool values for black and white without directly
+typing True or False.
+"""
 white = True
 black = False
 
@@ -7,6 +10,7 @@ class Color:
         """
         Initializes new color using bool with white = True and black = False
         :type color: bool
+        :rtype: color.Color
         """
         self.color = color
         if color:
@@ -19,13 +23,13 @@ class Color:
         cls.color = raw == "white"
         cls.string = raw
 
-    def equals(self, color):
+    def equals(self, input_color):
         """
         Finds out this color is the same as another color.
-        :type color: Color
+        :type input_color: color.Color
         """
-        if type(color) is type(self):
-            return self.color == color.color
+        if type(input_color) is type(self):
+            return self.color == input_color.color
         else:
-            return self.color == color
+            return self.color == input_color
 
