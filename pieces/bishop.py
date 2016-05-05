@@ -1,10 +1,10 @@
 class Bishop:
-    def __init__(self, color):
-        #TODO change color to color object
-        if color == "white":
-            self.white = True
-
-        self.white = False
+    def __init__(self, input_color):
+        """
+        Creates Bishop object that can be compared to and return possible moves
+        :type input_color: color.Color
+        """
+        self.color = input_color.color
         # TODO add bishop move functionality
 
     def equals(self, piece):

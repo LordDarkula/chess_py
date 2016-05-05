@@ -30,7 +30,7 @@ from setup import color
 class Board:
     """
     Standard starting position in a chess game.
-    Initialized upon startup and can be accessed with the keyword "default"
+    Initialized upon startup and is used when init_default constructor is used
 
     """
     # First rank
