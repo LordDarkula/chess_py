@@ -203,12 +203,31 @@ class Move:
             # TODO add method that checks if move is valid
 
     @classmethod
+    def init_with_location(cls, location, piece, status):
+        """
+        Alternate constructor to create move using object algebraic.Location
+        :type location: algebraic.Location
+        :type piece: pieces *
+        :type status: int
+        """
+        if cls.on_board:
+            cls.rank = location.rank
+            cls.file = location.file
+            cls.status = status
+        else:
+            print("Cannot create move not on board")
+            cls.rank = None
+            cls.file = None
+        cls.piece = piece
+
+    @classmethod
     def init_manual(cls, rank, file, piece, status):
         """
         Alternate constructor to create move using integer location
         :type rank: int
         :type file: int
         :type piece: Pawn.pawn, Knight.knight, Bishop.bishop, Rook.rook, Queen.queen, King.king
+        :type status int
         """
         if cls.on_board:
             cls.rank = rank

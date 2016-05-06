@@ -17,7 +17,7 @@ rank
 """
 
 from setup import color
-from setup.algebraic_notation import algebraic
+from setup.algebraic_notation import algebraic, special_notation_constants
 
 
 class Pawn:
@@ -82,6 +82,7 @@ class Pawn:
         """
         Finds square directly in front of Pawn
         :type location: algebraic.Location
+        :rtype algebraic.Location
         """
 
         if self.color.equals(color.white):
@@ -90,6 +91,15 @@ class Pawn:
         else:
             return location.shift_down()
 
+    def capture_squares(self, location):
+        """
+        Returns the squares to the right and left of the square in front.
+        Those squares are used for potential captures.
+        :type location: algebraic.Location
+        :rtype tuple
+        """
+        return self.square_in_front(location).shift_right(), self.square_in_front(location).shift_left()
+
     def can_en_passant(self, location, position):
         """
         Finds out if pawn can en passant.
@@ -97,22 +107,19 @@ class Pawn:
         :type position: board.Board
         """
 
-        """
-        if piece is white
-        """
+
+        # if piece is white
         if self.on_en_passant_position(location):
 
-            """
-            if there is a square on the right and it contains a pawn and the pawn is of opposite color
-            """
+
+            # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if location.shift_right().not_none and position.piece_at_square(
                     location.shift_right()).equals(Pawn(color.Color(not self.color))) and position.piece_at_square(
                 location.shift_right()).just_moved_two_steps:
                 return True
 
-            """
-            else if there is a square on the left and it contains a pawn and the pawn is of opposite color
-            """
+
+            # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if location.shift_left().not_none and position.piece_at_square(
                     location.shift_left()).equals(Pawn(color.Color(not self.color))) and position.piece_at_square(
                 location.shift_left()).just_moved_two_steps:
@@ -133,6 +140,15 @@ class Pawn:
         """
         print('running possible moves')
         moves = []
+        #TODO make this actually return moves and not locations (epic fail)
+
+        #Adds right diagonal capture if possible
+        if not position.is_square_empty(self.capture_squares(location)[0]) and position.piece_at_square(self.capture_squares(location)[0]).color != self.color:
+            moves.append(algebraic.Move.init_with_location(self.capture_squares(location)[0], self, special_notation_constants.CAPTURE))
+
+        #Adds left diagonal capture if possible
+        if not position.is_square_empty(self.capture_squares(location)[1]) and position.piece_at_square(self.capture_squares(location)[1]).color != self.color:
+            moves.append(algebraic.Move.init_with_location(self.capture_squares(location)[1], self, special_notation_constants.CAPTURE))
 
         """
         if this pawn is on home row and board's square in front of front of this pawn is empty

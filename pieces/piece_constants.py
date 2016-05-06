@@ -17,7 +17,6 @@ class Piece_values:
 
     @classmethod
     def init_manual(cls, PAWN_VALUE, KNIGHT_VALUE, BISHOP_VALUE, ROOK_VALUE, QUEEN_VALUE):
-
         """
         Manual init method for external piece values
         :type PAWN_VALUE: float
@@ -35,3 +34,4 @@ class Piece_values:
         cls.ROOK_VALUE = ROOK_VALUE
 
         cls.QUEEN_VALUE = QUEEN_VALUE
+
