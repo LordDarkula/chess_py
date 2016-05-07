@@ -11,10 +11,10 @@ def move_valid(position, move):
     if move.not_none():
 
         # Loops through columns
-        for i in range(7):
+        for i in range(len(position.position)):
 
             # Loops through rows
-            for j in range(7):
+            for j in range(len(position.position[0])):
 
                 # Tests if square on the board is not empty and piece at that square is the same one specified in the move
                 if not position.is_square_empty(algebraic.Location(i, j)) and position.piece_at_square(algebraic.Location(i, j)).equals(move.piece):
