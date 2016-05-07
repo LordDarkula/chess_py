@@ -139,6 +139,8 @@ class Pawn:
 
         return possible
 
+    #TODO add promotion
+    
     def possible_moves(self, location, position):
         """
         Finds out the locations of possible moves given board.Board position.
@@ -167,3 +169,4 @@ class Pawn:
         moves.extend(self.possible_en_passant_moves(location, position))
 
         return moves
+

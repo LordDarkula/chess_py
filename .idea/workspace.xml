@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/action.py" afterPath="$PROJECT_DIR$/action.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/pawn.py" afterPath="$PROJECT_DIR$/pieces/pawn.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" />
     </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +51,8 @@
       <file leaf-file-name="pawn.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="687">
-              <caret line="162" column="31" selection-start-line="162" selection-start-column="31" selection-end-line="162" selection-end-column="31" />
+            <state relative-caret-position="555">
+              <caret line="142" column="4" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="4" />
               <folding>
                 <element signature="e#416#603#0" expanded="false" />
                 <element signature="e#642#820#0" expanded="false" />
@@ -64,6 +61,7 @@
                 <element signature="e#1853#3077#0" expanded="false" />
                 <element signature="e#3141#3655#0" expanded="false" />
                 <element signature="e#3726#5170#0" expanded="false" />
+                <element signature="e#5259#6721#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1043,8 +1041,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="687">
-          <caret line="162" column="31" selection-start-line="162" selection-start-column="31" selection-end-line="162" selection-end-column="31" />
+        <state relative-caret-position="555">
+          <caret line="142" column="4" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="4" />
           <folding>
             <element signature="e#416#603#0" expanded="false" />
             <element signature="e#642#820#0" expanded="false" />
@@ -1053,6 +1051,7 @@
             <element signature="e#1853#3077#0" expanded="false" />
             <element signature="e#3141#3655#0" expanded="false" />
             <element signature="e#3726#5170#0" expanded="false" />
+            <element signature="e#5259#6721#0" expanded="false" />
           </folding>
         </state>
       </provider>
