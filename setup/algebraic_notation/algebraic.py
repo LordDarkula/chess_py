@@ -165,23 +165,31 @@ class Move:
             """
             ex Nf3
             """
-            self.set_piece(algebraic_string, color, 0)
+            self.piece = self.set_piece(algebraic_string, 0)
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
             self.status = special_notation_constants.MOVEMENT
 
         elif len(algebraic_string) == 4:
+
             if algebraic_string[1].upper() == "X":
-                self.set_piece(algebraic_string, color, 0)
+                """
+                ex Nxf3
+                """
+                self.piece = self.set_piece(algebraic_string, 0)
                 self.file = ord(algebraic_string[0]) - 97
                 self.rank = int(algebraic_string[1]) - 1
                 self.status = special_notation_constants.CAPTURE
 
             elif algebraic_string[2] == "=":
+                """
+                ex a8=Q
+                """
                 self.file = ord(algebraic_string[0]) - 97
                 self.rank = int(algebraic_string[1]) - 1
                 self.piece = pawn.Pawn(color)
                 self.status = special_notation_constants.PROMOTE
+                self.promoted_to_piece = self.set_piece(algebraic_string, 3)
 
             else:
                 self.start_rank = ord(algebraic_string[0]) - 97
@@ -199,7 +207,8 @@ class Move:
         else:
             print("Invalid Move")
             self.make_location_none()
-            # TODO add method that checks if move is valid
+
+    # TODO add method that checks if move is valid
 
     @classmethod
     def init_with_location(cls, location, piece, status):
@@ -246,27 +255,27 @@ class Move:
         return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
             move.piece) and self.status == move.status
 
-    def set_piece(self, algebraic_string, color, index):
+    def set_piece(self, algebraic_string, index):
         """
         Creates specific piece given raw move, color, and index of piece.
         :type algebraic_string: basestring
-        :type color: color.Color
         :type index: int
         """
-        if algebraic_string[index] is 'R':
-            self.piece = rook.Rook(color)
+        if algebraic_string[index].upper is 'R':
+            return rook.Rook(self.color)
 
-        if algebraic_string[index] is 'N':
-            self.piece = knight.Knight(color)
+        if algebraic_string[index].upper is 'N':
+            return knight.Knight(self.color)
 
-        if algebraic_string[index] is 'B':
-            self.piece = bishop.Bishop(color)
+        if algebraic_string[index].upper is 'B':
+            return bishop.Bishop(self.color)
 
-        if algebraic_string[index] is 'Q':
-            self.piece = queen.Queen(color)
+        if algebraic_string[index].upper is 'Q':
+            return queen.Queen(self.color)
 
-        if algebraic_string[index] is 'K':
-            self.piece = king.King(color)
+        if algebraic_string[index].upper is 'K':
+            return king.King(self.color)
+        return None
 
     def on_board(self):
         """
@@ -295,5 +304,3 @@ class Move:
         :rtype bool
         """
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
-
-
