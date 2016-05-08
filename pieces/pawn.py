@@ -82,15 +82,21 @@ class Pawn:
         if location.shift_up_right().not_none and not position.is_square_empty(
                 location.shift_right()) and position.piece_at_square(
                 location.shift_right()).color != self.color:
-            possible.append(algebraic.Move.init_with_location(location.shift_up_right(), self,
-                                                              special_notation_constants.CAPTURE))
+            if self.would_move_be_promotion(location):
+                status = special_notation_constants.CAPTURE_AND_PROMOTE
+            else:
+                status = special_notation_constants.CAPTURE
+            possible.append(algebraic.Move.init_with_location(location.shift_up_right(), self, status))
 
         # Adds capture on left diagonal capture if possible
         if location.shift_up_left().not_none and not position.is_square_empty(
                 location.shift_up_left()) and position.piece_at_square(
                 location.shift_up_left()).color != self.color:
-            possible.append(algebraic.Move.init_with_location(location.shift_up_left(), self,
-                                                              special_notation_constants.CAPTURE))
+            if self.would_move_be_promotion(location):
+                status = special_notation_constants.CAPTURE_AND_PROMOTE
+            else:
+                status = special_notation_constants.CAPTURE
+            possible.append(algebraic.Move.init_with_location(location.shift_up_left(), self, status))
 
         return possible
 
@@ -139,8 +145,16 @@ class Pawn:
 
         return possible
 
-    #TODO add promotion
-    
+    @staticmethod
+    def would_move_be_promotion(location):
+        """
+        Finds if move from current location
+        :type location: algebraic.Locarion
+        """
+        if location.rank == 0 or location.rank == 7:
+            return True
+        return False
+
     def possible_moves(self, location, position):
         """
         Finds out the locations of possible moves given board.Board position.
@@ -155,18 +169,19 @@ class Pawn:
 
         # Adds movement to square in front if possible.
         if self.square_in_front(location).not_none and position.is_square_empty(self.square_in_front(location)):
-            moves.append(algebraic.Move.init_with_location(self.square_in_front(location), self,
-                                                           special_notation_constants.MOVEMENT))
+            if self.would_move_be_promotion(location):
+                status = special_notation_constants.PROMOTE
+            else:
+                status = special_notation_constants.MOVEMENT
+            moves.append(algebraic.Move.init_with_location(self.square_in_front(location), self, status))
 
             # Adds movement to location two squares in front of current location if possible.
             if self.square_in_front(location).not_none and self.on_home_row(location) and position.is_square_empty(
                     self.square_in_front(self.square_in_front(location))):
                 moves.append(
-                    algebraic.Move.init_with_location(self.square_in_front(self.square_in_front(location)), self,
-                                                      special_notation_constants.MOVEMENT))
+                    algebraic.Move.init_with_location(self.square_in_front(self.square_in_front(location)), self, special_notation_constants.MOVEMENT))
 
         moves.extend(self.possible_capture_moves(location, position))
         moves.extend(self.possible_en_passant_moves(location, position))
 
         return moves
-

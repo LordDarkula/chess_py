@@ -51,17 +51,18 @@
       <file leaf-file-name="pawn.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="142" column="4" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="4" />
+            <state relative-caret-position="585">
+              <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
               <folding>
                 <element signature="e#416#603#0" expanded="false" />
                 <element signature="e#642#820#0" expanded="false" />
                 <element signature="e#871#1148#0" expanded="false" />
                 <element signature="e#1195#1785#0" expanded="false" />
-                <element signature="e#1853#3077#0" expanded="false" />
-                <element signature="e#3141#3655#0" expanded="false" />
-                <element signature="e#3726#5170#0" expanded="false" />
-                <element signature="e#5259#6721#0" expanded="false" />
+                <element signature="e#1853#3307#0" expanded="false" />
+                <element signature="e#3371#3885#0" expanded="false" />
+                <element signature="e#3956#5400#0" expanded="false" />
+                <element signature="e#5471#5671#0" expanded="false" />
+                <element signature="e#5731#7245#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1041,17 +1042,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="142" column="4" selection-start-line="142" selection-start-column="4" selection-end-line="142" selection-end-column="4" />
+        <state relative-caret-position="585">
+          <caret line="186" column="20" selection-start-line="186" selection-start-column="20" selection-end-line="186" selection-end-column="20" />
           <folding>
             <element signature="e#416#603#0" expanded="false" />
             <element signature="e#642#820#0" expanded="false" />
             <element signature="e#871#1148#0" expanded="false" />
             <element signature="e#1195#1785#0" expanded="false" />
-            <element signature="e#1853#3077#0" expanded="false" />
-            <element signature="e#3141#3655#0" expanded="false" />
-            <element signature="e#3726#5170#0" expanded="false" />
-            <element signature="e#5259#6721#0" expanded="false" />
+            <element signature="e#1853#3307#0" expanded="false" />
+            <element signature="e#3371#3885#0" expanded="false" />
+            <element signature="e#3956#5400#0" expanded="false" />
+            <element signature="e#5471#5671#0" expanded="false" />
+            <element signature="e#5731#7245#0" expanded="false" />
           </folding>
         </state>
       </provider>
