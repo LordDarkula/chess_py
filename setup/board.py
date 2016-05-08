@@ -33,7 +33,7 @@ class Board:
     Initialized upon startup and is used when init_default constructor is used
 
     """
-    # First rank
+        # First rank
     default_position = \
         [[rook.Rook(color.Color(True)), knight.Knight(color.Color(True)), bishop.Bishop(color.Color(True)), queen.Queen(
             color.Color(True)),
@@ -109,3 +109,5 @@ class Board:
             if
 
 """
+
+# TODO add method all_possible_moves

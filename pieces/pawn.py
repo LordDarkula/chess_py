@@ -146,12 +146,13 @@ class Pawn:
         return possible
 
     @staticmethod
-    def would_move_be_promotion(location):
+    def would_move_be_promotion(self):
         """
         Finds if move from current location
-        :type location: algebraic.Locarion
         """
-        if location.rank == 0 or location.rank == 7:
+        if self.rank == 0 and self.color == color.black:
+            return True
+        elif self.rank == 7 and self.color == color.white:
             return True
         return False
 
@@ -181,7 +182,10 @@ class Pawn:
                 moves.append(
                     algebraic.Move.init_with_location(self.square_in_front(self.square_in_front(location)), self, special_notation_constants.MOVEMENT))
 
+        # Adds all possible capture moves that are returned by possible_capture_moves
         moves.extend(self.possible_capture_moves(location, position))
+
+        # Adds all possible en passant moves returned by possible_en_passant_moves
         moves.extend(self.possible_en_passant_moves(location, position))
 
         return moves

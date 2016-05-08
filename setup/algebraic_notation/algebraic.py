@@ -24,6 +24,7 @@ rank
 
 from pieces import pawn, knight, bishop, rook, queen, king
 from setup.algebraic_notation import special_notation_constants
+from setup import color
 
 
 class Location:
@@ -131,7 +132,9 @@ class Location:
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
 
 class Move:
-    def __init__(self, algebraic_string, color):
+
+
+    def __init__(self, algebraic_string, input_color):
         """
         Default constructor for initializing a move using algebraic notation.
 
@@ -143,24 +146,29 @@ class Move:
         pawn promotion e8=Q
 
         :type algebraic_string: string
-        :type color: color.Color
+        :type input_color: color.Color
         """
-        self.color = color
+        self.color = input_color
+
+        # King side castle
         if algebraic_string == "00":
             self.status = special_notation_constants.KING_SIDE_CASTLE
 
+        # Queen side castle
         elif algebraic_string == "000":
             self.status = special_notation_constants.QUEEN_SIDE_CASTLE
 
+        # Pawn movement
         elif len(algebraic_string) == 2:
             """
             ex a4
             """
             self.file = ord(algebraic_string[0]) - 97
             self.rank = int(algebraic_string[1]) - 1
-            self.piece = pawn.Pawn(color)
+            self.piece = pawn.Pawn(input_color)
             self.status = special_notation_constants.MOVEMENT
 
+        # Non-pawn Piece movement
         elif len(algebraic_string) == 3:
             """
             ex Nf3
@@ -172,43 +180,56 @@ class Move:
 
         elif len(algebraic_string) == 4:
 
+            #Capture
             if algebraic_string[1].upper() == "X":
                 """
                 ex Nxf3
                 """
-                self.piece = self.set_piece(algebraic_string, 0)
-                self.file = ord(algebraic_string[0]) - 97
-                self.rank = int(algebraic_string[1]) - 1
-                self.status = special_notation_constants.CAPTURE #TODO add promote and capture 
 
+                # If this is a pawn capture
+                if not algebraic_string[0].isupper():
+                    self.piece = pawn.Pawn(input_color)
+                    self.original_file = ord(algebraic_string[0]) - 97
+                else:
+
+                    self.piece = self.set_piece(algebraic_string, 0)
+
+                self.file = ord(algebraic_string[2]) - 97
+                self.rank = int(algebraic_string[3]) - 1
+                self.status = special_notation_constants.CAPTURE
+
+            # Pawn Promotion
             elif algebraic_string[2] == "=":
                 """
                 ex a8=Q
                 """
-                self.file = ord(algebraic_string[0]) - 97
-                self.rank = int(algebraic_string[1]) - 1
-                self.piece = pawn.Pawn(color)
-                self.status = special_notation_constants.PROMOTE
-                self.promoted_to_piece = self.set_piece(algebraic_string, 3)
+                if self.would_move_be_promotion():
+                    self.file = ord(algebraic_string[0]) - 97
+                    self.rank = int(algebraic_string[1]) - 1
+                    self.piece = pawn.Pawn(input_color)
+                    self.status = special_notation_constants.PROMOTE
+                    self.promoted_to_piece = self.set_piece(algebraic_string, 3)
+                else:
+                    self.make_move_none()
+                    print("Not a promotion")
 
-            else:
+            # Non-pawn Piece movement with file specified
+            elif algebraic_string[1].isupper():
+                """
+                ex aRa3
+                """
                 self.start_rank = ord(algebraic_string[0]) - 97
-                self.set_piece(algebraic_string, color, 1)
-                self.file = ord(algebraic_string[0]) - 97
-                self.rank = int(algebraic_string[1]) - 1
+                self.piece = self.set_piece(algebraic_string, 1)
+                self.file = ord(algebraic_string[2]) - 97
+                self.rank = int(algebraic_string[3]) - 1
                 self.status = special_notation_constants.MOVEMENT
+            # TODO add promote and capture
+            # TODO add non-pawn piece move with both rank and file specified
 
-            """
-            Two cases:
-            case 1: capture
-            ex
-            case 2: specify which of duplicate piece made move
-            """
         else:
             print("Invalid Move")
-            self.make_location_none()
+            self.make_move_none()
 
-    # TODO add method that checks if move is valid
 
     @classmethod
     def init_with_location(cls, location, piece, status):
@@ -294,7 +315,7 @@ class Move:
         """
         return Location(self.rank, self.file)
 
-    def make_location_none(self):
+    def make_move_none(self):
         self.rank = None
         self.file = None
 
@@ -304,3 +325,13 @@ class Move:
         :rtype bool
         """
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
+
+    def would_move_be_promotion(self):
+        """
+        Finds if move from current location
+        """
+        if self.rank == 0 and self.color == color.black:
+            return True
+        elif self.rank == 7 and self.color == color.white:
+            return True
+        return False
