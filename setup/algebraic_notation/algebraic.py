@@ -42,6 +42,13 @@ class Location:
             self.file = None
             print("Cannot create location not on board")
 
+    def equals(self, location):
+        """
+        Finds is location on board is the same as current equation.
+        :type location: algebraic.Location
+        """
+        return location.not_none() and self.rank == location.rank and self.file == location.file
+
     def on_board(self):
         """
         Returns if the move is on the board or not.
@@ -122,14 +129,6 @@ class Location:
         :rtype bool
         """
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
-
-    def equals(self, location):
-        """
-        Finds is location on board is the same as current equation.
-        :type location: algebraic.Location
-        """
-        return location.not_none() and self.rank == location.rank and self.file == location.file
-
 
 class Move:
     def __init__(self, algebraic_string, color):
@@ -239,6 +238,14 @@ class Move:
             cls.file = None
         cls.piece = piece
 
+    def equals(self, move):
+        """
+        Finds if move is same move as this one.
+        :type move: algebraic.Move
+        """
+        return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
+            move.piece) and self.status == move.status
+
     def set_piece(self, algebraic_string, color, index):
         """
         Creates specific piece given raw move, color, and index of piece.
@@ -289,9 +296,4 @@ class Move:
         """
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
 
-    def equals(self, move):
-        """
-        Finds if move is same move as this one.
-        :type move: algebraic.Move
-        """
-        return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece)
+
