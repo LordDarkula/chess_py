@@ -179,7 +179,7 @@ class Move:
                 self.piece = self.set_piece(algebraic_string, 0)
                 self.file = ord(algebraic_string[0]) - 97
                 self.rank = int(algebraic_string[1]) - 1
-                self.status = special_notation_constants.CAPTURE
+                self.status = special_notation_constants.CAPTURE #TODO add promote and capture 
 
             elif algebraic_string[2] == "=":
                 """
