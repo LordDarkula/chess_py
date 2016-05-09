@@ -230,7 +230,6 @@ class Move:
             print("Invalid Move")
             self.make_move_none()
 
-
     @classmethod
     def init_with_location(cls, location, piece, status):
         """
