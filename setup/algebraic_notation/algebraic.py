@@ -124,6 +124,26 @@ class Location:
         else:
             print("Cannot move up and left off the board")
 
+    def shift_down_right(self):
+        """
+        Finds Location shifted down right by 1
+        :rtype: algebraic.Location
+        """
+        if self.rank > 1 and self.file < 7:
+            return self.shift_up().shift_right()
+        else:
+            print("Cannot move down and right off the board")
+
+    def shift_down_left(self):
+        """
+        Finds Location shifted down left by 1
+        :rtype: algebraic.Location
+        """
+        if self.rank > 1 and self.file > 1:
+            return self.shift_up().shift_left()
+        else:
+            print("Cannot move down and left off the board")
+
     def not_none(self):
         """
         Determines whether location exists.
