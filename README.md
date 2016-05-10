@@ -17,8 +17,9 @@ Chess_py is an open source chess platform written in python. Can create chess ma
 
 #Great! How do you use it?
 
-'''python
+```python
 from chess_py import *
 
-new_game = Game()
-'''
+# creates a game with human players playing white and black
+new_game = Game(human.Player(color.white), human.player(color.black))
+```
