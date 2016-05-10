@@ -145,14 +145,15 @@ class Pawn:
 
         return possible
 
-    #TODO figure out what is going on here
-    def would_move_be_promotion(self):
+    @staticmethod
+    def would_move_be_promotion(location):
         """
         Finds if move from current location
+        :type: algebraic.Location
         """
-        if self.rank == 0 and self.color == color.black:
+        if location.rank == 0 and location.color == color.black:
             return True
-        elif self.rank == 7 and self.color == color.white:
+        elif location.rank == 7 and location.color == color.white:
             return True
         return False
 
@@ -167,7 +168,7 @@ class Pawn:
         """
         print('running possible moves')
         moves = []
-        #TODO also figure out what is going on here
+
         # Adds movement to square in front if possible.
         if self.square_in_front(location).not_none and position.is_square_empty(self.square_in_front(location)):
             if self.would_move_be_promotion(location):
