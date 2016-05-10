@@ -152,8 +152,6 @@ class Location:
         return self is not None and self.rank is not None and self.file is not None and self.on_board()
 
 class Move:
-
-
     def __init__(self, algebraic_string, input_color):
         """
         Default constructor for initializing a move using algebraic notation.
