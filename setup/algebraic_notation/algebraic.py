@@ -231,7 +231,7 @@ class Move:
                     self.make_move_none()
                     print("Not a promotion")
 
-            # Non-pawn Piece movement with file specified
+            # Non-pawn Piece movement with rank specified
             elif algebraic_string[1].isupper():
                 """
                 ex aRa3
@@ -241,8 +241,38 @@ class Move:
                 self.file = ord(algebraic_string[2]) - 97
                 self.rank = int(algebraic_string[3]) - 1
                 self.status = special_notation_constants.MOVEMENT
-            # TODO add promote and capture
-            # TODO add non-pawn piece move with both rank and file specified
+
+        elif len(algebraic_string) == 5:
+
+            # # Non-pawn Piece movement with rank and file specified
+            if algebraic_string[2].isupper():
+                """
+                ex a4Rd4
+                """
+                self.start_rank = ord(algebraic_string[0]) - 97
+                self.start_file = int(algebraic_string[1]) - 1
+                self.set_piece(algebraic_string, 2)
+                self.file = ord(algebraic_string[3]) - 97
+                self.rank = int(algebraic_string[4]) - 1
+                self.status = special_notation_constants.MOVEMENT
+
+        elif len(algebraic_string) == 6:
+
+            if algebraic_string[4] == "=":
+                """
+                exd8=Q
+                """
+                if self.would_move_be_promotion():
+                    self.start_rank = ord(algebraic_string[0]) - 97
+                    self.file = ord(algebraic_string[2]) - 97
+                    self.rank = int(algebraic_string[3]) - 1
+                    self.piece = pawn.Pawn(input_color)
+                    self.status = special_notation_constants.PROMOTE
+                    self.promoted_to_piece = self.set_piece(algebraic_string, 5)
+                else:
+                    self.make_move_none()
+                    print("Not a promotion")
+
 
         else:
             print("Invalid Move")
