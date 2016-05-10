@@ -145,7 +145,7 @@ class Pawn:
 
         return possible
 
-    @staticmethod
+    #TODO figure out what is going on here
     def would_move_be_promotion(self):
         """
         Finds if move from current location
@@ -167,7 +167,7 @@ class Pawn:
         """
         print('running possible moves')
         moves = []
-
+        #TODO also figure out what is going on here
         # Adds movement to square in front if possible.
         if self.square_in_front(location).not_none and position.is_square_empty(self.square_in_front(location)):
             if self.would_move_be_promotion(location):
