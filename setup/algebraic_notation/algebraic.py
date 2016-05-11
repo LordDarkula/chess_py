@@ -297,6 +297,7 @@ class Move:
             cls.rank = None
             cls.file = None
         cls.piece = piece
+        return cls
 
     @classmethod
     def init_manual(cls, rank, file, piece, status):

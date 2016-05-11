@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/human.py" afterPath="$PROJECT_DIR$/human.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/pawn.py" afterPath="$PROJECT_DIR$/pieces/pawn.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/board.py" afterPath="$PROJECT_DIR$/setup/board.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/equality.py" afterPath="$PROJECT_DIR$/setup/equality.py" />
     </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,7 +22,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/chess_py$move.coverage" NAME="move Coverage Results" MODIFIED="1460581249294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chess_py$board.coverage" NAME="board Coverage Results" MODIFIED="1462928257188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1462928350174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1462929199896" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -30,17 +33,75 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="algebraic.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="448">
+              <caret line="301" column="11" selection-start-line="301" selection-start-column="11" selection-end-line="301" selection-end-column="11" />
+              <folding>
+                <element signature="e#729#1078#0" expanded="false" />
+                <element signature="e#1120#1343#0" expanded="false" />
+                <element signature="e#1377#1633#0" expanded="false" />
+                <element signature="e#1667#1924#0" expanded="false" />
+                <element signature="e#1960#2221#0" expanded="false" />
+                <element signature="e#2258#2521#0" expanded="false" />
+                <element signature="e#2557#2818#0" expanded="false" />
+                <element signature="e#2858#3120#0" expanded="false" />
+                <element signature="e#3159#3418#0" expanded="false" />
+                <element signature="e#3460#3726#0" expanded="false" />
+                <element signature="e#3767#4030#0" expanded="false" />
+                <element signature="e#4064#4247#0" expanded="false" />
+                <element signature="e#4324#8540#0" expanded="false" />
+                <element signature="e#5073#5302#0" expanded="false" />
+                <element signature="e#5391#5616#0" expanded="false" />
+                <element signature="e#5748#6243#0" expanded="false" />
+                <element signature="e#6335#6842#0" expanded="false" />
+                <element signature="e#6952#7253#0" expanded="false" />
+                <element signature="e#7426#7766#0" expanded="false" />
+                <element signature="e#7909#8456#0" expanded="false" />
+                <element signature="e#9195#9709#0" expanded="false" />
+                <element signature="e#9747#10008#0" expanded="false" />
+                <element signature="e#10049#10184#0" expanded="false" />
+                <element signature="e#10225#10361#0" expanded="false" />
+                <element signature="e#10403#10955#0" expanded="false" />
+                <element signature="e#10989#11233#0" expanded="false" />
+                <element signature="e#11271#11393#0" expanded="false" />
+                <element signature="e#11433#11474#0" expanded="false" />
+                <element signature="e#11508#11691#0" expanded="false" />
+                <element signature="e#11740#11984#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pawn.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="747">
+              <caret line="159" column="23" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
+              <folding>
+                <element signature="e#258#281#0" expanded="true" />
+                <element signature="e#754#932#0" expanded="false" />
+                <element signature="e#983#1260#0" expanded="false" />
+                <element signature="e#1307#1897#0" expanded="false" />
+                <element signature="e#3483#3997#0" expanded="false" />
+                <element signature="e#4068#5512#0" expanded="false" />
+                <element signature="e#6030#7714#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup/board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="567">
-              <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+            <state relative-caret-position="251">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
                 <element signature="e#633#691#0" expanded="true" />
                 <element signature="e#2588#2784#0" expanded="false" />
-                <element signature="e#2838#2974#0" expanded="false" />
-                <element signature="e#3025#3317#0" expanded="false" />
-                <element signature="e#3368#3651#0" expanded="false" />
+                <element signature="e#3034#3326#0" expanded="false" />
+                <element signature="e#3377#3660#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -69,18 +130,18 @@
       <file leaf-file-name="human.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/human.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="240">
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+            <state relative-caret-position="375">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +179,6 @@
         <option value="$PROJECT_DIR$/color.py" />
         <option value="$PROJECT_DIR$/board.py" />
         <option value="$PROJECT_DIR$/algebraic.py" />
-        <option value="$PROJECT_DIR$/game.py" />
-        <option value="$PROJECT_DIR$/human.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/setup/algebraic.py" />
         <option value="$PROJECT_DIR$/setup/special_notation_constants.py" />
@@ -131,10 +190,12 @@
         <option value="$PROJECT_DIR$/action.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/pieces/rook.py" />
-        <option value="$PROJECT_DIR$/pieces/pawn.py" />
-        <option value="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
         <option value="$PROJECT_DIR$/setup/equality.py" />
         <option value="$PROJECT_DIR$/setup/board.py" />
+        <option value="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
+        <option value="$PROJECT_DIR$/game.py" />
+        <option value="$PROJECT_DIR$/human.py" />
+        <option value="$PROJECT_DIR$/pieces/pawn.py" />
       </list>
     </option>
   </component>
@@ -145,8 +206,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="81" />
-    <option name="y" value="80" />
+    <option name="x" value="221" />
+    <option name="y" value="82" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -583,7 +644,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="81" y="80" width="1400" height="1000" extended-state="0" />
+    <frame x="221" y="82" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26362297" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -680,7 +741,7 @@
           <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,7 +782,7 @@
           <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -812,7 +873,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -823,7 +884,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -849,7 +910,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -875,7 +936,7 @@
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
           <folding>
             <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
+            <element signature="e#2838#2983#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -977,21 +1038,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
-          <folding>
-            <element signature="e#416#603#0" expanded="false" />
-            <element signature="e#642#820#0" expanded="false" />
-            <element signature="e#871#1148#0" expanded="false" />
-            <element signature="e#1195#1785#0" expanded="false" />
-            <element signature="e#3371#3885#0" expanded="false" />
-            <element signature="e#3956#5400#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pieces/rook.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1019,41 +1065,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="151" column="103" selection-start-line="151" selection-start-column="103" selection-end-line="151" selection-end-column="103" />
+        <state relative-caret-position="448">
+          <caret line="301" column="11" selection-start-line="301" selection-start-column="11" selection-end-line="301" selection-end-column="11" />
           <folding>
+            <element signature="e#729#1078#0" expanded="false" />
+            <element signature="e#1120#1343#0" expanded="false" />
+            <element signature="e#1377#1633#0" expanded="false" />
+            <element signature="e#1667#1924#0" expanded="false" />
+            <element signature="e#1960#2221#0" expanded="false" />
+            <element signature="e#2258#2521#0" expanded="false" />
+            <element signature="e#2557#2818#0" expanded="false" />
+            <element signature="e#2858#3120#0" expanded="false" />
+            <element signature="e#3159#3418#0" expanded="false" />
             <element signature="e#3460#3726#0" expanded="false" />
             <element signature="e#3767#4030#0" expanded="false" />
+            <element signature="e#4064#4247#0" expanded="false" />
             <element signature="e#4324#8540#0" expanded="false" />
             <element signature="e#5073#5302#0" expanded="false" />
             <element signature="e#5391#5616#0" expanded="false" />
+            <element signature="e#5748#6243#0" expanded="false" />
+            <element signature="e#6335#6842#0" expanded="false" />
             <element signature="e#6952#7253#0" expanded="false" />
-            <element signature="e#8625#9096#0" expanded="false" />
-            <element signature="e#9176#9690#0" expanded="false" />
-            <element signature="e#9728#9989#0" expanded="false" />
-            <element signature="e#10384#10936#0" expanded="false" />
-            <element signature="e#10970#11214#0" expanded="false" />
-            <element signature="e#11252#11374#0" expanded="false" />
-            <element signature="e#11414#11455#0" expanded="false" />
-            <element signature="e#11489#11672#0" expanded="false" />
-            <element signature="e#11721#11965#0" expanded="false" />
-            <marker date="1462924951000" expanded="false" signature="520:666" placeholder="import ..." />
-            <marker date="1462924951000" expanded="false" signature="720:1078" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="1111:1343" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="1368:1633" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="1658:1924" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="1951:2221" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="2249:2521" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="2548:2818" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="2849:3120" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="3150:3418" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="4055:4247" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="5731:6243" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="6318:6828" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="7409:7766" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="7892:8456" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="10021:10165" placeholder="..." />
-            <marker date="1462924951000" expanded="false" signature="10197:10342" placeholder="..." />
+            <element signature="e#7426#7766#0" expanded="false" />
+            <element signature="e#7909#8456#0" expanded="false" />
+            <element signature="e#9195#9709#0" expanded="false" />
+            <element signature="e#9747#10008#0" expanded="false" />
+            <element signature="e#10049#10184#0" expanded="false" />
+            <element signature="e#10225#10361#0" expanded="false" />
+            <element signature="e#10403#10955#0" expanded="false" />
+            <element signature="e#10989#11233#0" expanded="false" />
+            <element signature="e#11271#11393#0" expanded="false" />
+            <element signature="e#11433#11474#0" expanded="false" />
+            <element signature="e#11508#11691#0" expanded="false" />
+            <element signature="e#11740#11984#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#633#691#0" expanded="true" />
+            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#3034#3326#0" expanded="false" />
+            <element signature="e#3377#3660#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1066,24 +1123,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup/board.py">
+    <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="567">
-          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-          <folding>
-            <element signature="e#633#691#0" expanded="true" />
-            <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#2838#2974#0" expanded="false" />
-            <element signature="e#3025#3317#0" expanded="false" />
-            <element signature="e#3368#3651#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/human.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="375">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1096,11 +1139,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/game.py">
+    <entry file="file://$PROJECT_DIR$/human.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="49" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+        <state relative-caret-position="240">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="747">
+          <caret line="159" column="23" selection-start-line="159" selection-start-column="23" selection-end-line="159" selection-end-column="23" />
+          <folding>
+            <element signature="e#258#281#0" expanded="true" />
+            <element signature="e#754#932#0" expanded="false" />
+            <element signature="e#983#1260#0" expanded="false" />
+            <element signature="e#1307#1897#0" expanded="false" />
+            <element signature="e#3483#3997#0" expanded="false" />
+            <element signature="e#4068#5512#0" expanded="false" />
+            <element signature="e#6030#7714#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

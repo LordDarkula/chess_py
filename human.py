@@ -16,9 +16,10 @@ class Player:
         Returns valid and legal move given position
         :type position: board.Board
         """
-        for i in range(7):
-            for j in range(7):
+        for i in range(len(position.position)):
+            for j in range(len(position.position[0])):
                 print(position.position[i][j], end = "")
+            print()
 
         move = str(input(self.color.string + "\'s move"))
 

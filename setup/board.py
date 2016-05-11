@@ -74,9 +74,9 @@ class Board:
     def init_default(cls):
         """
         Alternate init method for default starting position
-        :return:
+        :return: board.Board
         """
-        cls.position = cls.default_position
+        return cls(cls.default_position)
 
     def piece_at_square(self, location):
         """
