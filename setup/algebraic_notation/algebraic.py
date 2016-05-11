@@ -319,7 +319,8 @@ class Move:
             return None
         cls.piece = piece
         return cls
-
+#TODO verify alternate constructors.
+    
     def equals(self, move):
         """
         Finds if move is same move as this one.

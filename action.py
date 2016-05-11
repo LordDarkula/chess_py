@@ -15,6 +15,3 @@ def move_valid(position, move):
                 return True
 
     return False
-
-
-
