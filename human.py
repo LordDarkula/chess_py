@@ -18,7 +18,10 @@ class Player:
         """
         for i in range(len(position.position)):
             for j in range(len(position.position[0])):
-                print(position.position[i][j], end = "")
+                if position.position[i][j] is not None:
+                    print(position.position[i][j].symbol, end = "")
+                else:
+                    print("_", end = "")
             print()
 
         move = str(input(self.color.string + "\'s move"))

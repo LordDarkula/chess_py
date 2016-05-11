@@ -1,13 +1,37 @@
+
+"""
+
+rank
+7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
+6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+5 6 ║… … … … … … … …
+4 5 ║… … … … … … … …
+3 4 ║… … … … … … … …
+2 3 ║… … … … … … … …
+1 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+0 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+----╚═══════════════
+——---a b c d e f g h
+-----0 1 2 3 4 5 6 7
+------file
+
+"""
+
+
+from setup import color
+
 class Knight:
-    def __init__(self, color):
+    def __init__(self, input_color):
         """
 
-        :type color: string "white" o string "black"
+        :type input_color: color.Color
         """
-        if color == "white":
-            self.white = True
+        self.color = input_color.color
 
-        self.white = False
+        if self.color == color.white:
+            self.symbol = "♞"
+        else:
+            self.symbol = "♘"
         # TODO add knight move functionality
 
     def equals(self, piece):
@@ -15,5 +39,5 @@ class Knight:
         Finds out if piece is the same type and color as self
         :type piece: pieces *
         """
-        return type(piece) is type(self) and piece.white == self.white
+        return type(piece) is type(self) and piece.color == self.color
 

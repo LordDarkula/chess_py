@@ -1,4 +1,20 @@
 
+"""
+rank
+7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
+6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+5 6 ║… … … … … … … …
+4 5 ║… … … … … … … …
+3 4 ║… … … … … … … …
+2 3 ║… … … … … … … …
+1 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+0 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+----╚═══════════════
+——---a b c d e f g h
+-----0 1 2 3 4 5 6 7
+------file
+"""
+
 from setup import color
 from setup.algebraic_notation import algebraic, special_notation_constants
 
@@ -11,6 +27,11 @@ class Rook:
         :type input_color color.Color
         """
         self.color = input_color.color
+
+        if self.color == color.white:
+            self.symbol = "♜"
+        else:
+            self.symbol = "♖"
 
     def equals(self, piece):
         """
