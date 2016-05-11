@@ -1,5 +1,5 @@
 
-from setup import board, equality
+from setup import board
 from setup.algebraic_notation import algebraic
 
 
