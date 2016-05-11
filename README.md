@@ -66,7 +66,7 @@ my_board = board.Board.init_default()
 ######Or
 ```python
 """
-my_list must be a 2-Dimensional 8 by 8 list containing None and/or any of the built in piece classes.<br /> 
+my_list must be a 2-Dimensional 8 by 8 list containing None and/or any of the built in piece classes.
 There has be exactly one white king and exactly one black king in my_list.
 """
 my_list = [""" Your code here """]
