@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
     </list>
     <ignored path="chess_py.iws" />
@@ -30,8 +31,8 @@
       <file leaf-file-name="algebraic.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+            <state relative-caret-position="510">
+              <caret line="279" column="33" selection-start-line="279" selection-start-column="33" selection-end-line="279" selection-end-column="33" />
               <folding>
                 <element signature="e#729#1078#0" expanded="false" />
                 <element signature="e#1120#1343#0" expanded="false" />
@@ -45,15 +46,14 @@
                 <element signature="e#3460#3726#0" expanded="false" />
                 <element signature="e#3767#4030#0" expanded="false" />
                 <element signature="e#4064#4247#0" expanded="false" />
-                <element signature="e#8890#9361#0" expanded="false" />
-                <element signature="e#9441#9955#0" expanded="false" />
-                <element signature="e#9993#10254#0" expanded="false" />
-                <element signature="e#10314#10955#0" expanded="false" />
-                <element signature="e#10989#11233#0" expanded="false" />
-                <element signature="e#11271#11393#0" expanded="false" />
-                <element signature="e#11433#11474#0" expanded="false" />
-                <element signature="e#11508#11691#0" expanded="false" />
-                <element signature="e#11740#11984#0" expanded="false" />
+                <element signature="e#8625#9096#0" expanded="false" />
+                <element signature="e#9176#9690#0" expanded="false" />
+                <element signature="e#9728#9989#0" expanded="false" />
+                <element signature="e#10970#11214#0" expanded="false" />
+                <element signature="e#11252#11374#0" expanded="false" />
+                <element signature="e#11414#11455#0" expanded="false" />
+                <element signature="e#11489#11672#0" expanded="false" />
+                <element signature="e#11721#11965#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -169,8 +169,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="73" />
-    <option name="y" value="75" />
+    <option name="x" value="-49" />
+    <option name="y" value="49" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -587,7 +587,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="73" y="75" width="1400" height="1000" extended-state="0" />
+    <frame x="-49" y="49" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26362297" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -1073,8 +1073,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="243" column="0" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="279" column="33" selection-start-line="279" selection-start-column="33" selection-end-line="279" selection-end-column="33" />
           <folding>
             <element signature="e#729#1078#0" expanded="false" />
             <element signature="e#1120#1343#0" expanded="false" />
@@ -1088,15 +1088,14 @@
             <element signature="e#3460#3726#0" expanded="false" />
             <element signature="e#3767#4030#0" expanded="false" />
             <element signature="e#4064#4247#0" expanded="false" />
-            <element signature="e#8890#9361#0" expanded="false" />
-            <element signature="e#9441#9955#0" expanded="false" />
-            <element signature="e#9993#10254#0" expanded="false" />
-            <element signature="e#10314#10955#0" expanded="false" />
-            <element signature="e#10989#11233#0" expanded="false" />
-            <element signature="e#11271#11393#0" expanded="false" />
-            <element signature="e#11433#11474#0" expanded="false" />
-            <element signature="e#11508#11691#0" expanded="false" />
-            <element signature="e#11740#11984#0" expanded="false" />
+            <element signature="e#8625#9096#0" expanded="false" />
+            <element signature="e#9176#9690#0" expanded="false" />
+            <element signature="e#9728#9989#0" expanded="false" />
+            <element signature="e#10970#11214#0" expanded="false" />
+            <element signature="e#11252#11374#0" expanded="false" />
+            <element signature="e#11414#11455#0" expanded="false" />
+            <element signature="e#11489#11672#0" expanded="false" />
+            <element signature="e#11721#11965#0" expanded="false" />
           </folding>
         </state>
       </provider>

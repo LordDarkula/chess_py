@@ -166,6 +166,7 @@ class Move:
         :type algebraic_string: string
         :type input_color: color.Color
         """
+        self.string = algebraic_string
         self.color = input_color
 
         # King side castle
@@ -181,8 +182,8 @@ class Move:
             """
             ex a4
             """
-            self.file = ord(algebraic_string[0]) - 97
-            self.rank = int(algebraic_string[1]) - 1
+            self.file = self.set_file(0)
+            self.rank = self.set_rank(1)
             self.piece = pawn.Pawn(input_color)
             self.status = special_notation_constants.MOVEMENT
 
@@ -191,9 +192,9 @@ class Move:
             """
             ex Nf3
             """
-            self.piece = self.set_piece(algebraic_string, 0)
-            self.file = ord(algebraic_string[0]) - 97
-            self.rank = int(algebraic_string[1]) - 1
+            self.piece = self.set_piece(0)
+            self.file = self.set_file(0)
+            self.rank = self.set_file(1)
             self.status = special_notation_constants.MOVEMENT
 
         elif len(algebraic_string) == 4:
@@ -207,13 +208,13 @@ class Move:
                 # If this is a pawn capture
                 if not algebraic_string[0].isupper():
                     self.piece = pawn.Pawn(input_color)
-                    self.original_file = ord(algebraic_string[0]) - 97
+                    self.original_file = self.set_file(0)
                 else:
 
-                    self.piece = self.set_piece(algebraic_string, 0)
+                    self.piece = pawn.Pawn(input_color)
 
-                self.file = ord(algebraic_string[2]) - 97
-                self.rank = int(algebraic_string[3]) - 1
+                self.file = self.set_file(2)
+                self.rank = self.set_rank(3)
                 self.status = special_notation_constants.CAPTURE
 
             # Pawn Promotion
@@ -222,11 +223,11 @@ class Move:
                 ex a8=Q
                 """
                 if self.would_move_be_promotion():
-                    self.file = ord(algebraic_string[0]) - 97
-                    self.rank = int(algebraic_string[1]) - 1
+                    self.file = self.set_file(0)
+                    self.rank = self.set_rank(1)
                     self.piece = pawn.Pawn(input_color)
                     self.status = special_notation_constants.PROMOTE
-                    self.promoted_to_piece = self.set_piece(algebraic_string, 3)
+                    self.promoted_to_piece = self.set_piece(3)
                 else:
                     self.make_move_none()
                     print("Not a promotion")
@@ -236,39 +237,40 @@ class Move:
                 """
                 ex aRa3
                 """
-                self.start_rank = ord(algebraic_string[0]) - 97
-                self.piece = self.set_piece(algebraic_string, 1)
-                self.file = ord(algebraic_string[2]) - 97
-                self.rank = int(algebraic_string[3]) - 1
+                self.start_rank = self.set_rank(0)
+                self.piece = self.set_piece(1)
+                self.file = self.set_file(2)
+                self.rank = self.set_rank(3)
                 self.status = special_notation_constants.MOVEMENT
 
         elif len(algebraic_string) == 5:
 
-            # # Non-pawn Piece movement with rank and file specified
+            # Non-pawn Piece movement with rank and file specified
             if algebraic_string[2].isupper():
                 """
                 ex a4Rd4
                 """
-                self.start_rank = ord(algebraic_string[0]) - 97
-                self.start_file = int(algebraic_string[1]) - 1
-                self.set_piece(algebraic_string, 2)
-                self.file = ord(algebraic_string[3]) - 97
-                self.rank = int(algebraic_string[4]) - 1
+                self.start_file = self.set_file(0)
+                self.start_rank = self.set_rank(1)
+                self.set_piece(2)
+                self.file = self.set_file(3)
+                self.rank = self.set_rank(4)
                 self.status = special_notation_constants.MOVEMENT
 
         elif len(algebraic_string) == 6:
 
+            # Pawn promote with capture
             if algebraic_string[4] == "=":
                 """
                 exd8=Q
                 """
                 if self.would_move_be_promotion():
-                    self.start_rank = ord(algebraic_string[0]) - 97
-                    self.file = ord(algebraic_string[2]) - 97
-                    self.rank = int(algebraic_string[3]) - 1
+                    self.start_file = self.set_rank(0)
+                    self.file = self.set_file(2)
+                    self.rank = self.set_rank(3)
                     self.piece = pawn.Pawn(input_color)
                     self.status = special_notation_constants.PROMOTE
-                    self.promoted_to_piece = self.set_piece(algebraic_string, 5)
+                    self.promoted_to_piece = self.set_piece(5)
                 else:
                     self.make_move_none()
                     print("Not a promotion")
@@ -323,25 +325,40 @@ class Move:
         return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
             move.piece) and self.status == move.status
 
-    def set_piece(self, algebraic_string, index):
+    def set_rank(self, index):
         """
-        Creates specific piece given raw move, color, and index of piece.
-        :type algebraic_string: basestring
+        Returns rank given index
+        :type index: int
+        :rtype int
+        """
+        return int(self.string[index]) - 1
+
+    def set_file(self, index):
+        """
+        Returns file given index
+        :type index: int
+        :rtype int
+        """
+        return ord(self.string[index]) - 97
+
+    def set_piece(self, index):
+        """
+        Returns specific piece given index of piece.
         :type index: int
         """
-        if algebraic_string[index].upper is 'R':
+        if self.string[index].upper is 'R':
             return rook.Rook(self.color)
 
-        if algebraic_string[index].upper is 'N':
+        if self.string[index].upper is 'N':
             return knight.Knight(self.color)
 
-        if algebraic_string[index].upper is 'B':
+        if self.string[index].upper is 'B':
             return bishop.Bishop(self.color)
 
-        if algebraic_string[index].upper is 'Q':
+        if self.string[index].upper is 'Q':
             return queen.Queen(self.color)
 
-        if algebraic_string[index].upper is 'K':
+        if self.string[index].upper is 'K':
             return king.King(self.color)
         return None
 
