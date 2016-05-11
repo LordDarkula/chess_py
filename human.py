@@ -19,19 +19,23 @@ class Player:
         for i in range(len(position.position)):
             for j in range(len(position.position[0])):
                 if position.position[i][j] is not None:
-                    print(position.position[i][j].symbol, end = "")
+                    print(position.position[i][j].symbol + " ", end = "")
                 else:
-                    print("_", end = "")
+                    print("_ ", end = "")
             print()
 
         print()
 
         raw = str(input(self.color.string + "\'s move"))
+        move = algebraic.Move(raw, self.color)
+
+        while True:
+            raw = str(input("Enter valid " + self.color.string + "\'s move"))
+            if raw is not None and move.not_none():
+                break
 
         move = algebraic.Move(raw, self.color)
-        while raw is None or move.not_none():
-            raw = str("Enter valid " + input(self.color.string + "\'s move"))
 
         return move
-        # TODO check if move is legal and if it isn't ask the user to enter a valid move
+        # TODO eventually check move up against all_possible_moves
 
