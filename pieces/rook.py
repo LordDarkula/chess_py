@@ -1,3 +1,4 @@
+#TODO verify code and finalize class documentation
 
 """
 rank
