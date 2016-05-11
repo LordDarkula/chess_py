@@ -25,6 +25,7 @@ and black home row is at index 7
 
 from pieces import bishop, king, knight, pawn, queen, rook
 from setup import color
+from setup.algebraic_notation import algebraic
 
 
 class Board:
@@ -95,19 +96,25 @@ class Board:
         """
         return self.position[location.rank][location.file] is None
 
+    def all_possible_moves(self):
+        """
 
-# TODO decide what do do with commented out code (probably delete it)
-"""
-    def move(self, move):
+        :return: list
+        """
+        moves = []
 
+        # Loops through columns
+        for i in range(len(self.position)):
 
+            # Loops through rows
+            for j in range(len(self.position[0])):
 
-        :type move: object
+                    # Tests if square on the board is not empty
+                    if not self.is_square_empty(algebraic.Location(i, j)):
 
-        if type(move.piece) is pieces.Pawn and move.piece.white == True:
+                        # Adds all of piece's possible moves to moves list.
+                        moves.extend(self.piece_at_square(algebraic.Location(i, j)).possible_moves())
 
-            if
-
-"""
+        return moves
 
 # TODO add method all_possible_moves

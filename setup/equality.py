@@ -1,3 +1,5 @@
+# TODO old code delete when fully phased out
+
 """
 Class that contains all equality comparison methods specific for chess_py
 """
