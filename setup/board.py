@@ -98,7 +98,7 @@ class Board:
 
     def all_possible_moves(self):
         """
-
+        Returns list of all possible moves
         :return: list
         """
         moves = []
@@ -118,6 +118,9 @@ class Board:
         return moves
 
     def print(self):
+        """
+        Prints current position in console
+        """
         # Loops through columns
         for i in range(len(self.position)):
 
