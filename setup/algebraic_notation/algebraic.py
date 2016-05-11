@@ -167,6 +167,10 @@ class Move:
         """
         self.string = algebraic_string
         self.color = input_color
+        self.status = None
+        self.start_file = None
+        self.promoted_to_piece = None
+        self.start_rank = None
 
         # King side castle
         if algebraic_string == "00":
@@ -207,7 +211,7 @@ class Move:
                 # If this is a pawn capture
                 if not algebraic_string[0].isupper():
                     self.piece = pawn.Pawn(input_color)
-                    self.original_file = self.set_file(0)
+                    self.start_file = self.set_file(0)
                 else:
 
                     self.piece = pawn.Pawn(input_color)
@@ -231,12 +235,12 @@ class Move:
                     self.make_move_none()
                     print("Not a promotion")
 
-            # Non-pawn Piece movement with rank specified
+            # Non-pawn Piece movement with file specified
             elif algebraic_string[1].isupper():
                 """
                 ex aRa3
                 """
-                self.start_rank = self.set_rank(0)
+                self.start_file = self.set_file(0)
                 self.piece = self.set_piece(1)
                 self.file = self.set_file(2)
                 self.rank = self.set_rank(3)
@@ -321,8 +325,57 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
-            move.piece) and self.status == move.status
+
+        # If move is not none and rank, file, and color are the same
+        if move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
+            move.piece) and self.status == move.status and self.color == move.color:
+
+            # If no start_file exists for either move
+            if self.start_file is None and move.start_file is None:
+
+                # If no start_rank exists for either move
+                if self.start_rank is None and move.start_rank is None:
+
+                    # If no promoted_to_piece exists
+                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
+                        return True
+
+                    # If promoted_piece is the same
+                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
+                        return True
+
+                # If start_rank is the same
+                elif self.start_rank == move.start_rank:
+                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
+                        return True
+
+                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
+                        return True
+
+            # If start_file is the same
+            elif self.start_file == move.start_file:
+
+                # If no start_rank exists for either move
+                if self.start_rank is None and move.start_rank is None:
+
+                    # If no promoted_to_piece exists
+                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
+                        return True
+
+                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
+                        return True
+
+                # If start_rank is the same
+                elif self.start_rank == move.start_rank:
+                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
+                        return True
+
+                    # If promoted_piece is the same
+                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
+                        return True
+
+
+        return False
 
     def set_rank(self, index):
         """
