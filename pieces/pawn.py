@@ -28,6 +28,10 @@ class Pawn:
         """
         self.just_moved_two_steps = False
         self.color = input_color.color
+        if self.color == color.white:
+            self.symbol = "♟"
+        else:
+            self.symbol = "♙"
 
     def equals(self, piece):
         """
@@ -145,19 +149,18 @@ class Pawn:
 
         return possible
 
-    @staticmethod
-    def would_move_be_promotion(location):
+    def would_move_be_promotion(self, location):
         """
         Finds if move from current location
         :type: algebraic.Location
         """
 
         # If the pawn is on the second rank and black.
-        if location.rank == 1 and location.color == color.black:
+        if location.rank == 1 and self.color == color.black:
             return True
 
         # If the pawn is on the seventh rank and white.
-        elif location.rank == 6 and location.color == color.white:
+        elif location.rank == 6 and self.color == color.white:
             return True
         return False
 
