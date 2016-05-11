@@ -17,20 +17,30 @@ Chess_py is an open source chess platform written in python. Can create chess ma
 
 #Great! How do you use it?
 
-Chess_py must be imported and a game object should be created. The game object requires 2 parameters for the players. These players can be human (from the included human.player class) or artificial intelligence of some kind. 
+Chess_py must be imported and a game object must be created. The game object requires 2 parameters for the players. These players can be human (from the included human.player class) or artificial intelligence of some kind. Basic set up required is shown below.
+
+######Note: color.white is defined to be True and color.black is defined to be False in color.py
 ```python
+# Set up
 from chess_py import *
 
+# Creates color objects to initialize players with.
+white_color = color.Color(color.white)
+black_color = color.Color(color.black)
+```
+If you want to set up a game with two humans, use human.Player class to initialize a white and a black human.Player objects.
+
+
+```python
 # Creates a game with human players playing white and black
-new_game = Game(human.Player(color.white), human.player(color.black))
+new_game = Game(human.Player(white_color), human.player(black_color))
 new_game.start()
 ```
+
 To use a custom artificial intelligence with chess_py, the artificial intelligence must be a python class with a generate_move() method.
 ```python
-from chess_py import *
-
 # Creates a game with a human player playing white and a separate software playing black
-new_game = Game(human.Player(color.white), your_class(color.black))
+new_game = Game(human.Player(color_white), your_class(color_black))
 new_game.start()
 
 # In your_class . . . 
@@ -47,3 +57,4 @@ class your_class:
       # Your code
       return moves
 ```
+
