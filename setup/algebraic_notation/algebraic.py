@@ -294,8 +294,7 @@ class Move:
             cls.status = status
         else:
             print("Cannot create move not on board")
-            cls.rank = None
-            cls.file = None
+            return None
         cls.piece = piece
         return cls
 
@@ -314,9 +313,9 @@ class Move:
             cls.status = status
         else:
             print("Cannot create move not on board")
-            cls.rank = None
-            cls.file = None
+            return None
         cls.piece = piece
+        return cls
 
     def equals(self, move):
         """
@@ -389,7 +388,7 @@ class Move:
         Determines whether location exists.
         :rtype bool
         """
-        return self is not None and self.rank is not None and self.file is not None and self.on_board()
+        return self is not None or self.rank is not None or self.file is not None or self.on_board()
 
     def would_move_be_promotion(self):
         """

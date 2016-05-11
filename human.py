@@ -24,9 +24,14 @@ class Player:
                     print("_", end = "")
             print()
 
-        move = str(input(self.color.string + "\'s move"))
+        print()
 
-        if equality.move_not_none(algebraic.Move(move, self.color)):
-            return algebraic.Move(move, self.color)
+        raw = str(input(self.color.string + "\'s move"))
+
+        move = algebraic.Move(raw, self.color)
+        while raw is None or move.not_none():
+            raw = str("Enter valid " + input(self.color.string + "\'s move"))
+
+        return move
         # TODO check if move is legal and if it isn't ask the user to enter a valid move
 
