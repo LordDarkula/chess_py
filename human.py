@@ -16,15 +16,8 @@ class Player:
         Returns valid and legal move given position
         :type position: board.Board
         """
-        for i in range(len(position.position)):
-            for j in range(len(position.position[0])):
-                if position.position[i][j] is not None:
-                    print(position.position[i][j].symbol + " ", end = "")
-                else:
-                    print("_ ", end = "")
-            print()
 
-        print()
+        position.print()
 
         raw = str(input(self.color.string + "\'s move"))
         move = algebraic.Move(raw, self.color)

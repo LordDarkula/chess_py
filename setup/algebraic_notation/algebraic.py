@@ -34,11 +34,10 @@ class Location:
         :type rank: int
         :type file: int
         """
+        self.rank = rank
+        self.file = file
 
-        if self.on_board():
-            self.rank = rank
-            self.file = file
-        else:
+        if not self.on_board():
             self.rank = None
             self.file = None
             print("Cannot create location not on board")

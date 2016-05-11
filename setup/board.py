@@ -117,4 +117,22 @@ class Board:
 
         return moves
 
+    def print(self):
+        # Loops through columns
+        for i in range(len(self.position)):
+
+            # Loops through rows
+            for j in range(len(self.position[0])):
+
+                # If there is a piece on the square
+                if not self.is_square_empty(algebraic.Location(i, j)):
+
+                    # Prints out symbol of piece
+                    print(self.position[i][j].symbol + " ", end="")
+                else:
+                    print("_ ", end="")
+            print()
+
+        print()
+
 # TODO add method all_possible_moves
