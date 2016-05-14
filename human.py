@@ -1,3 +1,6 @@
+"""
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
+"""
 
 from setup import board
 from setup.algebraic_notation import algebraic

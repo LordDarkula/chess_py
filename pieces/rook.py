@@ -14,6 +14,8 @@ rank
 ——---a b c d e f g h
 -----0 1 2 3 4 5 6 7
 ------file
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color

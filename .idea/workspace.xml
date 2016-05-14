@@ -2,7 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/aubhrosengupta.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/aubhrosengupta.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/action.py" afterPath="$PROJECT_DIR$/action.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.py" afterPath="$PROJECT_DIR$/game.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game_state.py" afterPath="$PROJECT_DIR$/game_state.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/human.py" afterPath="$PROJECT_DIR$/human.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/bishop.py" afterPath="$PROJECT_DIR$/pieces/bishop.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/king.py" afterPath="$PROJECT_DIR$/pieces/king.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/knight.py" afterPath="$PROJECT_DIR$/pieces/knight.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/pawn.py" afterPath="$PROJECT_DIR$/pieces/pawn.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/piece_constants.py" afterPath="$PROJECT_DIR$/pieces/piece_constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/queen.py" afterPath="$PROJECT_DIR$/pieces/queen.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/rook.py" afterPath="$PROJECT_DIR$/pieces/rook.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/board.py" afterPath="$PROJECT_DIR$/setup/board.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/color.py" afterPath="$PROJECT_DIR$/setup/color.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/equality.py" afterPath="$PROJECT_DIR$/setup/equality.py" />
     </list>
     <ignored path="chess_py.iws" />
@@ -33,27 +49,27 @@
       <file leaf-file-name="algebraic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+            <state relative-caret-position="330">
+              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
               <folding>
-                <element signature="e#1102#1325#0" expanded="false" />
-                <element signature="e#1649#1906#0" expanded="false" />
-                <element signature="e#1942#2203#0" expanded="false" />
-                <element signature="e#2240#2503#0" expanded="false" />
-                <element signature="e#2539#2800#0" expanded="false" />
-                <element signature="e#2840#3102#0" expanded="false" />
-                <element signature="e#3141#3400#0" expanded="false" />
-                <element signature="e#3442#3708#0" expanded="false" />
-                <element signature="e#3749#4012#0" expanded="false" />
-                <element signature="e#4046#4229#0" expanded="false" />
-                <element signature="e#12137#12272#0" expanded="false" />
-                <element signature="e#12313#12449#0" expanded="false" />
-                <element signature="e#12491#13043#0" expanded="false" />
-                <element signature="e#13077#13321#0" expanded="false" />
-                <element signature="e#13359#13481#0" expanded="false" />
-                <element signature="e#13521#13562#0" expanded="false" />
-                <element signature="e#13828#14072#0" expanded="false" />
-                <marker date="1462984903000" expanded="false" signature="9840:12096" placeholder="..." />
+                <element signature="e#1157#1380#0" expanded="false" />
+                <element signature="e#1704#1961#0" expanded="false" />
+                <element signature="e#1997#2258#0" expanded="false" />
+                <element signature="e#2295#2558#0" expanded="false" />
+                <element signature="e#2594#2855#0" expanded="false" />
+                <element signature="e#2895#3157#0" expanded="false" />
+                <element signature="e#3196#3455#0" expanded="false" />
+                <element signature="e#3497#3763#0" expanded="false" />
+                <element signature="e#3804#4067#0" expanded="false" />
+                <element signature="e#4101#4284#0" expanded="false" />
+                <element signature="e#12192#12327#0" expanded="false" />
+                <element signature="e#12368#12504#0" expanded="false" />
+                <element signature="e#12546#13098#0" expanded="false" />
+                <element signature="e#13132#13376#0" expanded="false" />
+                <element signature="e#13414#13536#0" expanded="false" />
+                <element signature="e#13576#13617#0" expanded="false" />
+                <element signature="e#13883#14127#0" expanded="false" />
+                <marker date="1463269998000" expanded="false" signature="9895:12151" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -62,110 +78,99 @@
       <file leaf-file-name="pawn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+            <state relative-caret-position="270">
+              <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
               <folding>
-                <element signature="e#310#333#0" expanded="true" />
-                <element signature="e#806#984#0" expanded="false" />
-                <element signature="e#1035#1312#0" expanded="false" />
-                <element signature="e#1359#1949#0" expanded="false" />
-                <element signature="e#2017#3471#0" expanded="false" />
-                <element signature="e#3535#4049#0" expanded="false" />
-                <element signature="e#4120#5564#0" expanded="false" />
-                <element signature="e#5623#6022#0" expanded="false" />
-                <element signature="e#6082#7766#0" expanded="false" />
+                <element signature="e#365#388#0" expanded="true" />
+                <element signature="e#861#1039#0" expanded="false" />
+                <element signature="e#1090#1367#0" expanded="false" />
+                <element signature="e#1414#2004#0" expanded="false" />
+                <element signature="e#2072#3526#0" expanded="false" />
+                <element signature="e#3590#4104#0" expanded="false" />
+                <element signature="e#4175#5619#0" expanded="false" />
+                <element signature="e#5678#6077#0" expanded="false" />
+                <element signature="e#6137#7821#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="special_notation_constants.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            <state relative-caret-position="60">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/game.py">
+      <file leaf-file-name="piece_constants.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pieces/piece_constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="45">
+              <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="human.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/human.py">
+      <file leaf-file-name="knight.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pieces/knight.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
-              <folding>
-                <element signature="e#1#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setup/board.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1905">
-              <caret line="140" column="2" selection-start-line="140" selection-start-column="2" selection-end-line="140" selection-end-column="2" />
-              <folding>
-                <element signature="e#633#691#0" expanded="true" />
-                <element signature="e#2588#2784#0" expanded="false" />
-                <element signature="e#3034#3326#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="action.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/action.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="209">
+              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rook.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pieces/rook.py">
+      <file leaf-file-name="king.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pieces/king.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding>
-                <element signature="e#308#331#0" expanded="true" />
-                <element signature="e#836#1014#0" expanded="false" />
-                <element signature="e#1077#1740#0" expanded="false" />
-                <element signature="e#1805#2472#0" expanded="false" />
-                <element signature="e#2538#3206#0" expanded="false" />
-                <element signature="e#3271#3937#0" expanded="false" />
-                <element signature="e#3997#4440#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="equality.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/setup/equality.py">
+      <file leaf-file-name="color.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup/color.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
-              <folding>
-                <element signature="e#218#858#0" expanded="false" />
-                <element signature="e#910#1108#0" expanded="false" />
-                <element signature="e#1152#1353#0" expanded="false" />
-                <element signature="e#1443#1709#0" expanded="false" />
-                <element signature="e#1762#2016#0" expanded="false" />
-                <element signature="e#2068#2447#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="queen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pieces/queen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_state.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/game_state.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bishop.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pieces/bishop.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="239">
+              <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -202,23 +207,23 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/setup/algebraic.py" />
         <option value="$PROJECT_DIR$/setup/special_notation_constants.py" />
-        <option value="$PROJECT_DIR$/game_state.py" />
-        <option value="$PROJECT_DIR$/setup/color.py" />
-        <option value="$PROJECT_DIR$/pieces/piece_constants.py" />
-        <option value="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/game.py" />
-        <option value="$PROJECT_DIR$/pieces/bishop.py" />
-        <option value="$PROJECT_DIR$/pieces/knight.py" />
-        <option value="$PROJECT_DIR$/pieces/queen.py" />
-        <option value="$PROJECT_DIR$/pieces/king.py" />
-        <option value="$PROJECT_DIR$/pieces/pawn.py" />
-        <option value="$PROJECT_DIR$/pieces/rook.py" />
         <option value="$PROJECT_DIR$/human.py" />
         <option value="$PROJECT_DIR$/setup/board.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/action.py" />
-        <option value="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
+        <option value="$PROJECT_DIR$/pieces/rook.py" />
         <option value="$PROJECT_DIR$/setup/equality.py" />
+        <option value="$PROJECT_DIR$/pieces/pawn.py" />
+        <option value="$PROJECT_DIR$/game_state.py" />
+        <option value="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
+        <option value="$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py" />
+        <option value="$PROJECT_DIR$/setup/color.py" />
+        <option value="$PROJECT_DIR$/pieces/queen.py" />
+        <option value="$PROJECT_DIR$/pieces/piece_constants.py" />
+        <option value="$PROJECT_DIR$/pieces/knight.py" />
+        <option value="$PROJECT_DIR$/pieces/king.py" />
+        <option value="$PROJECT_DIR$/pieces/bishop.py" />
       </list>
     </option>
   </component>
@@ -603,9 +608,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1046" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17765568" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17765568" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32819384" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -698,7 +703,7 @@
         <state relative-caret-position="0">
           <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -738,7 +743,7 @@
         <state relative-caret-position="0">
           <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -828,7 +833,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -838,7 +843,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -863,7 +868,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -888,7 +893,7 @@
         <state relative-caret-position="0">
           <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
           <folding>
-            <element signature="e#2588#2784#0" expanded="false" />
+            <element signature="e#2644#2840#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -922,46 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup/color.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/game_state.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/piece_constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/queen.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -984,149 +949,189 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/king.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/knight.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/bishop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="28" column="38" selection-start-line="28" selection-start-column="38" selection-end-line="28" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
-          <folding>
-            <element signature="e#1102#1325#0" expanded="false" />
-            <element signature="e#1649#1906#0" expanded="false" />
-            <element signature="e#1942#2203#0" expanded="false" />
-            <element signature="e#2240#2503#0" expanded="false" />
-            <element signature="e#2539#2800#0" expanded="false" />
-            <element signature="e#2840#3102#0" expanded="false" />
-            <element signature="e#3141#3400#0" expanded="false" />
-            <element signature="e#3442#3708#0" expanded="false" />
-            <element signature="e#3749#4012#0" expanded="false" />
-            <element signature="e#4046#4229#0" expanded="false" />
-            <element signature="e#12137#12272#0" expanded="false" />
-            <element signature="e#12313#12449#0" expanded="false" />
-            <element signature="e#12491#13043#0" expanded="false" />
-            <element signature="e#13077#13321#0" expanded="false" />
-            <element signature="e#13359#13481#0" expanded="false" />
-            <element signature="e#13521#13562#0" expanded="false" />
-            <element signature="e#13828#14072#0" expanded="false" />
-            <marker date="1462984903000" expanded="false" signature="9840:12096" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-          <folding>
-            <element signature="e#310#333#0" expanded="true" />
-            <element signature="e#806#984#0" expanded="false" />
-            <element signature="e#1035#1312#0" expanded="false" />
-            <element signature="e#1359#1949#0" expanded="false" />
-            <element signature="e#2017#3471#0" expanded="false" />
-            <element signature="e#3535#4049#0" expanded="false" />
-            <element signature="e#4120#5564#0" expanded="false" />
-            <element signature="e#5623#6022#0" expanded="false" />
-            <element signature="e#6082#7766#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+        <state relative-caret-position="195">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/human.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding>
-            <element signature="e#1#24#0" expanded="true" />
+            <element signature="e#64#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setup/board.py">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1905">
-          <caret line="140" column="2" selection-start-line="140" selection-start-column="2" selection-end-line="140" selection-end-column="2" />
-          <folding>
-            <element signature="e#633#691#0" expanded="true" />
-            <element signature="e#2588#2784#0" expanded="false" />
-            <element signature="e#3034#3326#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/action.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pieces/rook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
           <folding>
-            <element signature="e#308#331#0" expanded="true" />
-            <element signature="e#836#1014#0" expanded="false" />
-            <element signature="e#1077#1740#0" expanded="false" />
-            <element signature="e#1805#2472#0" expanded="false" />
-            <element signature="e#2538#3206#0" expanded="false" />
-            <element signature="e#3271#3937#0" expanded="false" />
-            <element signature="e#3997#4440#0" expanded="false" />
+            <element signature="e#364#387#0" expanded="true" />
+            <element signature="e#892#1070#0" expanded="false" />
+            <element signature="e#1133#1796#0" expanded="false" />
+            <element signature="e#1861#2528#0" expanded="false" />
+            <element signature="e#2594#3262#0" expanded="false" />
+            <element signature="e#3327#3993#0" expanded="false" />
+            <element signature="e#4053#4496#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/board.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
+          <folding>
+            <element signature="e#689#747#0" expanded="true" />
+            <element signature="e#2644#2840#0" expanded="false" />
+            <element signature="e#3090#3382#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup/equality.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="67" column="11" selection-start-line="67" selection-start-column="11" selection-end-line="67" selection-end-column="11" />
+        <state relative-caret-position="75">
+          <caret line="5" column="54" selection-start-line="5" selection-start-column="54" selection-end-line="5" selection-end-column="54" />
           <folding>
-            <element signature="e#218#858#0" expanded="false" />
-            <element signature="e#910#1108#0" expanded="false" />
-            <element signature="e#1152#1353#0" expanded="false" />
-            <element signature="e#1443#1709#0" expanded="false" />
-            <element signature="e#1762#2016#0" expanded="false" />
-            <element signature="e#2068#2447#0" expanded="false" />
+            <element signature="e#274#914#0" expanded="false" />
+            <element signature="e#966#1164#0" expanded="false" />
+            <element signature="e#1208#1409#0" expanded="false" />
+            <element signature="e#1499#1765#0" expanded="false" />
+            <element signature="e#1818#2072#0" expanded="false" />
+            <element signature="e#2124#2503#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
+          <folding>
+            <element signature="e#365#388#0" expanded="true" />
+            <element signature="e#861#1039#0" expanded="false" />
+            <element signature="e#1090#1367#0" expanded="false" />
+            <element signature="e#1414#2004#0" expanded="false" />
+            <element signature="e#2072#3526#0" expanded="false" />
+            <element signature="e#3590#4104#0" expanded="false" />
+            <element signature="e#4175#5619#0" expanded="false" />
+            <element signature="e#5678#6077#0" expanded="false" />
+            <element signature="e#6137#7821#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/game_state.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/algebraic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+          <folding>
+            <element signature="e#1157#1380#0" expanded="false" />
+            <element signature="e#1704#1961#0" expanded="false" />
+            <element signature="e#1997#2258#0" expanded="false" />
+            <element signature="e#2295#2558#0" expanded="false" />
+            <element signature="e#2594#2855#0" expanded="false" />
+            <element signature="e#2895#3157#0" expanded="false" />
+            <element signature="e#3196#3455#0" expanded="false" />
+            <element signature="e#3497#3763#0" expanded="false" />
+            <element signature="e#3804#4067#0" expanded="false" />
+            <element signature="e#4101#4284#0" expanded="false" />
+            <element signature="e#12192#12327#0" expanded="false" />
+            <element signature="e#12368#12504#0" expanded="false" />
+            <element signature="e#12546#13098#0" expanded="false" />
+            <element signature="e#13132#13376#0" expanded="false" />
+            <element signature="e#13414#13536#0" expanded="false" />
+            <element signature="e#13576#13617#0" expanded="false" />
+            <element signature="e#13883#14127#0" expanded="false" />
+            <marker date="1463269998000" expanded="false" signature="9895:12151" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/algebraic_notation/special_notation_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup/color.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/queen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/piece_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="54" selection-start-line="3" selection-start-column="54" selection-end-line="3" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/knight.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/king.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/bishop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

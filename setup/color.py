@@ -1,6 +1,8 @@
 """
 Easy way to access bool values for black and white without directly
 typing True or False.
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 white = True
 black = False

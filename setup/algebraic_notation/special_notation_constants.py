@@ -1,6 +1,8 @@
 
 """
 Class stores integer values for various special moves in algebraic notation.
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 MOVEMENT = 0
 

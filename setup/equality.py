@@ -2,6 +2,8 @@
 import warnings
 """
 Class that contains all equality comparison methods specific for chess_py
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup.algebraic_notation import algebraic

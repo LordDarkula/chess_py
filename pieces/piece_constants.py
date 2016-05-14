@@ -1,5 +1,7 @@
 """
 Constants for piece values in the game
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 class Piece_values:

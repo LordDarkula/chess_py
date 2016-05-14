@@ -2,6 +2,7 @@
 Chess playing program
 Everything starts here
 
+
 8 ║♜♞♝♛♚♝♞♜
 7 ║♟♟♟♟♟♟♟♟
 6 ║……………………………………
@@ -12,6 +13,8 @@ Everything starts here
 1 ║♖♘♗♕♔♗♘♖
 --╚═══════════════
 ——-a b c d e f g h
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 import game, human

@@ -21,6 +21,8 @@ Default board
 
 Pieces on the board are flipped so white home row is at index 0
 and black home row is at index 7
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from pieces import bishop, king, knight, pawn, queen, rook
