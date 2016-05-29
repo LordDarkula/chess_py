@@ -11,11 +11,11 @@
 <br />--╚═══════════════
 <br />——-a b c d e f g h
 
-# Introduction
+## Introduction
 
 Chess_py is an open source chess platform written in python. Can create chess matches and provide players with data regarding current position, possible moves and eventual result of the game. External players (either computer or human) are required to play.
 
-#Great! How do you use it?
+## Great! How do you use it?
 
 Chess_py must be imported and a game object must be created. The game object requires 2 parameters for the players. These players can be human (from the included human.player class) or artificial intelligence of some kind. Basic set up required is shown below.
 
