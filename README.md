@@ -1,4 +1,5 @@
 # chess_py
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 <br />8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 <br />7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
