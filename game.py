@@ -12,9 +12,12 @@ class Game:
         :type player_white: human.Player or ai
         :type player_black: human.Player or ai
         """
+        print("beginning of init")
         self.player_white = player_white
         self.player_black = player_black
         self.position = board.Board.init_default()
+        print("init was called")
+
 
     def start(self):
         self.white_move()

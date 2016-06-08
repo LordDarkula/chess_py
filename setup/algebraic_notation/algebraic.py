@@ -37,26 +37,25 @@ class Location:
         """
         self.rank = rank
         self.file = file
+        self.exit = 0
 
         if not self.on_board():
-            self.rank = None
-            self.file = None
+            self.exit = 1
             print("Cannot create location not on board")
-            return False
 
     def equals(self, location):
         """
         Finds is location on board is the same as current equation.
         :type location: algebraic.Location
         """
-        return location.not_none() and self.rank == location.rank and self.file == location.file
+        return self.rank == location.rank and self.file == location.file
 
     def on_board(self):
         """
         Returns if the move is on the board or not.
         :rtype bool
         """
-        if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
+        if -1 < self.rank < 8 and -1 < self.file < 8:
             return True
         else:
             return False
@@ -67,9 +66,11 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank < 7:
+            self.exit = 0
             return Location(self.rank + 1, self.file)
         else:
             print("Cannot move up off the board")
+            self.exit = 1
             return None
 
     def shift_down(self):
@@ -78,9 +79,11 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank > 0:
+            self.exit = 0
             return Location(self.rank - 1, self.file)
         else:
             print("Cannot move down off the board")
+            self.exit = 1
             return None
 
     def shift_right(self):
@@ -89,9 +92,12 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.file < 7:
+            self.exit = 0
             return Location(self.rank, self.file + 1)
+
         else:
             print("Cannot move right off the board")
+            self.exit = 1
             return None
 
     def shift_left(self):
@@ -100,9 +106,11 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.file > 0:
+            self.exit = 0
             return Location(self.rank, self.file - 1)
         else:
             print("Cannot move left off the board")
+            self.exit = 1
             return None
 
     def shift_up_right(self):
@@ -111,8 +119,10 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank < 7 and self.file < 7:
+            self.exit = 0
             return self.shift_up().shift_right()
         else:
+            self.exit = 1
             print("Cannot move up and right off the board")
 
     def shift_up_left(self):
@@ -121,8 +131,10 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank < 7 and self.file > 1:
+            self.exit = 0
             return self.shift_up().shift_left()
         else:
+            self.exit = 1
             print("Cannot move up and left off the board")
 
     def shift_down_right(self):
@@ -131,8 +143,10 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank > 1 and self.file < 7:
+            self.exit = 0
             return self.shift_up().shift_right()
         else:
+            self.exit = 1
             print("Cannot move down and right off the board")
 
     def shift_down_left(self):
@@ -141,16 +155,11 @@ class Location:
         :rtype: algebraic.Location
         """
         if self.rank > 1 and self.file > 1:
+            self.exit = 0
             return self.shift_up().shift_left()
         else:
+            self.exit = 1
             print("Cannot move down and left off the board")
-
-    def not_none(self):
-        """
-        Determines whether location exists.
-        :rtype bool
-        """
-        return self is not None and self.rank is not None and self.file is not None and self.on_board()
 
 class Move:
     def __init__(self, algebraic_string, input_color):
@@ -302,8 +311,6 @@ class Move:
         else:
             print("Cannot create move not on board")
             return None
-
-
 
     @classmethod
     def init_manual(cls, rank, file, piece, status):
