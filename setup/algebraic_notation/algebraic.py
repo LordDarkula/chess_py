@@ -42,6 +42,7 @@ class Location:
             self.rank = None
             self.file = None
             print("Cannot create location not on board")
+            return False
 
     def equals(self, location):
         """
@@ -296,11 +297,13 @@ class Move:
             cls.rank = location.rank
             cls.file = location.file
             cls.status = status
+            cls.piece = piece
+            return cls
         else:
             print("Cannot create move not on board")
             return None
-        cls.piece = piece
-        return cls
+
+
 
     @classmethod
     def init_manual(cls, rank, file, piece, status):
