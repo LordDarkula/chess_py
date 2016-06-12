@@ -182,6 +182,7 @@ class Move:
         self.start_file = None
         self.promoted_to_piece = None
         self.start_rank = None
+        self.sexit = 0
 
         # King side castle
         if algebraic_string == "00":
@@ -243,7 +244,7 @@ class Move:
                     self.status = special_notation_constants.PROMOTE
                     self.promoted_to_piece = self.set_piece(3)
                 else:
-                    self.make_move_none()
+                    self.exit = 1
                     print("Not a promotion")
 
             # Non-pawn Piece movement with file specified
@@ -286,13 +287,13 @@ class Move:
                     self.status = special_notation_constants.PROMOTE
                     self.promoted_to_piece = self.set_piece(5)
                 else:
-                    self.make_move_none()
+                    self.exit = 1
                     print("Not a promotion")
 
 
         else:
+            self.exit = 1
             print("Invalid Move")
-            self.make_move_none()
 
     @classmethod
     def init_with_location(cls, location, piece, status):
@@ -307,8 +308,10 @@ class Move:
             cls.file = location.file
             cls.status = status
             cls.piece = piece
+            cls.exit = 0
             return cls
         else:
+            cls.exit = 1
             print("Cannot create move not on board")
             return None
 
@@ -325,11 +328,14 @@ class Move:
             cls.rank = rank
             cls.file = file
             cls.status = status
+            cls.piece = piece
+            cls.exit = 0
+            return cls
         else:
+            cls.exit = 1
             print("Cannot create move not on board")
             return None
-        cls.piece = piece
-        return cls
+
 #TODO verify alternate constructors.
     
     def equals(self, move):
@@ -339,7 +345,7 @@ class Move:
         """
 
         # If move is not none and rank, file, and color are the same
-        if move.not_none() and self.rank == move.rank and self.file == move.file and self.piece.equals(
+        if self.rank == move.rank and self.file == move.file and self.piece.equals(
             move.piece) and self.status == move.status and self.color == move.color:
 
             # If no start_file exists for either move
@@ -442,17 +448,6 @@ class Move:
         :rtype Location
         """
         return Location(self.rank, self.file)
-
-    def make_move_none(self):
-        self.rank = None
-        self.file = None
-
-    def not_none(self):
-        """
-        Determines whether location exists.
-        :rtype bool
-        """
-        return self is not None and self.rank is not None and self.file is not None and self.on_board()
 
     def would_move_be_promotion(self):
         """
