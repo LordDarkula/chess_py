@@ -182,35 +182,26 @@ class Move:
         self.start_file = None
         self.promoted_to_piece = None
         self.start_rank = None
-        self.sexit = 0
+        self.file = None
+        self.rank = None
+        self.piece = None
+        self.exit = 0
 
         # King side castle
         if algebraic_string == "00":
-            self.status = special_notation_constants.KING_SIDE_CASTLE
+            self.init_kingside_castle()
 
         # Queen side castle
         elif algebraic_string == "000":
-            self.status = special_notation_constants.QUEEN_SIDE_CASTLE
+            self.init_queenside_castle()
 
         # Pawn movement
         elif len(algebraic_string) == 2:
-            """
-            ex a4
-            """
-            self.file = self.set_file(0)
-            self.rank = self.set_rank(1)
-            self.piece = pawn.Pawn(input_color)
-            self.status = special_notation_constants.MOVEMENT
+            self.init_pawn_movement()
 
         # Non-pawn Piece movement
         elif len(algebraic_string) == 3:
-            """
-            ex Nf3
-            """
-            self.piece = self.set_piece(0)
-            self.file = self.set_file(0)
-            self.rank = self.set_file(1)
-            self.status = special_notation_constants.MOVEMENT
+            self.init_piece_movement()
 
         elif len(algebraic_string) == 4:
 
@@ -222,78 +213,118 @@ class Move:
 
                 # If this is a pawn capture
                 if not algebraic_string[0].isupper():
-                    self.piece = pawn.Pawn(input_color)
-                    self.start_file = self.set_file(0)
+                    self.init_pawn_capture()
                 else:
-
-                    self.piece = pawn.Pawn(input_color)
-
-                self.file = self.set_file(2)
-                self.rank = self.set_rank(3)
-                self.status = special_notation_constants.CAPTURE
+                    self.init_piece_capture()
 
             # Pawn Promotion
             elif algebraic_string[2] == "=":
-                """
-                ex a8=Q
-                """
-                if self.would_move_be_promotion():
-                    self.file = self.set_file(0)
-                    self.rank = self.set_rank(1)
-                    self.piece = pawn.Pawn(input_color)
-                    self.status = special_notation_constants.PROMOTE
-                    self.promoted_to_piece = self.set_piece(3)
-                else:
-                    self.exit = 1
-                    print("Not a promotion")
+                self.init_pawn_promotion()
 
             # Non-pawn Piece movement with file specified
             elif algebraic_string[1].isupper():
-                """
-                ex aRa3
-                """
-                self.start_file = self.set_file(0)
-                self.piece = self.set_piece(1)
-                self.file = self.set_file(2)
-                self.rank = self.set_rank(3)
-                self.status = special_notation_constants.MOVEMENT
+                self.init_piece_movement_file()
 
         elif len(algebraic_string) == 5:
 
             # Non-pawn Piece movement with rank and file specified
             if algebraic_string[2].isupper():
-                """
-                ex a4Rd4
-                """
-                self.start_file = self.set_file(0)
-                self.start_rank = self.set_rank(1)
-                self.set_piece(2)
-                self.file = self.set_file(3)
-                self.rank = self.set_rank(4)
-                self.status = special_notation_constants.MOVEMENT
+                self.init_piece_movement_rank_file()
 
         elif len(algebraic_string) == 6:
 
             # Pawn promote with capture
-            if algebraic_string[4] == "=":
-                """
-                exd8=Q
-                """
-                if self.would_move_be_promotion():
-                    self.start_file = self.set_rank(0)
-                    self.file = self.set_file(2)
-                    self.rank = self.set_rank(3)
-                    self.piece = pawn.Pawn(input_color)
-                    self.status = special_notation_constants.PROMOTE
-                    self.promoted_to_piece = self.set_piece(5)
-                else:
-                    self.exit = 1
-                    print("Not a promotion")
-
+            self.init_pawn_promotion_capture()
 
         else:
             self.exit = 1
             print("Invalid Move")
+
+    def init_kingside_castle(self):
+        self.status = special_notation_constants.KING_SIDE_CASTLE
+
+    def init_queenside_castle(self):
+        self.status = special_notation_constants.QUEEN_SIDE_CASTLE
+
+    def init_pawn_movement(self):
+        """
+            ex a4
+            """
+        self.file = self.set_file(0)
+        self.rank = self.set_rank(1)
+        self.piece = pawn.Pawn(self.color)
+        self.status = special_notation_constants.MOVEMENT
+
+    def init_piece_movement(self):
+        """
+            ex Nf3
+            """
+        self.piece = self.set_piece(0)
+        self.file = self.set_file(0)
+        self.rank = self.set_file(1)
+        self.status = special_notation_constants.MOVEMENT
+
+    def init_piece_capture(self):
+        self.piece = self.set_piece(0)
+
+        self.file = self.set_file(2)
+        self.rank = self.set_rank(3)
+        self.status = special_notation_constants.CAPTURE
+
+    def init_pawn_capture(self):
+        self.piece = pawn.Pawn(self.color)
+        self.start_file = self.set_file(0)
+
+        self.file = self.set_file(2)
+        self.rank = self.set_rank(3)
+        self.status = special_notation_constants.CAPTURE
+
+    def init_pawn_promotion(self):
+        """
+            ex a8=Q
+            """
+        if self.would_move_be_promotion():
+            self.file = self.set_file(0)
+            self.rank = self.set_rank(1)
+            self.piece = pawn.Pawn(self.color)
+            self.status = special_notation_constants.PROMOTE
+            self.promoted_to_piece = self.set_piece(3)
+
+    def init_piece_movement_file(self):
+        """
+            ex aRa3
+            """
+        self.start_file = self.set_file(0)
+        self.piece = self.set_piece(1)
+        self.file = self.set_file(2)
+        self.rank = self.set_rank(3)
+        self.status = special_notation_constants.MOVEMENT
+
+    def init_piece_movement_rank_file(self):
+        """
+            ex a4Rd4
+            """
+        self.start_file = self.set_file(0)
+        self.start_rank = self.set_rank(1)
+        self.piece = self.set_piece(2)
+        self.file = self.set_file(3)
+        self.rank = self.set_rank(4)
+        self.status = special_notation_constants.MOVEMENT
+
+    def init_pawn_promotion_capture(self):
+        """
+            exd8=Q
+            """
+        if self.would_move_be_promotion():
+            self.start_file = self.set_rank(0)
+            self.file = self.set_file(2)
+            self.rank = self.set_rank(3)
+            self.piece = pawn.Pawn(self.color)
+            self.status = special_notation_constants.PROMOTE
+            self.promoted_to_piece = self.set_piece(5)
+        else:
+            self.exit = 1
+            print("Not a promotion")
 
     @classmethod
     def init_with_location(cls, location, piece, status):
