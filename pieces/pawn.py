@@ -178,7 +178,7 @@ class Pawn:
         """
         print('running possible moves')
         moves = []
-
+        #TODO update this bull crap
         # Adds movement to square in front if possible.
         if self.square_in_front(location).not_none and position.is_square_empty(self.square_in_front(location)):
             if self.would_move_be_promotion(location):

@@ -160,7 +160,7 @@ class Location:
         else:
             self.exit = 1
             print("Cannot move down and left off the board")
-
+#TODO verify move by checking against possible_moves not by rewriting a checking mechanisms for all classes
 class Move:
     def __init__(self, algebraic_string, input_color):
         """
