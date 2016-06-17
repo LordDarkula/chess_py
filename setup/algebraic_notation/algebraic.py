@@ -248,8 +248,8 @@ class Move:
 
     def init_pawn_movement(self):
         """
-            ex a4
-            """
+        ex a4
+        """
         self.file = self.set_file(0)
         self.rank = self.set_rank(1)
         self.piece = pawn.Pawn(self.color)
@@ -257,8 +257,8 @@ class Move:
 
     def init_piece_movement(self):
         """
-            ex Nf3
-            """
+        ex Nf3
+        """
         self.piece = self.set_piece(0)
         self.file = self.set_file(0)
         self.rank = self.set_file(1)
@@ -281,8 +281,8 @@ class Move:
 
     def init_pawn_promotion(self):
         """
-            ex a8=Q
-            """
+        ex a8=Q
+        """
         if self.would_move_be_promotion():
             self.file = self.set_file(0)
             self.rank = self.set_rank(1)
@@ -292,8 +292,8 @@ class Move:
 
     def init_piece_movement_file(self):
         """
-            ex aRa3
-            """
+        ex aRa3
+        """
         self.start_file = self.set_file(0)
         self.piece = self.set_piece(1)
         self.file = self.set_file(2)
@@ -302,8 +302,8 @@ class Move:
 
     def init_piece_movement_rank_file(self):
         """
-            ex a4Rd4
-            """
+        ex a4Rd4
+        """
         self.start_file = self.set_file(0)
         self.start_rank = self.set_rank(1)
         self.piece = self.set_piece(2)
@@ -313,8 +313,8 @@ class Move:
 
     def init_pawn_promotion_capture(self):
         """
-            exd8=Q
-            """
+        exd8=Q
+        """
         if self.would_move_be_promotion():
             self.start_file = self.set_rank(0)
             self.file = self.set_file(2)
