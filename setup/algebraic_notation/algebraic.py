@@ -177,7 +177,7 @@ class Move:
         :type input_color: color.Color
         """
         self.string = algebraic_string
-        self.color = input_color
+        self.color = input_color.color
         self.status = None
         self.start_file = None
         self.promoted_to_piece = None

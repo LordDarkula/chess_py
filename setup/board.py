@@ -43,9 +43,9 @@ class Board:
           king.King(color.Color(True)), bishop.Bishop(color.Color(True)), knight.Knight(color.Color(True)), rook.Rook(
                 color.Color(True))],
          # Second rank
-         [pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(
-             color.Color(True)), pawn.Pawn(color.Color(True)),
-          pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True)), pawn.Pawn(color.Color(True))],
+         [pawn.Pawn(color.Color(True), algebraic.Location(1, 0)), pawn.Pawn(color.Color(True), algebraic.Location(1, 1)), pawn.Pawn(color.Color(True), algebraic.Location(1, 2)), pawn.Pawn(
+             color.Color(True), algebraic.Location(1, 3)), pawn.Pawn(color.Color(True), algebraic.Location(1, 4)),
+          pawn.Pawn(color.Color(True), algebraic.Location(1, 5)), pawn.Pawn(color.Color(True), algebraic.Location(1, 6)), pawn.Pawn(color.Color(True), algebraic.Location(1, 7))],
          # Third rank
          [None, None, None, None, None, None, None, None],
          # Fourth rank
@@ -55,9 +55,9 @@ class Board:
          # Sixth rank
          [None, None, None, None, None, None, None, None],
          # Seventh rank
-         [pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(
-             color.Color(False)), pawn.Pawn(color.Color(False)),
-          pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False)), pawn.Pawn(color.Color(False))],
+         [pawn.Pawn(color.Color(False), algebraic.Location(6, 0)), pawn.Pawn(color.Color(False), algebraic.Location(6, 1)), pawn.Pawn(color.Color(False), algebraic.Location(6, 2)), pawn.Pawn(
+             color.Color(False), algebraic.Location(6, 3)), pawn.Pawn(color.Color(False), algebraic.Location(6, 4)),
+          pawn.Pawn(color.Color(False), algebraic.Location(6, 5)), pawn.Pawn(color.Color(False), algebraic.Location(6, 6)), pawn.Pawn(color.Color(False), algebraic.Location(6, 7))],
          # Eighth rank
          [rook.Rook(color.Color(False)), knight.Knight(color.Color(False)), bishop.Bishop(color.Color(False)), queen.Queen(
              color.Color(False)),
@@ -139,5 +139,3 @@ class Board:
             print()
 
         print()
-
-# TODO add method all_possible_moves

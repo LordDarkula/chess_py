@@ -22,7 +22,7 @@ from setup import color
 
 
 class Bishop:
-    def __init__(self, input_color):
+    def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
         :type input_color: color.Color

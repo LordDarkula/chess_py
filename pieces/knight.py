@@ -22,7 +22,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from setup import color
 
 class Knight:
-    def __init__(self, input_color):
+    def __init__(self, input_color, location):
         """
 
         :type input_color: color.Color

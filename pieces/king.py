@@ -22,7 +22,7 @@ from setup import color
 
 
 class King:
-    def __init__(self, input_color):
+    def __init__(self, input_color, location):
         self.color = input_color.color
 
         if self.color == color.white:

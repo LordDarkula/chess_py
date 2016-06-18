@@ -23,7 +23,7 @@ from setup.algebraic_notation import algebraic, special_notation_constants
 
 
 class Rook:
-    def __init__(self, input_color):
+    def __init__(self, input_color, location):
         """
         Initializes a rook that is capable of being compared to another rook,
         and returning a list of possible moves.
