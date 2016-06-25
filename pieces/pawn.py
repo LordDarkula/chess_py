@@ -20,7 +20,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color
-from setup.algebraic_notation import algebraic, special_notation_constants
+from setup.algebraic_notation import algebraic, notation_const
 from pieces import piece
 
 
@@ -37,12 +37,21 @@ class Pawn(piece):
     def square_in_front(self, location):
         """
         Finds square directly in front of Pawn
+        :type location algebraic.Location
         :rtype algebraic.Location
         """
         if self.color.equals(color.white):
             return location.shift_up()
         else:
             return location.shift_down()
+
+    def two_squares_in_front(self, location):
+        """
+        Finds square two squares in front of Pawn
+        :param location: algebraic.Location
+        :rtype algebraic.location
+        """
+        return self.square_in_front(self.square_in_front(location))
 
     def would_move_be_promotion(self, location):
         """
@@ -52,11 +61,11 @@ class Pawn(piece):
         """
 
         # If the pawn is on the second rank and black.
-        if location.rank == 1 and self.color == color.black:
+        if location.rank == 1 and self.color.color == color.black:
             return True
 
         # If the pawn is on the seventh rank and white.
-        elif location.rank == 6 and self.color == color.white:
+        elif location.rank == 6 and self.color.color == color.white:
             return True
         return False
 
@@ -81,14 +90,28 @@ class Pawn(piece):
                 return False
 
         if on_home_row() and position.is_square_empty(self.square_in_front(self.location)):
-            possible.append(algebraic.Move.init_with_location(self.square_in_front(self.location), self, special_notation_constants.MOVEMENT))
+            """
+            If the pawn is on home row and square in front is empty add the move
+            """
+            possible.append(algebraic.Move.init_loc(self.square_in_front(self.location), self, notation_const.MOVEMENT))
 
-            if position.is_square_empty(self.square_in_front(self.square_in_front(self.location))):
-                if self.would_move_be_promotion(self.location):
-                    status = special_notation_constants.PROMOTE
-                else:
-                    status = special_notation_constants.MOVEMENT
-                possible.append(algebraic.Move.init_with_location(self.square_in_front(self.square_in_front(self.location)), self, status))
+            if position.is_square_empty(self.two_squares_in_front(self.location)):
+                """
+                If two squares in front of the pawn is empty add the move
+                """
+                possible.append(algebraic.Move.init_loc(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
+
+        elif position.is_square_empty(self.square_in_front(self.location)):
+            """
+            Else if square in front is empty add the move
+            """
+            if self.would_move_be_promotion(self.location):
+                status = notation_const.PROMOTE
+            else:
+                status = notation_const.MOVEMENT
+            move = algebraic.Move.init_loc(self.square_in_front(self.location), self, status)
+
+            possible.append(move)
 
         return possible
 
@@ -100,33 +123,30 @@ class Pawn(piece):
         moves = []
         capture_square = self.location
 
-        def add_capture_square(enemy_color, my_position):
+        def add_capture_square():
             """
             Adds capture moves
-            :param enemy_color:
-            :param my_position:
             """
-            if capture_square.square_in_front().exit != 0 and my_position.is_square_empty(capture_square) and my_position.piece_at_square(
-                    capture_square).color.equals(enemy_color):
+            if not position.is_square_empty(capture_square) and position.piece_at_square(capture_square).color.equals(not self.color.color):
+                """
+                If the capture square is nit empty and it contains a piece of opposing color add the move
+                """
                 if self.would_move_be_promotion(self.location):
-                    status = special_notation_constants.CAPTURE_AND_PROMOTE
+                    """
+                    If the move results in promotion take not if that
+                    """
+                    status = notation_const.CAPTURE_AND_PROMOTE
                 else:
-                    status = special_notation_constants.PROMOTE
-                moves.append(algebraic.Move.init_with_location(capture_square, self, status))
 
-        if self.color.equals(color.white):
-            capture_square = self.location.shift_up_right()
-            add_capture_square(color.black, position)
+                    status = notation_const.PROMOTE
 
-            capture_square = self.location.shift_up_left()
-            add_capture_square(color.black, position)
+                moves.append(algebraic.Move.init_loc(capture_square, self, status))
 
-        else:
-            capture_square = self.location.shift_down_right()
-            add_capture_square(color.white, position)
+        capture_square = self.square_in_front(self.location.shift_right())
+        add_capture_square()
 
-            capture_square = self.location.shift_down_left()
-            add_capture_square(color.white, position)
+        capture_square = self.square_in_front(self.location.shift_left)
+        add_capture_square()
 
         return moves
 
@@ -141,29 +161,31 @@ class Pawn(piece):
             Finds out if pawn is on enemy center rank.
             """
             if self.color.equals(color.white) and self.location.rank == 4:
-
                 return True
+
             elif self.color.equals(color.black) and self.location.rank == 3:
-
                 return True
+
             return False
+
+        def opposite_color_pawn_on_square(my_location):
+            """
+
+            :rtype: bool
+            """
+            return my_location.exit == 0 and position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) and position.piece_at_square(
+                my_location).just_moved_two_steps
 
         # if pawn is not on a valid en passant location then return None
         if on_en_passant_valid_location():
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
-            if self.location.shift_right().exit == 0 and position.piece_at_square(
-                    self.location.shift_right()).equals(Pawn(color.Color(not self.color), self.location)) and position.piece_at_square(
-                self.location.shift_right()).just_moved_two_steps:
-                possible.append(algebraic.Move.init_with_location(self.location.shift_up_right(), self,
-                                                                  special_notation_constants.EN_PASSANT))
+            if opposite_color_pawn_on_square(self.location.shift_right):
+                possible.append(algebraic.Move.init_loc(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
-            if self.location.shift_left().exit == 0 and position.piece_at_square(
-                    self.location.shift_left()).equals(Pawn(color.Color(not self.color), self.location)) and position.piece_at_square(
-                self.location.shift_left()).just_moved_two_steps:
-                possible.append(algebraic.Move.init_with_location(self.location.shift_up_left(), self,
-                                                                  special_notation_constants.EN_PASSANT))
+            if opposite_color_pawn_on_square(self.location.shift_left):
+                possible.append(algebraic.Move.init_loc(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
 
         return possible
 

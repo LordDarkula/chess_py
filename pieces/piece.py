@@ -1,6 +1,11 @@
+"""
+Parent class for all pieces
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
+"""
 from setup import color
 from setup.algebraic_notation import algebraic
-import setup.algebraic_notation
+
 
 class Piece:
     def __init__(self, input_color, location, white_symbol, black_symbol):
@@ -14,7 +19,7 @@ class Piece:
         self.location = location
         self.color = input_color
 
-        if self.color == color.white:
+        if self.color.color == color.white:
             self.symbol = white_symbol
         else:
             self.symbol = black_symbol
@@ -25,7 +30,3 @@ class Piece:
         :type piece: pieces.py *
         """
         return type(piece) is type(self) and piece.color.equals(self.color)
-
-    def possible_moves(self, position):
-        possible = [algebraic.Move.init_with_location(self.location, self, setup.algebraic_notation.special_notation_constants.NOT_IMPLEMENTED)]
-        return possible

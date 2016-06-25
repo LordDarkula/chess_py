@@ -38,7 +38,7 @@ class Board:
     """
         # First rank
     default_position = \
-        [[rook.Rook(color.Color(True), algebraic.Location(0, 0)), knight.Knight(color.Color(True), algebraic.Location(0, 1)), bishop.Bishop(color.Color(True), algebraic.Location(0, 2)) queen.Queen(
+        [[rook.Rook(color.Color(True), algebraic.Location(0, 0)), knight.Knight(color.Color(True), algebraic.Location(0, 1)), bishop.Bishop(color.Color(True), algebraic.Location(0, 2)), queen.Queen(
             color.Color(True), algebraic.Location(0, 3)),
           king.King(color.Color(True), algebraic.Location(0, 4)), bishop.Bishop(color.Color(True), algebraic.Location(0, 5)), knight.Knight(color.Color(True), algebraic.Location(0, 6)), rook.Rook(
                 color.Color(True), algebraic.Location(0, 7))],
@@ -59,10 +59,10 @@ class Board:
              color.Color(False), algebraic.Location(6, 3)), pawn.Pawn(color.Color(False), algebraic.Location(6, 4)),
           pawn.Pawn(color.Color(False), algebraic.Location(6, 5)), pawn.Pawn(color.Color(False), algebraic.Location(6, 6)), pawn.Pawn(color.Color(False), algebraic.Location(6, 7))],
          # Eighth rank
-         [rook.Rook(color.Color(False)), knight.Knight(color.Color(False)), bishop.Bishop(color.Color(False)), queen.Queen(
-             color.Color(False)),
-          king.King(color.Color(False)), bishop.Bishop(color.Color(False)), knight.Knight(color.Color(False)), rook.Rook(
-             color.Color(False))]]
+         [rook.Rook(color.Color(False), algebraic.Location(7, 0)), knight.Knight(color.Color(False), algebraic.Location(7, 1)), bishop.Bishop(color.Color(False), algebraic.Location(7, 2)), queen.Queen(
+             color.Color(False), algebraic.Location(7, 3)),
+          king.King(color.Color(False), algebraic.Location(7, 4)), bishop.Bishop(color.Color(False), algebraic.Location(7, 5)), knight.Knight(color.Color(False), algebraic.Location(7, 6)), rook.Rook(
+             color.Color(False), algebraic.Location(7, 7))]]
 
     def __init__(self, position):
         """
@@ -83,16 +83,14 @@ class Board:
     def piece_at_square(self, location):
         """
         Finds the chess piece at a square of the position.
-        :param self: list
-        :type location: algebraic.Location
-        :rtype Pawn.pawn, Knight.knight, Bishop.bishop, Rook.rook, Queen.queen, King.king
+        :type location algebraic.Location
+        :rtype pieces.Piece
         """
         return self.position[location.rank][location.file]
 
     def is_square_empty(self, location):
         """
         Finds whether a chess piece occupies a square of the position.
-        :param self: 2D 8 by 8 list occupied by objects in pawn.py
         :type location: algebraic.Location
         :rtype bool
         """
@@ -101,7 +99,7 @@ class Board:
     def all_possible_moves(self):
         """
         Returns list of all possible moves
-        :return: list
+        :rtype list
         """
         moves = []
 

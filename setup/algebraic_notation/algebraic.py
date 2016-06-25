@@ -24,7 +24,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from pieces import pawn, knight, bishop, rook, queen, king
-from setup.algebraic_notation import special_notation_constants
+from setup.algebraic_notation import notation_const
 from setup import color
 
 
@@ -69,7 +69,6 @@ class Location:
             self.exit = 0
             return Location(self.rank + 1, self.file)
         else:
-            print("Cannot move up off the board")
             self.exit = 1
             return None
 
@@ -82,7 +81,6 @@ class Location:
             self.exit = 0
             return Location(self.rank - 1, self.file)
         else:
-            print("Cannot move down off the board")
             self.exit = 1
             return None
 
@@ -96,7 +94,6 @@ class Location:
             return Location(self.rank, self.file + 1)
 
         else:
-            print("Cannot move right off the board")
             self.exit = 1
             return None
 
@@ -160,7 +157,7 @@ class Location:
         else:
             self.exit = 1
             print("Cannot move down and left off the board")
-#TODO verify move by checking against possible_moves not by rewriting a checking mechanisms for all classes
+
 class Move:
     def __init__(self, algebraic_string, input_color):
         """
@@ -177,7 +174,7 @@ class Move:
         :type input_color: color.Color
         """
         self.string = algebraic_string
-        self.color = input_color.color
+        self.color = input_color
         self.status = None
         self.start_file = None
         self.promoted_to_piece = None
@@ -210,7 +207,6 @@ class Move:
                 """
                 ex Nxf3
                 """
-
                 # If this is a pawn capture
                 if not algebraic_string[0].isupper():
                     self.init_pawn_capture()
@@ -238,13 +234,13 @@ class Move:
 
         else:
             self.exit = 1
-            print("Invalid Move")
+        self.validate()
 
     def init_kingside_castle(self):
-        self.status = special_notation_constants.KING_SIDE_CASTLE
+        self.status = notation_const.KING_SIDE_CASTLE
 
     def init_queenside_castle(self):
-        self.status = special_notation_constants.QUEEN_SIDE_CASTLE
+        self.status = notation_const.QUEEN_SIDE_CASTLE
 
     def init_pawn_movement(self):
         """
@@ -252,8 +248,8 @@ class Move:
         """
         self.file = self.set_file(0)
         self.rank = self.set_rank(1)
-        self.piece = pawn.Pawn(self.color)
-        self.status = special_notation_constants.MOVEMENT
+        self.piece = pawn.Pawn(self.color, self.end_location())
+        self.status = notation_const.MOVEMENT
 
     def init_piece_movement(self):
         """
@@ -262,22 +258,22 @@ class Move:
         self.piece = self.set_piece(0)
         self.file = self.set_file(0)
         self.rank = self.set_file(1)
-        self.status = special_notation_constants.MOVEMENT
+        self.status = notation_const.MOVEMENT
 
     def init_piece_capture(self):
         self.piece = self.set_piece(0)
 
         self.file = self.set_file(2)
         self.rank = self.set_rank(3)
-        self.status = special_notation_constants.CAPTURE
+        self.status = notation_const.CAPTURE
 
     def init_pawn_capture(self):
-        self.piece = pawn.Pawn(self.color)
+        self.piece = pawn.Pawn(self.color, self.end_location())
         self.start_file = self.set_file(0)
 
         self.file = self.set_file(2)
         self.rank = self.set_rank(3)
-        self.status = special_notation_constants.CAPTURE
+        self.status = notation_const.CAPTURE
 
     def init_pawn_promotion(self):
         """
@@ -286,8 +282,8 @@ class Move:
         if self.would_move_be_promotion():
             self.file = self.set_file(0)
             self.rank = self.set_rank(1)
-            self.piece = pawn.Pawn(self.color)
-            self.status = special_notation_constants.PROMOTE
+            self.piece = pawn.Pawn(self.color, self.end_location())
+            self.status = notation_const.PROMOTE
             self.promoted_to_piece = self.set_piece(3)
 
     def init_piece_movement_file(self):
@@ -298,7 +294,7 @@ class Move:
         self.piece = self.set_piece(1)
         self.file = self.set_file(2)
         self.rank = self.set_rank(3)
-        self.status = special_notation_constants.MOVEMENT
+        self.status = notation_const.MOVEMENT
 
     def init_piece_movement_rank_file(self):
         """
@@ -309,7 +305,7 @@ class Move:
         self.piece = self.set_piece(2)
         self.file = self.set_file(3)
         self.rank = self.set_rank(4)
-        self.status = special_notation_constants.MOVEMENT
+        self.status = notation_const.MOVEMENT
 
     def init_pawn_promotion_capture(self):
         """
@@ -319,19 +315,19 @@ class Move:
             self.start_file = self.set_rank(0)
             self.file = self.set_file(2)
             self.rank = self.set_rank(3)
-            self.piece = pawn.Pawn(self.color)
-            self.status = special_notation_constants.PROMOTE
+            self.piece = pawn.Pawn(self.color, self.end_location())
+            self.status = notation_const.PROMOTE
             self.promoted_to_piece = self.set_piece(5)
         else:
             self.exit = 1
             print("Not a promotion")
 
     @classmethod
-    def init_with_location(cls, location, piece, status):
+    def init_loc(cls, location, piece, status):
         """
         Alternate constructor to create move using object algebraic.Location
         :type location: algebraic.Location
-        :type piece: pieces.py *
+        :type piece: Piece
         :type status: int
         """
         if cls.on_board:
@@ -343,7 +339,6 @@ class Move:
             return cls
         else:
             cls.exit = 1
-            print("Cannot create move not on board")
             return None
 
     @classmethod
@@ -367,7 +362,8 @@ class Move:
             print("Cannot create move not on board")
             return None
 
-#TODO verify alternate constructors.
+    def validate(self):
+        self.exit = self.end_location().exit
     
     def equals(self, move):
         """
@@ -448,19 +444,19 @@ class Move:
         :type index: int
         """
         if self.string[index].upper is 'R':
-            return rook.Rook(self.color)
+            return rook.Rook(self.color, self.end_location())
 
         if self.string[index].upper is 'N':
-            return knight.Knight(self.color)
+            return knight.Knight(self.color, self.end_location())
 
         if self.string[index].upper is 'B':
-            return bishop.Bishop(self.color)
+            return bishop.Bishop(self.color, self.end_location())
 
         if self.string[index].upper is 'Q':
-            return queen.Queen(self.color)
+            return queen.Queen(self.color, self.end_location())
 
         if self.string[index].upper is 'K':
-            return king.King(self.color)
+            return king.King(self.color, self.end_location())
         return None
 
     def on_board(self):

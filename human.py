@@ -25,10 +25,9 @@ class Player:
         raw = str(input(self.color.string + "\'s move"))
         move = algebraic.Move(raw, self.color)
 
-        while True:
+        while raw is not None and move.exit == 0:
             raw = str(input("Enter valid " + self.color.string + "\'s move"))
-            if raw is not None and move.not_none():
-                break
+            move = algebraic.Move(raw, self.color)
 
         move = algebraic.Move(raw, self.color)
 

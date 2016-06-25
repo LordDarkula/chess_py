@@ -19,29 +19,19 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color
-from setup.algebraic_notation import algebraic, special_notation_constants
+from setup.algebraic_notation import algebraic, notation_const
+from pieces import piece
 
 
-class Rook:
+class Rook(piece):
     def __init__(self, input_color, location):
         """
         Initializes a rook that is capable of being compared to another rook,
         and returning a list of possible moves.
         :type input_color color.Color
         """
-        self.color = input_color.color
 
-        if self.color == color.white:
-            self.symbol = "♜"
-        else:
-            self.symbol = "♖"
-
-    def equals(self, piece):
-        """
-        Finds out if piece is the same type and color as self
-        :type piece: pieces.py *
-        """
-        return type(piece) is type(self) and piece.color == self.color
+        super(Rook, self).__init__(input_color, location, "♜", "♖")
 
     def possible_up_moves(self, location, position):
         """
@@ -53,11 +43,11 @@ class Rook:
 
         default = location.shift_up()
         while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
             default = default.shift_up()
 
         if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.CAPTURE))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
 
         return possible
 
@@ -71,11 +61,11 @@ class Rook:
 
         default = location.shift_down()
         while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
             default = default.shift_down()
 
         if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.CAPTURE))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
 
         return possible
 
@@ -89,11 +79,11 @@ class Rook:
 
         default = location.shift_right()
         while location.not_none() and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
             default = default.shift_right()
 
         if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.CAPTURE))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
 
         return possible
 
@@ -107,11 +97,11 @@ class Rook:
 
         default = location.shift_left()
         while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
             default = default.shift_left()
 
         if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.CAPTURE))
+            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
 
         return possible
 
