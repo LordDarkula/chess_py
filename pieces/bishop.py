@@ -37,6 +37,6 @@ class Bishop:
     def equals(self, piece):
         """
         Finds out if piece is the same type and color as self
-        :type piece: pieces *
+        :type piece: pieces.py *
         """
         return type(piece) is type(self) and piece.color == self.color

@@ -39,7 +39,7 @@ class Rook:
     def equals(self, piece):
         """
         Finds out if piece is the same type and color as self
-        :type piece: pieces *
+        :type piece: pieces.py *
         """
         return type(piece) is type(self) and piece.color == self.color
 
@@ -52,7 +52,7 @@ class Rook:
         possible = []
 
         default = location.shift_up()
-        while location.not_none() and position.is_square_empty(default):
+        while location.exit == 0 and position.is_square_empty(default):
             possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
             default = default.shift_up()
 
@@ -70,7 +70,7 @@ class Rook:
         possible = []
 
         default = location.shift_down()
-        while location.not_none() and position.is_square_empty(default):
+        while location.exit == 0 and position.is_square_empty(default):
             possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
             default = default.shift_down()
 
@@ -106,7 +106,7 @@ class Rook:
         possible = []
 
         default = location.shift_left()
-        while location.not_none() and position.is_square_empty(default):
+        while location.exit == 0 and position.is_square_empty(default):
             possible.append(algebraic.Move.init_with_location(default, self, special_notation_constants.MOVEMENT))
             default = default.shift_left()
 

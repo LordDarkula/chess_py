@@ -49,8 +49,8 @@ def piece_matches_description(piece, reference_type, reference_color):
 
     """
     Determines whether piece matches reference description.
-    :type piece: pieces *
-    :type reference_type: pieces *
+    :type piece: pieces.py *
+    :type reference_type: pieces.py *
     :type reference_color: str
     :rtype bool
     """
@@ -61,8 +61,8 @@ def piece_equals(piece1, piece2):
 
     """
     Determines whether piece1 and piece2 are "equal", that is are they are the same type and color.
-    :type piece1: pieces *
-    :type piece2: pieces *
+    :type piece1: pieces.py *
+    :type piece2: pieces.py *
     :rtype bool
     """
     return type(piece1) == type(piece2) and piece1.white == piece2.white
@@ -71,8 +71,8 @@ def piece_equals(piece1, piece2):
 def find_piece(piece, position):
 
     """
-    Locates all instances of pieces in position that match piece.
-    :type piece: pieces *
+    Locates all instances of pieces.py in position that match piece.
+    :type piece: pieces.py *
     :type position: board.Board
     :rtype list containing algebraic.Location
     """

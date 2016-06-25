@@ -331,7 +331,7 @@ class Move:
         """
         Alternate constructor to create move using object algebraic.Location
         :type location: algebraic.Location
-        :type piece: pieces *
+        :type piece: pieces.py *
         :type status: int
         """
         if cls.on_board:

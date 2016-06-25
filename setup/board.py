@@ -38,10 +38,10 @@ class Board:
     """
         # First rank
     default_position = \
-        [[rook.Rook(color.Color(True)), knight.Knight(color.Color(True)), bishop.Bishop(color.Color(True)), queen.Queen(
-            color.Color(True)),
-          king.King(color.Color(True)), bishop.Bishop(color.Color(True)), knight.Knight(color.Color(True)), rook.Rook(
-                color.Color(True))],
+        [[rook.Rook(color.Color(True), algebraic.Location(0, 0)), knight.Knight(color.Color(True), algebraic.Location(0, 1)), bishop.Bishop(color.Color(True), algebraic.Location(0, 2)) queen.Queen(
+            color.Color(True), algebraic.Location(0, 3)),
+          king.King(color.Color(True), algebraic.Location(0, 4)), bishop.Bishop(color.Color(True), algebraic.Location(0, 5)), knight.Knight(color.Color(True), algebraic.Location(0, 6)), rook.Rook(
+                color.Color(True), algebraic.Location(0, 7))],
          # Second rank
          [pawn.Pawn(color.Color(True), algebraic.Location(1, 0)), pawn.Pawn(color.Color(True), algebraic.Location(1, 1)), pawn.Pawn(color.Color(True), algebraic.Location(1, 2)), pawn.Pawn(
              color.Color(True), algebraic.Location(1, 3)), pawn.Pawn(color.Color(True), algebraic.Location(1, 4)),
