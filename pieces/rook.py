@@ -23,7 +23,7 @@ from setup.algebraic_notation import algebraic, notation_const
 from pieces import piece
 
 
-class Rook(piece):
+class Rook(piece.Piece):
     def __init__(self, input_color, location):
         """
         Initializes a rook that is capable of being compared to another rook,
@@ -33,75 +33,31 @@ class Rook(piece):
 
         super(Rook, self).__init__(input_color, location, "♜", "♖")
 
-    def possible_up_moves(self, location, position):
-        """
-        Returns possible moves north of the rook.
-        :type location: algebraic.Location
-        :type position: board.Board
-        """
+    def direction_moves(self, direction, position):
+
+        def shift(location, direction):
+            """
+            Shifts location given direction
+            :type location algebraic.Location
+            :type direction int
+            :return:
+            """
+            if direction == 0:
+                return location.shift_up
+            elif direction == 1:
+                return location.shift_left
+            elif direction == 2:
+                return location.shift_down
+            elif direction == 3:
+                return location.shift_right
+            return location
+
         possible = []
+        current = shift(self.location, direction)
 
-        default = location.shift_up()
-        while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
-            default = default.shift_up()
-
-        if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
-
-        return possible
-
-    def possible_down_moves(self, location, position):
-        """
-        Returns possible moves south of the rook.
-        :type location: algebraic.Location
-        :type position: board.Board
-        """
-        possible = []
-
-        default = location.shift_down()
-        while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
-            default = default.shift_down()
-
-        if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
-
-        return possible
-
-    def possible_right_moves(self, location, position):
-        """
-        Returns possible moves east of the rook.
-        :type location: algebraic.Location
-        :type position: board.Board
-        """
-        possible = []
-
-        default = location.shift_right()
-        while location.not_none() and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
-            default = default.shift_right()
-
-        if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
-
-        return possible
-
-    def possible_left_moves(self, location, position):
-        """
-        Returns possible moves west of the rook.
-        :type location: algebraic.Location
-        :type position: board.Board
-        """
-        possible = []
-
-        default = location.shift_left()
-        while location.exit == 0 and position.is_square_empty(default):
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.MOVEMENT))
-            default = default.shift_left()
-
-        if default.not_none() and position.piece_at_square(default).color != self.color:
-            possible.append(algebraic.Move.init_loc(default, self, notation_const.CAPTURE))
+        while current.exit == 0 and position.is_square_empty(current):
+            possible.append(algebraic.Move.init_loc(current, self, notation_const.MOVEMENT))
+            current = shift(current, direction)
 
         return possible
 
@@ -112,8 +68,9 @@ class Rook(piece):
         :param position: board.Board
         """
         moves = []
-        moves.extend(self.possible_up_moves(location, position))
-        moves.extend(self.possible_down_moves(location, position))
-        moves.extend(self.possible_right_moves(location, position))
-        moves.extend(self.possible_left_moves(location, position))
+        moves.extend(self.direction_moves(0, position))
+        moves.extend(self.direction_moves(1, position))
+        moves.extend(self.direction_moves(2, position))
+        moves.extend(self.direction_moves(3, position))
+
         return moves

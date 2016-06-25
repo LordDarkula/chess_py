@@ -24,7 +24,7 @@ from setup.algebraic_notation import algebraic, notation_const
 from pieces import piece
 
 
-class Pawn(piece):
+class Pawn(piece.Piece):
     def __init__(self, input_color, location):
         """
         Initializes a Pawn that is capable of moving
