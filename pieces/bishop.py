@@ -17,26 +17,66 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-
+from pieces import piece
 from setup import color
+from setup.algebraic_notation import algebraic, notation_const
 
 
-class Bishop:
+class Bishop(piece.Piece):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
         :type input_color: color.Color
         """
-        self.color = input_color.color
-        if self.color == color.white:
-            self.symbol = "♝"
-        else:
-            self.symbol = "♗"
-        # TODO add bishop move functionality
+        super(Bishop, self).__init__(input_color, location, "♝", "♗")
 
-    def equals(self, piece):
+    def direction_moves(self, direction, position):
         """
-        Finds out if piece is the same type and color as self
-        :type piece: pieces.py *
+        Finds moves in a given direction
+        :type direction int
+        :type position board.Board
+        :rtype list
         """
-        return type(piece) is type(self) and piece.color == self.color
+
+        def shift(location):
+            """
+            Shifts location given direction
+            :type location algebraic.Location
+            :rtype algebraic.Location
+            """
+            if direction == 0:
+                return location.shift_up_right()
+            elif direction == 1:
+                return location.shift_up_left()
+            elif direction == 2:
+                return location.shift_down_right()
+            elif direction == 3:
+                return location.shift_down_left()
+            return location
+
+        possible = []
+        current = shift(self.location)
+
+        while current.exit == 0 and position.is_square_empty(current):
+            possible.append(algebraic.Move.init_loc(current, self, notation_const.MOVEMENT))
+            current = shift(current)
+
+        current = shift(current)
+
+        if current.exit == 0 and not position.piece_at_square(current).color.equals(self.color):
+            possible.append(algebraic.Move.init_loc(current, self, notation_const.CAPTURE))
+
+        return possible
+
+    def possible_moves(self, position):
+        """
+        Returns all possible rook moves.
+        :param position: board.Board
+        """
+        moves = []
+        moves.extend(self.direction_moves(0, position))
+        moves.extend(self.direction_moves(1, position))
+        moves.extend(self.direction_moves(2, position))
+        moves.extend(self.direction_moves(3, position))
+
+        return moves

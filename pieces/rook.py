@@ -34,13 +34,18 @@ class Rook(piece.Piece):
         super(Rook, self).__init__(input_color, location, "♜", "♖")
 
     def direction_moves(self, direction, position):
+        """
+        Finds moves in a given direction
+        :type direction int
+        :type position board.Board
+        :rtype list
+        """
 
-        def shift(location, direction):
+        def shift(location):
             """
             Shifts location given direction
             :type location algebraic.Location
-            :type direction int
-            :return:
+            :rtype algebraic.Location
             """
             if direction == 0:
                 return location.shift_up
@@ -53,18 +58,22 @@ class Rook(piece.Piece):
             return location
 
         possible = []
-        current = shift(self.location, direction)
+        current = shift(self.location)
 
         while current.exit == 0 and position.is_square_empty(current):
             possible.append(algebraic.Move.init_loc(current, self, notation_const.MOVEMENT))
-            current = shift(current, direction)
+            current = shift(current)
+
+        current = shift(current)
+
+        if current.exit == 0 and not position.piece_at_square(current).color.equals(self.color):
+            possible.append(algebraic.Move.init_loc(current, self, notation_const.CAPTURE))
 
         return possible
 
-    def possible_moves(self, location, position):
+    def possible_moves(self, position):
         """
         Returns all possible rook moves.
-        :type location: algebraic.Location
         :param position: board.Board
         """
         moves = []

@@ -17,23 +17,14 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-
+from pieces import piece, rook, bishop
 from setup import color
 
 
-class Queen:
+class Queen(piece.Piece, rook.Rook, bishop.Bishop):
     def __init__(self, input_color, location):
-        self.color = input_color.color
+        super(Queen, self).__init__(input_color, location, "♛", "♕")
 
-        if self.color == color.white:
-            self.symbol = "♛"
-        else:
-            self.symbol = "♕"
-        # TODO add queen move functionality
-
-    def equals(self, piece):
-        """
-        Finds out if piece is the same type and color as self
-        :type piece: pieces.py *
-        """
-        return type(piece) is type(self) and piece.color == self.color
+    def possible_moves(self, position):
+        moves = super(Queen, self).possible_moves(position)
+        moves.append(super(Queen, self).possible_moves(position))
