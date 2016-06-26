@@ -180,7 +180,7 @@ class Move:
         """
         self.string = algebraic_string
         self.color = input_color
-        self.status = None
+        self.status = notation_const.NOT_IMPLEMENTED
         self.start_file = None
         self.promoted_to_piece = None
         self.start_rank = None

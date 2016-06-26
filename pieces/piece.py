@@ -29,4 +29,4 @@ class Piece:
         Finds out if piece is the same type and color as self
         :type piece: pieces.py *
         """
-        return type(piece) is type(self) and piece.color.equals(self.color)
+        return type(piece) is type(self) and piece.color.equals(self.color.color)
