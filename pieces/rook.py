@@ -19,7 +19,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color
-from setup.algebraic_notation.algebraic import Location, Move
+from setup.algebraic_notation.algebraic import Move
 from setup.algebraic_notation import notation_const
 from pieces import piece
 
@@ -37,37 +37,21 @@ class Rook(piece.Piece):
     def direction_moves(self, direction, position):
         """
         Finds moves in a given direction
-        :type direction int
+        :type direction lambda
         :type position board.Board
         :rtype list
         """
-
-        def shift(location):
-            """
-            Shifts location given direction
-            :type location Location
-            :rtype Location
-            """
-            if direction == 0:
-                return location.shift_up
-            elif direction == 1:
-                return location.shift_left
-            elif direction == 2:
-                return location.shift_down
-            elif direction == 3:
-                return location.shift_right
-            return location
-
         possible = []
-        current = shift(self.location)
+        current = self.location
+        current = direction(current)
 
         while current.exit == 0 and position.is_square_empty(current):
             possible.append(Move.init_loc(current, self, notation_const.MOVEMENT))
-            current = shift(current)
+            current = direction()
 
-        current = shift(current)
+        current = direction(current)
 
-        if current.exit == 0 and not position.piece_at_square(current).color.equals(self.color):
+        if current.exit == 0 and not position.piece_at_square(current).color.equals(color):
             possible.append(Move.init_loc(current, self, notation_const.CAPTURE))
 
         return possible
@@ -75,12 +59,12 @@ class Rook(piece.Piece):
     def possible_moves(self, position):
         """
         Returns all possible rook moves.
-        :param position: board.Board
+        :param position: Board
         """
         moves = []
-        moves.extend(self.direction_moves(0, position))
-        moves.extend(self.direction_moves(1, position))
-        moves.extend(self.direction_moves(2, position))
-        moves.extend(self.direction_moves(3, position))
+        moves.extend(self.direction_moves(lambda x:x.shift_up(), position))
+        moves.extend(self.direction_moves(lambda x:x.shift_right(), position))
+        moves.extend(self.direction_moves(lambda x:x.shift_down(), position))
+        moves.extend(self.direction_moves(lambda x:x.shift_left(), position))
 
         return moves

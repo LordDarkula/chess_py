@@ -2,7 +2,7 @@
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup import board
+from setup.board import Board
 
 
 class Game:
@@ -15,7 +15,7 @@ class Game:
         print("beginning of init")
         self.player_white = player_white
         self.player_black = player_black
-        self.position = board.Board.init_default()
+        self.position = Board.init_default()
         print("init was called")
 
 

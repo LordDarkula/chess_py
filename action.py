@@ -2,15 +2,15 @@
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup import board
-from setup.algebraic_notation import algebraic
+from setup.board import Board
+from setup.algebraic_notation.algebraic import Move
 
 
 def move_valid(position, move):
     """
 
-    :type position: board.Board
-    :type move: algebraic.Move
+    :type position: Board
+    :type move: Move
     """
     if move.exit == 0:
 
@@ -23,7 +23,7 @@ def move_valid(position, move):
 def move(move, position):
     """
 
-    :type move: algebrqic.Move
-    :type position: board.Board
+    :type move: Move
+    :type position: Board
     """
     pass
