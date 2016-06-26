@@ -25,9 +25,15 @@ and black home row is at index 7
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from pieces import bishop, king, knight, pawn, queen, rook
+from pieces.pawn import Pawn
+from pieces.knight import Knight
+from pieces.bishop import Bishop
+from pieces.rook import Rook
+from pieces.queen import Queen
+from pieces.king import King
+from setup.color import Color
 from setup import color
-from setup.algebraic_notation import algebraic
+from setup.algebraic_notation.algebraic import Location
 
 
 class Board:
@@ -36,16 +42,13 @@ class Board:
     Initialized upon startup and is used when init_default constructor is used
 
     """
+    white = color.white
+    black = color.black
         # First rank
     default_position = \
-        [[rook.Rook(color.Color(True), algebraic.Location(0, 0)), knight.Knight(color.Color(True), algebraic.Location(0, 1)), bishop.Bishop(color.Color(True), algebraic.Location(0, 2)), queen.Queen(
-            color.Color(True), algebraic.Location(0, 3)),
-          king.King(color.Color(True), algebraic.Location(0, 4)), bishop.Bishop(color.Color(True), algebraic.Location(0, 5)), knight.Knight(color.Color(True), algebraic.Location(0, 6)), rook.Rook(
-                color.Color(True), algebraic.Location(0, 7))],
+        [[Rook(Color(white),Location(0,0)),Knight(Color(white),Location(0,1)),Bishop(Color(white),Location(0,2)), Queen(Color(white),Location(0,3)),King(Color(white),Location(0,4)),Bishop(Color(white),Location(0,5)), Knight(Color(white),Location(0,6)),Rook(Color(white),Location(0,7))],
          # Second rank
-         [pawn.Pawn(color.Color(True), algebraic.Location(1, 0)), pawn.Pawn(color.Color(True), algebraic.Location(1, 1)), pawn.Pawn(color.Color(True), algebraic.Location(1, 2)), pawn.Pawn(
-             color.Color(True), algebraic.Location(1, 3)), pawn.Pawn(color.Color(True), algebraic.Location(1, 4)),
-          pawn.Pawn(color.Color(True), algebraic.Location(1, 5)), pawn.Pawn(color.Color(True), algebraic.Location(1, 6)), pawn.Pawn(color.Color(True), algebraic.Location(1, 7))],
+         [Pawn(Color(white),Location(1,0)),Pawn(Color(white),Location(1,1)),Pawn(Color(white),Location(1,2)),Pawn(Color(white),Location(1, 3)),Pawn(Color(white),Location(1,4)),Pawn(Color(white),Location(1,5)),Pawn(Color(white),Location(1,6)),Pawn(Color(white),Location(1,7))],
          # Third rank
          [None, None, None, None, None, None, None, None],
          # Fourth rank
@@ -55,14 +58,9 @@ class Board:
          # Sixth rank
          [None, None, None, None, None, None, None, None],
          # Seventh rank
-         [pawn.Pawn(color.Color(False), algebraic.Location(6, 0)), pawn.Pawn(color.Color(False), algebraic.Location(6, 1)), pawn.Pawn(color.Color(False), algebraic.Location(6, 2)), pawn.Pawn(
-             color.Color(False), algebraic.Location(6, 3)), pawn.Pawn(color.Color(False), algebraic.Location(6, 4)),
-          pawn.Pawn(color.Color(False), algebraic.Location(6, 5)), pawn.Pawn(color.Color(False), algebraic.Location(6, 6)), pawn.Pawn(color.Color(False), algebraic.Location(6, 7))],
+         [Pawn(Color(black),Location(6,0)),Pawn(Color(black),Location(6,1)),Pawn(Color(black),Location(6,2)),Pawn(Color(black),Location(6,3)),Pawn(Color(black),Location(6,4)),Pawn(Color(black),Location(6,5)),Pawn(Color(black),Location(6,6)),Pawn(Color(black),Location(6,7))],
          # Eighth rank
-         [rook.Rook(color.Color(False), algebraic.Location(7, 0)), knight.Knight(color.Color(False), algebraic.Location(7, 1)), bishop.Bishop(color.Color(False), algebraic.Location(7, 2)), queen.Queen(
-             color.Color(False), algebraic.Location(7, 3)),
-          king.King(color.Color(False), algebraic.Location(7, 4)), bishop.Bishop(color.Color(False), algebraic.Location(7, 5)), knight.Knight(color.Color(False), algebraic.Location(7, 6)), rook.Rook(
-             color.Color(False), algebraic.Location(7, 7))]]
+         [Rook(Color(black),Location(7,0)),Knight(Color(black),Location(7,1)),Bishop(Color(black),Location(7,2)),Queen(Color(black),Location(7,3)),King(Color(black),Location(7,4)),Bishop(Color(black),Location(7,5)),Knight(Color(black),Location(7,6)),Rook(Color(black),Location(7,7))]]
 
     def __init__(self, position):
         """
@@ -83,15 +81,15 @@ class Board:
     def piece_at_square(self, location):
         """
         Finds the chess piece at a square of the position.
-        :type location algebraic.Location
-        :rtype pieces.Piece
+        :type location Location
+        :rtype Piece
         """
         return self.position[location.rank][location.file]
 
     def is_square_empty(self, location):
         """
         Finds whether a chess piece occupies a square of the position.
-        :type location: algebraic.Location
+        :type location: Location
         :rtype bool
         """
         return self.position[location.rank][location.file] is None
@@ -110,10 +108,10 @@ class Board:
             for j in range(len(self.position[0])):
 
                     # Tests if square on the board is not empty
-                    if not self.is_square_empty(algebraic.Location(i, j)):
+                    if not self.is_square_empty(Location(i, j)):
 
                         # Adds all of piece's possible moves to moves list.
-                        moves.extend(self.piece_at_square(algebraic.Location(i, j)).possible_moves())
+                        moves.extend(self.piece_at_square(Location(i, j)).possible_moves())
 
         return moves
 
@@ -128,7 +126,7 @@ class Board:
             for j in range(len(self.position[0])):
 
                 # If there is a piece on the square
-                if not self.is_square_empty(algebraic.Location(i, j)):
+                if not self.is_square_empty(Location(i, j)):
 
                     # Prints out symbol of piece
                     print(self.position[i][j].symbol + " ", end="")

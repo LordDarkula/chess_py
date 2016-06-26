@@ -20,7 +20,6 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from pieces.piece import Piece
 from pieces.rook import Rook
 from pieces.bishop import Bishop
-from setup import color
 
 
 class Queen(Piece, Rook, Bishop):

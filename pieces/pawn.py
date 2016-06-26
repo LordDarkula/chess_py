@@ -20,7 +20,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color
-from setup.algebraic_notation import algebraic, notation_const
+from setup.algebraic_notation.algebraic import Location, Move
+from setup.algebraic_notation import notation_const
 from pieces import piece
 
 
@@ -29,7 +30,7 @@ class Pawn(piece.Piece):
         """
         Initializes a Pawn that is capable of moving
         :type input_color color.Color
-        :type location algebraic.Location
+        :type location Location
         """
         self.just_moved_two_steps = False
         super(Pawn, self).__init__(input_color, location, "♟", "♙")
@@ -37,8 +38,8 @@ class Pawn(piece.Piece):
     def square_in_front(self, location):
         """
         Finds square directly in front of Pawn
-        :type location algebraic.Location
-        :rtype algebraic.Location
+        :type location Location
+        :rtype Location
         """
         if self.color.equals(color.white):
             return location.shift_up()
@@ -48,15 +49,15 @@ class Pawn(piece.Piece):
     def two_squares_in_front(self, location):
         """
         Finds square two squares in front of Pawn
-        :param location: algebraic.Location
-        :rtype algebraic.location
+        :param location: Location
+        :rtype location
         """
         return self.square_in_front(self.square_in_front(location))
 
     def would_move_be_promotion(self, location):
         """
         Finds if move from current location
-        :type: algebraic.Location
+        :type: Location
         :rtype: bool
         """
 
@@ -93,13 +94,13 @@ class Pawn(piece.Piece):
             """
             If the pawn is on home row and square in front is empty add the move
             """
-            possible.append(algebraic.Move.init_loc(self.square_in_front(self.location), self, notation_const.MOVEMENT))
+            possible.append(Move.init_loc(self.square_in_front(self.location), self, notation_const.MOVEMENT))
 
             if position.is_square_empty(self.two_squares_in_front(self.location)):
                 """
                 If two squares in front of the pawn is empty add the move
                 """
-                possible.append(algebraic.Move.init_loc(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
+                possible.append(Move.init_loc(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
 
         elif position.is_square_empty(self.square_in_front(self.location)):
             """
@@ -109,7 +110,7 @@ class Pawn(piece.Piece):
                 status = notation_const.PROMOTE
             else:
                 status = notation_const.MOVEMENT
-            move = algebraic.Move.init_loc(self.square_in_front(self.location), self, status)
+            move = Move.init_loc(self.square_in_front(self.location), self, status)
 
             possible.append(move)
 
@@ -140,7 +141,7 @@ class Pawn(piece.Piece):
 
                     status = notation_const.PROMOTE
 
-                moves.append(algebraic.Move.init_loc(capture_square, self, status))
+                moves.append(Move.init_loc(capture_square, self, status))
 
         capture_square = self.square_in_front(self.location.shift_right())
         add_capture_square()
@@ -181,11 +182,11 @@ class Pawn(piece.Piece):
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_right):
-                possible.append(algebraic.Move.init_loc(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
+                possible.append(Move.init_loc(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_left):
-                possible.append(algebraic.Move.init_loc(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
+                possible.append(Move.init_loc(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
 
         return possible
 
@@ -193,9 +194,8 @@ class Pawn(piece.Piece):
         """
         Finds out the locations of possible moves given board.Board position.
         :pre location is on board and piece at specified location on position
-        :param self: pieces.py.Pawn
         :type position: board.Board
-        :rtype list containing algebraic.Location of possible moves
+        :rtype list
         """
         moves = []
 

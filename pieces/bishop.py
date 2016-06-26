@@ -17,12 +17,13 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-from pieces import piece
+from pieces.piece import Piece
 from setup import color
-from setup.algebraic_notation import algebraic, notation_const
+from setup.algebraic_notation.algebraic import Location, Move
+from setup.algebraic_notation import notation_const
 
 
-class Bishop(piece.Piece):
+class Bishop(Piece):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
@@ -41,8 +42,8 @@ class Bishop(piece.Piece):
         def shift(location):
             """
             Shifts location given direction
-            :type location algebraic.Location
-            :rtype algebraic.Location
+            :type location Location
+            :rtype Location
             """
             if direction == 0:
                 return location.shift_up_right()
@@ -58,13 +59,13 @@ class Bishop(piece.Piece):
         current = shift(self.location)
 
         while current.exit == 0 and position.is_square_empty(current):
-            possible.append(algebraic.Move.init_loc(current, self, notation_const.MOVEMENT))
+            possible.append(Move.init_loc(current, self, notation_const.MOVEMENT))
             current = shift(current)
 
         current = shift(current)
 
         if current.exit == 0 and not position.piece_at_square(current).color.equals(self.color):
-            possible.append(algebraic.Move.init_loc(current, self, notation_const.CAPTURE))
+            possible.append(Move.init_loc(current, self, notation_const.CAPTURE))
 
         return possible
 

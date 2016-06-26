@@ -4,7 +4,7 @@ Parent class for all pieces
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from setup import color
-from setup.algebraic_notation import algebraic
+from setup.algebraic_notation.algebraic import Location
 
 
 class Piece:
@@ -12,7 +12,7 @@ class Piece:
         """
         Initializes a piece that is capable of moving
         :type input_color color.Color
-        :type location algebraic.Location
+        :type location Location
         :type white_symbol str
         :type black_symbol str
         """

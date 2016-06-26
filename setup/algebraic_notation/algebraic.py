@@ -23,7 +23,12 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from pieces import pawn, knight, bishop, rook, queen, king
+from pieces.pawn import Pawn
+from pieces.knight import Knight
+from pieces.bishop import Bishop
+from pieces.rook import Rook
+from pieces.queen import Queen
+from pieces.king import King
 from setup.algebraic_notation import notation_const
 from setup import color
 
@@ -248,7 +253,7 @@ class Move:
         """
         self.file = self.set_file(0)
         self.rank = self.set_rank(1)
-        self.piece = pawn.Pawn(self.color, self.end_location())
+        self.piece = Pawn(self.color, self.end_location())
         self.status = notation_const.MOVEMENT
 
     def init_piece_movement(self):
@@ -268,7 +273,7 @@ class Move:
         self.status = notation_const.CAPTURE
 
     def init_pawn_capture(self):
-        self.piece = pawn.Pawn(self.color, self.end_location())
+        self.piece = Pawn(self.color, self.end_location())
         self.start_file = self.set_file(0)
 
         self.file = self.set_file(2)
@@ -282,7 +287,7 @@ class Move:
         if self.would_move_be_promotion():
             self.file = self.set_file(0)
             self.rank = self.set_rank(1)
-            self.piece = pawn.Pawn(self.color, self.end_location())
+            self.piece = Pawn(self.color, self.end_location())
             self.status = notation_const.PROMOTE
             self.promoted_to_piece = self.set_piece(3)
 
@@ -315,7 +320,7 @@ class Move:
             self.start_file = self.set_rank(0)
             self.file = self.set_file(2)
             self.rank = self.set_rank(3)
-            self.piece = pawn.Pawn(self.color, self.end_location())
+            self.piece = Pawn(self.color, self.end_location())
             self.status = notation_const.PROMOTE
             self.promoted_to_piece = self.set_piece(5)
         else:
@@ -444,19 +449,19 @@ class Move:
         :type index: int
         """
         if self.string[index].upper is 'R':
-            return rook.Rook(self.color, self.end_location())
+            return Rook(self.color, self.end_location())
 
         if self.string[index].upper is 'N':
-            return knight.Knight(self.color, self.end_location())
+            return Knight(self.color, self.end_location())
 
         if self.string[index].upper is 'B':
-            return bishop.Bishop(self.color, self.end_location())
+            return Bishop(self.color, self.end_location())
 
         if self.string[index].upper is 'Q':
-            return queen.Queen(self.color, self.end_location())
+            return Queen(self.color, self.end_location())
 
         if self.string[index].upper is 'K':
-            return king.King(self.color, self.end_location())
+            return King(self.color, self.end_location())
         return None
 
     def on_board(self):
