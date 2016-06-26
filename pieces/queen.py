@@ -17,14 +17,18 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-from pieces import piece, rook, bishop
+from pieces.piece import Piece
+from pieces.rook import Rook
+from pieces.bishop import Bishop
 from setup import color
 
 
-class Queen(piece.Piece, rook.Rook, bishop.Bishop):
+class Queen(Piece, Rook, Bishop):
     def __init__(self, input_color, location):
         super(Queen, self).__init__(input_color, location, "♛", "♕")
+        self.rook = Rook(input_color, location)
+        self.bishop = Bishop(input_color, location)
 
     def possible_moves(self, position):
-        moves = super(Queen, self).possible_moves(position)
-        moves.append(super(Queen, self).possible_moves(position))
+        moves = self.rook.possible_moves(position)
+        moves.append(self.bishop.possible_moves(position))
