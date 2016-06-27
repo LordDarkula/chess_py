@@ -19,10 +19,10 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup import color
 from setup.algebraic_notation.algebraic import Location, Move
 from setup.algebraic_notation import notation_const
 from pieces import piece
+from setup import color
 
 
 class Pawn(piece.Piece):

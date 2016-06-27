@@ -77,8 +77,8 @@ class Knight(Piece):
                 elif not position.piece_at_square(dest_loc[j]).color.equals(self.color):
                     status = notation_const.CAPTURE
                 else:
-                    status = None
+                    status = notation_const.NOT_IMPLEMENTED
 
-                if status is not None:
+                if status != notation_const.NOT_IMPLEMENTED:
                     moves.append(Move.init_loc(dest_loc[j], self, status))
         return moves

@@ -30,4 +30,4 @@ class Queen(Piece, Rook, Bishop):
 
     def possible_moves(self, position):
         moves = self.rook.possible_moves(position)
-        moves.append(self.bishop.possible_moves(position))
+        moves.extend(self.bishop.possible_moves(position))
