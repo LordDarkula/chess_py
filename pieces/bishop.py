@@ -19,21 +19,23 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from pieces.piece import Piece
 from pieces.rook import Rook
-from setup import color
+from setup.color import Color
+from setup.board import Board
 
 
 class Bishop(Piece, Rook):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
-        :type input_color: color.Color
+        :type input_color: Color
         """
         super(Bishop, self).__init__(input_color, location, "♝", "♗")
 
     def possible_moves(self, position):
         """
-        Returns all possible rook moves.
-        :param position: Board
+        Returns all possible bishop moves.
+        :type position Board
+        :rtype list
         """
         moves = []
         moves.extend(self.direction_moves(lambda x: x.shift_up_right(), position))

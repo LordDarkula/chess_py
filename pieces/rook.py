@@ -21,6 +21,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from setup import color
 from setup.algebraic_notation.algebraic import Move
 from setup.algebraic_notation import notation_const
+from setup.board import Board
 from pieces import piece
 
 
@@ -59,7 +60,8 @@ class Rook(piece.Piece):
     def possible_moves(self, position):
         """
         Returns all possible rook moves.
-        :param position: Board
+        :type position Board
+        :rtype list
         """
         moves = []
         moves.extend(self.direction_moves(lambda x:x.shift_up(), position))

@@ -17,6 +17,7 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
 from pieces.piece import Piece
 from pieces.rook import Rook
 from pieces.bishop import Bishop
@@ -31,3 +32,8 @@ class Queen(Piece, Rook, Bishop):
     def possible_moves(self, position):
         moves = self.rook.possible_moves(position)
         moves.extend(self.bishop.possible_moves(position))
+
+        for i in range(len(moves)):
+            moves[i].piece = self
+
+        return moves

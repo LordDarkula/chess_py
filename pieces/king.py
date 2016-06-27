@@ -18,22 +18,13 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from pieces.piece import Piece
 from setup import color
 
 
-class King:
+class King(Piece):
     def __init__(self, input_color, location):
-        self.color = input_color.color
+        super(King, self).__init__(input_color, location, "♚", "♔")
 
-        if self.color == color.white:
-            self.symbol = "♚"
-        else:
-            self.symbol = "♔"
-        # TODO add knight king functionality
-
-    def equals(self, piece):
-        """
-        Finds out if piece is the same type and color as self
-        :type piece: pieces.py *
-        """
-        return type(piece) is type(self) and piece.color == self.color
+    def unfiltered(self):
+        pass
