@@ -21,7 +21,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 from setup.color import Color
 from pieces.piece import Piece
-from setup.algebraic_notation.algebraic import Location, Move
+from setup.algebraic_notation.location import Location
+from setup.algebraic_notation.move import Move
 from setup.algebraic_notation import notation_const
 from setup.board import Board
 
@@ -80,5 +81,5 @@ class Knight(Piece):
                     status = notation_const.NOT_IMPLEMENTED
 
                 if status != notation_const.NOT_IMPLEMENTED:
-                    moves.append(Move.init_loc(dest_loc[j], self, status))
+                    moves.append(Move(dest_loc[j], self, status))
         return moves

@@ -17,8 +17,8 @@ Everything starts here
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-import game, human
-from setup import color
+from setup.board import Board
+from setup.algebraic_notation.location import Location
 
 
 def main():
@@ -28,7 +28,13 @@ def main():
     print("New game creating")
 
     #Creates new game with human players for both white and black.
+    """
     new_game = game.Game(human.Player(color.Color(color.white)), human.Player(color.Color(color.black)))
     new_game.start()
+    """
+    position = Board.init_default()
+    position.print()
+    position.move_piece(Location(0,0), Location(0,1))
+    position.print()
 
 main()

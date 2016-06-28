@@ -19,7 +19,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from pieces.piece import Piece
-from setup.algebraic_notation.algebraic import Move
+from setup.algebraic_notation.move import Move
 from setup.algebraic_notation import notation_const
 
 
@@ -35,10 +35,10 @@ class King(Piece):
         def add(function):
             if function(self.location).exit == 0:
                 if position.is_square_empty(function(self.location)):
-                    moves.append(Move.init_loc(function(self.location), self, notation_const.MOVEMENT))
+                    moves.append(Move(function(self.location), self, notation_const.MOVEMENT))
 
                 elif position.piece_at_square(function(self.location)).color.equals(self.color):
-                    moves.append(Move.init_loc(function(self.location), self, notation_const.CAPTURE))
+                    moves.append(Move(function(self.location), self, notation_const.CAPTURE))
 
         add(lambda x: x.shift_up())
         add(lambda x: x.shift_right())

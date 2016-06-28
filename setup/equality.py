@@ -6,7 +6,7 @@ Class that contains all equality comparison methods specific for chess_py
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.algebraic_notation import algebraic
+from setup.algebraic_notation import location
 
 def deprecated(func):
     """This is a decorator which can be used to mark functions
@@ -29,7 +29,7 @@ def location_not_none(location):
 
     """
     Determines whether location exists.
-    :type location: algebraic.Location
+    :type location: location.Location
     :rtype bool
     """
     return location is not None and location.rank is not None and location.file is not None
@@ -83,6 +83,6 @@ def find_piece(piece, position):
         for j in range(7):
 
             if piece.equals(position.position[i][j]):
-                pieces.append(algebraic.Location(i, j))
+                pieces.append(location.Location(i, j))
 
     return pieces

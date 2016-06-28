@@ -32,7 +32,7 @@ from pieces.rook import Rook
 from pieces.queen import Queen
 from pieces.king import King
 from setup.color import Color
-from setup.algebraic_notation.algebraic import Location
+from setup.algebraic_notation.location import Location
 from setup import color
 
 

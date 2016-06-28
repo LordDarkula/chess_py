@@ -19,7 +19,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup import color
-from setup.algebraic_notation.algebraic import Move
+from setup.algebraic_notation.move import Move
 from setup.algebraic_notation import notation_const
 from setup.board import Board
 from pieces import piece
@@ -47,13 +47,13 @@ class Rook(piece.Piece):
         current = direction(current)
 
         while current.exit == 0 and position.is_square_empty(current):
-            possible.append(Move.init_loc(current, self, notation_const.MOVEMENT))
+            possible.append(Move(current, self, notation_const.MOVEMENT))
             current = direction()
 
         current = direction(current)
 
         if current.exit == 0 and not position.piece_at_square(current).color.equals(color):
-            possible.append(Move.init_loc(current, self, notation_const.CAPTURE))
+            possible.append(Move(current, self, notation_const.CAPTURE))
 
         return possible
 
