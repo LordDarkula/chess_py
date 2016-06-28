@@ -129,8 +129,22 @@ class Board:
         """
         self.position[location.rank][location.file] = None
 
-    def place_piece_at_square(self):
-        pass
+    def place_piece_at_square(self, piece, location):
+        """
+        Places piece at given location
+        :type piece pieces.Piece
+        :type location Location
+        """
+        self.position[location.rank][location.file] = piece
+
+    def move_piece(self, initial, final):
+        """
+        Moves piece from one location to another
+        :type initial Location
+        :type final Location
+        """
+        self.place_piece_at_square(self.piece_at_square(initial), final)
+        self.remove_piece_at_square(initial)
 
     def print(self):
         """

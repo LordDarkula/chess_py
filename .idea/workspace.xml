@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/king.py" afterPath="$PROJECT_DIR$/pieces/king.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" afterPath="$PROJECT_DIR$/setup/algebraic_notation/algebraic.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/setup/board.py" afterPath="$PROJECT_DIR$/setup/board.py" />
     </list>
     <ignored path="chess_py.iws" />
@@ -143,15 +142,15 @@
       <file leaf-file-name="board.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/setup/board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="131" column="36" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
+            <state relative-caret-position="370">
+              <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
               <folding>
                 <element signature="e#2805#3001#0" expanded="false" />
                 <element signature="e#3055#3200#0" expanded="false" />
                 <element signature="e#3251#3437#0" expanded="false" />
                 <element signature="e#3488#3694#0" expanded="false" />
                 <element signature="e#3738#4318#0" expanded="false" />
-                <element signature="e#4597#5147#0" expanded="false" />
+                <element signature="e#5043#5593#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1090,15 +1089,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/setup/board.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="131" column="36" selection-start-line="131" selection-start-column="36" selection-end-line="131" selection-end-column="36" />
+        <state relative-caret-position="370">
+          <caret line="141" column="8" selection-start-line="141" selection-start-column="8" selection-end-line="141" selection-end-column="8" />
           <folding>
             <element signature="e#2805#3001#0" expanded="false" />
             <element signature="e#3055#3200#0" expanded="false" />
             <element signature="e#3251#3437#0" expanded="false" />
             <element signature="e#3488#3694#0" expanded="false" />
             <element signature="e#3738#4318#0" expanded="false" />
-            <element signature="e#4597#5147#0" expanded="false" />
+            <element signature="e#5043#5593#0" expanded="false" />
           </folding>
         </state>
       </provider>
