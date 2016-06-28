@@ -4,7 +4,7 @@ Parent class for all pieces
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from setup import color
-from setup.algebraic_notation.location import Location
+from setup.algebraic.location import Location
 
 
 class Piece:

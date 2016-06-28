@@ -21,10 +21,10 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 from setup.color import Color
 from pieces.piece import Piece
-from setup.algebraic_notation.location import Location
-from setup.algebraic_notation.move import Move
-from setup.algebraic_notation import notation_const
-from setup.board import Board
+from setup.algebraic.location import Location
+from setup.algebraic.move import Move
+from setup.algebraic import notation_const
+
 
 class Knight(Piece):
     def __init__(self, input_color, location):

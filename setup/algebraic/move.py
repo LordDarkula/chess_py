@@ -1,5 +1,5 @@
-from setup.algebraic_notation.location import Location
-from setup.algebraic_notation import notation_const
+from setup.algebraic.location import Location
+from setup.algebraic import notation_const
 from setup import color
 
 class Move:

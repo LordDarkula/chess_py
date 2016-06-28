@@ -19,8 +19,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from pieces.piece import Piece
-from setup.algebraic_notation.move import Move
-from setup.algebraic_notation import notation_const
+from setup.algebraic.move import Move
+from setup.algebraic import notation_const
 
 
 class King(Piece):

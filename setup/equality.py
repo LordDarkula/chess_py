@@ -6,7 +6,7 @@ Class that contains all equality comparison methods specific for chess_py
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.algebraic_notation import location
+from setup.algebraic import location
 
 def deprecated(func):
     """This is a decorator which can be used to mark functions

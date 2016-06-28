@@ -18,7 +18,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup.board import Board
-from setup.algebraic_notation.location import Location
+from setup.algebraic.location import Location
 
 
 def main():
@@ -34,7 +34,7 @@ def main():
     """
     position = Board.init_default()
     position.print()
-    position.move_piece(Location(0,0), Location(0,1))
+    position.move_piece(Location(0,0), Location(0,3))
     position.print()
 
 main()

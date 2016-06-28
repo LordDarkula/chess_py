@@ -19,9 +19,9 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.algebraic_notation.location import Location
-from setup.algebraic_notation.move import Move
-from setup.algebraic_notation import notation_const
+from setup.algebraic.location import Location
+from setup.algebraic.move import Move
+from setup.algebraic import notation_const
 from pieces import piece
 from setup import color
 

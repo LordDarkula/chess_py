@@ -3,7 +3,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from setup.board import Board
-from setup.algebraic_notation.location import Move
+from setup.algebraic.move import Move
 
 
 def move_valid(position, move):

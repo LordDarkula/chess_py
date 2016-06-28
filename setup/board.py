@@ -32,7 +32,7 @@ from pieces.rook import Rook
 from pieces.queen import Queen
 from pieces.king import King
 from setup.color import Color
-from setup.algebraic_notation.location import Location
+from setup.algebraic.location import Location
 from setup import color
 
 
@@ -157,10 +157,10 @@ class Board:
             for j in range(len(self.position[0])):
 
                 # If there is a piece on the square
-                if not self.is_square_empty(Location(i, j)):
+                if not self.is_square_empty(Location(7 - i, j)):
 
                     # Prints out symbol of piece
-                    print(self.position[i][j].symbol + " ", end="")
+                    print(self.position[7 - i][j].symbol + " ", end="")
                 else:
                     print("_ ", end="")
             print()

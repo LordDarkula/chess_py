@@ -23,7 +23,7 @@ from pieces.rook import Rook
 from pieces.bishop import Bishop
 
 
-class Queen(Piece, Rook, Bishop):
+class Queen(Piece):
     def __init__(self, input_color, location):
         super(Queen, self).__init__(input_color, location, "♛", "♕")
         self.rook = Rook(input_color, location)

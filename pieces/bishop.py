@@ -20,10 +20,9 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from pieces.piece import Piece
 from pieces.rook import Rook
 from setup.color import Color
-from setup.board import Board
 
 
-class Bishop(Piece, Rook):
+class Bishop(Piece):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
@@ -37,10 +36,11 @@ class Bishop(Piece, Rook):
         :type position Board
         :rtype list
         """
+        rook = Rook(self.color, self.location)
         moves = []
-        moves.extend(self.direction_moves(lambda x: x.shift_up_right(), position))
-        moves.extend(self.direction_moves(lambda x: x.shift_up_left(), position))
-        moves.extend(self.direction_moves(lambda x: x.shift_down_right(), position))
-        moves.extend(self.direction_moves(lambda x: x.shift_down_left(), position))
+        moves.extend(rook.direction_moves(lambda x: x.shift_up_right(), position))
+        moves.extend(rook.direction_moves(lambda x: x.shift_up_left(), position))
+        moves.extend(rook.direction_moves(lambda x: x.shift_down_right(), position))
+        moves.extend(rook.direction_moves(lambda x: x.shift_down_left(), position))
 
         return moves
