@@ -19,7 +19,8 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.algebraic_notation.location import Location, Move
+from setup.algebraic_notation.location import Location
+from setup.algebraic_notation.move import Move
 from setup.algebraic_notation import notation_const
 from pieces import piece
 from setup import color
@@ -94,13 +95,13 @@ class Pawn(piece.Piece):
             """
             If the pawn is on home row and square in front is empty add the move
             """
-            possible.append(Move.init_loc(self.square_in_front(self.location), self, notation_const.MOVEMENT))
+            possible.append(Move(self.square_in_front(self.location), self, notation_const.MOVEMENT))
 
             if position.is_square_empty(self.two_squares_in_front(self.location)):
                 """
                 If two squares in front of the pawn is empty add the move
                 """
-                possible.append(Move.init_loc(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
+                possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
 
         elif position.is_square_empty(self.square_in_front(self.location)):
             """
@@ -110,7 +111,7 @@ class Pawn(piece.Piece):
                 status = notation_const.PROMOTE
             else:
                 status = notation_const.MOVEMENT
-            move = Move.init_loc(self.square_in_front(self.location), self, status)
+            move = Move(self.square_in_front(self.location), self, status)
 
             possible.append(move)
 
@@ -141,7 +142,7 @@ class Pawn(piece.Piece):
 
                     status = notation_const.PROMOTE
 
-                moves.append(Move.init_loc(capture_square, self, status))
+                moves.append(Move(capture_square, self, status))
 
         capture_square = self.square_in_front(self.location.shift_right())
         add_capture_square()
@@ -182,11 +183,11 @@ class Pawn(piece.Piece):
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_right):
-                possible.append(Move.init_loc(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
+                possible.append(Move(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_left):
-                possible.append(Move.init_loc(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
+                possible.append(Move(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
 
         return possible
 
