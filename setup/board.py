@@ -32,8 +32,8 @@ from pieces.rook import Rook
 from pieces.queen import Queen
 from pieces.king import King
 from setup.color import Color
-from setup import color
 from setup.algebraic_notation.algebraic import Location
+from setup import color
 
 
 class Board:
@@ -47,18 +47,25 @@ class Board:
         # First rank
     default_position = \
         [[Rook(Color(white),Location(0,0)),Knight(Color(white),Location(0,1)),Bishop(Color(white),Location(0,2)), Queen(Color(white),Location(0,3)),King(Color(white),Location(0,4)),Bishop(Color(white),Location(0,5)), Knight(Color(white),Location(0,6)),Rook(Color(white),Location(0,7))],
+
          # Second rank
-         [Pawn(Color(white),Location(1,0)),Pawn(Color(white),Location(1,1)),Pawn(Color(white),Location(1,2)),Pawn(Color(white),Location(1, 3)),Pawn(Color(white),Location(1,4)),Pawn(Color(white),Location(1,5)),Pawn(Color(white),Location(1,6)),Pawn(Color(white),Location(1,7))],
+         [Pawn(Color(white),Location(1,0)),Pawn(Color(white),Location(1,1)),Pawn(Color(white),Location(1,2)),Pawn(Color(white),Location(1,3)),Pawn(Color(white),Location(1,4)),Pawn(Color(white),Location(1,5)),Pawn(Color(white),Location(1,6)),Pawn(Color(white),Location(1,7))],
+
          # Third rank
          [None, None, None, None, None, None, None, None],
+
          # Fourth rank
          [None, None, None, None, None, None, None, None],
+
          # Fifth rank
          [None, None, None, None, None, None, None, None],
+
          # Sixth rank
          [None, None, None, None, None, None, None, None],
+
          # Seventh rank
          [Pawn(Color(black),Location(6,0)),Pawn(Color(black),Location(6,1)),Pawn(Color(black),Location(6,2)),Pawn(Color(black),Location(6,3)),Pawn(Color(black),Location(6,4)),Pawn(Color(black),Location(6,5)),Pawn(Color(black),Location(6,6)),Pawn(Color(black),Location(6,7))],
+
          # Eighth rank
          [Rook(Color(black),Location(7,0)),Knight(Color(black),Location(7,1)),Bishop(Color(black),Location(7,2)),Queen(Color(black),Location(7,3)),King(Color(black),Location(7,4)),Bishop(Color(black),Location(7,5)),Knight(Color(black),Location(7,6)),Rook(Color(black),Location(7,7))]]
 
@@ -114,6 +121,16 @@ class Board:
                         moves.extend(self.piece_at_square(Location(i, j)).possible_moves())
 
         return moves
+
+    def remove_piece_at_square(self, location):
+        """
+        Removes piece at square
+        :type location: Location
+        """
+        self.position[location.rank][location.file] = None
+
+    def place_piece_at_square(self):
+        pass
 
     def print(self):
         """

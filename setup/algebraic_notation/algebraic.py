@@ -375,57 +375,8 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
+        return self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece) and self.status == move.status and self.color == move.color and self.start_file == move.start_file and self.start_rank == move.start_rank
 
-        # If move is not none and rank, file, and color are the same
-        if self.rank == move.rank and self.file == move.file and self.piece.equals(
-            move.piece) and self.status == move.status and self.color == move.color:
-
-            # If no start_file exists for either move
-            if self.start_file is None and move.start_file is None:
-
-                # If no start_rank exists for either move
-                if self.start_rank is None and move.start_rank is None:
-
-                    # If no promoted_to_piece exists
-                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
-                        return True
-
-                    # If promoted_piece is the same
-                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
-                        return True
-
-                # If start_rank is the same
-                elif self.start_rank == move.start_rank:
-                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
-                        return True
-
-                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
-                        return True
-
-            # If start_file is the same
-            elif self.start_file == move.start_file:
-
-                # If no start_rank exists for either move
-                if self.start_rank is None and move.start_rank is None:
-
-                    # If no promoted_to_piece exists
-                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
-                        return True
-
-                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
-                        return True
-
-                # If start_rank is the same
-                elif self.start_rank == move.start_rank:
-                    if self.promoted_to_piece is None and move.promoted_to_piece is None:
-                        return True
-
-                    # If promoted_piece is the same
-                    elif self.promoted_to_piece.equals(move.promoted_to_piece):
-                        return True
-
-
-        return False
 
     def set_rank(self, index):
         """

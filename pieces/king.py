@@ -19,12 +19,30 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from pieces.piece import Piece
-from setup import color
+from setup.algebraic_notation.algebraic import Move
+from setup.algebraic_notation import notation_const
 
 
 class King(Piece):
     def __init__(self, input_color, location):
         super(King, self).__init__(input_color, location, "♚", "♔")
 
-    def unfiltered(self):
-        pass
+
+
+    def unfiltered(self, position):
+        moves = []
+
+        def add(function):
+            if function(self.location).exit == 0:
+                if position.is_square_empty(function(self.location)):
+                    moves.append(Move.init_loc(function(self.location), self, notation_const.MOVEMENT))
+
+                elif position.piece_at_square(function(self.location)).color.equals(self.color):
+                    moves.append(Move.init_loc(function(self.location), self, notation_const.CAPTURE))
+
+        add(lambda x: x.shift_up())
+        add(lambda x: x.shift_right())
+        add(lambda x: x.shift_down())
+        add(lambda x: x.shift_left())
+
+        return moves
