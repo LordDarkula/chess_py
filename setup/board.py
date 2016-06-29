@@ -118,7 +118,7 @@ class Board:
                     if not self.is_square_empty(Location(i, j)):
 
                         # Adds all of piece's possible moves to moves list.
-                        moves.extend(self.piece_at_square(Location(i, j)).possible_moves())
+                        moves.extend(self.piece_at_square(Location(i, j)).possible_moves(self))
 
         return moves
 
@@ -136,6 +136,7 @@ class Board:
         :type location Location
         """
         self.position[location.rank][location.file] = piece
+        piece.location = location
 
     def move_piece(self, initial, final):
         """

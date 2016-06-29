@@ -63,8 +63,9 @@ class Location:
             self.exit = 0
             return Location(self.rank + 1, self.file)
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_down(self):
         """
@@ -75,8 +76,9 @@ class Location:
             self.exit = 0
             return Location(self.rank - 1, self.file)
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_right(self):
         """
@@ -88,8 +90,9 @@ class Location:
             return Location(self.rank, self.file + 1)
 
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_left(self):
         """
@@ -100,8 +103,9 @@ class Location:
             self.exit = 0
             return Location(self.rank, self.file - 1)
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_up_right(self):
         """
@@ -112,8 +116,9 @@ class Location:
             self.exit = 0
             return self.shift_up().shift_right()
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_up_left(self):
         """
@@ -124,8 +129,9 @@ class Location:
             self.exit = 0
             return self.shift_up().shift_left()
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_down_right(self):
         """
@@ -136,8 +142,9 @@ class Location:
             self.exit = 0
             return self.shift_up().shift_right()
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc
 
     def shift_down_left(self):
         """
@@ -148,5 +155,6 @@ class Location:
             self.exit = 0
             return self.shift_up().shift_left()
         else:
-            self.exit = 1
-            return None
+            loc = Location(0, 0)
+            loc.exit = 1
+            return loc

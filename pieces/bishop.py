@@ -38,9 +38,17 @@ class Bishop(Piece):
         """
         rook = Rook(self.color, self.location)
         moves = []
-        moves.extend(rook.direction_moves(lambda x: x.shift_up_right(), position))
-        moves.extend(rook.direction_moves(lambda x: x.shift_up_left(), position))
-        moves.extend(rook.direction_moves(lambda x: x.shift_down_right(), position))
-        moves.extend(rook.direction_moves(lambda x: x.shift_down_left(), position))
+
+        if rook.direction_moves(lambda x: x.shift_up_right(), position) is not None:
+            moves.extend(rook.direction_moves(lambda x: x.shift_up_right(), position))
+
+        if rook.direction_moves(lambda x: x.shift_up_left(), position) is not None:
+            moves.extend(rook.direction_moves(lambda x: x.shift_up_left(), position))
+
+        if rook.direction_moves(lambda x: x.shift_down_right(), position) is not None:
+            moves.extend(rook.direction_moves(lambda x: x.shift_down_right(), position))
+
+        if rook.direction_moves(lambda x: x.shift_down_left(), position) is not None:
+            moves.extend(rook.direction_moves(lambda x: x.shift_down_left(), position))
 
         return moves

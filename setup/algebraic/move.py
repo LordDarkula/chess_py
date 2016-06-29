@@ -86,3 +86,6 @@ class Move:
         elif self.rank == 7 and self.color == color.white:
             return True
         return False
+
+    def print(self):
+        print(self.piece.symbol, " Rank: ", self.rank, " File:  ", self.file, " Status: ", self.status)

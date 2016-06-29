@@ -134,14 +134,14 @@ class Pawn(Piece):
                     status = notation_const.CAPTURE_AND_PROMOTE
                 else:
 
-                    status = notation_const.PROMOTE
+                    status = notation_const.CAPTURE
 
                 moves.append(Move(capture_square, self, status))
 
         capture_square = self.square_in_front(self.location.shift_right())
         add_capture_square()
 
-        capture_square = self.square_in_front(self.location.shift_left)
+        capture_square = self.square_in_front(self.location.shift_left())
         add_capture_square()
 
         return moves
@@ -166,21 +166,21 @@ class Pawn(Piece):
 
         def opposite_color_pawn_on_square(my_location):
             """
-
+            Finds if their is opponent's pawn is next to this pawn
             :rtype: bool
             """
-            return my_location.exit == 0 and position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) and position.piece_at_square(
+            return my_location.exit == 0 and not position.is_square_empty(my_location) and position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) and position.piece_at_square(
                 my_location).just_moved_two_steps
 
         # if pawn is not on a valid en passant location then return None
         if on_en_passant_valid_location():
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
-            if opposite_color_pawn_on_square(self.location.shift_right):
+            if opposite_color_pawn_on_square(self.location.shift_right()):
                 possible.append(Move(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
-            if opposite_color_pawn_on_square(self.location.shift_left):
+            if opposite_color_pawn_on_square(self.location.shift_left()):
                 possible.append(Move(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
 
         return possible
@@ -194,13 +194,16 @@ class Pawn(Piece):
         """
         moves = []
 
-        # Adds all possible forward moves that are returned by forward_movs
-        moves.extend(self.forward_moves(position))
+        if self.forward_moves(position) is not None:
+            # Adds all possible forward moves that are returned by forward_movs
+            moves.extend(self.forward_moves(position))
 
-        # Adds all possible capture moves that are returned by possible_capture_moves
-        moves.extend(self.capture_moves(position))
+        if self.capture_moves(position) is not None:
+            # Adds all possible capture moves that are returned by possible_capture_moves
+            moves.extend(self.capture_moves(position))
 
-        # Adds all possible en passant moves returned by en_passant_moves
-        moves.extend(self.en_passant_moves(position))
+        if self.en_passant_moves(position) is not None:
+            # Adds all possible en passant moves returned by en_passant_moves
+            moves.extend(self.en_passant_moves(position))
 
         return moves

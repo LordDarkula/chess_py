@@ -34,7 +34,20 @@ def main():
     """
     position = Board.init_default()
     position.print()
-    position.move_piece(Location(0,0), Location(0,6))
+
+    position.move_piece(Location(1, 0), Location(2, 0))
+    position.move_piece(Location(6, 1), Location(3, 1))
     position.print()
+
+    print("Is the square empty" , position.is_square_empty(Location(3, 0)))
+
+    #print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
+
+    for i in range(len(position.piece_at_square(Location(2, 0)).possible_moves(position))):
+        position.piece_at_square(Location(2, 0)).possible_moves(position)[i].print()
+
+    for j in range(len(position.piece_at_square(Location(3, 1)).possible_moves(position))):
+        position.piece_at_square(Location(3, 1)).possible_moves(position)[j].print()
+
 
 main()
