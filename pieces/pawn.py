@@ -22,11 +22,11 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from setup.algebraic.location import Location
 from setup.algebraic.move import Move
 from setup.algebraic import notation_const
-from pieces import piece
+from pieces.piece import Piece
 from setup import color
 
 
-class Pawn(piece.Piece):
+class Pawn(Piece):
     def __init__(self, input_color, location):
         """
         Initializes a Pawn that is capable of moving
@@ -50,24 +50,24 @@ class Pawn(piece.Piece):
     def two_squares_in_front(self, location):
         """
         Finds square two squares in front of Pawn
-        :param location: Location
+        :type location: Location
         :rtype location
         """
         return self.square_in_front(self.square_in_front(location))
 
     def would_move_be_promotion(self, location):
         """
-        Finds if move from current location
+        Finds if move from current location would result in promotion
         :type: Location
         :rtype: bool
         """
 
         # If the pawn is on the second rank and black.
-        if location.rank == 1 and self.color.color == color.black:
+        if location.rank == 1 and self.color.equals(color.black):
             return True
 
         # If the pawn is on the seventh rank and white.
-        elif location.rank == 6 and self.color.color == color.white:
+        elif location.rank == 6 and self.color.equals(color.white):
             return True
         return False
 
@@ -91,21 +91,9 @@ class Pawn(piece.Piece):
             else:
                 return False
 
-        if on_home_row() and position.is_square_empty(self.square_in_front(self.location)):
+        if position.is_square_empty(self.square_in_front(self.location)):
             """
-            If the pawn is on home row and square in front is empty add the move
-            """
-            possible.append(Move(self.square_in_front(self.location), self, notation_const.MOVEMENT))
-
-            if position.is_square_empty(self.two_squares_in_front(self.location)):
-                """
-                If two squares in front of the pawn is empty add the move
-                """
-                possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
-
-        elif position.is_square_empty(self.square_in_front(self.location)):
-            """
-            Else if square in front is empty add the move
+            If square in front is empty add the move
             """
             if self.would_move_be_promotion(self.location):
                 status = notation_const.PROMOTE
@@ -115,7 +103,13 @@ class Pawn(piece.Piece):
 
             possible.append(move)
 
-        return possible
+            if on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
+                """
+                If two squares in front of the pawn is empty add the move
+                """
+                possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
+
+            return possible
 
     def capture_moves(self, position):
         """
