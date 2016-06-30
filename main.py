@@ -35,7 +35,7 @@ def main():
     position = Board.init_default()
     position.print()
 
-    position.move_piece(Location(0, 0), Location(4, 4))
+    position.move_piece(Location(0, 2), Location(4, 4))
     position.move_piece(Location(7, 7), Location(4, 5))
     position.print()
 
@@ -44,13 +44,7 @@ def main():
     for i in range(len(position.piece_at_square(Location(4, 4)).possible_moves(position))):
         position.piece_at_square(Location(4, 4)).possible_moves(position)[i].print()
 
-    print()
-    print(position.piece_at_square(Location(4, 4)).location.rank, " file", position.piece_at_square(Location(4, 4)).location.file)
-
     for j in range(len(position.piece_at_square(Location(4, 5)).possible_moves(position))):
-        position.piece_at_square(Location(4, 5)).possible_moves(position)[j].print()
-
-    print(position.piece_at_square(Location(4, 5)).location.rank, " file",
-              position.piece_at_square(Location(4, 5)).location.file)
+       position.piece_at_square(Location(4, 5)).possible_moves(position)[j].print()
 
 main()

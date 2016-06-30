@@ -141,7 +141,7 @@ class Location:
         """
         if self.rank > 1 and self.file < 7:
             self.exit = 0
-            return self.shift_up().shift_right()
+            return self.shift_down().shift_right()
         else:
             loc = Location(0, 0)
             loc.exit = 1
@@ -154,7 +154,7 @@ class Location:
         """
         if self.rank > 1 and self.file > 1:
             self.exit = 0
-            return self.shift_up().shift_left()
+            return self.shift_down().shift_left()
         else:
             loc = Location(0, 0)
             loc.exit = 1
