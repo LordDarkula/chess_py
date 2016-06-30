@@ -30,6 +30,9 @@ class Queen(Piece):
         self.bishop = Bishop(input_color, location)
 
     def possible_moves(self, position):
+        self.rook = Rook(self.color, self.location)
+        self.bishop = Bishop(self.color, self.location)
+
         moves = self.rook.possible_moves(position)
         moves.extend(self.bishop.possible_moves(position))
 
