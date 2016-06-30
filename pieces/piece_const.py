@@ -4,6 +4,7 @@ Constants for piece values in the game
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+
 class Piece_values:
     def __init__(self):
 
@@ -36,4 +37,3 @@ class Piece_values:
         cls.ROOK_VALUE = ROOK_VALUE
 
         cls.QUEEN_VALUE = QUEEN_VALUE
-

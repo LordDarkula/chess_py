@@ -20,6 +20,7 @@ def move_valid(position, move):
 
     return False
 
+
 def move(move, position):
     """
 

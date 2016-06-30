@@ -50,5 +50,7 @@ class Bishop(Piece):
 
         if rook.direction_moves(lambda x: x.shift_down_left(), position) is not None:
             moves.extend(rook.direction_moves(lambda x: x.shift_down_left(), position))
+            
+        super(Bishop, self).possible_moves(moves)
 
         return moves

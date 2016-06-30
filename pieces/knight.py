@@ -42,7 +42,8 @@ class Knight(Piece):
         :rtype: list
         """
 
-        list_of_func = [lambda x:x.shift_up(), lambda x:x.shift_right(), lambda x:x.shift_down(), lambda x:x.shift_left()]
+        list_of_func = [lambda x:x.shift_up(), lambda x:x.shift_right(), lambda x:x.shift_down(),
+                        lambda x:x.shift_left()]
         twice = lambda loc, function: loc.function().function()
 
         def cycle(index):
@@ -82,4 +83,7 @@ class Knight(Piece):
 
                 if status != notation_const.NOT_IMPLEMENTED:
                     moves.append(Move(dest_loc[j], self, status))
+
+        super(Knight, self).possible_moves(moves)
+
         return moves

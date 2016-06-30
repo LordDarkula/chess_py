@@ -27,7 +27,7 @@ def main():
     """
     print("New game creating")
 
-    #Creates new game with human players for both white and black.
+    # Creates new game with human players for both white and black.
     """
     new_game = game.Game(human.Player(color.Color(color.white)), human.Player(color.Color(color.black)))
     new_game.start()
@@ -39,9 +39,9 @@ def main():
     position.move_piece(Location(6, 1), Location(3, 1))
     position.print()
 
-    print("Is the square empty" , position.is_square_empty(Location(3, 0)))
+    print("Is the square empty", position.is_square_empty(Location(3, 0)))
 
-    #print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
+    # print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
 
     for i in range(len(position.piece_at_square(Location(2, 0)).possible_moves(position))):
         position.piece_at_square(Location(2, 0)).possible_moves(position)[i].print()

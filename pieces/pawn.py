@@ -1,4 +1,4 @@
-#TODO verify code and finalize class documentation
+# TODO verify code and finalize class documentation
 
 """
 
@@ -107,7 +107,8 @@ class Pawn(Piece):
                 """
                 If two squares in front of the pawn is empty add the move
                 """
-                possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self, notation_const.MOVEMENT))
+                possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self,
+                                notation_const.MOVEMENT))
 
             return possible
 
@@ -123,7 +124,8 @@ class Pawn(Piece):
             """
             Adds capture moves
             """
-            if not position.is_square_empty(capture_square) and position.piece_at_square(capture_square).color.equals(not self.color.color):
+            if not position.is_square_empty(capture_square) and position.piece_at_square(
+                    capture_square).color.equals(not self.color.color):
                 """
                 If the capture square is nit empty and it contains a piece of opposing color add the move
                 """
@@ -169,7 +171,9 @@ class Pawn(Piece):
             Finds if their is opponent's pawn is next to this pawn
             :rtype: bool
             """
-            return my_location.exit == 0 and not position.is_square_empty(my_location) and position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) and position.piece_at_square(
+            return my_location.exit == 0 and not position.is_square_empty(my_location) and \
+                position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) \
+                and position.piece_at_square(
                 my_location).just_moved_two_steps
 
         # if pawn is not on a valid en passant location then return None
@@ -177,11 +181,13 @@ class Pawn(Piece):
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_right()):
-                possible.append(Move(self.square_in_front(self.location.shift_right()), self,notation_const.EN_PASSANT))
+                possible.append(Move(self.square_in_front(self.location.shift_right()), self,
+                                     notation_const.EN_PASSANT))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_left()):
-                possible.append(Move(self.square_in_front(self.location.shift_left()), self, notation_const.EN_PASSANT))
+                possible.append(Move(self.square_in_front(self.location.shift_left()), self,
+                                     notation_const.EN_PASSANT))
 
         return possible
 
@@ -205,5 +211,7 @@ class Pawn(Piece):
         if self.en_passant_moves(position) is not None:
             # Adds all possible en passant moves returned by en_passant_moves
             moves.extend(self.en_passant_moves(position))
+        
+        super(Pawn, self).possible_moves(moves)
 
         return moves

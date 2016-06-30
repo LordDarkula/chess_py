@@ -35,5 +35,7 @@ class Queen(Piece):
 
         for i in range(len(moves)):
             moves[i].piece = self
+        
+        super(Queen, self).possible_moves(moves)
 
         return moves

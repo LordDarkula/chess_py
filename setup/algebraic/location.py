@@ -23,6 +23,7 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+
 class Location:
     def __init__(self, rank, file):
         """

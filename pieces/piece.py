@@ -4,7 +4,9 @@ Parent class for all pieces
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from setup import color
+from pieces.pawn import Pawn
 from setup.algebraic.location import Location
+from setup.algebraic import notation_const
 
 
 class Piece:
@@ -30,3 +32,17 @@ class Piece:
         :type piece: pieces.py *
         """
         return type(piece) is type(self) and piece.color.equals(self.color.color)
+
+    def possible_moves(self, moves):
+        """
+        Adds start_rank and start_file to moves
+        :type moves list
+        """
+        for i in range(len(moves)):
+            moves[i].start_rank = self.location.rank
+            moves[i].start_file = self.location.file
+
+            if moves[i].status == notation_const.PROMOTE \
+                    or moves[i].status == notation_const.CAPTURE_AND_PROMOTE \
+                    or moves[i].status == notation_const.EN_PASSANT:
+                assert isinstance(moves[i], Pawn)

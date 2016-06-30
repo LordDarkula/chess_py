@@ -43,6 +43,7 @@ class Player:
         return move
         # TODO eventually check move up against all_possible_moves
 
+
 class Converter:
     def __init__(self, algebraic_string, input_color):
         """
@@ -260,8 +261,9 @@ class Converter:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return self.rank == move.rank and self.file == move.file and self.piece.equals(
-            move.piece) and self.status == move.status and self.color == move.color and self.start_file == move.start_file and self.start_rank == move.start_rank
+        return self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece) \
+            and self.status == move.status \
+            and self.color == move.color and self.start_file == move.start_file and self.start_rank == move.start_rank
 
     def on_board(self):
         """
@@ -289,4 +291,3 @@ class Converter:
         elif self.rank == 7 and self.color == color.white:
             return True
         return False
-

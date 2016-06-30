@@ -7,6 +7,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 white = True
 black = False
 
+
 class Color:
     def __init__(self, color):
         """
@@ -34,4 +35,3 @@ class Color:
             return self.color == input_color.color
         else:
             return self.color == input_color
-

@@ -2,6 +2,7 @@ from setup.algebraic.location import Location
 from setup.algebraic import notation_const
 from setup import color
 
+
 class Move:
     string = None
     color = None
@@ -58,7 +59,9 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece) and self.status == move.status and self.color == move.color and self.start_file == move.start_file and self.start_rank == move.start_rank
+        return self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece) and self.status \
+            == move.status and self.color == move.color and self.start_file == move.start_file and self.start_rank \
+            == move.start_rank
 
     def on_board(self):
         """

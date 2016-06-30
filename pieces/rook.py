@@ -1,4 +1,4 @@
-#TODO verify code and finalize class documentation
+# TODO verify code and finalize class documentation
 
 """
 rank
@@ -66,16 +66,18 @@ class Rook(piece.Piece):
         """
         moves = []
 
-        if self.direction_moves(lambda x:x.shift_up(), position) is not None:
-            moves.extend(self.direction_moves(lambda x:x.shift_up(), position))
+        if self.direction_moves(lambda x: x.shift_up(), position) is not None:
+            moves.extend(self.direction_moves(lambda x: x.shift_up(), position))
 
-        if self.direction_moves(lambda x:x.shift_right(), position) is not None:
-            moves.extend(self.direction_moves(lambda x:x.shift_right(), position))
+        if self.direction_moves(lambda x: x.shift_right(), position) is not None:
+            moves.extend(self.direction_moves(lambda x: x.shift_right(), position))
 
-        if self.direction_moves(lambda x:x.shift_down(), position) is not None:
-            moves.extend(self.direction_moves(lambda x:x.shift_down(), position))
+        if self.direction_moves(lambda x: x.shift_down(), position) is not None:
+            moves.extend(self.direction_moves(lambda x: x.shift_down(), position))
 
-        if self.direction_moves(lambda x:x.shift_left(), position) is not None:
-            moves.extend(self.direction_moves(lambda x:x.shift_left(), position))
+        if self.direction_moves(lambda x: x.shift_left(), position) is not None:
+            moves.extend(self.direction_moves(lambda x: x.shift_left(), position))
+            
+        super(Rook, self).possible_moves(moves)
 
         return moves

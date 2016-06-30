@@ -27,8 +27,6 @@ class King(Piece):
     def __init__(self, input_color, location):
         super(King, self).__init__(input_color, location, "♚", "♔")
 
-
-
     def unfiltered(self, position):
         moves = []
 
@@ -44,5 +42,7 @@ class King(Piece):
         add(lambda x: x.shift_right())
         add(lambda x: x.shift_down())
         add(lambda x: x.shift_left())
+
+        super(King, self).possible_moves(moves)
 
         return moves

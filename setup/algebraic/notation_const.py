@@ -4,6 +4,8 @@ Class stores integer values for various special moves in algebraic notation.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
+
 MOVEMENT = 0
 
 CAPTURE = 1
@@ -19,4 +21,3 @@ PROMOTE = 5
 CAPTURE_AND_PROMOTE = 6
 
 NOT_IMPLEMENTED = 7
-

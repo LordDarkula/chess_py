@@ -18,15 +18,13 @@ class Game:
         self.position = Board.init_default()
         print("init was called")
 
-
     def start(self):
         self.white_move()
 
     def white_move(self):
         move = self.player_white.generate_move(self.position)
-        #TODO implement position change as a result of the move
+        # TODO implement position change as a result of the move
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
         # TODO implement position change as a result of the move
-
