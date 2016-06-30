@@ -18,8 +18,13 @@ class Piece:
         :type white_symbol str
         :type black_symbol str
         """
-        self.location = location
+        assert isinstance(input_color, color.Color)
+        assert isinstance(location, Location)
+        assert isinstance(white_symbol, str)
+        assert isinstance(black_symbol, str)
+
         self.color = input_color
+        self.location = location
 
         if self.color.color == color.white:
             self.symbol = white_symbol

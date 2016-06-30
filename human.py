@@ -38,7 +38,7 @@ class Player:
             raw = str(input("Enter valid " + self.color.string + "\'s move"))
             move = Converter(raw, self.color).get_move()
 
-        move = Converter(raw, self.color)
+        move = Converter(raw, self.color).get_move()
 
         return move
         # TODO eventually check move up against all_possible_moves

@@ -23,6 +23,10 @@ from setup.algebraic.location import Location
 from setup.algebraic.move import Move
 from setup.algebraic import notation_const
 from pieces.piece import Piece
+from pieces.knight import Knight
+from pieces.bishop import Bishop
+from pieces.rook import Rook
+from pieces.queen import Queen
 from setup import color
 
 
@@ -71,6 +75,24 @@ class Pawn(Piece):
             return True
         return False
 
+    def create_promotion_moves(self, location, status):
+        moves = []
+
+        move = Move(location, self, status)
+        move.promoted_to_piece = Queen(self.color, move.end_location())
+        moves.append(move)
+        move = Move(location, self, status)
+        move.promoted_to_piece = Rook(self.color, move.end_location())
+        moves.append(move)
+        move = Move(location, self, status)
+        move.promoted_to_piece = Bishop(self.color, move.end_location())
+        moves.append(move)
+        move = Move(location, self, status)
+        move.promoted_to_piece = Knight(self.color, move.end_location())
+        moves.append(move)
+
+        return moves
+
     def forward_moves(self, position):
         """
         Finds all possible forward moves
@@ -96,12 +118,11 @@ class Pawn(Piece):
             If square in front is empty add the move
             """
             if self.would_move_be_promotion(self.location):
-                status = notation_const.PROMOTE
+                possible.extend(self.create_promotion_moves(self.square_in_front(self.location),
+                                                            notation_const.PROMOTE))
             else:
-                status = notation_const.MOVEMENT
-            move = Move(self.square_in_front(self.location), self, status)
-
-            possible.append(move)
+                move = Move(self.square_in_front(self.location), self, notation_const.MOVEMENT)
+                possible.append(move)
 
             if on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
                 """
@@ -130,15 +151,11 @@ class Pawn(Piece):
                 If the capture square is nit empty and it contains a piece of opposing color add the move
                 """
                 if self.would_move_be_promotion(self.location):
-                    """
-                    If the move results in promotion take not if that
-                    """
-                    status = notation_const.CAPTURE_AND_PROMOTE
+                    moves.extend(
+                        self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
                 else:
-
-                    status = notation_const.CAPTURE
-
-                moves.append(Move(capture_square, self, status))
+                    move = Move(capture_square, self, notation_const.CAPTURE)
+                    moves.append(move)
 
         capture_square = self.square_in_front(self.location.shift_right())
         add_capture_square()
@@ -215,3 +232,6 @@ class Pawn(Piece):
         super(Pawn, self).possible_moves(moves)
 
         return moves
+
+lii = []
+
