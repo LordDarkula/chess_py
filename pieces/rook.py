@@ -43,18 +43,16 @@ class Rook(piece.Piece):
         :rtype list
         """
         possible = []
-        current = self.location
-        current = direction(current)
+        current = direction(self.location)
 
         assert isinstance(current, Location)
         while current.exit == 0 and position.is_square_empty(current):
             possible.append(Move(current, self, notation_const.MOVEMENT))
-            current = direction()
+            current = direction(current)
 
-        current = direction(current)
-
-        if current.exit == 0 and current.on_board() and not position.piece_at_square(current).color.equals(color):
-            possible.append(Move(current, self, notation_const.CAPTURE))
+        if current.exit == 0 and not position.is_square_empty(current) and not position.piece_at_square(
+                    current).color.equals(self.color):
+                possible.append(Move(current, self, notation_const.CAPTURE))
 
         return possible
 
