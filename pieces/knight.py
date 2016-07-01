@@ -42,9 +42,8 @@ class Knight(Piece):
         :rtype: list
         """
 
-        list_of_func = [lambda x:x.shift_up(), lambda x:x.shift_right(), lambda x:x.shift_down(),
-                        lambda x:x.shift_left()]
-        twice = lambda loc, function: loc.function().function()
+        list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(), lambda x: x.shift_down(),
+                        lambda x: x.shift_left()]
 
         def cycle(index):
             """
@@ -62,18 +61,23 @@ class Knight(Piece):
 
         def dest(loc, function, ind):
             """
-
+            Returns both destinations that result when the knight is moved two steps in
+            one of the cardinal directions
             :type loc Location
             :type function def
             :type ind int
             :rtype tuple
             """
-            return twice(loc, function).list_of_func[cycle(ind)[0]], twice(loc, function).list_of_func[cycle(ind)[1]]
+
+            return list_of_func[cycle(ind)[0]](function(function(loc))), list_of_func[cycle(ind)[1]](function(
+                function(loc)))
+
         moves = []
 
         for i in range(len(list_of_func)):
             dest_loc = dest(self.location, list_of_func[i], i)
-            for j in range(1):
+
+            for j in range(2):
                 if position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
                 elif not position.piece_at_square(dest_loc[j]).color.equals(self.color):

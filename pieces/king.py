@@ -35,12 +35,16 @@ class King(Piece):
                 if position.is_square_empty(function(self.location)):
                     moves.append(Move(function(self.location), self, notation_const.MOVEMENT))
 
-                elif position.piece_at_square(function(self.location)).color.equals(self.color):
+                elif not position.piece_at_square(function(self.location)).color.equals(self.color):
                     moves.append(Move(function(self.location), self, notation_const.CAPTURE))
 
         add(lambda x: x.shift_up())
+        add(lambda x: x.shift_up_right())
+        add(lambda x: x.shift_up_left())
         add(lambda x: x.shift_right())
         add(lambda x: x.shift_down())
+        add(lambda x: x.shift_down_right())
+        add(lambda x: x.shift_down_left())
         add(lambda x: x.shift_left())
 
         super(King, self).possible_moves(moves)
