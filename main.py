@@ -43,8 +43,8 @@ def main():
 
     # print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
 
-    for i in range(len(position.piece_at_square(Location(0, 4)).unfiltered(position))):
-        position.piece_at_square(Location(0, 4)).unfiltered(position)[i].print()
+    for i in range(len(position.all_possible_moves())):
+        position.all_possible_moves()[i].print()
 
 
 

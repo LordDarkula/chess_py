@@ -76,6 +76,6 @@ class Rook(piece.Piece):
         if self.direction_moves(lambda x: x.shift_left(), position) is not None:
             moves.extend(self.direction_moves(lambda x: x.shift_left(), position))
             
-        super(Rook, self).possible_moves(moves)
+        super(Rook, self).set_loc(moves)
 
         return moves

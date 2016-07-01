@@ -83,7 +83,6 @@ class Board:
     def __init__(self, position):
         """
         Initializes 8 by 8 array of objects in file pawn.py to store a chess position.
-        :type self: board.Board
         :type position: list
         """
         self.position = position
@@ -127,7 +126,6 @@ class Board:
 
                     # Tests if square on the board is not empty
                     if not self.is_square_empty(Location(i, j)):
-
                         # Adds all of piece's possible moves to moves list.
                         moves.extend(self.piece_at_square(Location(i, j)).possible_moves(self))
 

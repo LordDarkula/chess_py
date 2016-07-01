@@ -54,6 +54,6 @@ class Bishop(Piece):
         for i in range(len(moves)):
             moves[i].piece = self
             
-        super(Bishop, self).possible_moves(moves)
+        super(Bishop, self).set_loc(moves)
 
         return moves

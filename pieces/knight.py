@@ -88,6 +88,6 @@ class Knight(Piece):
                 if status != notation_const.NOT_IMPLEMENTED:
                     moves.append(Move(dest_loc[j], self, status))
 
-        super(Knight, self).possible_moves(moves)
+        super(Knight, self).set_loc(moves)
 
         return moves

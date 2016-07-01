@@ -229,7 +229,7 @@ class Pawn(Piece):
             # Adds all possible en passant moves returned by en_passant_moves
             moves.extend(self.en_passant_moves(position))
         
-        super(Pawn, self).possible_moves(moves)
+        super(Pawn, self).set_loc(moves)
 
         return moves
 
