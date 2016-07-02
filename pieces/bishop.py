@@ -19,7 +19,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from pieces.piece import Piece
 from pieces.rook import Rook
-from setup.color import Color
+from core.color import Color
 
 
 class Bishop(Piece):

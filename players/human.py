@@ -2,17 +2,16 @@
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup import board
-from setup import color
-from pieces.pawn import Pawn
-from pieces.knight import Knight
+from core import color, board
+from core.algebraic import notation_const
+from core.algebraic.location import Location
+from core.algebraic.move import Move
 from pieces.bishop import Bishop
-from pieces.rook import Rook
-from pieces.queen import Queen
 from pieces.king import King
-from setup.algebraic import notation_const
-from setup.algebraic.location import Location
-from setup.algebraic.move import Move
+from pieces.knight import Knight
+from pieces.pawn import Pawn
+from pieces.queen import Queen
+from pieces.rook import Rook
 
 
 class Player:

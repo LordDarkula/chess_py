@@ -2,7 +2,7 @@
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.board import Board
+from core.board import Board
 
 
 class Game:

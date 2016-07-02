@@ -1,6 +1,6 @@
-from setup.algebraic.location import Location
-from setup.algebraic import notation_const
-from setup import color
+from core.algebraic.location import Location
+from core.algebraic import notation_const
+from core import color
 
 
 class Move:

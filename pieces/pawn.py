@@ -19,15 +19,15 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.algebraic.location import Location
-from setup.algebraic.move import Move
-from setup.algebraic import notation_const
+from core.algebraic.location import Location
+from core.algebraic.move import Move
+from core.algebraic import notation_const
 from pieces.piece import Piece
 from pieces.knight import Knight
 from pieces.bishop import Bishop
 from pieces.rook import Rook
 from pieces.queen import Queen
-from setup import color
+from core import color
 
 
 class Pawn(Piece):

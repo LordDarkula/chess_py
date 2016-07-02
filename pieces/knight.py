@@ -19,11 +19,11 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 
-from setup.color import Color
+from core.color import Color
 from pieces.piece import Piece
-from setup.algebraic.location import Location
-from setup.algebraic.move import Move
-from setup.algebraic import notation_const
+from core.algebraic.location import Location
+from core.algebraic.move import Move
+from core.algebraic import notation_const
 
 
 class Knight(Piece):

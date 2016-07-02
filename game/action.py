@@ -2,8 +2,8 @@
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.board import Board
-from setup.algebraic.move import Move
+from core.algebraic.move import Move
+from core.board import Board
 
 
 def move_valid(position, move):

@@ -17,8 +17,7 @@ Everything starts here
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from setup.board import Board
-from setup.algebraic.location import Location
+from core.board import Board
 
 
 def main():

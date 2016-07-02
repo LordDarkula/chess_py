@@ -31,10 +31,10 @@ from pieces.bishop import Bishop
 from pieces.rook import Rook
 from pieces.queen import Queen
 from pieces.king import King
-from setup.color import Color
-from setup.algebraic.location import Location
-from setup import color
-from setup.algebraic import notation_const
+from core.color import Color
+from core.algebraic.location import Location
+from core import color
+from core.algebraic import notation_const
 from math import fabs
 
 
