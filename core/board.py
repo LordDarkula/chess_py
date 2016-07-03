@@ -133,6 +133,24 @@ class Board:
 
         return moves
 
+    def find_piece(self, piece):
+        """
+
+        :type piece Piece
+        :rtype Location
+        """
+        for i in range(len(self.position)):
+
+            for j in range(len(self.position)):
+                loc = Location(i, j)
+                if not self.is_square_empty(loc) and self.piece_at_square(loc).equals(piece):
+                    return loc
+
+        return None
+
+    def find_king(self, input_color):
+        return self.find_piece(King(input_color, Location(0, 0)))
+
     def remove_piece_at_square(self, location):
         """
         Removes piece at square
@@ -160,7 +178,7 @@ class Board:
 
     def update(self, move):
         """
-
+        Updates position by applying selected move
         :type move Move
         """
         if type(move.piece) is Pawn:

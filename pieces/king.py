@@ -17,6 +17,7 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+import copy
 
 from pieces.piece import Piece
 from core.algebraic.move import Move
@@ -27,7 +28,7 @@ class King(Piece):
     def __init__(self, input_color, location):
         super(King, self).__init__(input_color, location, "♚", "♔")
 
-    def possible_moves(self, position):
+    def unfiltered(self, position):
         moves = []
 
         def add(function):
@@ -50,3 +51,20 @@ class King(Piece):
         super(King, self).set_loc(moves)
 
         return moves
+
+    def possible_moves(self, position):
+        """
+
+        :type position Board
+        :return:
+        """
+        unfiltered = self.unfiltered(position)
+        filtered = []
+
+        for move in unfiltered:
+            test = copy.deepcopy(unfiltered)
+            test.update(move)
+            if test.find_king(self.color) is not None:
+                filtered.append(move)
+
+        return filtered

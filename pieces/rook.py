@@ -22,10 +22,10 @@ from core import color
 from core.algebraic.move import Move
 from core.algebraic.location import Location
 from core.algebraic import notation_const
-from pieces import piece
+from pieces.piece import Piece
 
 
-class Rook(piece.Piece):
+class Rook(Piece):
     def __init__(self, input_color, location):
         """
         Initializes a rook that is capable of being compared to another rook,
