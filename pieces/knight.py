@@ -78,7 +78,9 @@ class Knight(Piece):
             dest_loc = dest(self.location, list_of_func[i], i)
 
             for j in range(2):
-                if position.is_square_empty(dest_loc[j]):
+                if dest_loc[j].exit == 1:
+                    status = notation_const.NOT_IMPLEMENTED
+                elif position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
                 elif not position.piece_at_square(dest_loc[j]).color.equals(self.color):
                     status = notation_const.CAPTURE

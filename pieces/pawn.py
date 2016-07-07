@@ -145,7 +145,7 @@ class Pawn(Piece):
             """
             Adds capture moves
             """
-            if not position.is_square_empty(capture_square) and position.piece_at_square(
+            if capture_square.exit == 0 and not position.is_square_empty(capture_square) and position.piece_at_square(
                     capture_square).color.equals(not self.color.color):
                 """
                 If the capture square is nit empty and it contains a piece of opposing color add the move

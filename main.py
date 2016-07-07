@@ -18,6 +18,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from core.board import Board
+from core.algebraic.location import Location
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
     position = Board.init_default()
     position.print()
 
-    # position.move_piece(Location(0, 4), Location(5, 0))
+    position.move_piece(Location(0, 4), Location(4, 0))
     # position.move_piece(Location(6, 1), Location(4, 1))
     position.print()
 
@@ -44,7 +45,5 @@ def main():
 
     for i in range(len(position.all_possible_moves())):
         position.all_possible_moves()[i].print()
-
-
 
 main()

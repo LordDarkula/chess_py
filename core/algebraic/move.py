@@ -6,16 +6,18 @@ from core import color
 class Move:
     string = None
     color = None
-    status = notation_const.NOT_IMPLEMENTED
-    start_file = None
-    promoted_to_piece = None
-    start_rank = None
     file = None
     rank = None
+
+    status = notation_const.NOT_IMPLEMENTED
+    start_rank = None
+    start_file = None
+    promoted_to_piece = None
+
     piece = None
     exit = 0
 
-    def __init__(self, location, piece, status):
+    def __init__(self, location, piece, status, start_rank=None, start_file=None):
         """
         Alternate constructor to create move using object algebraic.Location
         :type location: algebraic.Location
@@ -28,6 +30,9 @@ class Move:
             self.status = status
             self.piece = piece
             self.color = piece.color
+
+            self.start_rank = start_rank
+            self.start_file = start_file
         else:
             self.exit = 1
 

@@ -121,15 +121,15 @@ class Board:
         moves = []
 
         # Loops through columns
-        for i in range(len(self.position)):
+        for row in self.position:
 
             # Loops through rows
-            for j in range(len(self.position[0])):
+            for piece in row:
 
                     # Tests if square on the board is not empty
-                    if not self.is_square_empty(Location(i, j)):
+                    if piece is not None:
                         # Adds all of piece's possible moves to moves list.
-                        moves.extend(self.piece_at_square(Location(i, j)).possible_moves(self))
+                        moves.extend(piece.possible_moves(self))
 
         return moves
 
