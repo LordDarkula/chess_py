@@ -184,7 +184,8 @@ class Board:
         if type(move.piece) is Pawn:
             move.piece.just_moved_two_steps = False
 
-        if move.status == notation_const.PROMOTE or move.status == notation_const.CAPTURE_AND_PROMOTE:
+        if move.status == notation_const.PROMOTE or \
+                move.status == notation_const.CAPTURE_AND_PROMOTE:
             assert isinstance(move.piece, Pawn)
 
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
@@ -198,7 +199,8 @@ class Board:
             assert isinstance(self.piece_at_square(Location(move.start_rank, move.end_location().file)), Pawn)
             self.remove_piece_at_square(Location(move.start_rank, move.end_location().file))
 
-        elif move.status == notation_const.MOVEMENT and type(move.piece) is Pawn and \
+        elif move.status == notation_const.MOVEMENT and \
+            type(move.piece) is Pawn and \
                 fabs(move.end_location().rank - move.start_rank) == 2:
                 move.piece.just_moved_two_steps = True
                 self.move_piece(Location(move.start_rank, move.start_file), move.end_location())

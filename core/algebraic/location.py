@@ -43,14 +43,16 @@ class Location:
         Finds is location on board is the same as current equation.
         :type location: algebraic.Location
         """
-        return self.rank == location.rank and self.file == location.file
+        return self.rank == location.rank and \
+            self.file == location.file
 
     def on_board(self):
         """
         Returns if the move is on the board or not.
         :rtype bool
         """
-        if -1 < self.rank < 8 and -1 < self.file < 8:
+        if -1 < self.rank < 8 and \
+                -1 < self.file < 8:
             return True
         else:
             return False
@@ -109,45 +111,26 @@ class Location:
         Finds Location shifted up right by 1
         :rtype: location.Location
         """
-        if self.rank < 7 and self.file < 7:
-            self.exit = 0
-            return self.shift_up().shift_right()
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return self.shift_up().shift_right()
 
     def shift_up_left(self):
         """
         Finds Location shifted up left by 1
         :rtype: location.Location
         """
-        if self.rank < 7 and self.file > 1:
-            self.exit = 0
-            return self.shift_up().shift_left()
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return self.shift_up().shift_left()
 
     def shift_down_right(self):
         """
         Finds Location shifted down right by 1
         :rtype: location.Location
         """
-        if self.rank > 1 and self.file < 7:
-            self.exit = 0
-            return self.shift_down().shift_right()
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return self.shift_down().shift_right()
 
     def shift_down_left(self):
         """
         Finds Location shifted down left by 1
         :rtype: location.Location
         """
-        if self.rank > 1 and self.file > 1:
-            self.exit = 0
-            return self.shift_down().shift_left()
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return self.shift_down().shift_left()
+

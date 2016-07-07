@@ -3,21 +3,21 @@ Parent class for all pieces
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-from core import color
 from core.algebraic.location import Location
-from core.algebraic import notation_const
+from core.color import Color
+from core import color
 
 
 class Piece:
     def __init__(self, input_color, location, white_symbol, black_symbol):
         """
         Initializes a piece that is capable of moving
-        :type input_color color.Color
+        :type input_color Color
         :type location Location
         :type white_symbol str
         :type black_symbol str
         """
-        assert isinstance(input_color, color.Color)
+        assert isinstance(input_color, Color)
         assert isinstance(location, Location)
         assert isinstance(white_symbol, str)
         assert isinstance(black_symbol, str)
@@ -35,13 +35,13 @@ class Piece:
         Finds out if piece is the same type and color as self
         :type piece: pieces.py *
         """
-        return type(piece) is type(self) and piece.color.equals(self.color.color)
+        return type(piece) is type(self) and piece.color.equals(self.color)
 
     def set_loc(self, moves):
         """
         Adds start_rank and start_file to moves
         :type moves list
         """
-        for i in range(len(moves)):
-            moves[i].start_rank = self.location.rank
-            moves[i].start_file = self.location.file
+        for move in moves:
+            move.start_rank = self.location.rank
+            move.start_file = self.location.file

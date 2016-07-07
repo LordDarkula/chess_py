@@ -27,6 +27,7 @@ from pieces.knight import Knight
 from pieces.bishop import Bishop
 from pieces.rook import Rook
 from pieces.queen import Queen
+from core.color import Color
 from core import color
 
 
@@ -67,11 +68,13 @@ class Pawn(Piece):
         """
 
         # If the pawn is on the second rank and black.
-        if location.rank == 1 and self.color.equals(color.black):
+        if location.rank == 1 and \
+                self.color.equals(color.black):
             return True
 
         # If the pawn is on the seventh rank and white.
-        elif location.rank == 6 and self.color.equals(color.white):
+        elif location.rank == 6 and \
+                self.color.equals(color.white):
             return True
         return False
 
@@ -145,14 +148,14 @@ class Pawn(Piece):
             """
             Adds capture moves
             """
-            if capture_square.exit == 0 and not position.is_square_empty(capture_square) and position.piece_at_square(
-                    capture_square).color.equals(not self.color.color):
+            if capture_square.exit == 0 and \
+                    not position.is_square_empty(capture_square) and \
+                    position.piece_at_square(capture_square).color.equals(not self.color.color):
                 """
                 If the capture square is nit empty and it contains a piece of opposing color add the move
                 """
                 if self.would_move_be_promotion(self.location):
-                    moves.extend(
-                        self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
+                    moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
                 else:
                     move = Move(capture_square, self, notation_const.CAPTURE)
                     moves.append(move)
@@ -175,10 +178,12 @@ class Pawn(Piece):
             """
             Finds out if pawn is on enemy center rank.
             """
-            if self.color.equals(color.white) and self.location.rank == 4:
+            if self.color.equals(color.white) and \
+                    self.location.rank == 4:
                 return True
 
-            elif self.color.equals(color.black) and self.location.rank == 3:
+            elif self.color.equals(color.black) and \
+                    self.location.rank == 3:
                 return True
 
             return False
@@ -188,10 +193,10 @@ class Pawn(Piece):
             Finds if their is opponent's pawn is next to this pawn
             :rtype: bool
             """
-            return my_location.exit == 0 and not position.is_square_empty(my_location) and \
-                position.piece_at_square(my_location).equals(Pawn(color.Color(not self.color), my_location)) \
-                and position.piece_at_square(
-                my_location).just_moved_two_steps
+            return my_location.exit == 0 and \
+                not position.is_square_empty(my_location) and \
+                position.piece_at_square(my_location).equals(Pawn(Color(not self.color), my_location)) and \
+                position.piece_at_square(my_location).just_moved_two_steps
 
         # if pawn is not on a valid en passant location then return None
         if on_en_passant_valid_location():

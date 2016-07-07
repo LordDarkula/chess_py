@@ -64,19 +64,20 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return self.rank == move.rank and self.file == move.file and self.piece.equals(move.piece) and self.status \
-            == move.status and self.color == move.color and self.start_file == move.start_file and self.start_rank \
-            == move.start_rank
+        return self.rank == move.rank and \
+            self.file == move.file and \
+            self.piece.equals(move.piece) and \
+            self.status == move.status and \
+            self.color == move.color and \
+            self.start_file == move.start_file and \
+            self.start_rank == move.start_rank
 
     def on_board(self):
         """
         Determines whether move exists.
         :rtype bool
         """
-        if self.rank is not None and self.file is not None and -1 < self.rank < 8 and -1 < self.file < 8:
-            return True
-        else:
-            return False
+        return self.end_location().on_board()
 
     def end_location(self):
         """
@@ -89,10 +90,13 @@ class Move:
         """
         Finds if move from current location
         """
-        if self.rank == 0 and self.color == color.black:
+        if self.rank == 0 and \
+                self.color == color.black:
             return True
-        elif self.rank == 7 and self.color == color.white:
+        elif self.rank == 7 and \
+                self.color == color.white:
             return True
+
         return False
 
     def print(self):
