@@ -19,7 +19,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 from core.board import Board
 from core.algebraic.location import Location
-
+from core.color import Color
 
 def main():
     """
@@ -35,15 +35,15 @@ def main():
     position = Board.init_default()
     position.print()
 
-    position.move_piece(Location(0, 4), Location(4, 0))
-    # position.move_piece(Location(6, 1), Location(4, 1))
+    # position.move_piece(Location(0, 4), Location(5, 4))
+    # position.remove_piece_at_square(Location(7, 0))
     position.print()
 
     # position.piece_at_square(Location(4, 1)).just_moved_two_steps = True
 
     # print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
 
-    for i in range(len(position.all_possible_moves())):
-        position.all_possible_moves()[i].print()
+    for i in range(len(position.all_possible_moves(Color(True)))):
+        position.all_possible_moves(Color(True))[i].print()
 
 main()

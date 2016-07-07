@@ -36,6 +36,7 @@ from core.algebraic.location import Location
 from core import color
 from core.algebraic import notation_const
 from math import fabs
+import copy
 
 
 class Board:
@@ -113,7 +114,7 @@ class Board:
         """
         return self.position[location.rank][location.file] is None
 
-    def all_possible_moves(self):
+    def unfiltered(self, input_color):
         """
         Returns list of all possible moves
         :rtype list
@@ -127,11 +128,34 @@ class Board:
             for piece in row:
 
                     # Tests if square on the board is not empty
-                    if piece is not None:
+                    if piece is not None and piece.color.equals(input_color):
                         # Adds all of piece's possible moves to moves list.
                         moves.extend(piece.possible_moves(self))
 
         return moves
+
+    def all_possible_moves(self, input_color):
+        unfiltered = self.unfiltered(input_color)
+
+        if not self.find_king(Color(color.white)) and \
+                self.find_king(Color(color.black)):
+            return unfiltered
+
+        filtered = []
+
+        if self.find_king(Color(color.white)):
+            checked = Color(color.white)
+            print("White king in check")
+        else:
+            checked = Color(color.black)
+
+        for move in unfiltered:
+            test = copy.deepcopy(self)
+            test.update(move)
+            if not test.piece_at_square(test.find_king(checked)).in_check(test):
+                filtered.append(move)
+
+        return filtered
 
     def find_piece(self, piece):
         """
@@ -189,7 +213,7 @@ class Board:
             assert isinstance(move.piece, Pawn)
 
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
-            self.place_piece_at_square(move.promoted_to_piece, move.end_location)
+            self.place_piece_at_square(move.promoted_to_piece, move.end_location())
 
         elif move.status == notation_const.EN_PASSANT:
             assert isinstance(move.piece, Pawn)
@@ -202,11 +226,11 @@ class Board:
         elif move.status == notation_const.MOVEMENT and \
             type(move.piece) is Pawn and \
                 fabs(move.end_location().rank - move.start_rank) == 2:
-                move.piece.just_moved_two_steps = True
-                self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
+            move.piece.just_moved_two_steps = True
+            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
         else:
-                self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
+            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
     def print(self):
         """

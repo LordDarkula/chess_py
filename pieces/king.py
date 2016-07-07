@@ -69,6 +69,18 @@ class King(Piece):
 
         return moves
 
+    def in_check(self, position):
+        """
+
+        :type position Board
+        :return:
+        """
+        for enemy_move in self.enemy_moves(position):
+
+            if enemy_move.end_location().equals(self.location):
+                return True
+        return False
+
     def possible_moves(self, position):
         """
 
@@ -83,6 +95,7 @@ class King(Piece):
             test = copy.deepcopy(position)
             test.update(move)
             legal = True
+            """
             for enemy_move in self.enemy_moves(test):
 
                 if enemy_move.end_location().equals(move.end_location()):
@@ -90,6 +103,10 @@ class King(Piece):
                     legal = False
                     break
             if legal:
+                filtered.append(move)
+                """
+            test_king = test.piece_at_square(move.end_location())
+            if not test_king.in_check(test):
                 filtered.append(move)
 
         return filtered

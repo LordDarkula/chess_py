@@ -80,19 +80,16 @@ class Pawn(Piece):
 
     def create_promotion_moves(self, location, status):
         moves = []
+        move = Move(location, self, status, start_rank=self.location.rank, start_file=self.location.file)
 
-        move = Move(location, self, status)
-        move.promoted_to_piece = Queen(self.color, move.end_location())
-        moves.append(move)
-        move = Move(location, self, status)
-        move.promoted_to_piece = Rook(self.color, move.end_location())
-        moves.append(move)
-        move = Move(location, self, status)
-        move.promoted_to_piece = Bishop(self.color, move.end_location())
-        moves.append(move)
-        move = Move(location, self, status)
-        move.promoted_to_piece = Knight(self.color, move.end_location())
-        moves.append(move)
+        def create_each_move(piece):
+            move.promoted_to_piece = piece(self.color, move.end_location())
+            moves.append(move)
+
+        create_each_move(Queen)
+        create_each_move(Rook)
+        create_each_move(Bishop)
+        create_each_move(Knight)
 
         return moves
 
@@ -124,7 +121,7 @@ class Pawn(Piece):
                 possible.extend(self.create_promotion_moves(self.square_in_front(self.location),
                                                             notation_const.PROMOTE))
             else:
-                move = Move(self.square_in_front(self.location), self, notation_const.MOVEMENT)
+                move = Move(self.square_in_front(self.location), self, notation_const.MOVEMENT, start_rank=self.location.rank, start_file=self.location.file)
                 possible.append(move)
 
             if on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
@@ -132,7 +129,7 @@ class Pawn(Piece):
                 If two squares in front of the pawn is empty add the move
                 """
                 possible.append(Move(self.square_in_front(self.square_in_front(self.location)), self,
-                                notation_const.MOVEMENT))
+                                notation_const.MOVEMENT, start_rank=self.location.rank, start_file=self.location.file))
 
             return possible
 
@@ -157,7 +154,9 @@ class Pawn(Piece):
                 if self.would_move_be_promotion(self.location):
                     moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
                 else:
-                    move = Move(capture_square, self, notation_const.CAPTURE)
+                    move = Move(capture_square, self, notation_const.CAPTURE, start_rank=self.location.rank,
+                                start_file=self.location.file)
+
                     moves.append(move)
 
         capture_square = self.square_in_front(self.location.shift_right())
@@ -204,12 +203,14 @@ class Pawn(Piece):
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_right()):
                 possible.append(Move(self.square_in_front(self.location.shift_right()), self,
-                                     notation_const.EN_PASSANT))
+                                     notation_const.EN_PASSANT, start_rank=self.location.rank,
+                                     start_file=self.location.file))
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_left()):
                 possible.append(Move(self.square_in_front(self.location.shift_left()), self,
-                                     notation_const.EN_PASSANT))
+                                     notation_const.EN_PASSANT, start_rank=self.location.rank,
+                                     start_file=self.location.file))
 
         return possible
 

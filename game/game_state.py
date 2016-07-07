@@ -5,7 +5,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 
-def isStalemate(position):
+def no_moves(position):
     """
 
     :type position Board
@@ -14,5 +14,12 @@ def isStalemate(position):
     return position.all_possible_moves() is None
 
 
-def isCheckmate(position):
-    pass
+def isCheckmate(position, color):
+    """
+
+    :param position:
+    :param color:
+    :return:
+    """
+    return no_moves(position) and \
+        position.piece_at_square(position.find_king(color)).in_check()
