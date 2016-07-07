@@ -94,18 +94,9 @@ class King(Piece):
         for move in unfiltered:
             test = copy.deepcopy(position)
             test.update(move)
-            legal = True
-            """
-            for enemy_move in self.enemy_moves(test):
 
-                if enemy_move.end_location().equals(move.end_location()):
-
-                    legal = False
-                    break
-            if legal:
-                filtered.append(move)
-                """
             test_king = test.piece_at_square(move.end_location())
+
             if not test_king.in_check(test):
                 filtered.append(move)
 

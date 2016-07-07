@@ -18,8 +18,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from core.board import Board
-from core.algebraic.location import Location
 from core.color import Color
+
 
 def main():
     """
