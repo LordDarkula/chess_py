@@ -45,6 +45,7 @@ class Board:
     Initialized upon startup and is used when init_default constructor is used
 
     """
+    # Initializes global variable to use when initializing default_position.
     white = color.white
     black = color.black
 
@@ -117,6 +118,7 @@ class Board:
     def unfiltered(self, input_color):
         """
         Returns list of all possible moves
+        :type input_color Color
         :rtype list
         """
         moves = []
@@ -135,6 +137,11 @@ class Board:
         return moves
 
     def all_possible_moves(self, input_color):
+        """
+        Filters list of moves and returns all legal moves
+        :type input_color Color
+        :rtype list
+        """
         unfiltered = self.unfiltered(input_color)
 
         if not self.find_king(Color(color.white)) and \
@@ -159,7 +166,8 @@ class Board:
 
     def find_piece(self, piece):
         """
-
+        Finds Location of the first piece that matches piece.
+        If none is found, None is returned.
         :type piece Piece
         :rtype Location
         """
@@ -167,12 +175,18 @@ class Board:
 
             for j in range(len(self.position)):
                 loc = Location(i, j)
-                if not self.is_square_empty(loc) and self.piece_at_square(loc).equals(piece):
+                if not self.is_square_empty(loc) and \
+                        self.piece_at_square(loc).equals(piece):
                     return loc
 
         return None
 
     def find_king(self, input_color):
+        """
+        Finds the king of input_color
+        :type input_color Color
+        :rtype Location
+        """
         return self.find_piece(King(input_color, Location(0, 0)))
 
     def remove_piece_at_square(self, location):

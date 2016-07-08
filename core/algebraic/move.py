@@ -37,13 +37,15 @@ class Move:
             self.exit = 1
 
     @classmethod
-    def init_manual(cls, rank, file, piece, status):
+    def init_manual(cls, rank, file, piece, status, start_rank=None, start_file=None):
         """
         Alternate constructor to create move using integer location
         :type rank: int
         :type file: int
-        :type piece: Pawn.pawn, Knight.knight, Bishop.bishop, Rook.rook, Queen.queen, King.king
+        :type piece: Piece
         :type status int
+        :type start_rank int
+        :type start_file int
         """
         if cls.on_board:
             cls.rank = rank
@@ -51,10 +53,12 @@ class Move:
             cls.status = status
             cls.piece = piece
             cls.color = piece.color
+            cls.start_rank = start_rank
+            cls.start_file = start_file
             return cls
         else:
             cls.exit = 1
-            return None
+            return cls
 
     def validate(self):
         self.exit = self.end_location().exit

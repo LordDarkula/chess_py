@@ -238,6 +238,3 @@ class Pawn(Piece):
         super(Pawn, self).set_loc(moves)
 
         return moves
-
-lii = []
-

@@ -62,49 +62,28 @@ class Location:
         Finds Location shifted up by 1
         :rtype: algebraic.Location
         """
-        if self.rank < 7:
-            self.exit = 0
-            return Location(self.rank + 1, self.file)
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return Location(self.rank + 1, self.file)
 
     def shift_down(self):
         """
         Finds Location shifted down by 1
         :rtype: algebraic.Location
         """
-        if self.rank > 0:
-            self.exit = 0
-            return Location(self.rank - 1, self.file)
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return Location(self.rank - 1, self.file)
 
     def shift_right(self):
         """
         Finds Location shifted right by 1
         :rtype: algebraic.Location
         """
-        if self.file < 7:
-            self.exit = 0
-            return Location(self.rank, self.file + 1)
-
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return Location(self.rank, self.file + 1)
 
     def shift_left(self):
         """
         Finds Location shifted left by 1
         :rtype: location.Location
         """
-        if self.file > 0:
-            self.exit = 0
-            return Location(self.rank, self.file - 1)
-        else:
-            loc = Location(69, 69, ex=1)
-            return loc
+        return Location(self.rank, self.file - 1)
 
     def shift_up_right(self):
         """

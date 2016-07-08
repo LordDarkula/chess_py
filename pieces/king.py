@@ -25,9 +25,19 @@ from core.algebraic import notation_const
 
 class King(Piece):
     def __init__(self, input_color, location):
+        """
+        Creates a King.
+        :type input_color Color
+        :type location Location
+        """
         super(King, self).__init__(input_color, location, "♚", "♔")
 
     def unfiltered(self, position):
+        """
+        Generates list of possible moves
+        :type position Board
+        :rtype list
+        """
         moves = []
 
         def add(function):
@@ -71,7 +81,7 @@ class King(Piece):
 
     def in_check(self, position):
         """
-
+        Finds if the king is in check
         :type position Board
         :return:
         """
@@ -83,9 +93,9 @@ class King(Piece):
 
     def possible_moves(self, position):
         """
-
+        Filters unfiltered moves so King cannot walk into check.
         :type position Board
-        :return:
+        :rtype list
         """
 
         unfiltered = self.unfiltered(position)
