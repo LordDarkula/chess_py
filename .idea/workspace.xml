@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/algebraic/location.py" afterPath="$PROJECT_DIR$/core/algebraic/location.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/algebraic/move.py" afterPath="$PROJECT_DIR$/core/algebraic/move.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/board.py" afterPath="$PROJECT_DIR$/core/board.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/king.py" afterPath="$PROJECT_DIR$/pieces/king.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pieces/pawn.py" afterPath="$PROJECT_DIR$/pieces/pawn.py" />
-    </list>
+    <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="" />
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -75,16 +69,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="king.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="king.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pieces/king.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2200">
-              <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
+            <state relative-caret-position="2442">
+              <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
               <folding>
                 <element signature="e#313#324#0" expanded="true" />
-                <marker date="1467953157000" expanded="true" signature="511:614" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-                <marker date="1467953157000" expanded="true" signature="2228:2504" placeholder="..." />
-                <marker date="1467953157000" expanded="true" signature="2786:3010" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -126,7 +117,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/board.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="174">
@@ -1066,19 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pieces/king.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
-          <caret line="107" column="22" selection-start-line="107" selection-start-column="22" selection-end-line="107" selection-end-column="22" />
-          <folding>
-            <element signature="e#313#324#0" expanded="true" />
-            <marker date="1467953157000" expanded="true" signature="511:614" placeholder="&quot;&quot;&quot;...&quot;&quot;&quot;" />
-            <marker date="1467953157000" expanded="true" signature="2228:2504" placeholder="..." />
-            <marker date="1467953157000" expanded="true" signature="2786:3010" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pieces/pawn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4972">
@@ -1102,6 +1080,16 @@
             <element signature="e#3750#3956#0" expanded="false" />
             <element signature="e#6193#6332#0" expanded="false" />
             <element signature="e#8327#8885#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pieces/king.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2442">
+          <caret line="111" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+          <folding>
+            <element signature="e#313#324#0" expanded="true" />
           </folding>
         </state>
       </provider>

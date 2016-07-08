@@ -1,20 +1,37 @@
 """
-Contains all classes that store and manipulate algebraic notation.
-All algebraic inputs are converted and stored internally as . . .
+Class stores Locations on the Board.
+Locations must be on the board to be initialized properly.
+Global Vars:
+    rank: int
+    file: int
+    exit: int
 
-rank and file - integers from 0 to 7
-piece - child of Piece
-color - Color
+Methods:
+    __init__(self, rank, file, ex=0)
+
+    equals(self, location)
+    on_board(self)
+
+    shift_up(self)
+    shift_down(self)
+    shift_right(self)
+    shift_left(self)
+
+    shift_up_right(self)
+    shift_up_left(self)
+    shift_down_right(self)
+    shift_down_left(self)
+
 
 rank
-7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
-6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+7 8 ║… … … … … … … …
+6 7 ║… … … … … … … …
 5 6 ║… … … … … … … …
 4 5 ║… … … … … … … …
 3 4 ║… … … … … … … …
 2 3 ║… … … … … … … …
-1 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
-0 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+1 2 ║… … … … … … … …
+0 1 ║… … … … … … … …
 ----╚═══════════════
 ——---a b c d e f g h
 -----0 1 2 3 4 5 6 7

@@ -1,3 +1,6 @@
+"""
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
+"""
 from core.algebraic.location import Location
 from core.algebraic import notation_const
 from core import color
