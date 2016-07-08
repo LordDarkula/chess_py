@@ -1,27 +1,8 @@
 """
 Class stores Locations on the Board.
 Locations must be on the board to be initialized properly.
-Global Vars:
-    rank: int
-    file: int
-    exit: int
-
-Methods:
-    __init__(self, rank, file, ex=0)
-
-    equals(self, location)
-    on_board(self)
-
-    shift_up(self)
-    shift_down(self)
-    shift_right(self)
-    shift_left(self)
-
-    shift_up_right(self)
-    shift_up_left(self)
-    shift_down_right(self)
-    shift_down_left(self)
-
+rank - y coordinate from 0 to 7
+file - x coordinate from 0 to 7
 
 rank
 7 8 ║… … … … … … … …

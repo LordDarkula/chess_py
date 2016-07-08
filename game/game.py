@@ -1,4 +1,8 @@
 """
+Class that holds state of a game.
+Start game using play(), which returns the result
+when the game is finished.
+
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
@@ -21,10 +25,16 @@ class Game:
         self.position = Board.init_default()
         print("init was called")
 
-    def start(self):
-        self.play()
-
     def play(self):
+        """
+        Starts game and returns one of 3 results . .
+
+        1 - White wins
+        0.5 - Draw
+        0 - Black wins
+
+        :rtype int
+        """
         colors = [self.white_move(), self.black_move()]
         colors = itertools.cycle(colors)
 
@@ -42,11 +52,9 @@ class Game:
             color()
 
     def white_move(self):
-        if no_moves(self.position):
-            exit()
         move = self.player_white.generate_move(self.position)
-        # TODO implement position change as a result of the move
+        self.position.update(move)
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
-        # TODO implement position change as a result of the move
+        self.position.update(move)

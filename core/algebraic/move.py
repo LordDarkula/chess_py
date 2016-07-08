@@ -1,4 +1,11 @@
 """
+Class that stores chess moves.
+Destination, status and piece making move are required
+to initialize Move.
+
+status - integer value describing type of move
+with meaning defined in notation_const.py
+
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 from core.algebraic.location import Location
@@ -64,6 +71,10 @@ class Move:
             return cls
 
     def validate(self):
+        """
+        Finds if destination is on board.
+        :rtype bool
+        """
         self.exit = self.end_location().exit
 
     def equals(self, move):
