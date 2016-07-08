@@ -22,4 +22,4 @@ def isCheckmate(position, color):
     :return:
     """
     return no_moves(position) and \
-        position.piece_at_square(position.find_king(color)).in_check()
+        position.piece_at_square(position.find_king(color)).in_check(position)

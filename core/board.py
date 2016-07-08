@@ -144,22 +144,15 @@ class Board:
         """
         unfiltered = self.unfiltered(input_color)
 
-        if not self.find_king(Color(color.white)) and \
-                self.find_king(Color(color.black)):
+        if not self.piece_at_square(self.find_king(input_color)).in_check(self):
             return unfiltered
 
         filtered = []
 
-        if self.find_king(Color(color.white)):
-            checked = Color(color.white)
-            print("White king in check")
-        else:
-            checked = Color(color.black)
-
         for move in unfiltered:
             test = copy.deepcopy(self)
             test.update(move)
-            if not test.piece_at_square(test.find_king(checked)).in_check(test):
+            if not test.piece_at_square(test.find_king(input_color)).in_check(test):
                 filtered.append(move)
 
         return filtered

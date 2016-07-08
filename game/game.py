@@ -3,6 +3,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from core.board import Board
+from game.game_state import *
 
 
 class Game:
@@ -22,6 +23,8 @@ class Game:
         self.white_move()
 
     def white_move(self):
+        if no_moves(self.position):
+            exit()
         move = self.player_white.generate_move(self.position)
         # TODO implement position change as a result of the move
 
