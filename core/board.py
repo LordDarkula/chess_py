@@ -144,7 +144,7 @@ class Board:
         """
         unfiltered = self.unfiltered(input_color)
 
-        if not self.piece_at_square(self.find_king(input_color)).in_check(self):
+        if not self.get_king(input_color).in_check(self):
             return unfiltered
 
         filtered = []
@@ -152,7 +152,7 @@ class Board:
         for move in unfiltered:
             test = copy.deepcopy(self)
             test.update(move)
-            if not test.piece_at_square(test.find_king(input_color)).in_check(test):
+            if not test.get_king(input_color).in_check(test):
                 filtered.append(move)
 
         return filtered
@@ -181,6 +181,9 @@ class Board:
         :rtype Location
         """
         return self.find_piece(King(input_color, Location(0, 0)))
+
+    def get_king(self, input_color):
+        return self.piece_at_square(self.find_king(input_color))
 
     def remove_piece_at_square(self, location):
         """

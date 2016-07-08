@@ -22,6 +22,14 @@ class Color:
             self.string = "black"
 
     @classmethod
+    def init_white(cls):
+        return cls(white)
+
+    @classmethod
+    def init_black(cls):
+        return cls(black)
+
+    @classmethod
     def init_raw(cls, raw):
         cls.color = raw == "white"
         cls.string = raw

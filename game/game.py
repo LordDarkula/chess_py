@@ -3,7 +3,9 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from core.board import Board
+from core.color import Color
 from game.game_state import *
+import itertools
 
 
 class Game:
@@ -20,7 +22,24 @@ class Game:
         print("init was called")
 
     def start(self):
-        self.white_move()
+        self.play()
+
+    def play(self):
+        colors = [self.white_move(), self.black_move()]
+        colors = itertools.cycle(colors)
+
+        while True:
+            color = next(colors)
+            if no_moves(self.position):
+                if self.position.get_king(Color.init_black()).in_check():
+                    return 1
+
+                elif self.position.get_king(Color.init_white()).in_check():
+                    return 0
+                else:
+                    return 0.5
+
+            color()
 
     def white_move(self):
         if no_moves(self.position):
