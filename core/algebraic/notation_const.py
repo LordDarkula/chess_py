@@ -1,6 +1,6 @@
 
 """
-Class stores integer values for various special moves in algebraic notation.
+Class stores integer values for various types of moves in algebraic notation.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """

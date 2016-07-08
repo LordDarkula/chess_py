@@ -1,5 +1,6 @@
 """
-Somehow check to see if king is under check, checkmate, it is stalemate, or draw occurs
+Static methods which check to see if
+game is over, and if a King is checkmated.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
@@ -7,19 +8,19 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 def no_moves(position):
     """
-
+    Finds if the game is over.
     :type position Board
-    :return:
+    :rtype bool
     """
     return position.all_possible_moves() is None
 
 
-def isCheckmate(position, color):
+def is_checkmate(position, color):
     """
-
-    :param position:
-    :param color:
-    :return:
+    Finds if particular King is checkmated.
+    :type position Board
+    :type color Color
+    :rtype bool
     """
     return no_moves(position) and \
         position.piece_at_square(position.find_king(color)).in_check(position)

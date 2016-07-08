@@ -25,6 +25,8 @@ and black home row is at index 7
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from core.algebraic.location import Location
+from core.algebraic import notation_const
 from pieces.pawn import Pawn
 from pieces.knight import Knight
 from pieces.bishop import Bishop
@@ -32,9 +34,7 @@ from pieces.rook import Rook
 from pieces.queen import Queen
 from pieces.king import King
 from core.color import Color
-from core.algebraic.location import Location
 from core import color
-from core.algebraic import notation_const
 from math import fabs
 import copy
 
@@ -95,7 +95,7 @@ class Board:
     def init_default(cls):
         """
         Alternate init method for default starting position
-        :return: board.Board
+        :rtype Board
         """
         return cls(cls.default_position)
 
@@ -176,13 +176,18 @@ class Board:
 
     def find_king(self, input_color):
         """
-        Finds the king of input_color
+        Finds the Location of the King of input_color
         :type input_color Color
         :rtype Location
         """
         return self.find_piece(King(input_color, Location(0, 0)))
 
     def get_king(self, input_color):
+        """
+        Returns King of input_color
+        :type input_color Color
+        :rtype King
+        """
         return self.piece_at_square(self.find_king(input_color))
 
     def remove_piece_at_square(self, location):
