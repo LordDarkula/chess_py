@@ -9,6 +9,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from core.board import Board
 from core.color import Color
 from game.game_state import *
+from core.algebraic.converter import *
 import itertools
 
 
@@ -39,7 +40,7 @@ class Game:
         colors = itertools.cycle(colors)
 
         while True:
-            color = next(colors)
+            color_fn = next(colors)
             if no_moves(self.position):
                 if self.position.get_king(Color.init_black()).in_check():
                     return 1
@@ -49,12 +50,17 @@ class Game:
                 else:
                     return 0.5
 
-            color()
+            color_fn()
 
     def white_move(self):
         move = self.player_white.generate_move(self.position)
+        move = make_legal(move, self.position)
         self.position.update(move)
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
+        move = make_legal(move, self.position)
         self.position.update(move)
+
+    def all_possible_moves(self, input_color):
+        return self.position.all_possible_moves(input_color)

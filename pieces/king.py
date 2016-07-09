@@ -19,7 +19,6 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 import copy
 from pieces.piece import Piece
-from pieces.rook import Rook
 from core.algebraic.location import Location
 from core.algebraic.move import Move
 from core.algebraic import notation_const
