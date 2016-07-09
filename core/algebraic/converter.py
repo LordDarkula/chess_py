@@ -158,11 +158,13 @@ def make_legal(move, position):
                             move.status == notation_const.QUEEN_SIDE_CASTLE:
                 return test_move
 
-            if move.start_rank is not test_move.start_rank or \
-                    move.start_file is not test_move.start_file:
+            if move.start_rank is not None and move.start_rank is not test_move.start_rank:
                 continue
 
-            if move.promoted_to_piece is not test_move.promoted_to_piece:
+            if move.start_file is not None and move.start_file is not test_move.start_file:
+                continue
+
+            if move.promoted_to_piece is not None and move.promoted_to_piece is not test_move.promoted_to_piece:
                 continue
 
             return test_move

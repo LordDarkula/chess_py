@@ -68,6 +68,9 @@ class King(Piece):
 
         if not self.has_moved:
 
+            test = copy.deepcopy(position)
+            test.find_king(self.color)
+
             # Adds kingside castle
             if position.piece_at_square(Location(edge_rank(), 7)) is not None and \
                 position.piece_at_square(Location(edge_rank(), 7))\
