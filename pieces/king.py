@@ -66,26 +66,22 @@ class King(Piece):
                 return 0
             return 7
 
+        def add_castle(direction, status, rook_file):
+            if not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
+                test = copy.deepcopy(position)
+                test_king_loc = test.find_king(self.color)
+
+                if position.is_square_empty(direction(test_king_loc)) and position.is_square_empty(
+                        direction(direction(test_king_loc))):
+                    test.move_piece(test_king_loc, direction(test_king_loc))
+
+                    if not test.get_king(self.color).in_check:
+                        moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
+                                     status=status))
+
         if not self.has_moved:
-
-            test = copy.deepcopy(position)
-            test.find_king(self.color)
-
-            # Adds kingside castle
-            if position.piece_at_square(Location(edge_rank(), 7)) is not None and \
-                position.piece_at_square(Location(edge_rank(), 7))\
-                        .equals(Rook(self.color, Location(edge_rank(), 7))) and \
-                    not position.piece_at_square(Location(edge_rank(), 7)).has_moved:
-                moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
-                                  status=notation_const.KING_SIDE_CASTLE))
-
-            # Adds queenside castle
-            if position.piece_at_square(Location(edge_rank(), 0)) is not None and \
-                position.piece_at_square(Location(edge_rank(), 0)) \
-                        .equals(Rook(self.color, Location(edge_rank(), 0))) and \
-                    not position.piece_at_square(Location(edge_rank(), 0)).has_moved:
-                moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
-                                  status=notation_const.QUEEN_SIDE_CASTLE))
+            add_castle(lambda x: x.shift_right(), notation_const.KING_SIDE_CASTLE, 7)
+            add_castle(lambda x: x.shift_left(), notation_const.QUEEN_SIDE_CASTLE, 0)
 
         super(King, self).set_loc(moves)
 
