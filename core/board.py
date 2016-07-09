@@ -255,6 +255,9 @@ class Board:
         else:
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
+        if type(move.piece) is King or type(move.piece) is Rook:
+            move.piece.has_moved = True
+
     def print(self):
         """
         Prints current position in console

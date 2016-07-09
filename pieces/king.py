@@ -19,8 +19,11 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 import copy
 from pieces.piece import Piece
+from pieces.rook import Rook
+from core.algebraic.location import Location
 from core.algebraic.move import Move
 from core.algebraic import notation_const
+from core import color
 
 
 class King(Piece):
@@ -30,6 +33,7 @@ class King(Piece):
         :type input_color Color
         :type location Location
         """
+        self.has_moved = False
         super(King, self).__init__(input_color, location, "♚", "♔")
 
     def unfiltered(self, position):
@@ -56,6 +60,29 @@ class King(Piece):
         add(lambda x: x.shift_down_right())
         add(lambda x: x.shift_down_left())
         add(lambda x: x.shift_left())
+
+        def edge_rank():
+            if self.color.equals(color.white):
+                return 0
+            return 7
+
+        if not self.has_moved:
+
+            # Adds kingside castle
+            if position.piece_at_square(Location(edge_rank(), 7)) is not None and \
+                position.piece_at_square(Location(edge_rank(), 7))\
+                        .equals(Rook(self.color, Location(edge_rank(), 7))) and \
+                    not position.piece_at_square(Location(edge_rank(), 7)).has_moved:
+                moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
+                                  status=notation_const.KING_SIDE_CASTLE))
+
+            # Adds queenside castle
+            if position.piece_at_square(Location(edge_rank(), 0)) is not None and \
+                position.piece_at_square(Location(edge_rank(), 0)) \
+                        .equals(Rook(self.color, Location(edge_rank(), 0))) and \
+                    not position.piece_at_square(Location(edge_rank(), 0)).has_moved:
+                moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
+                                  status=notation_const.QUEEN_SIDE_CASTLE))
 
         super(King, self).set_loc(moves)
 

@@ -32,7 +32,7 @@ class Rook(Piece):
         and returning a list of possible moves.
         :type input_color color.Color
         """
-
+        self.has_moved = False
         super(Rook, self).__init__(input_color, location, "♜", "♖")
 
     def direction_moves(self, direction, position):
