@@ -19,6 +19,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 from core.board import Board
 from core.color import Color
+from game.game import Game
+from players import human
 
 
 def main():
@@ -28,10 +30,10 @@ def main():
     print("New game creating")
 
     # Creates new game with human players for both white and black.
-    """
-    new_game = game.Game(human.Player(color.Color(color.white)), human.Player(color.Color(color.black)))
-    new_game.start()
-    """
+
+    new_game = Game(human.Player(Color.init_white()), human.Player(Color.init_black()))
+    new_game.play()
+
     position = Board.init_default()
     position.print()
 

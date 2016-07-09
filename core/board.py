@@ -220,6 +220,14 @@ class Board:
         Updates position by applying selected move
         :type move Move
         """
+        if move.status == notation_const.KING_SIDE_CASTLE:
+            self.move_piece(Location(move.rank, 4), Location(move.rank, 6))
+            self.move_piece(Location(move.rank, 7), Location(move.rank, 5))
+
+        if move.status == notation_const.QUEEN_SIDE_CASTLE:
+            self.move_piece(Location(move.rank, 4), Location(move.rank, 2))
+            self.move_piece(Location(move.rank, 0), Location(move.rank, 3))
+
         if type(move.piece) is Pawn:
             move.piece.just_moved_two_steps = False
 

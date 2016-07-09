@@ -27,7 +27,7 @@ class Move:
     piece = None
     exit = 0
 
-    def __init__(self, location, piece, status, start_rank=None, start_file=None):
+    def __init__(self, location, piece, status, start_rank=None, start_file=None, string=None, promoted_to_piece=None):
         """
         Alternate constructor to create move using object algebraic.Location
         :type location: algebraic.Location
@@ -43,32 +43,11 @@ class Move:
 
             self.start_rank = start_rank
             self.start_file = start_file
+            self.promoted_to_piece = promoted_to_piece
+
+            self.string = string
         else:
             self.exit = 1
-
-    @classmethod
-    def init_manual(cls, rank, file, piece, status, start_rank=None, start_file=None):
-        """
-        Alternate constructor to create move using integer location
-        :type rank: int
-        :type file: int
-        :type piece: Piece
-        :type status int
-        :type start_rank int
-        :type start_file int
-        """
-        if cls.on_board:
-            cls.rank = rank
-            cls.file = file
-            cls.status = status
-            cls.piece = piece
-            cls.color = piece.color
-            cls.start_rank = start_rank
-            cls.start_file = start_file
-            return cls
-        else:
-            cls.exit = 1
-            return cls
 
     def validate(self):
         """
