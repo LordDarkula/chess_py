@@ -143,15 +143,31 @@ def to_move(algebraic_string, input_color):
         return None
 
 
-def get_move(location, piece, status, start_rank, start_file, string, promoted_to_piece):
-    return Move(location=location, piece=piece, status=status,
-                start_rank=start_rank, start_file=start_file, string=string,
-                promoted_to_piece=promoted_to_piece)
+def make_legal(move, position):
+    """
+
+    :type move Move
+    :type position Board
+    :rtype Move
+    """
+    for test_move in position.all_possible_moves(move.color):
+
+        # Checks for basic equality of essential elements
+        if move.equals(test_move):
+            if move.status == notation_const.KING_SIDE_CASTLE or \
+                            move.status == notation_const.QUEEN_SIDE_CASTLE:
+                return test_move
+
+            if move.start_rank is not test_move.start_rank or \
+                    move.start_file is not test_move.start_file:
+                continue
+
+            if move.promoted_to_piece is not test_move.promoted_to_piece:
+                continue
+
+            return test_move
+
+    return None
 
 
-def end_location(rank, file):
-    """
-    Finds end location for move.
-    :rtype Location
-    """
-    return Location(rank, file)
+

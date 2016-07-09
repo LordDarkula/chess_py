@@ -64,10 +64,7 @@ class Move:
         return self.rank == move.rank and \
             self.file == move.file and \
             self.piece.equals(move.piece) and \
-            self.status == move.status and \
-            self.color == move.color and \
-            self.start_file == move.start_file and \
-            self.start_rank == move.start_rank
+            self.status == move.status
 
     def on_board(self):
         """

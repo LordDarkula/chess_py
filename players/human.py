@@ -3,7 +3,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from core import color, board
-
+from core.algebraic import converter
 
 
 class Player:
@@ -23,15 +23,14 @@ class Player:
         position.print()
 
         raw = str(input(self.color.string + "\'s move"))
-        move = Converter(raw, self.color).get_move()
+        move = converter.to_move(raw, self.color)
+        move = converter.make_legal(move, position)
 
-        while raw is not None and move.exit == 0:
-            raw = str(input("Enter valid " + self.color.string + "\'s move"))
-            move = Converter(raw, self.color).get_move()
+        while raw is not None and move is not None:
+            position.print()
 
-        move = Converter(raw, self.color).get_move()
+            raw = str(input(self.color.string + "\'s move"))
+            move = converter.to_move(raw, self.color)
+            move = converter.make_legal(move, position)
 
         return move
-        # TODO eventually check move up against all_possible_moves
-
-
