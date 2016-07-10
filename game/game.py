@@ -34,16 +34,13 @@ class Game:
 
         :rtype int
         """
-        print("starting play")
         colors = [lambda: self.white_move(), lambda: self.black_move()]
         colors = itertools.cycle(colors)
 
         while True:
-            print("Entered play loop")
             self.position.print()
             color_fn = next(colors)
             if no_moves(self.position):
-                print("No moves")
                 if self.position.get_king(Color.init_black()).in_check(self.position):
                     return 1
 
@@ -52,21 +49,17 @@ class Game:
                 else:
                     return 0.5
 
-            self.position.print()
-            print("Called color_fn")
             color_fn()
 
     def white_move(self):
         move = self.player_white.generate_move(self.position)
         move = make_legal(move, self.position)
         self.position.update(move)
-        self.position.print()
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
         move = make_legal(move, self.position)
         self.position.update(move)
-        self.position.print()
 
     def all_possible_moves(self, input_color):
         return self.position.all_possible_moves(input_color)

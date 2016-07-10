@@ -212,8 +212,10 @@ class Board:
         :type initial Location
         :type final Location
         """
+        print(self.piece_at_square(initial).symbol)
         self.place_piece_at_square(self.piece_at_square(initial), final)
         self.remove_piece_at_square(initial)
+        print(self.piece_at_square(final).symbol)
 
     def update(self, move):
         """
@@ -222,14 +224,23 @@ class Board:
         """
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.rank, 4), Location(move.rank, 6))
+            move.piece.location = Location(move.rank, 6)
             self.move_piece(Location(move.rank, 7), Location(move.rank, 5))
+            self.piece_at_square(Location(move.rank, 5)).location = Location(move.rank, 5)
+            return
 
         if move.status == notation_const.QUEEN_SIDE_CASTLE:
             self.move_piece(Location(move.rank, 4), Location(move.rank, 2))
+            move.piece.location = Location(move.rank, 2)
             self.move_piece(Location(move.rank, 0), Location(move.rank, 3))
+            self.piece_at_square(Location(move.rank, 3)).location = Location(move.rank, 3)
+            return
 
         if type(move.piece) is Pawn:
             move.piece.just_moved_two_steps = False
+
+        if type(move.piece) is King or type(move.piece) is Rook:
+            move.piece.has_moved = True
 
         if move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:
@@ -253,10 +264,11 @@ class Board:
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
         else:
+            print(move.piece.symbol)
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
-        if type(move.piece) is King or type(move.piece) is Rook:
-            move.piece.has_moved = True
+
+
 
     def print(self):
         """

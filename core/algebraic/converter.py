@@ -52,8 +52,7 @@ def to_move(algebraic_string, input_color):
         :type loc Location
         """
         piece = algebraic_string[index].strip()
-        print("This is letter", algebraic_string[index].upper())
-        print("This is the index", index)
+
         if piece is 'R':
             return Rook(input_color, loc)
 
@@ -73,15 +72,17 @@ def to_move(algebraic_string, input_color):
     # King side castle
     end_loc = Location(edge_rank(), 6)
     if algebraic_string == "00":
-        return Move(end_loc, piece=Rook(input_color, Location(edge_rank(), 4)),
+        print("castling detected")
+        return Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.KING_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
 
     # Queen side castle
 
     elif algebraic_string == "000":
-        end_loc = Location(edge_rank(), 1)
-        return Move(end_loc, piece=Rook(input_color, Location(edge_rank(), 4)),
+        end_loc = Location(edge_rank(), 2)
+        move =  Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
+        return move
 
         # Pawn movement
     elif len(algebraic_string) == 2:
@@ -157,9 +158,7 @@ def make_legal(move, position):
 
         # Checks for basic equality of essential elements
         if move.equals(test_move):
-            test_move.print()
-            move.print()
-            print("move equals")
+
             if move.status == notation_const.KING_SIDE_CASTLE or \
                     move.status == notation_const.QUEEN_SIDE_CASTLE:
                 return test_move
@@ -172,8 +171,7 @@ def make_legal(move, position):
 
             if move.promoted_to_piece is not None and move.promoted_to_piece is not test_move.promoted_to_piece:
                 continue
-            print("This is the shit returned")
-            test_move.print()
+
             return test_move
 
     return None

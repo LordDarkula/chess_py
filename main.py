@@ -17,7 +17,6 @@ Everything starts here
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from core.board import Board
 from core.color import Color
 from game.game import Game
 from players import human

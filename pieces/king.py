@@ -23,6 +23,7 @@ from core.algebraic.location import Location
 from core.algebraic.move import Move
 from core.algebraic import notation_const
 from core import color
+from pieces.rook import Rook
 
 
 class King(Piece):
@@ -66,19 +67,30 @@ class King(Piece):
             return 7
 
         def add_castle(direction, status, rook_file):
-            if not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
+            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
+                print(self.color.string, " Rook not moved")
+
                 test = copy.deepcopy(position)
                 test_king_loc = test.find_king(self.color)
 
-                if position.is_square_empty(direction(test_king_loc)) and position.is_square_empty(
+                if test.is_square_empty(direction(test_king_loc)) and test.is_square_empty(
                         direction(direction(test_king_loc))):
+                    print("Both gaps empty")
+
                     test.move_piece(test_king_loc, direction(test_king_loc))
 
-                    if not test.get_king(self.color).in_check:
-                        moves.append(Move(Location(edge_rank(), self.location.file), piece=self,
-                                     status=status))
+                    if not test.get_king(self.color).in_check(position):
+                        print("No on the way check", self.location.rank, self.location.file)
+                        moves.append(Move(direction(direction(Location(edge_rank(), self.location.file))),
+                                          piece=self, status=status, start_rank=self.location.rank,
+                                          start_file=self.location.file))
 
+                        Move(direction(direction(Location(edge_rank(), self.location.file))),
+                             piece=self, status=status).print()
+
+        print("on top of add castle if")
         if not self.has_moved:
+            print("Adding castle moves")
             add_castle(lambda x: x.shift_right(), notation_const.KING_SIDE_CASTLE, 7)
             add_castle(lambda x: x.shift_left(), notation_const.QUEEN_SIDE_CASTLE, 0)
 
@@ -128,7 +140,12 @@ class King(Piece):
 
         for move in unfiltered:
             test = copy.deepcopy(position)
-            test.update(move)
+
+            test_move = Move(location=move.end_location(), piece=test.piece_at_square(Location(self.location.rank, self.location.file)),
+                             status=move.status, start_rank=self.location.rank, start_file=self.location.file)
+
+            test.update(test_move)
+
 
             test_king = test.piece_at_square(move.end_location())
 
