@@ -20,11 +20,9 @@ class Game:
         :type player_white: human.Player or ai
         :type player_black: human.Player or ai
         """
-        print("beginning of init")
         self.player_white = player_white
         self.player_black = player_black
         self.position = Board.init_default()
-        print("init was called")
 
     def play(self):
         """
@@ -36,31 +34,39 @@ class Game:
 
         :rtype int
         """
-        colors = [self.white_move(), self.black_move()]
+        print("starting play")
+        colors = [lambda: self.white_move(), lambda: self.black_move()]
         colors = itertools.cycle(colors)
 
         while True:
+            print("Entered play loop")
+            self.position.print()
             color_fn = next(colors)
             if no_moves(self.position):
-                if self.position.get_king(Color.init_black()).in_check():
+                print("No moves")
+                if self.position.get_king(Color.init_black()).in_check(self.position):
                     return 1
 
-                elif self.position.get_king(Color.init_white()).in_check():
+                elif self.position.get_king(Color.init_white()).in_check(self.position):
                     return 0
                 else:
                     return 0.5
 
+            self.position.print()
+            print("Called color_fn")
             color_fn()
 
     def white_move(self):
         move = self.player_white.generate_move(self.position)
         move = make_legal(move, self.position)
         self.position.update(move)
+        self.position.print()
 
     def black_move(self):
         move = self.player_black.generate_move(self.position)
         move = make_legal(move, self.position)
         self.position.update(move)
+        self.position.print()
 
     def all_possible_moves(self, input_color):
         return self.position.all_possible_moves(input_color)

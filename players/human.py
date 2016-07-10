@@ -20,16 +20,15 @@ class Player:
         :type position: board.Board
         """
 
-        position.print()
-
-        raw = str(input(self.color.string + "\'s move"))
+        raw = str(input(self.color.string + "\'s move \n"))
+        raw.strip()
         move = converter.to_move(raw, self.color)
         move = converter.make_legal(move, position)
 
-        while raw is not None and move is not None:
-            position.print()
+        while raw is None or move is None:
 
-            raw = str(input(self.color.string + "\'s move"))
+            raw = str(input("Enter valid " + self.color.string + "\'s move \n"))
+            raw.strip()
             move = converter.to_move(raw, self.color)
             move = converter.make_legal(move, position)
 

@@ -96,7 +96,7 @@ class King(Piece):
             for piece in row:
 
                 # Tests if square on the board is not empty
-                if piece is not None and \
+                if piece is not None and type(piece) is not King and \
                         not piece.color.equals(self.color):
 
                     # Adds all of piece's possible moves to moves list.

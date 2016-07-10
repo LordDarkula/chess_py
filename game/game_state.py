@@ -4,6 +4,7 @@ game is over, and if a King is checkmated.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+from core.color import Color
 
 
 def no_moves(position):
@@ -12,7 +13,8 @@ def no_moves(position):
     :type position Board
     :rtype bool
     """
-    return position.all_possible_moves() is None
+    return position.all_possible_moves(Color.init_white()) is None \
+        or position.all_possible_moves(Color.init_black()) is None
 
 
 def is_checkmate(position, color):

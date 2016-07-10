@@ -32,20 +32,15 @@ def main():
     # Creates new game with human players for both white and black.
 
     new_game = Game(human.Player(Color.init_white()), human.Player(Color.init_black()))
-    new_game.play()
+    result = new_game.play()
 
-    position = Board.init_default()
-    position.print()
-
-    # position.move_piece(Location(0, 4), Location(5, 4))
-    # position.remove_piece_at_square(Location(7, 0))
-    position.print()
+    print("Result is ", result)
 
     # position.piece_at_square(Location(4, 1)).just_moved_two_steps = True
 
     # print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
 
-    for i in range(len(position.all_possible_moves(Color(True)))):
-        position.all_possible_moves(Color(True))[i].print()
+    # for i in range(len(position.all_possible_moves(Color(True)))):
+    #    position.all_possible_moves(Color(True))[i].print()
 
 main()

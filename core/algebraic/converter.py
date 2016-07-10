@@ -51,19 +51,22 @@ def to_move(algebraic_string, input_color):
         :type index: int
         :type loc Location
         """
-        if algebraic_string[index].upper is 'R':
+        piece = algebraic_string[index].strip()
+        print("This is letter", algebraic_string[index].upper())
+        print("This is the index", index)
+        if piece is 'R':
             return Rook(input_color, loc)
 
-        if algebraic_string[index].upper is 'N':
+        if piece is 'N':
             return Knight(input_color, loc)
 
-        if algebraic_string[index].upper is 'B':
+        if piece is 'B':
             return Bishop(input_color, loc)
 
-        if algebraic_string[index].upper is 'Q':
+        if piece is 'Q':
             return Queen(input_color, loc)
 
-        if algebraic_string[index].upper is 'K':
+        if piece is 'K':
             return King(input_color, loc)
         return None
 
@@ -87,7 +90,7 @@ def to_move(algebraic_string, input_color):
 
         # Non-pawn Piece movement
     elif len(algebraic_string) == 3:
-        end_loc = Location(set_rank(1), set_file(2))
+        end_loc = Location(set_rank(2), set_file(1))
         return Move(end_loc, piece=set_piece(0, end_loc), status=notation_const.MOVEMENT)
 
     elif len(algebraic_string) == 4:
@@ -154,8 +157,11 @@ def make_legal(move, position):
 
         # Checks for basic equality of essential elements
         if move.equals(test_move):
+            test_move.print()
+            move.print()
+            print("move equals")
             if move.status == notation_const.KING_SIDE_CASTLE or \
-                            move.status == notation_const.QUEEN_SIDE_CASTLE:
+                    move.status == notation_const.QUEEN_SIDE_CASTLE:
                 return test_move
 
             if move.start_rank is not None and move.start_rank is not test_move.start_rank:
@@ -166,7 +172,8 @@ def make_legal(move, position):
 
             if move.promoted_to_piece is not None and move.promoted_to_piece is not test_move.promoted_to_piece:
                 continue
-
+            print("This is the shit returned")
+            test_move.print()
             return test_move
 
     return None
