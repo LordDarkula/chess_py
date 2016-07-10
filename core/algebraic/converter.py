@@ -72,7 +72,6 @@ def to_move(algebraic_string, input_color):
     # King side castle
     end_loc = Location(edge_rank(), 6)
     if algebraic_string == "00":
-        print("castling detected")
         return Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.KING_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
 

@@ -212,10 +212,8 @@ class Board:
         :type initial Location
         :type final Location
         """
-        print(self.piece_at_square(initial).symbol)
         self.place_piece_at_square(self.piece_at_square(initial), final)
         self.remove_piece_at_square(initial)
-        print(self.piece_at_square(final).symbol)
 
     def update(self, move):
         """
@@ -264,11 +262,7 @@ class Board:
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
         else:
-            print(move.piece.symbol)
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
-
-
-
 
     def print(self):
         """

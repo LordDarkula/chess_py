@@ -67,30 +67,31 @@ class King(Piece):
             return 7
 
         def add_castle(direction, status, rook_file):
-            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
-                print(self.color.string, " Rook not moved")
+            """
+            Adds kingside and queenside
+            :type direction def
+            :type status int
+            :type rook_file int
+            :rtype list
+            """
+            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and type(
+                    position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and not \
+                    position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
 
                 test = copy.deepcopy(position)
                 test_king_loc = test.find_king(self.color)
 
                 if test.is_square_empty(direction(test_king_loc)) and test.is_square_empty(
                         direction(direction(test_king_loc))):
-                    print("Both gaps empty")
 
                     test.move_piece(test_king_loc, direction(test_king_loc))
 
                     if not test.get_king(self.color).in_check(position):
-                        print("No on the way check", self.location.rank, self.location.file)
                         moves.append(Move(direction(direction(Location(edge_rank(), self.location.file))),
                                           piece=self, status=status, start_rank=self.location.rank,
                                           start_file=self.location.file))
 
-                        Move(direction(direction(Location(edge_rank(), self.location.file))),
-                             piece=self, status=status).print()
-
-        print("on top of add castle if")
         if not self.has_moved:
-            print("Adding castle moves")
             add_castle(lambda x: x.shift_right(), notation_const.KING_SIDE_CASTLE, 7)
             add_castle(lambda x: x.shift_left(), notation_const.QUEEN_SIDE_CASTLE, 0)
 
@@ -134,7 +135,6 @@ class King(Piece):
         :type position Board
         :rtype list
         """
-
         unfiltered = self.unfiltered(position)
         filtered = []
 
