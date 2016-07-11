@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class that holds state of a game.
 Start game using play(), which returns the result
@@ -37,7 +39,7 @@ class Game:
         colors = itertools.cycle(colors)
 
         while True:
-            self.position.print()
+            self.position.out()
             color_fn = next(colors)
             if no_moves(self.position):
                 if self.position.get_king(Color.init_black()).in_check(self.position):

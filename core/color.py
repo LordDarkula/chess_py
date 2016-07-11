@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Easy way to access bool values for black and white without directly
 typing True or False.

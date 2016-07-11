@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Static methods which check to see if
 game is over, and if a King is checkmated.

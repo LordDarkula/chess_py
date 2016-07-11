@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 """
 Class stores integer values for various types of moves in algebraic notation.

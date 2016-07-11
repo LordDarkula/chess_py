@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class stores King on the board
 

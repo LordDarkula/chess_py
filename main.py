@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Chess playing program
 Everything starts here
@@ -37,9 +39,9 @@ def main():
 
     # position.piece_at_square(Location(4, 1)).just_moved_two_steps = True
 
-    # print("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
+    # out("This is the ghost symbol: " + position.piece_at_square(Location(3, 0)).symbol)
 
     # for i in range(len(position.all_possible_moves(Color(True)))):
-    #    position.all_possible_moves(Color(True))[i].print()
+    #    position.all_possible_moves(Color(True))[i].out()
 
 main()

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Methods that take external input and attempt
 to turn them into usable commands.

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class that stores chess moves.
 Destination, status and piece making move are required
@@ -93,5 +95,5 @@ class Move:
 
         return False
 
-    def print(self):
+    def out(self):
         print(self.piece.symbol, " Rank: ", self.rank, " File:  ", self.file, " Status: ", self.status)

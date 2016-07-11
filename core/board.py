@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Constructs board object which stores the location of all the pieces.
 
@@ -264,7 +266,7 @@ class Board:
         else:
             self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
 
-    def print(self):
+    def out(self):
         """
         Prints current position in console
         """

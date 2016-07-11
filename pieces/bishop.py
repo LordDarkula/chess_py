@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class stores Bishop on the board
 

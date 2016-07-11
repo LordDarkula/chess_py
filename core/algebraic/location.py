@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class stores Locations on the Board.
 Locations must be on the board to be initialized properly.

@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Constants for piece values in the game
 

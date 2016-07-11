@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Class stores Queen on the board
 
