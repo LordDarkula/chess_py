@@ -1,5 +1,5 @@
-
 """
+Class stores Queen on the board
 
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜

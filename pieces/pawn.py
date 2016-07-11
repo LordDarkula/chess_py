@@ -1,6 +1,5 @@
-# TODO verify code and finalize class documentation
-
 """
+Class stores Pawn on the board
 
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜

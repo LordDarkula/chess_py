@@ -1,5 +1,5 @@
-# TODO debug this voodoo thoroughly
 """
+Class stores Knight on the board
 
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜

@@ -1,5 +1,5 @@
-
 """
+Class stores King on the board
 
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜

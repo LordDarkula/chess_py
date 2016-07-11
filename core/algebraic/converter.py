@@ -1,3 +1,7 @@
+"""
+Methods that take external input and attempt
+to turn them into usable commands.
+"""
 from core.algebraic import notation_const
 from core.algebraic.location import Location
 from core.algebraic.move import Move
@@ -79,7 +83,7 @@ def to_move(algebraic_string, input_color):
 
     elif algebraic_string == "000":
         end_loc = Location(edge_rank(), 2)
-        move =  Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
+        move = Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
         return move
 
@@ -174,6 +178,3 @@ def make_legal(move, position):
             return test_move
 
     return None
-
-
-

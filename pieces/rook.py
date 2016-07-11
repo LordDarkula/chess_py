@@ -1,6 +1,6 @@
-# TODO verify code and finalize class documentation
-
 """
+Class stores Rook on the board
+
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
 6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟

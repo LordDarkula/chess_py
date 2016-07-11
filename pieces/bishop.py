@@ -1,6 +1,5 @@
-
 """
-Bishop
+Class stores Bishop on the board
 
 rank
 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
