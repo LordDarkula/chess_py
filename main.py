@@ -44,4 +44,5 @@ def main():
     # for i in range(len(position.all_possible_moves(Color(True)))):
     #    position.all_possible_moves(Color(True))[i].out()
 
-main()
+if __name__ == "__main__":
+    main()
