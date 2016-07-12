@@ -7,4 +7,4 @@ from chess_py.pieces import piece_const
 from chess_py.pieces.queen import Queen
 from chess_py.pieces.rook import Rook
 
-__all__ =['Bishop', King, 'Knight', 'Pawn', 'Piece', 'piece_const', 'Queen', 'Rook']
+__all__ = ['Bishop', 'King', 'Knight', 'Pawn', 'Piece', 'piece_const', 'Queen', 'Rook']

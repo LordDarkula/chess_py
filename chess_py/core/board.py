@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 """
 Constructs board object which stores the location of all the pieces.
 
@@ -27,6 +28,7 @@ and black home row is at index 7
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from __future__ import print_function
 import copy
 from math import fabs
 
@@ -39,7 +41,6 @@ from chess_py.pieces.king import King
 from chess_py.pieces.pawn import Pawn
 from chess_py.pieces.queen import Queen
 from chess_py.pieces.rook import Rook
-
 from chess_py.pieces.knight import Knight
 
 

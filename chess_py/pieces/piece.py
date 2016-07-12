@@ -11,7 +11,7 @@ from chess_py.core import color
 from chess_py.core.color import Color
 
 
-class Piece:
+class Piece(object):
     def __init__(self, input_color, location, white_symbol, black_symbol):
         """
         Initializes a piece that is capable of moving
