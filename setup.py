@@ -8,6 +8,6 @@ setup(name='chess_py',
       author='Aubhro Sengupta',
       author_email='aubhrosengupta@gmail.com',
       url='https://github.com/LordDarkula/chess_py',
-      packages=['chess_py'],
-      package_data=['README.md']
+      packages=['chess_py', 'chess_py.core', 'chess_py.core.algebraic', 'chess_py.game', 'chess_py.pieces',
+                'chess_py.players'],
       )
