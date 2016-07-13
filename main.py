@@ -19,10 +19,7 @@ Everything starts here
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py import Game
-from chess_py import Player
-
-from chess_py import Color
+from chess_py import Color, Player, Game
 
 
 def main():

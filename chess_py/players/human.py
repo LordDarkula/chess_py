@@ -24,9 +24,12 @@ class Player:
         """
 
         raw = str(input(self.color.string + "\'s move \n"))
-        raw.strip()
-        move = converter.to_move(raw, self.color)
-        move = converter.make_legal(move, position)
+        move = None
+
+        if raw is not None:
+            raw.strip()
+            move = converter.to_move(raw, self.color)
+            move = converter.make_legal(move, position)
 
         while raw is None or move is None:
 

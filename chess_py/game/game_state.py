@@ -15,8 +15,8 @@ def no_moves(position):
     :type position Board
     :rtype bool
     """
-    return position.all_possible_moves(Color.init_white()) is None \
-        or position.all_possible_moves(Color.init_black()) is None
+    return len(position.all_possible_moves(Color.init_white())) == 0 \
+        or len(position.all_possible_moves(Color.init_black())) == 0
 
 
 def is_checkmate(position, color):

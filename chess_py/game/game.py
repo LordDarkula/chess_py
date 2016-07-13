@@ -47,6 +47,7 @@ class Game:
 
                 elif self.position.get_king(Color.init_white()).in_check(self.position):
                     return 0
+
                 else:
                     return 0.5
 
