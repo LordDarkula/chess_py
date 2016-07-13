@@ -89,7 +89,7 @@ class your_class:
       # Move must be initialized with parameters location, piece, status
       # Optional parameters are start_rank (y coordinate from 1 to 7), start_file (x coordinate from 1 to 7), string, and promoted_to_piece (one of 6 objects of subclass Piece)
       # Here is an example of the move e4
-      my_move = Move(Location(3, 4), position.piece_at_square(Location(1, 4), notation_const.MOVEMENT)
+      my_move = Move(Location(3, 4), position.piece_at_square(Location(1, 4)), notation_const.MOVEMENT)
       # Notice a couple things:
       # Location is initialized with rank (y coordinate from 1 to 7) first, then file (x coordinate from 1 to 7)
       # Status is a constant from notation_const 
@@ -103,6 +103,15 @@ class your_class:
       
       # Returns list of all possible moves
       possible = position.all_possible_moves(self.color)
+      
+      # So if I wanted to return the pawn move that ended on e4 using all_possible_moves . . .
+      for move in possible:
+        if move.location.equals(Location(3, 4)) and move.piece.equals(position.piece_at_square(Location(1, 4)):
+            return move
+        # Basically all data types built in to chess_py have an equals()
+        # All of them work as you would expect except for the piece equals() method
+        # They only compare color of the piece and type,  but not lacation
+        # piece_at_square() in Board returns the piece at a certain Location
       
       # Gets my king
       my_king = position.get_king(self.color)
