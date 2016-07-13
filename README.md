@@ -98,6 +98,14 @@ class your_class:
       # All of that looks tedious. What if I just have a string storing the move in algebraic notation ie. Nf3 ?
       # Then do the following
       my_move = to_move(my_algebraic_notation_move_stored_as _string)
+      # If your_class wanted to move e4
+      return to_move("e4")
+      
+      # This works for any move written in algebraic notation
+      return to_move("Nxf3")
+      
+      # Or even
+      return to_move("e8=Q)
       
       # More helpful stuff . . .
       
