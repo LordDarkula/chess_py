@@ -5,13 +5,16 @@ Parent class for all pieces
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+from abc import ABCMeta, abstractmethod
 from chess_py.core.algebraic.location import Location
-
 from chess_py.core import color
 from chess_py.core.color import Color
 
 
-class Piece(object):
+class Piece:
+    __metaclass__ = ABCMeta
+
+    @abstractmethod
     def __init__(self, input_color, location, white_symbol, black_symbol):
         """
         Initializes a piece that is capable of moving
