@@ -87,15 +87,20 @@ class your_class:
       moves = []
       
       # Move must be initialized with parameters location, piece, status
-      # Optional parameters are start_rank (y coordinate from 1 to 7), start_file (x coordinate from 1 to 7), string, and promoted_to_piece (one of 6 objects of subclass Piece)
+      # Optional parameters are start_rank (y coordinate from 1 to 7), 
+      #start_file (x coordinate from 1 to 7), string, and promoted_to_piece 
+      #(one of 6 objects of subclass Piece)
       # Here is an example of the move e4
-      my_move = Move(Location(3, 4), position.piece_at_square(Location(1, 4)), notation_const.MOVEMENT)
+      my_move = Move(Location(3, 4), position.piece_at_square(Location(1, 4)), 
+      # notation_const.MOVEMENT)
       # Notice a couple things:
-      # Location is initialized with rank (y coordinate from 1 to 7) first, then file (x coordinate from 1 to 7)
+      # Location is initialized with rank (y coordinate from 1 to 7) first, 
+      # then file (x coordinate from 1 to 7)
       # Status is a constant from notation_const 
       # Other constants include CAPTURE, PROMOTE, EN_PASSANT, etc.
       
-      # All of that looks tedious. What if I just have a string storing the move in algebraic notation ie. Nf3 ?
+      # All of that looks tedious. What if I just have a string storing the move in 
+      # algebraic notation ie. Nf3 ?
       # Then do the following
       my_move = to_move(my_algebraic_notation_move_stored_as _string)
       # If your_class wanted to move e4
@@ -114,7 +119,8 @@ class your_class:
       
       # So if I wanted to return the pawn move that ended on e4 using all_possible_moves . . .
       for move in possible:
-        if move.location.equals(Location(3, 4)) and move.piece.equals(position.piece_at_square(Location(1, 4)):
+        if move.location.equals(Location(3, 4)) and \
+            move.piece.equals(position.piece_at_square(Location(1, 4)):
             return move
         # Basically all data types built in to chess_py have an equals()
         # All of them work as you would expect except for the piece equals() method
