@@ -84,19 +84,20 @@ def to_move(algebraic_string, input_color):
                     status=notation_const.KING_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
 
     # Queen side castle
-
     elif algebraic_string == "000":
         end_loc = Location(edge_rank(), 2)
         move = Move(end_loc, piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE, start_rank=edge_rank(), start_file=4)
+
         return move
 
-        # Pawn movement
+    # Pawn movement
     elif len(algebraic_string) == 2:
         end_loc = Location(set_rank(1), set_file(0))
+
         return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.MOVEMENT)
 
-        # Non-pawn Piece movement
+    # Non-pawn Piece movement
     elif len(algebraic_string) == 3:
         end_loc = Location(set_rank(2), set_file(1))
         if set_piece(0, end_loc) is not None:
@@ -104,6 +105,7 @@ def to_move(algebraic_string, input_color):
         else:
             return None
 
+    # Multiple options
     elif len(algebraic_string) == 4:
 
         # Capture
@@ -118,26 +120,26 @@ def to_move(algebraic_string, input_color):
                 return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.CAPTURE,
                             start_file=set_file(0))
 
-            else:
-
+            elif algebraic_string[0].isupper():
                 end_loc = Location(set_rank(3), set_file(2))
                 return Move(end_loc, piece=set_piece(0, end_loc), status=notation_const.CAPTURE)
 
-    # Pawn Promotion
-    elif algebraic_string[2] == "=":
-        end_loc = Location(set_rank(1), set_file(0))
-        return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.PROMOTE,
-                    promoted_to_piece=set_piece(3, end_loc))
+            # Pawn Promotion
+            elif algebraic_string[2] == "=":
+                end_loc = Location(set_rank(1), set_file(0))
+                return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.PROMOTE,
+                            promoted_to_piece=set_piece(3, end_loc))
 
-    # Non-pawn Piece movement with file specified
-    elif algebraic_string[1].isupper():
-        end_loc = Location(set_rank(3), set_file(2))
-        return Move(end_loc, piece=set_piece(1, end_loc), status=notation_const.MOVEMENT,
-                    start_file=set_file(0))
+            # Non-pawn Piece movement with file specified
+            elif algebraic_string[1].isupper():
+                end_loc = Location(set_rank(3), set_file(2))
+                return Move(end_loc, piece=set_piece(1, end_loc), status=notation_const.MOVEMENT,
+                            start_file=set_file(0))
 
+    # Multiple options
     elif len(algebraic_string) == 5:
 
-            # Non-pawn Piece movement with rank and file specified
+        # Non-pawn Piece movement with rank and file specified
         if algebraic_string[2].isupper():
             end_loc = Location(set_rank(4), set_file(3))
             return Move(end_loc, piece=set_piece(2, end_loc), status=notation_const.MOVEMENT,
@@ -145,9 +147,8 @@ def to_move(algebraic_string, input_color):
 
     elif len(algebraic_string) == 6:
         """
-            exd8=Q
-            """
-
+        exd8=Q
+        """
         # Pawn promote with capture
         end_loc = Location(set_rank(3), set_file(2))
         return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.MOVEMENT,
