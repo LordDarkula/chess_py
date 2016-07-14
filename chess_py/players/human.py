@@ -3,10 +3,11 @@
 """
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+from pip._vendor.distlib.compat import raw_input
 
 from chess_py.core.algebraic import converter
-
 from chess_py.core import color
+import sys
 
 
 class Player:
@@ -22,18 +23,23 @@ class Player:
         Returns valid and legal move given position
         :type position: board.Board
         """
-
-        raw = str(input(self.color.string + "\'s move \n"))
+        if sys.version_info[0] < 3:
+            raw = raw_input(self.color.string + "\'s move \n")
+        else:
+            raw = str(input(self.color.string + "\'s move \n"))
         move = None
 
-        if raw is not None:
+        if len(raw) > 1:
             raw.strip()
             move = converter.to_move(raw, self.color)
             move = converter.make_legal(move, position)
 
         while raw is None or move is None:
 
-            raw = str(input("Enter valid " + self.color.string + "\'s move \n"))
+            if sys.version_info[0] < 3:
+                raw = raw_input(self.color.string + "\'s move \n")
+            else:
+                raw = str(input(self.color.string + "\'s move \n"))
             raw.strip()
             move = converter.to_move(raw, self.color)
             move = converter.make_legal(move, position)
