@@ -23,6 +23,7 @@ class Player:
         Returns valid and legal move given position
         :type position: board.Board
         """
+        position.out()
         if sys.version_info[0] < 3:
             raw = raw_input(self.color.string + "\'s move \n")
         else:

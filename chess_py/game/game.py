@@ -39,7 +39,6 @@ class Game:
         colors = itertools.cycle(colors)
 
         while True:
-            self.position.out()
             color_fn = next(colors)
             if no_moves(self.position):
                 if self.position.get_king(Color.init_black()).in_check(self.position):

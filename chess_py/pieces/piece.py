@@ -44,7 +44,7 @@ class Piece:
         return type(piece) is type(self) and piece.color.equals(self.color)
 
     @abstractmethod
-    def all_possible_moves(self, position):
+    def possible_moves(self, position):
         pass
 
     def set_loc(self, moves):
