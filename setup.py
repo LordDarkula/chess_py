@@ -3,7 +3,7 @@
 from setuptools import setup
 
 setup(name='chess_py',
-      version='1.2',
+      version='1.3',
       description='Python chess client',
       platforms='MacOS X',
       classifiers=[

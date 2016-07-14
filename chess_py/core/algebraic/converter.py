@@ -59,20 +59,21 @@ def to_move(algebraic_string, input_color):
         :type loc Location
         """
         piece = algebraic_string[index].strip()
+        piece = piece.upper()
 
-        if piece is 'R':
+        if piece == 'R':
             return Rook(input_color, loc)
 
-        if piece is 'N':
+        if piece == 'N':
             return Knight(input_color, loc)
 
-        if piece is 'B':
+        if piece == 'B':
             return Bishop(input_color, loc)
 
-        if piece is 'Q':
+        if piece == 'Q':
             return Queen(input_color, loc)
 
-        if piece is 'K':
+        if piece == 'K':
             return King(input_color, loc)
         return None
 
@@ -98,7 +99,10 @@ def to_move(algebraic_string, input_color):
         # Non-pawn Piece movement
     elif len(algebraic_string) == 3:
         end_loc = Location(set_rank(2), set_file(1))
-        return Move(end_loc, piece=set_piece(0, end_loc), status=notation_const.MOVEMENT)
+        if set_piece(0, end_loc) is not None:
+            return Move(end_loc, piece=set_piece(0, end_loc), status=notation_const.MOVEMENT)
+        else:
+            return None
 
     elif len(algebraic_string) == 4:
 
