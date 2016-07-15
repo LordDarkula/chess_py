@@ -17,13 +17,14 @@ MIT
 
 ## Introduction
 
-Chess_py is an open source chess client and framework written in python. Can create chess matches and provide players with data regarding current position, possible moves and eventual result of the game. External players (either computer or human) are required to play.
+Chess_py is an open source chess client and framework written in python. Can create chess matches and provide players with data regarding current position, possible moves and eventual result of the game. External players (either computer or human) are required to play. Works in both Python2 and Python3.
 
 ##Installation
+
 To use as a standalone chess client, download or clone, navigate inside chess_py directory, and type the following.
 ######Note: User must have Python3 installed
 ```bash
-python3 main.py
+python main.py
 ```
 To use as an importable framework in your own python code, you can install manually or using pip.
 #####To install manually, download or clone, chess_py directory, and type the following.
@@ -34,10 +35,10 @@ python setup.py install
 ```bash
 pip install chess_py
 ```
+
 ## Great! How do you use it?
 
 Chess_py has the capability of creating games between players, either human (algebraic notatioon input through console), or AI (through method generate_move(position))
-
 ######Note: color.white is defined to be True and color.black is defined to be False in color.py
 ```python
 # Set up
@@ -48,8 +49,6 @@ white_color = Color.init_white()
 black_color = Color.init_black()
 ```
 If you want to set up a game with two humans, use Player class to initialize a white and a black human.Player objects.
-
-
 ```python
 # Creates a game with human players playing white and black
 new_game = Game(Player(white_color), Player(black_color))
@@ -61,7 +60,6 @@ new_game = Game(Player(white_color), Player(black_color))
 # 0 - Black Wins
 result = new_game.play()
 ```
-
 To use a custom player with chess_py, the player must be a python class with a generate_move() method.
 ```python
 # Creates a game with a human player playing white and a separate software playing black
@@ -136,5 +134,4 @@ class your_class:
       # Your code
       return moves
 ```
-
-Thats it for now! More will be coming shortly.
+That's it for now! More will be coming shortly.
