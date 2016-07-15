@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
 """
+Included class for human interaction via console.
+Prints position and takes move written in algebraic notation as string input
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-from pip._vendor.distlib.compat import raw_input
 
+from pip._vendor.distlib.compat import raw_input
 from chess_py.core.algebraic import converter
 from chess_py.core import color
 import sys
@@ -27,7 +29,7 @@ class Player:
         if sys.version_info[0] < 3:
             raw = raw_input(self.color.string + "\'s move \n")
         else:
-            raw = str(input(self.color.string + "\'s move \n"))
+            raw = input(self.color.string + "\'s move \n")
         move = None
 
         if len(raw) > 1:
@@ -40,7 +42,7 @@ class Player:
             if sys.version_info[0] < 3:
                 raw = raw_input(self.color.string + "\'s move \n")
             else:
-                raw = str(input(self.color.string + "\'s move \n"))
+                raw = input(self.color.string + "\'s move \n")
             raw.strip()
             move = converter.to_move(raw, self.color)
             move = converter.make_legal(move, position)
