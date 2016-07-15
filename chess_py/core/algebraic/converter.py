@@ -3,7 +3,10 @@
 """
 Methods that take external input and attempt
 to turn them into usable commands.
+
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
 from chess_py.core import color
 from chess_py.core.algebraic import notation_const
 from chess_py.core.algebraic.location import Location

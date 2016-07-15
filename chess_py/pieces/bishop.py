@@ -19,6 +19,7 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
 from chess_py.pieces.piece import Piece
 from chess_py.pieces.rook import Rook
 

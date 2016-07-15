@@ -3,6 +3,7 @@
 """
 Included class for human interaction via console.
 Prints position and takes move written in algebraic notation as string input
+
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 

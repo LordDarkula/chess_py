@@ -19,6 +19,7 @@ rank
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
 import copy
 
 from chess_py.core import color

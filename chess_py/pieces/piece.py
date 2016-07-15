@@ -5,6 +5,7 @@ Parent class for all pieces
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+
 from abc import ABCMeta, abstractmethod
 from chess_py.core.algebraic.location import Location
 from chess_py.core import color
