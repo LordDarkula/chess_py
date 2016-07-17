@@ -93,7 +93,9 @@ class King(Piece):
 
                     if not test.get_king(self.color).in_check(position):
                         moves.append(Move(direction(direction(Location(edge_rank(), self.location.file))),
-                                          piece=self, status=status, start_rank=self.location.rank,
+                                          piece=self,
+                                          status=status,
+                                          start_rank=self.location.rank,
                                           start_file=self.location.file))
 
         if not self.has_moved:
@@ -146,12 +148,13 @@ class King(Piece):
         for move in unfiltered:
             test = copy.deepcopy(position)
 
-            test_move = Move(location=move.end_location(), piece=test.piece_at_square(Location(self.location.rank, self.location.file)),
-                             status=move.status, start_rank=self.location.rank, start_file=self.location.file)
+            test_move = Move(location=move.end_location(),
+                             piece=test.piece_at_square(Location(self.location.rank, self.location.file)),
+                             status=move.status,
+                             start_rank=self.location.rank,
+                             start_file=self.location.file)
 
             test.update(test_move)
-
-
             test_king = test.piece_at_square(move.end_location())
 
             if not test_king.in_check(test):
