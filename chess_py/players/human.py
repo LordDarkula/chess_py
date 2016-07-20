@@ -44,8 +44,10 @@ class Player:
                 raw = raw_input(self.color.string + "\'s move \n")
             else:
                 raw = input(self.color.string + "\'s move \n")
-            raw.strip()
-            move = converter.to_move(raw, self.color)
-            move = converter.make_legal(move, position)
+
+            if len(raw) > 1:
+                raw.strip()
+                move = converter.to_move(raw, self.color)
+                move = converter.make_legal(move, position)
 
         return move
