@@ -26,7 +26,7 @@ def main():
     """
     Main method
     """
-    print("New game creating")
+    print("Creating a new game...")
 
     # Creates new game with human players for both white and black.
 
