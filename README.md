@@ -22,7 +22,7 @@ Chess_py is an open source chess client and framework written in python. Can cre
 ##Installation
 
 To use as a standalone chess client, download or clone, navigate inside chess_py directory, and type the following.
-######Note: User must have Python3 installed
+######Note: Works on Python 2 and 3
 ```bash
 python main.py
 ```
