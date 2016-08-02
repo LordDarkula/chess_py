@@ -1,7 +1,7 @@
 # chess_py
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
-#License
+## License
 MIT
 
 <br />8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
@@ -22,7 +22,8 @@ Chess_py is an open source chess client and framework written in python. Can cre
 ##Installation
 
 To use as a standalone chess client, download or clone, navigate inside chess_py directory, and type the following.
-######Note: Works on Python 2 and 3
+> Works on Python 2 and 3
+
 ```bash
 python main.py
 ```
@@ -39,7 +40,8 @@ pip install chess_py
 ## Great! How do you use it?
 
 Chess_py has the capability of creating games between players, either human (algebraic notatioon input through console), or AI (through method generate_move(position))
-######Note: color.white is defined to be True and color.black is defined to be False in color.py
+> color.white is defined to be True and color.black is defined to be False in color.py
+
 ```python
 # Set up
 from chess_py import Color, Player, Game, Color, Board, Move
