@@ -25,6 +25,7 @@ class Player:
         """
         Returns valid and legal move given position
         :type position: Board
+        :rtype Move
         """
         position.out()
         if sys.version_info[0] < 3:

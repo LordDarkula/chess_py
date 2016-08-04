@@ -14,7 +14,7 @@ class Piece_values:
 
         self.KNIGHT_VALUE = 3
 
-        self.BISHOP_VALUE = 3.5
+        self.BISHOP_VALUE = 3
 
         self.ROOK_VALUE = 5
 

@@ -120,6 +120,48 @@ class Board:
         """
         return self.position[location.rank][location.file] is None
 
+    def material_advantage(self, input_color, val_scheme):
+        """
+
+        :type input_color Color
+        :type val_scheme Piece_values
+        :rtype double
+        """
+
+        def add_advantage(curr_piece, curr_color):
+            if piece is not None and piece.color.equals(curr_color):
+                if isinstance(curr_piece, Pawn):
+                    return val_scheme.PAWN_VALUE
+                elif isinstance(curr_piece, Knight):
+                    return val_scheme.KNIGHT_VALUE
+                elif isinstance(curr_piece, Bishop):
+                    return val_scheme.BISHOP_VALUE
+                elif isinstance(curr_piece, Rook):
+                    return val_scheme.ROOK_VALUE
+                elif isinstance(curr_piece, Queen):
+                    return val_scheme.QUEEN_VALUE
+
+            return 0
+
+        advantage = 0.0
+        for row in self.position:
+            for piece in row:
+                advantage += add_advantage(piece, input_color)
+                advantage -= add_advantage(piece, Color(not input_color.color))
+
+        return advantage
+
+    def advantage_as_result(self, move, val_scheme):
+        """
+        Calculates advantage after move is played
+        :type move Move
+        :type val_scheme Piece_values
+        :rtype double
+        """
+        test_board = copy.deepcopy(self)
+        test_board.update(move)
+        return test_board.material_advantage(move.color, val_scheme)
+
     def unfiltered(self, input_color):
         """
         Returns list of all possible moves
@@ -276,6 +318,7 @@ class Board:
         # Loops through columns
         for i in range(len(self.position)):
 
+            print(str(8 - i) + " ", end="")
             # Loops through rows
             for j in range(len(self.position[0])):
 
@@ -288,4 +331,4 @@ class Board:
                     print("_ ", end="")
             print()
 
-        print()
+        print("  a b c d e f g h")

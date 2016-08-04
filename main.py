@@ -20,6 +20,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from chess_py import Color, Player, Game
+from chess_py.players.basicAI import Ai
 
 
 def main():
@@ -30,7 +31,7 @@ def main():
 
     # Creates new game with human players for both white and black.
 
-    new_game = Game(Player(Color.init_white()), Player(Color.init_black()))
+    new_game = Game(Player(Color.init_white()), Ai(Color.init_black()))
     result = new_game.play()
 
     print("Result is ", result)
