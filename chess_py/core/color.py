@@ -36,6 +36,13 @@ class Color:
         cls.color = raw == "white"
         cls.string = raw
 
+    def opponent(self):
+        """
+        Finds other color
+        :rtype Color
+        """
+        return Color(not self.color)
+
     def equals(self, input_color):
         """
         Finds out this color is the same as another color.

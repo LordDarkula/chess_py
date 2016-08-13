@@ -188,6 +188,7 @@ def make_legal(move, position):
     :type position Board
     :rtype Move
     """
+    assert isinstance(move, Move)
     for test_move in position.all_possible_moves(move.color):
 
         # Checks for basic equality of essential elements

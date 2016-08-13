@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 from setuptools import setup
+import setuptools
 
 setup(name='chess_py',
-      version='1.4',
+      version='1.5',
       description='Python chess client',
       platforms='MacOS X',
       classifiers=[
@@ -19,6 +20,5 @@ setup(name='chess_py',
       author_email='aubhrosengupta@gmail.com',
       url='https://github.com/LordDarkula/chess_py',
       license='MIT',
-      packages=['chess_py', 'chess_py.core', 'chess_py.core.algebraic', 'chess_py.game', 'chess_py.pieces',
-                'chess_py.players'],
+      packages=setuptools.find_packages(),
       )
