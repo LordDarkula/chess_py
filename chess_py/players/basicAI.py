@@ -1,6 +1,7 @@
 from chess_py.pieces.piece_const import Piece_values
 from chess_py.core.color import Color
 from copy import deepcopy as cp
+from chess_py.core.algebraic import notation_const
 from chess_py.players.tree import Tree
 
 
@@ -21,7 +22,19 @@ class Ai:
         """
         position.out()
         print("Running tree search")
-        return self.treeSearch(position, 1, self.color)[0]
+        if self.is_quiet_position(input_color=self.color, position=position):
+            return position.all_possible_moves(self.color)[int(len(position.all_possible_moves(self.color))/2)]
+        else:
+            return self.treeSearch(position, 1, self.color)[0]
+
+    @staticmethod
+    def is_quiet_position(input_color, position):
+        for move in position.all_possible_moves(input_color):
+            if move.status == notation_const.CAPTURE or \
+                    move.status == notation_const.CAPTURE_AND_PROMOTE:
+                return False
+
+        return True
 
     def best_move(self, position, color):
         """
@@ -37,6 +50,7 @@ class Ai:
         for move in moves:
             # print("In the best move for")
             if position.advantage_as_result(move, self.piece_scheme) > advantage:
+
                 my_move = move
                 advantage = position.advantage_as_result(move, self.piece_scheme)
 
@@ -81,6 +95,8 @@ class Ai:
             test_board.update(move)
             return self.depth_search(test_board, depth - 1, Color(not color.color))
 
+#TODO if pot_worst is the same as worst decide which move is better for me
+#TODO safegard against checkmate
     def treeSearch(self, position, depth, color):
         """
         Returns valid and legal move given position
@@ -90,6 +106,7 @@ class Ai:
         :rtype Move
         """
         moves = position.all_possible_moves(color)
+        # moves = self.weed_checkmate(moves, position)
         if depth == 0:
             worst = self.best_reply(position.all_possible_moves(color)[0], position)
             worst_index = 0
@@ -108,16 +125,30 @@ class Ai:
 
             worst_index = 0
             for i in range(len(moves)):
-                if self.best_reply(moves[i], position)[1] > 6:
-                    pot_worst = self.treeSearch(self.one_move_ahead(position.all_possible_moves(color)[0], position),
-                                                depth - 1,
-                                                color)
+                pot_worst = self.treeSearch(self.one_move_ahead(position.all_possible_moves(color)[0], position),
+                                            depth - 1,
+                                            color)
                 if worst[1] > pot_worst[1]:
                     worst = pot_worst
                     worst_index = i
             print("depth: ", depth)
 
             return moves[worst_index], worst[1]
+
+    def weed_checkmate(self, moves, position):
+        print("weeding 0ut checkmate")
+        final = []
+        for i in range(len(moves)):
+            test = cp(position)
+            test.update(moves[i])
+
+            if not self.best_reply(moves[i], position)[1] == 100:
+                final.append(moves[i])
+
+        if len(final) == 0:
+            final.append(moves[0])
+
+        return final
 
     def one_move_ahead(self, move, position):
         test = cp(position)
