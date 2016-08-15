@@ -155,7 +155,7 @@ class King(Piece):
                              start_file=self.location.file)
 
             test.update(test_move)
-            test_king = test.piece_at_square(move.end_location())
+            test_king = test.piece_at_square(test_move.end_location())
 
             if not test_king.in_check(test):
                 filtered.append(move)

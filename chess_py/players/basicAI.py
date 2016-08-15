@@ -25,13 +25,20 @@ class Ai:
         if self.is_quiet_position(input_color=self.color, position=position):
             return position.all_possible_moves(self.color)[int(len(position.all_possible_moves(self.color))/2)]
         else:
-            return self.treeSearch(position, 1, self.color)[0]
+            move = self.treeSearch(position, 3, self.color)
+            print("Final advantage ", move[1])
+            return move[0]
 
     @staticmethod
     def is_quiet_position(input_color, position):
         for move in position.all_possible_moves(input_color):
             if move.status == notation_const.CAPTURE or \
                     move.status == notation_const.CAPTURE_AND_PROMOTE:
+                return False
+
+        for move in position.all_possible_moves(input_color.opponent()):
+            if move.status == notation_const.CAPTURE or \
+                            move.status == notation_const.CAPTURE_AND_PROMOTE:
                 return False
 
         return True
@@ -54,7 +61,7 @@ class Ai:
                 my_move = move
                 advantage = position.advantage_as_result(move, self.piece_scheme)
 
-        return my_move
+        return my_move, advantage
 
     def best_reply(self, move, position):
         """
@@ -66,37 +73,14 @@ class Ai:
         test = cp(position)
         test.update(move)
         reply = self.best_move(test, move.color.opponent())
-        return reply, test.advantage_as_result(reply, self.piece_scheme)
+        return reply, test.advantage_as_result(reply[0], self.piece_scheme)
 
-    def depth_search(self, position, depth, color):
-        """
-        Returns valid and legal move given position
-        :type position: Board
-        :type depth int
-        :type color Color
-        :rtype Move
-        """
-        if depth <= 0:
-            moves = position.all_possible_moves(input_color=color)
-            my_move = moves[0]
-            advantage = position.advantage_as_result(my_move, self.piece_scheme)
 
-            for move in moves:
-                if position.advantage_as_result(move, self.piece_scheme) > advantage:
-                    my_move = move
-                    advantage = position.advantage_as_result(move, self.piece_scheme)
-
-            return my_move
-
-        moves = position.all_possible_moves(input_color=self.color)
-
-        for move in moves:
-            test_board = cp(position)
-            test_board.update(move)
-            return self.depth_search(test_board, depth - 1, Color(not color.color))
 
 #TODO if pot_worst is the same as worst decide which move is better for me
 #TODO safegard against checkmate
+#TODO build move tree to avoid long wait
+
     def treeSearch(self, position, depth, color):
         """
         Returns valid and legal move given position
@@ -105,35 +89,25 @@ class Ai:
         :type color Color
         :rtype Move
         """
-        moves = position.all_possible_moves(color)
-        # moves = self.weed_checkmate(moves, position)
-        if depth == 0:
-            worst = self.best_reply(position.all_possible_moves(color)[0], position)
-            worst_index = 0
-            for i in range(len(moves)):
-                print("In the tree search for")
-                if worst[1] > self.best_reply(moves[i], position)[1]:
-                    worst = self.best_reply(moves[i], position)
-                    worst_index = i
-            print("depth: 0")
-            return moves[worst_index], worst[1]
+        print("Depth: ", depth)
+        if depth == 1:
+            return self.best_move(position, color)
 
-        else:
-            worst = self.treeSearch(self.one_move_ahead(position.all_possible_moves(color)[0], position),
-                                    depth - 1,
-                                    color)
+        moves = self.weed_checkmate(position.all_possible_moves(color), position)
+        print("Number of possible moves", len(moves))
 
-            worst_index = 0
-            for i in range(len(moves)):
-                pot_worst = self.treeSearch(self.one_move_ahead(position.all_possible_moves(color)[0], position),
-                                            depth - 1,
-                                            color)
-                if worst[1] > pot_worst[1]:
-                    worst = pot_worst
-                    worst_index = i
-            print("depth: ", depth)
+        my_move = None
+        for move in moves:
+            move.out()
+            test = cp(position)
+            test.update(move)
+            best_reply = self.treeSearch(test, depth=depth-1, color=color.opponent())
+            best_reply[0].out()
+            print("My Advantage", -best_reply[1])
+            if my_move is None or my_move[1] < -best_reply[1]:
+                my_move = move, -best_reply[1]
 
-            return moves[worst_index], worst[1]
+        return my_move
 
     def weed_checkmate(self, moves, position):
         print("weeding 0ut checkmate")

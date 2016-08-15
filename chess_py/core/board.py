@@ -165,6 +165,12 @@ class Board:
         :type val_scheme Piece_values
         :rtype double
         """
+        # if move.status == notation_const.MOVEMENT:
+        #     return self.material_advantage(move.color, val_scheme)
+        # elif move.status == notation_const.CAPTURE:
+        #     return self.material_advantage(move.color, val_scheme) - \
+        #            val_scheme.val(self.piece_at_square(move.end_location()))
+        # else:
         test_board = copy.deepcopy(self)
         test_board.update(move)
         return test_board.material_advantage(move.color, val_scheme)
