@@ -127,13 +127,7 @@ class Board:
         :type val_scheme Piece_values
         :rtype double
         """
-        if len(self.all_possible_moves(input_color.opponent())) == 0 and \
-                self.get_king(input_color.opponent()).in_check(self):
-            return 100
 
-        if len(self.all_possible_moves(input_color)) == 0 and \
-                self.get_king(input_color).in_check(self):
-            return -100
 
         def add_advantage(curr_piece, curr_color):
             if piece is not None and piece.color.equals(curr_color):

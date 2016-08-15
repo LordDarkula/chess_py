@@ -93,7 +93,7 @@ class Ai:
         if depth == 1:
             return self.best_move(position, color)
 
-        moves = self.weed_checkmate(position.all_possible_moves(color), position)
+        moves = position.all_possible_moves(color)
         print("Number of possible moves", len(moves))
 
         my_move = None
@@ -101,6 +101,8 @@ class Ai:
             move.out()
             test = cp(position)
             test.update(move)
+            if len(test.all_possible_moves(color.opponent())) == 0:
+                return move, 100
             best_reply = self.treeSearch(test, depth=depth-1, color=color.opponent())
             best_reply[0].out()
             print("My Advantage", -best_reply[1])
