@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from chess_py.pieces.piece_const import Piece_values
 from chess_py.core.color import Color
 from copy import deepcopy as cp

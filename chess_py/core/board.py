@@ -128,7 +128,6 @@ class Board:
         :rtype double
         """
 
-
         def add_advantage(curr_piece, curr_color):
             if piece is not None and piece.color.equals(curr_color):
                 if isinstance(curr_piece, Pawn):
