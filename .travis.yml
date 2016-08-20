@@ -6,6 +6,9 @@ python:
   - "3.4"
   - "3.5"
 # command to install dependencies
+install: "python setup.py install"
+
+# command to run tests
 script: python tests/location_test.py
 branches:
   only:
