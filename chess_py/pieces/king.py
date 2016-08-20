@@ -50,7 +50,7 @@ class King(Piece):
         moves = []
 
         def add(function):
-            if function(self.location).exit == 0:
+            if function(self.location).on_board():
                 if position.is_square_empty(function(self.location)):
                     moves.append(Move(function(self.location), self, notation_const.MOVEMENT))
 
@@ -79,20 +79,20 @@ class King(Piece):
             :type rook_file int
             :rtype list
             """
-            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and type(
-                    position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and not \
-                    position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
+            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and \
+                    type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and \
+                    not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
 
                 test = copy.deepcopy(position)
                 test_king_loc = test.find_king(self.color)
 
-                if test.is_square_empty(direction(test_king_loc)) and test.is_square_empty(
-                        direction(direction(test_king_loc))):
+                if test.is_square_empty(direction(test_king_loc)) and \
+                        test.is_square_empty(direction(direction(test_king_loc))):
 
                     test.move_piece(test_king_loc, direction(test_king_loc))
 
                     if not test.get_king(self.color).in_check(position):
-                        moves.append(Move(direction(direction(Location(edge_rank(), self.location.file))),
+                        moves.append(Move(location=direction(direction(Location(edge_rank(), self.location.file))),
                                           piece=self,
                                           status=status,
                                           start_rank=self.location.rank,
@@ -132,7 +132,7 @@ class King(Piece):
         """
         for enemy_move in self.enemy_moves(position):
 
-            if enemy_move.end_location().equals(self.location):
+            if enemy_move.start_loc.equals(self.location):
                 return True
         return False
 
@@ -148,14 +148,14 @@ class King(Piece):
         for move in unfiltered:
             test = copy.deepcopy(position)
 
-            test_move = Move(location=move.end_location(),
-                             piece=test.piece_at_square(Location(self.location.rank, self.location.file)),
+            test_move = Move(start_loc=move.start_loc,
+                             piece=test.piece_at_square(self.location),
                              status=move.status,
                              start_rank=self.location.rank,
                              start_file=self.location.file)
 
             test.update(test_move)
-            test_king = test.piece_at_square(test_move.end_location())
+            test_king = test.piece_at_square(test_move.start_loc)
 
             if not test_king.in_check(test):
                 filtered.append(move)

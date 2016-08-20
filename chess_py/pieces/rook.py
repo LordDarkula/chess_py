@@ -49,7 +49,7 @@ class Rook(Piece):
         current = direction(self.location)
 
         assert isinstance(current, Location)
-        while current.exit == 0 and \
+        while current.on_board() and \
                 position.is_square_empty(current):
             possible.append(Move(current,
                                  piece=self,
@@ -59,7 +59,7 @@ class Rook(Piece):
 
             current = direction(current)
 
-        if current.exit == 0 and \
+        if current.on_board() and \
                 not position.is_square_empty(current) and \
                 not position.piece_at_square(current).color.equals(self.color):
                 possible.append(Move(current,

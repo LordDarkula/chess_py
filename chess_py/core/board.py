@@ -2,7 +2,7 @@
 
 
 """
-Constructs board object which stores the location of all the pieces.
+Constructs board object which stores the get_location of all the pieces.
 
 Default Array
 
@@ -162,7 +162,7 @@ class Board:
         #     return self.material_advantage(move.color, val_scheme)
         # elif move.status == notation_const.CAPTURE:
         #     return self.material_advantage(move.color, val_scheme) - \
-        #            val_scheme.val(self.piece_at_square(move.end_location()))
+        #            val_scheme.val(self.piece_at_square(move.get_location()))
         # else:
         test_board = copy.deepcopy(self)
         test_board.update(move)
@@ -252,16 +252,16 @@ class Board:
 
     def place_piece_at_square(self, piece, location):
         """
-        Places piece at given location
+        Places piece at given get_location
         :type piece pieces.Piece
         :type location Location
         """
         self.position[location.rank][location.file] = piece
-        piece.location = location
+        piece.get_location = location
 
     def move_piece(self, initial, final):
         """
-        Moves piece from one location to another
+        Moves piece from one get_location to another
         :type initial Location
         :type final Location
         """
@@ -275,16 +275,16 @@ class Board:
         """
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.rank, 4), Location(move.rank, 6))
-            move.piece.location = Location(move.rank, 6)
+            move.piece.get_location = Location(move.rank, 6)
             self.move_piece(Location(move.rank, 7), Location(move.rank, 5))
-            self.piece_at_square(Location(move.rank, 5)).location = Location(move.rank, 5)
+            self.piece_at_square(Location(move.rank, 5)).get_location = Location(move.rank, 5)
             return
 
         if move.status == notation_const.QUEEN_SIDE_CASTLE:
             self.move_piece(Location(move.rank, 4), Location(move.rank, 2))
-            move.piece.location = Location(move.rank, 2)
+            move.piece.get_location = Location(move.rank, 2)
             self.move_piece(Location(move.rank, 0), Location(move.rank, 3))
-            self.piece_at_square(Location(move.rank, 3)).location = Location(move.rank, 3)
+            self.piece_at_square(Location(move.rank, 3)).get_location = Location(move.rank, 3)
             return
 
         if type(move.piece) is Pawn:
@@ -297,25 +297,25 @@ class Board:
                 move.status == notation_const.CAPTURE_AND_PROMOTE:
             assert isinstance(move.piece, Pawn)
 
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
-            self.place_piece_at_square(move.promoted_to_piece, move.end_location())
+            self.move_piece(Location(move.start_rank, move.start_file), move.get_location())
+            self.place_piece_at_square(move.promoted_to_piece, move.get_location())
 
         elif move.status == notation_const.EN_PASSANT:
             assert isinstance(move.piece, Pawn)
 
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
+            self.move_piece(Location(move.start_rank, move.start_file), move.get_location())
 
-            assert isinstance(self.piece_at_square(Location(move.start_rank, move.end_location().file)), Pawn)
-            self.remove_piece_at_square(Location(move.start_rank, move.end_location().file))
+            assert isinstance(self.piece_at_square(Location(move.start_rank, move.get_location().file)), Pawn)
+            self.remove_piece_at_square(Location(move.start_rank, move.get_location().file))
 
         elif move.status == notation_const.MOVEMENT and \
             type(move.piece) is Pawn and \
-                fabs(move.end_location().rank - move.start_rank) == 2:
+                fabs(move.start_loc.rank - move.start_rank) == 2:
             move.piece.just_moved_two_steps = True
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
+            self.move_piece(Location(move.start_rank, move.start_file), move.start_loc)
 
         else:
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_location())
+            self.move_piece(Location(move.start_rank, move.start_file), move.start_loc)
 
     def out(self):
         """

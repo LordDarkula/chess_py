@@ -25,22 +25,18 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 
 class Location:
-    def __init__(self, rank, file, ex=0):
+    def __init__(self, rank, file):
         """
-        Creates a location on a chessboard given x and y coordinates.
+        Creates a get_location on a chessboard given x and y coordinates.
         :type rank: int
         :type file: int
         """
         self.rank = rank
         self.file = file
-        self.exit = ex
-
-        if not self.on_board():
-            self.exit = 1
 
     def equals(self, location):
         """
-        Finds is location on board is the same as current equation.
+        Finds is get_location on board is the same as current equation.
         :type location: algebraic.Location
         """
         return self.rank == location.rank and \
@@ -54,8 +50,8 @@ class Location:
         if -1 < self.rank < 8 and \
                 -1 < self.file < 8:
             return True
-        else:
-            return False
+
+        return False
 
     def shift_up(self):
         """
@@ -81,35 +77,35 @@ class Location:
     def shift_left(self):
         """
         Finds Location shifted left by 1
-        :rtype: location.Location
+        :rtype: get_location.Location
         """
         return Location(self.rank, self.file - 1)
 
     def shift_up_right(self):
         """
         Finds Location shifted up right by 1
-        :rtype: location.Location
+        :rtype: get_location.Location
         """
         return self.shift_up().shift_right()
 
     def shift_up_left(self):
         """
         Finds Location shifted up left by 1
-        :rtype: location.Location
+        :rtype: get_location.Location
         """
         return self.shift_up().shift_left()
 
     def shift_down_right(self):
         """
         Finds Location shifted down right by 1
-        :rtype: location.Location
+        :rtype: get_location.Location
         """
         return self.shift_down().shift_right()
 
     def shift_down_left(self):
         """
         Finds Location shifted down left by 1
-        :rtype: location.Location
+        :rtype: get_location.Location
         """
         return self.shift_down().shift_left()
 

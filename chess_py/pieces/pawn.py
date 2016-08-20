@@ -57,13 +57,13 @@ class Pawn(Piece):
         """
         Finds square two squares in front of Pawn
         :type location: Location
-        :rtype location
+        :rtype get_location
         """
         return self.square_in_front(self.square_in_front(location))
 
     def would_move_be_promotion(self, location):
         """
-        Finds if move from current location would result in promotion
+        Finds if move from current get_location would result in promotion
         :type: Location
         :rtype: bool
         """
@@ -84,7 +84,7 @@ class Pawn(Piece):
         move = Move(location, self, status, start_rank=self.location.rank, start_file=self.location.file)
 
         def create_each_move(piece):
-            move.promoted_to_piece = piece(self.color, move.end_location())
+            move.promoted_to_piece = piece(self.color, move.location())
             moves.append(move)
 
         create_each_move(Queen)
@@ -154,7 +154,7 @@ class Pawn(Piece):
             """
             Adds capture moves
             """
-            if capture_square.exit == 0 and \
+            if capture_square.on_board() and \
                     not position.is_square_empty(capture_square) and \
                     position.piece_at_square(capture_square).color.equals(not self.color.color):
                 """
@@ -209,7 +209,7 @@ class Pawn(Piece):
                 position.piece_at_square(my_location).equals(Pawn(Color(not self.color), my_location)) and \
                 position.piece_at_square(my_location).just_moved_two_steps
 
-        # if pawn is not on a valid en passant location then return None
+        # if pawn is not on a valid en passant get_location then return None
         if on_en_passant_valid_location():
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
@@ -233,7 +233,7 @@ class Pawn(Piece):
     def possible_moves(self, position):
         """
         Finds out the locations of possible moves given board.Board position.
-        :pre location is on board and piece at specified location on position
+        :pre get_location is on board and piece at specified get_location on position
         :type position: board.Board
         :rtype list
         """
