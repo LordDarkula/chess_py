@@ -9,7 +9,7 @@ python:
 install: "python setup.py install"
 
 # command to run tests
-script: python tests/location_test.py
+script: python tests/testLocation.py
 branches:
   only:
     - master
