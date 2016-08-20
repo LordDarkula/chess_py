@@ -1,6 +1,5 @@
 # chess_py
 [![Build Status](https://travis-ci.org/LordDarkula/chess_py.svg?branch=master)](https://travis-ci.org/LordDarkula/chess_py)
-Copyright © 2016 Aubhro Sengupta. All rights reserved.
 ```
 
 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
@@ -16,7 +15,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 ```
 
 ## License
-MIT
+chess_py is available under the MIT license. See the LICENSE file for more info.
+Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 ## Introduction
 

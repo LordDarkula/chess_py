@@ -54,7 +54,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
               <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-              <folding />
+              <folding>
+                <marker date="1471671284000" expanded="true" signature="176:205" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,8 +68,8 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="44">
-                <caret line="1" column="123" selection-start-line="1" selection-start-column="123" selection-end-line="1" selection-end-column="123" />
+              <first_editor relative-caret-position="418">
+                <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -1116,7 +1118,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
           <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding />
+          <folding>
+            <marker date="1471671284000" expanded="true" signature="176:205" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1139,8 +1143,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="44">
-            <caret line="1" column="123" selection-start-line="1" selection-start-column="123" selection-end-line="1" selection-end-column="123" />
+          <first_editor relative-caret-position="418">
+            <caret line="18" column="54" selection-start-line="18" selection-start-column="54" selection-end-line="18" selection-end-column="54" />
             <folding />
           </first_editor>
           <second_editor />
