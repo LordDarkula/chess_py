@@ -10,8 +10,8 @@ install: "python setup.py install"
 
 # command to run tests
 script:
-  python tests/testLocation.py
-  python tests/testMove.py
+  - python tests/testLocation.py
+  - python tests/testMove.py
 branches:
   only:
     - master
