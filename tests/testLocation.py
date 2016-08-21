@@ -32,5 +32,17 @@ class LocationTest(unittest.TestCase):
         self.failUnless(Location(3, 4).shift_left().equals(Location(3, 3)))
         self.failUnless(Location(0, 2).shift_left().equals(Location(0, 1)))
 
+    def testShiftUpRight(self):
+        self.failUnless(Location(3, 4).shift_up_right().equals(Location(4, 5)))
+
+    def testShiftUpLeft(self):
+        self.failUnless(Location(1, 2).shift_up_left().equals(Location(2, 1)))
+
+    def testShiftDownRight(self):
+        self.failUnless(Location(5, 3).shift_down_right().equals(Location(4, 4)))
+
+    def testShiftDownLeft(self):
+        self.failUnless(Location(1, 1).shift_down_left().equals(Location(0, 0)))
+
 if __name__ == '__main__':
     unittest.main()

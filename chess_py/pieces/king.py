@@ -92,7 +92,7 @@ class King(Piece):
                     test.move_piece(test_king_loc, direction(test_king_loc))
 
                     if not test.get_king(self.color).in_check(position):
-                        moves.append(Move(location=direction(direction(Location(edge_rank(), self.location.file))),
+                        moves.append(Move(end_loc=direction(direction(Location(edge_rank(), self.location.file))),
                                           piece=self,
                                           status=status,
                                           start_rank=self.location.rank,
@@ -132,7 +132,7 @@ class King(Piece):
         """
         for enemy_move in self.enemy_moves(position):
 
-            if enemy_move.start_loc.equals(self.location):
+            if enemy_move.end_loc.equals(self.location):
                 return True
         return False
 
@@ -148,7 +148,7 @@ class King(Piece):
         for move in unfiltered:
             test = copy.deepcopy(position)
 
-            test_move = Move(end_loc=move.start_loc,
+            test_move = Move(end_loc=move.end_loc,
                              piece=test.piece_at_square(self.location),
                              status=move.status,
                              start_rank=self.location.rank,

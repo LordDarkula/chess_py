@@ -44,8 +44,14 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return self.end_loc.equals(move.start_loc) and \
-               self.piece.equals(move.piece) and \
+        if move.start_rank is not None and self.start_rank is not None and move.start_rank != self.start_rank:
+            return False
+
+        if move.start_file is not None and self.start_file is not None and move.start_file != self.start_file:
+            return False
+
+        return self.end_loc.equals(move.end_loc) and \
+            self.piece.equals(move.piece) and \
             self.status == move.status
 
     def on_board(self):
