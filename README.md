@@ -1,5 +1,7 @@
 # chess_py
+[![PyPI version](https://badge.fury.io/py/chess_py.svg)](https://badge.fury.io/py/chess_py)
 [![Build Status](https://travis-ci.org/LordDarkula/chess_py.svg?branch=master)](https://travis-ci.org/LordDarkula/chess_py)
+[![Twitter](https://img.shields.io/badge/twitter-@LordDarkula-blue.svg?style=flat)](http://twitter.com/LordDarkula)
 ```
 
 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜

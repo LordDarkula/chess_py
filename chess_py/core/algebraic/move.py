@@ -17,7 +17,11 @@ from chess_py.core import color
 
 
 class Move:
-    def __init__(self, end_loc, piece, status, start_rank=None, start_file=None, string=None, promoted_to_piece=None):
+    def __init__(self, end_loc, piece, status,
+                 start_rank=None,
+                 start_file=None,
+                 string=None,
+                 promoted_to_piece=None):
         """
         Alternate constructor to create move using object algebraic.Location
         :type end_loc: Location
