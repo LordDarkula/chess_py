@@ -148,14 +148,14 @@ class King(Piece):
         for move in unfiltered:
             test = copy.deepcopy(position)
 
-            test_move = Move(start_loc=move.start_loc,
+            test_move = Move(end_loc=move.start_loc,
                              piece=test.piece_at_square(self.location),
                              status=move.status,
                              start_rank=self.location.rank,
                              start_file=self.location.file)
 
             test.update(test_move)
-            test_king = test.piece_at_square(test_move.start_loc)
+            test_king = test.piece_at_square(test_move.end_loc)
 
             if not test_king.in_check(test):
                 filtered.append(move)

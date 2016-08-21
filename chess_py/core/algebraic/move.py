@@ -17,15 +17,15 @@ from chess_py.core import color
 
 
 class Move:
-    def __init__(self, start_loc, piece, status, start_rank=None, start_file=None, string=None, promoted_to_piece=None):
+    def __init__(self, end_loc, piece, status, start_rank=None, start_file=None, string=None, promoted_to_piece=None):
         """
         Alternate constructor to create move using object algebraic.Location
-        :type location: Location
+        :type end_loc: Location
         :type piece: Piece
         :type status: int
         """
         if self.on_board:
-            self.start_loc = start_loc
+            self.end_loc = end_loc
 
             self.status = status
             self.piece = piece
@@ -44,8 +44,8 @@ class Move:
         Finds if move is same move as this one.
         :type move: algebraic.Move
         """
-        return self.start_loc.equals(move.start_loc) and \
-            self.piece.equals(move.piece) and \
+        return self.end_loc.equals(move.start_loc) and \
+               self.piece.equals(move.piece) and \
             self.status == move.status
 
     def on_board(self):
@@ -53,21 +53,21 @@ class Move:
         Determines whether move exists.
         :rtype bool
         """
-        return self.start_loc.on_board()
+        return self.end_loc.on_board()
 
     def would_move_be_promotion(self):
         """
         Finds if move from current get_location
         """
-        if self.start_loc.rank == 0 and \
+        if self.end_loc.rank == 0 and \
                 self.color == color.black:
             return True
 
-        if self.start_loc.rank == 7 and \
+        if self.end_loc.rank == 7 and \
                 self.color == color.white:
             return True
 
         return False
 
     def out(self):
-        print(self.piece.symbol, " Rank: ", self.start_loc.rank, " File:  ", self.start_loc.file, " Status: ", self.status)
+        print(self.piece.symbol, " Rank: ", self.end_loc.rank, " File:  ", self.end_loc.file, " Status: ", self.status)

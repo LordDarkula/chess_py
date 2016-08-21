@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/algebraic/move.py" afterPath="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/pieces/king.py" afterPath="$PROJECT_DIR$/chess_py/pieces/king.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/testLocation.py" afterPath="$PROJECT_DIR$/tests/testLocation.py" />
     </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,7 +21,9 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/chess_py$move.coverage" NAME="move Coverage Results" MODIFIED="1460581249294" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chess_py$Unittest_LocationTest_testEquals.coverage" NAME="Unittest LocationTest.testEquals Coverage Results" MODIFIED="1471670421677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chess_py$Unittests_in_LocationTest.coverage" NAME="Unittests in LocationTest Coverage Results" MODIFIED="1471742436289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$board.coverage" NAME="board Coverage Results" MODIFIED="1462928257188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chess_py$Unittest_LocationTest_testOnBoard.coverage" NAME="Unittest LocationTest.testOnBoard Coverage Results" MODIFIED="1471742065739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1471667977826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -52,21 +57,19 @@
       <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.travis.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-              <folding>
-                <marker date="1471671284000" expanded="true" signature="176:205" placeholder="..." />
-              </folding>
+            <state relative-caret-position="176">
+              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
-          <provider editor-type-id="MarkdownFxPreviewEditor">
+          <provider selected="true" editor-type-id="MarkdownFxPreviewEditor">
             <state />
           </provider>
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+          <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="FIRST">
               <first_editor relative-caret-position="396">
                 <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
@@ -77,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="location_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/location_test.py">
+      <file leaf-file-name="testLocation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/testLocation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+            <state relative-caret-position="88">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -134,8 +137,8 @@
       <file leaf-file-name="move.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
+            <state relative-caret-position="440">
+              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding>
                 <element signature="e#286#339#0" expanded="true" />
               </folding>
@@ -156,6 +159,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="290">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -172,7 +185,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/setup/board.py" />
         <option value="$PROJECT_DIR$/game/action.py" />
         <option value="$PROJECT_DIR$/players/human.py" />
         <option value="$PROJECT_DIR$/pieces/rook.py" />
@@ -218,11 +230,12 @@
         <option value="$PROJECT_DIR$/chess_py/pieces/pawn.py" />
         <option value="$PROJECT_DIR$/chess_py/core/algebraic/location.py" />
         <option value="$PROJECT_DIR$/chess_py/pieces/king.py" />
-        <option value="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
         <option value="$PROJECT_DIR$/chess_py/core/board.py" />
         <option value="$PROJECT_DIR$/tests/location_test.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
+        <option value="$PROJECT_DIR$/tests/testLocation.py" />
       </list>
     </option>
   </component>
@@ -432,7 +445,7 @@
       <recent name="$PROJECT_DIR$/pieces" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittest LocationTest.testEquals">
+  <component name="RunManager" selected="Python tests.Unittests in LocationTest">
     <configuration default="false" name="Unittest LocationTest.testEquals" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -444,11 +457,57 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="chess_py" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/location_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testLocation.py" />
       <option name="CLASS_NAME" value="LocationTest" />
       <option name="METHOD_NAME" value="testEquals" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest LocationTest.testOnBoard" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="chess_py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testLocation.py" />
+      <option name="CLASS_NAME" value="LocationTest" />
+      <option name="METHOD_NAME" value="testOnBoard" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in LocationTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="chess_py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testLocation.py" />
+      <option name="CLASS_NAME" value="LocationTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -682,13 +741,17 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest LocationTest.testEquals" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest LocationTest.testOnBoard" />
+      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in LocationTest" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittest LocationTest.testEquals" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in LocationTest" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest LocationTest.testOnBoard" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest LocationTest.testEquals" />
       </list>
     </recent_temporary>
   </component>
@@ -709,35 +772,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 17m 07s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittest_LocationTest_testOnBoard - 2016.08.20 at 18h 14m 27s.xml">
+      <configuration name="Unittest LocationTest.testOnBoard" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 17m 37s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 14m 34s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 18m 28s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 14m 46s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 18m 54s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 15m 01s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 19m 03s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 15m 16s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 19m 12s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 15m 29s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 19m 21s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 16m 23s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 19m 29s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 17m 12s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 20m 11s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 17m 48s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittest_LocationTest_testEquals - 2016.08.19 at 22h 20m 22s.xml">
-      <configuration name="Unittest LocationTest.testEquals" configurationId="tests" />
+    <history-entry file="Unittests_in_LocationTest - 2016.08.20 at 18h 20m 37s.xml">
+      <configuration name="Unittests in LocationTest" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -757,12 +820,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32740587" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845187" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32809225" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32635984" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294979" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3888889" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3888889" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36477986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36477986" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39958158" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -985,14 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/knight.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -1030,16 +1085,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="46" column="51" selection-start-line="46" selection-start-column="51" selection-end-line="46" selection-end-column="51" />
-          <folding>
-            <element signature="e#286#339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/pawn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -1065,6 +1110,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+      <provider editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="396">
+            <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding>
+            <element signature="e#286#339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="73">
@@ -1085,58 +1191,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/location_test.py">
+    <entry file="file://$PROJECT_DIR$/tests/testLocation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="34" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+        <state relative-caret-position="88">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.travis.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="12" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
-          <folding>
-            <marker date="1471671284000" expanded="true" signature="176:205" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownFxPreviewEditor">
-        <state />
-      </provider>
-      <provider editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="FIRST">
-          <first_editor relative-caret-position="396">
-            <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
