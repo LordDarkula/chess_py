@@ -132,7 +132,7 @@ class King(Piece):
         """
         for enemy_move in self.enemy_moves(position):
 
-            if enemy_move.end_loc.equals(self.location):
+            if enemy_move.end_loc == self.location:
                 return True
         return False
 

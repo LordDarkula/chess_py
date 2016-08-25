@@ -47,5 +47,9 @@ class MoveTest(unittest.TestCase):
                                                      start_rank=1,
                                                      start_file=0)))
 
+    def testOnBoard(self):
+        self.failUnless(self.white_pawn_move.on_board())
+        self.failIf(Move(Location(8, 4), self.white_pawn, notation_const.MOVEMENT).on_board())
+
 if __name__ == '__main__':
     unittest.main()

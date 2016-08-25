@@ -34,13 +34,31 @@ class Location:
         self.rank = rank
         self.file = file
 
-    def equals(self, location):
+    def __key(self):
+        return self.rank, self.file
+
+    def __hash__(self):
+        return hash(self.__key())
+
+    def __eq__(self, other):
         """
         Finds is get_location on board is the same as current equation.
-        :type location: algebraic.Location
+        :type other: Location
         """
-        return self.rank == location.rank and \
-            self.file == location.file
+        print("Doing")
+        if isinstance(other, self.__class__):
+            print("done", int(self.rank) == int(other.rank))
+            print(self.rank, other.rank)
+            print(self.file, other.file)
+            print("Done", self.file == other.file)
+        else:
+            raise TypeError("Cannot compare other types with Location")
+
+        return int(self.rank) == int(other.rank) and \
+            int(self.file) == int(other.file)
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def on_board(self):
         """
@@ -56,56 +74,56 @@ class Location:
     def shift_up(self):
         """
         Finds Location shifted up by 1
-        :rtype: algebraic.Location
+        :rtype: Location
         """
         return Location(self.rank + 1, self.file)
 
     def shift_down(self):
         """
         Finds Location shifted down by 1
-        :rtype: algebraic.Location
+        :rtype: Location
         """
         return Location(self.rank - 1, self.file)
 
     def shift_right(self):
         """
         Finds Location shifted right by 1
-        :rtype: algebraic.Location
+        :rtype: Location
         """
         return Location(self.rank, self.file + 1)
 
     def shift_left(self):
         """
         Finds Location shifted left by 1
-        :rtype: get_location.Location
+        :rtype: Location
         """
         return Location(self.rank, self.file - 1)
 
     def shift_up_right(self):
         """
         Finds Location shifted up right by 1
-        :rtype: get_location.Location
+        :rtype: Location
         """
         return self.shift_up().shift_right()
 
     def shift_up_left(self):
         """
         Finds Location shifted up left by 1
-        :rtype: get_location.Location
+        :rtype: Location
         """
         return self.shift_up().shift_left()
 
     def shift_down_right(self):
         """
         Finds Location shifted down right by 1
-        :rtype: get_location.Location
+        :rtype: Location
         """
         return self.shift_down().shift_right()
 
     def shift_down_left(self):
         """
         Finds Location shifted down left by 1
-        :rtype: get_location.Location
+        :rtype: Location
         """
         return self.shift_down().shift_left()
 

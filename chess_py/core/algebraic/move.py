@@ -54,7 +54,7 @@ class Move:
         if move.start_file is not None and self.start_file is not None and move.start_file != self.start_file:
             return False
 
-        return self.end_loc.equals(move.end_loc) and \
+        return self.end_loc == move.end_loc and \
             self.piece.equals(move.piece) and \
             self.status == move.status
 
