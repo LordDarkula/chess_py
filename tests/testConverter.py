@@ -6,10 +6,14 @@ class ConverterTest(unittest.TestCase):
 
     def setUp(self):
         self.test_board = Board.init_default()
-        self.e_four_move = Move(Location(3, 4), Pawn(color.Color.init_white(), Location(1, 4)), notation_const.MOVEMENT)
+        self.e_four_move = Move(Location(3, 4),
+                                piece=Pawn(color.Color.init_white(), Location(1, 4)),
+                                status=notation_const.MOVEMENT)
 
     def testToMove(self):
-        self.failUnless(to_move("e4", self.test_board).equals(self.e_four_move))
+        to_move("e4", color.Color.init_white()).out()
+        self.e_four_move.out()
+        self.failUnless(to_move("e4", color.Color.init_white()) == self.e_four_move)
 
 if __name__ == '__main__':
     unittest.main()

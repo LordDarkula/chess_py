@@ -1,6 +1,7 @@
 import unittest
 
 from chess_py import Move, Location, notation_const, Pawn, color
+import copy
 
 
 class MoveTest(unittest.TestCase):
@@ -19,6 +20,10 @@ class MoveTest(unittest.TestCase):
                                     start_file=5)
 
     def testEquals(self):
+        print(self.white_pawn_move.status == notation_const.MOVEMENT)
+
+        test_copy = copy.copy(self.white_pawn_move)
+        print(self.white_pawn_move == test_copy)
         self.failUnless(self.white_pawn_move == Move(end_loc=Location(2, 0),
                                                      piece=self.white_pawn,
                                                      status=notation_const.MOVEMENT))
@@ -41,7 +46,7 @@ class MoveTest(unittest.TestCase):
                                                  piece=self.white_pawn,
                                                  status=notation_const.CAPTURE))
 
-        self.failIf(self.start_specified != Move(end_loc=Location(2, 0),
+        self.failIf(self.start_specified == Move(end_loc=Location(2, 0),
                                                  piece=self.white_pawn,
                                                  status=notation_const.MOVEMENT,
                                                  start_rank=1,

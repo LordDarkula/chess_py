@@ -43,6 +43,12 @@ class Move:
         else:
             self.exit = 1
 
+    def __key(self):
+        return self.end_loc, self.piece, self.status, self.start_rank, self.start_file, self.promoted_to_piece
+
+    def __hash__(self):
+        return hash(self.__key())
+
     def __eq__(self, other):
         """
         Finds if move is same move as this one.
@@ -51,10 +57,19 @@ class Move:
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Move")
 
-        if other.start_rank is not None and self.start_rank is not None and other.start_rank != self.start_rank:
+        if other.start_rank is not None and \
+                self.start_rank is not None and \
+                other.start_rank != self.start_rank:
             return False
 
-        if other.start_file is not None and self.start_file is not None and other.start_file != self.start_file:
+        if other.start_file is not None and \
+                self.start_file is not None and \
+                other.start_file != self.start_file:
+            return False
+
+        if other.promoted_to_piece is not None and \
+                self.promoted_to_piece is not None and \
+                not self.promoted_to_piece.equals(other.promoted_to_piece):
             return False
 
         return self.end_loc == other.end_loc and \
