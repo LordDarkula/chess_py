@@ -5,11 +5,10 @@ from chess_py import Location
 class LocationTest(unittest.TestCase):
 
     def testEquals(self):
-        # self.assertEqual(Location(8, 8), Location(8, 8))
-        print(Location(2, 3).__eq__(Location(2, 3)))
+        self.assertEqual(Location(8, 8), Location(8, 8))
         self.failUnless(Location(2, 3) == Location(2, 3))
-        # self.failUnless(Location(7, 6) == Location(7, 6))
-        # self.failIf(Location(4, 5) == Location(5, 4))
+        self.failUnless(Location(7, 6) == Location(7, 6))
+        self.failIf(Location(4, 5) == Location(5, 4))
 
     def testOnBoard(self):
         self.failUnless(Location(3, 4).on_board())
@@ -34,7 +33,6 @@ class LocationTest(unittest.TestCase):
         self.failUnless(Location(0, 2).shift_left() == Location(0, 1))
 
     def testShiftUpRight(self):
-        print(Location(3, 4).shift_up_right().rank, Location(3, 4).shift_up_right().file)
         self.failUnless(Location(3, 4).shift_up_right() == Location(4, 5))
 
     def testShiftUpLeft(self):

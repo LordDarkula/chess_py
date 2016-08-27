@@ -45,13 +45,7 @@ class Location:
         Finds is get_location on board is the same as current equation.
         :type other: Location
         """
-        print("Doing")
-        if isinstance(other, self.__class__):
-            print("done", int(self.rank) == int(other.rank))
-            print(self.rank, other.rank)
-            print(self.file, other.file)
-            print("Done", self.file == other.file)
-        else:
+        if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Location")
 
         return int(self.rank) == int(other.rank) and \

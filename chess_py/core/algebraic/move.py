@@ -43,20 +43,26 @@ class Move:
         else:
             self.exit = 1
 
-    def equals(self, move):
+    def __eq__(self, other):
         """
         Finds if move is same move as this one.
-        :type move: algebraic.Move
+        :type other: Move
         """
-        if move.start_rank is not None and self.start_rank is not None and move.start_rank != self.start_rank:
+        if not isinstance(other, self.__class__):
+            raise TypeError("Cannot compare other types with Move")
+
+        if other.start_rank is not None and self.start_rank is not None and other.start_rank != self.start_rank:
             return False
 
-        if move.start_file is not None and self.start_file is not None and move.start_file != self.start_file:
+        if other.start_file is not None and self.start_file is not None and other.start_file != self.start_file:
             return False
 
-        return self.end_loc == move.end_loc and \
-            self.piece.equals(move.piece) and \
-            self.status == move.status
+        return self.end_loc == other.end_loc and \
+            self.piece.equals(other.piece) and \
+            self.status == other.status
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     def on_board(self):
         """

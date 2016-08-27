@@ -192,7 +192,7 @@ def make_legal(move, position):
     for test_move in position.all_possible_moves(move.color):
 
         # Checks for basic equality of essential elements
-        if move.equals(test_move):
+        if move == test_move:
 
             if move.status == notation_const.KING_SIDE_CASTLE or \
                     move.status == notation_const.QUEEN_SIDE_CASTLE:
