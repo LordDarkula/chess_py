@@ -11,8 +11,6 @@ class ConverterTest(unittest.TestCase):
                                 status=notation_const.MOVEMENT)
 
     def testToMove(self):
-        to_move("e4", color.Color.init_white()).out()
-        self.e_four_move.out()
         self.failUnless(to_move("e4", color.Color.init_white()) == self.e_four_move)
 
 if __name__ == '__main__':

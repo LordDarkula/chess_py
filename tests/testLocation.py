@@ -1,5 +1,5 @@
 import unittest
-from chess_py import Location
+from chess_py.core.algebraic.location import Location
 
 
 class LocationTest(unittest.TestCase):

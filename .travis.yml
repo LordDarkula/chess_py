@@ -12,6 +12,7 @@ install: "python setup.py install"
 script:
   - python tests/testLocation.py
   - python tests/testMove.py
+  - python tests/testConverter.py
 branches:
   only:
     - master
