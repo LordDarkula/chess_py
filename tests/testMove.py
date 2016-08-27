@@ -41,7 +41,7 @@ class MoveTest(unittest.TestCase):
                                                  piece=self.white_pawn,
                                                  status=notation_const.CAPTURE))
 
-        self.failIf(self.start_specified == Move(end_loc=Location(2, 0),
+        self.failIf(self.start_specified != Move(end_loc=Location(2, 0),
                                                  piece=self.white_pawn,
                                                  status=notation_const.MOVEMENT,
                                                  start_rank=1,
