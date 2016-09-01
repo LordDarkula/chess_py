@@ -57,10 +57,10 @@ class Piece_values:
         if piece is None:
             return 0
 
-        if not ref_color.equals(piece.color):
-            const = -1
-        else:
+        if ref_color.equals(piece.color):
             const = 1
+        else:
+            const = -1
 
         if isinstance(piece, Pawn):
             return self.PAWN_VALUE * const
