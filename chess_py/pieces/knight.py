@@ -34,6 +34,7 @@ class Knight(Piece):
         :type location Location
         """
         super(Knight, self).__init__(input_color, location, "♞", "♘")
+        self.letter = "N"
 
     def possible_moves(self, position):
         """

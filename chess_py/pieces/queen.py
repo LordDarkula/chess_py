@@ -31,6 +31,7 @@ class Queen(Piece):
         super(Queen, self).__init__(input_color, location, "♛", "♕")
         self.rook = Rook(input_color, location)
         self.bishop = Bishop(input_color, location)
+        self.letter = "Q"
 
     def possible_moves(self, position):
         self.rook = Rook(self.color, self.location)

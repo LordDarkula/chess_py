@@ -13,6 +13,7 @@ from chess_py.pieces.queen import Queen
 from chess_py.pieces.rook import Rook
 from chess_py.pieces.knight import Knight
 
+
 class Piece_values:
     def __init__(self):
 
@@ -46,15 +47,30 @@ class Piece_values:
 
         cls.QUEEN_VALUE = QUEEN_VALUE
 
-    def val(self, piece):
+    def val(self, piece, ref_color):
+        """
+
+        :type piece: Piece
+        :type ref_color: Color
+        :rtype int
+        """
+        if piece is None:
+            return 0
+
+        if not ref_color.equals(piece.color):
+            const = -1
+        else:
+            const = 1
+
         if isinstance(piece, Pawn):
-            return self.PAWN_VALUE
+            return self.PAWN_VALUE * const
         elif isinstance(piece, Knight):
-            return self.KNIGHT_VALUE
+            return self.KNIGHT_VALUE * const
         elif isinstance(piece, Bishop):
-            return self.BISHOP_VALUE
+            return self.BISHOP_VALUE * const
         elif isinstance(piece, Rook):
-            return self.ROOK_VALUE
+            return self.ROOK_VALUE * const
         elif isinstance(piece, Queen):
-            return self.QUEEN_VALUE
+            return self.QUEEN_VALUE * const
         return 0
+

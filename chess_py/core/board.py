@@ -127,27 +127,10 @@ class Board:
         :type val_scheme Piece_values
         :rtype double
         """
-
-        def add_advantage(curr_piece, curr_color):
-            if piece is not None and piece.color.equals(curr_color):
-                if isinstance(curr_piece, Pawn):
-                    return val_scheme.PAWN_VALUE
-                elif isinstance(curr_piece, Knight):
-                    return val_scheme.KNIGHT_VALUE
-                elif isinstance(curr_piece, Bishop):
-                    return val_scheme.BISHOP_VALUE
-                elif isinstance(curr_piece, Rook):
-                    return val_scheme.ROOK_VALUE
-                elif isinstance(curr_piece, Queen):
-                    return val_scheme.QUEEN_VALUE
-
-            return 0
-
         advantage = 0.0
         for row in self.position:
             for piece in row:
-                advantage += add_advantage(piece, input_color)
-                advantage -= add_advantage(piece, Color(not input_color.color))
+                advantage += val_scheme.val(piece, input_color)
 
         return advantage
 

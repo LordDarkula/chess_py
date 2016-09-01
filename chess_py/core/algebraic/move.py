@@ -79,6 +79,14 @@ class Move:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __str__(self):
+        move_str = self.end_loc.__str__() + Location(self.start_rank, self.start_file)
+
+        if self.promoted_to_piece is not None:
+            move_str = move_str + self.promoted_to_piece.letter
+
+        return move_str
+
     def on_board(self):
         """
         Determines whether move exists.

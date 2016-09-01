@@ -40,6 +40,7 @@ class King(Piece):
         """
         self.has_moved = False
         super(King, self).__init__(input_color, location, "♚", "♔")
+        self.letter = "K"
 
     def unfiltered(self, position):
         """

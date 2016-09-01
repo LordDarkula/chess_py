@@ -33,6 +33,7 @@ class Bishop(Piece):
         :type input_color: Color
         """
         super(Bishop, self).__init__(input_color, location, "♝", "♗")
+        self.letter = "B"
 
     def possible_moves(self, position):
         """
