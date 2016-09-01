@@ -37,12 +37,21 @@ class Piece:
         else:
             self.symbol = black_symbol
 
-    def equals(self, piece):
+    def __key(self):
+        return self.color, self.location
+
+    def __hash__(self):
+        return hash(self.__key())
+
+    def __eq__(self, other):
         """
         Finds out if piece is the same type and color as self
-        :type piece: pieces.py *
+        :type other: pieces.py *
         """
-        return type(piece) is type(self) and piece.color == self.color
+        return type(other) is type(self) and other.color == self.color
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
 
     @abstractmethod
     def possible_moves(self, position):

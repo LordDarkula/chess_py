@@ -7,7 +7,6 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from chess_py.pieces.bishop import Bishop
-from chess_py.pieces.king import King
 from chess_py.pieces.pawn import Pawn
 from chess_py.pieces.queen import Queen
 from chess_py.pieces.rook import Rook

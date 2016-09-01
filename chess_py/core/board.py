@@ -141,12 +141,6 @@ class Board:
         :type val_scheme Piece_values
         :rtype double
         """
-        # if move.status == notation_const.MOVEMENT:
-        #     return self.material_advantage(move.color, val_scheme)
-        # elif move.status == notation_const.CAPTURE:
-        #     return self.material_advantage(move.color, val_scheme) - \
-        #            val_scheme.val(self.piece_at_square(move.get_location()))
-        # else:
         test_board = copy.deepcopy(self)
         test_board.update(move)
         return test_board.material_advantage(move.color, val_scheme)
@@ -205,7 +199,7 @@ class Board:
             for j in range(len(self.position)):
                 loc = Location(i, j)
                 if not self.is_square_empty(loc) and \
-                        self.piece_at_square(loc).equals(piece):
+                        self.piece_at_square(loc) == piece:
                     return loc
 
         return None

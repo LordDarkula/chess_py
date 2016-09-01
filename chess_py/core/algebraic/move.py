@@ -73,7 +73,7 @@ class Move:
             return False
 
         return self.end_loc == other.end_loc and \
-            self.piece.equals(other.piece) and \
+            self.piece == other.piece and \
             self.status == other.status
 
     def __ne__(self, other):
