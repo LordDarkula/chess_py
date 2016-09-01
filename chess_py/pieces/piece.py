@@ -46,7 +46,7 @@ class Piece:
     def __eq__(self, other):
         """
         Finds out if piece is the same type and color as self
-        :type other: pieces.py *
+        :type other: Piece
         """
         return type(other) is type(self) and other.color == self.color
 
