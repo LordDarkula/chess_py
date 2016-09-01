@@ -36,19 +36,28 @@ class Color:
         cls.color = raw == "white"
         cls.string = raw
 
+    def __key(self):
+        return self.color
+
+    def __hash__(self):
+        return hash(self.__key())
+
+    def __eq__(self, other):
+        """
+        Finds out this color is the same as another color.
+        :type other: color.Color
+        """
+        if type(other) is type(self):
+            return self.color == other.color
+
+        return self.color == other
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def opponent(self):
         """
         Finds other color
         :rtype Color
         """
         return Color(not self.color)
-
-    def equals(self, input_color):
-        """
-        Finds out this color is the same as another color.
-        :type input_color: color.Color
-        """
-        if type(input_color) is type(self):
-            return self.color == input_color.color
-        else:
-            return self.color == input_color

@@ -166,7 +166,7 @@ class Board:
             for piece in row:
 
                     # Tests if square on the board is not empty
-                    if piece is not None and piece.color.equals(input_color):
+                    if piece is not None and piece.color == input_color:
                         # Adds all of piece's possible moves to moves list.
                         moves.extend(piece.possible_moves(self))
 
@@ -257,17 +257,17 @@ class Board:
         :type move Move
         """
         if move.status == notation_const.KING_SIDE_CASTLE:
-            self.move_piece(Location(move.rank, 4), Location(move.rank, 6))
-            move.piece.get_location = Location(move.rank, 6)
-            self.move_piece(Location(move.rank, 7), Location(move.rank, 5))
-            self.piece_at_square(Location(move.rank, 5)).get_location = Location(move.rank, 5)
+            self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))
+            move.piece.get_location = Location(move.end_loc.rank, 6)
+            self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
+            self.piece_at_square(Location(move.end_loc.rank, 5)).get_location = Location(move.end_loc.rank, 5)
             return
 
         if move.status == notation_const.QUEEN_SIDE_CASTLE:
-            self.move_piece(Location(move.rank, 4), Location(move.rank, 2))
-            move.piece.get_location = Location(move.rank, 2)
-            self.move_piece(Location(move.rank, 0), Location(move.rank, 3))
-            self.piece_at_square(Location(move.rank, 3)).get_location = Location(move.rank, 3)
+            self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 2))
+            move.piece.get_location = Location(move.end_loc.rank, 2)
+            self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
+            self.piece_at_square(Location(move.end_loc.rank, 3)).get_location = Location(move.end_loc.rank, 3)
             return
 
         if type(move.piece) is Pawn:

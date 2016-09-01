@@ -35,7 +35,7 @@ def to_move(algebraic_string, input_color):
     :type input_color: color.Color
     """
     def edge_rank():
-        if input_color.equals(color.white):
+        if input_color == color.white:
             return 0
         return 7
 

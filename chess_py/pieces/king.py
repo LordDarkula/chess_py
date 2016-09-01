@@ -55,7 +55,7 @@ class King(Piece):
                 if position.is_square_empty(function(self.location)):
                     moves.append(Move(function(self.location), self, notation_const.MOVEMENT))
 
-                elif not position.piece_at_square(function(self.location)).color.equals(self.color):
+                elif position.piece_at_square(function(self.location)).color != self.color:
                     moves.append(Move(function(self.location), self, notation_const.CAPTURE))
 
         add(lambda x: x.shift_up())
@@ -68,7 +68,7 @@ class King(Piece):
         add(lambda x: x.shift_left())
 
         def edge_rank():
-            if self.color.equals(color.white):
+            if self.color == color.white:
                 return 0
             return 7
 
@@ -117,8 +117,9 @@ class King(Piece):
             for piece in row:
 
                 # Tests if square on the board is not empty
-                if piece is not None and type(piece) is not King and \
-                        not piece.color.equals(self.color):
+                if piece is not None and \
+                        type(piece) is not King and \
+                        piece.color != self.color:
 
                     # Adds all of piece's possible moves to moves list.
                     moves.extend(piece.possible_moves(position))

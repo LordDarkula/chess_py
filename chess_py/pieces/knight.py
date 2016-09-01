@@ -83,7 +83,7 @@ class Knight(Piece):
                     status = notation_const.NOT_IMPLEMENTED
                 elif position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
-                elif not position.piece_at_square(dest_loc[j]).color.equals(self.color):
+                elif not position.piece_at_square(dest_loc[j]).color == self.color:
                     status = notation_const.CAPTURE
                 else:
                     status = notation_const.NOT_IMPLEMENTED

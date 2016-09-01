@@ -48,7 +48,7 @@ class Pawn(Piece):
         :type location Location
         :rtype Location
         """
-        if self.color.equals(color.white):
+        if self.color == color.white:
             return location.shift_up()
         else:
             return location.shift_down()
@@ -70,12 +70,12 @@ class Pawn(Piece):
 
         # If the pawn is on the second rank and black.
         if location.rank == 1 and \
-                self.color.equals(color.black):
+                self.color == color.black:
             return True
 
         # If the pawn is on the seventh rank and white.
         elif location.rank == 6 and \
-                self.color.equals(color.white):
+                self.color == color.white:
             return True
         return False
 
@@ -84,7 +84,7 @@ class Pawn(Piece):
         move = Move(location, self, status, start_rank=self.location.rank, start_file=self.location.file)
 
         def create_each_move(piece):
-            move.promoted_to_piece = piece(self.color, move.location())
+            move.promoted_to_piece = piece(self.color, move.end_loc)
             moves.append(move)
 
         create_each_move(Queen)
@@ -107,9 +107,9 @@ class Pawn(Piece):
             Finds out if the piece is on the home row.
             :return bool for whether piece is on home row or not
             """
-            if self.color.equals(color.white) and self.location.rank == 1:
+            if self.color == color.white and self.location.rank == 1:
                 return True
-            elif self.color.equals(color.black) and self.location.rank == 6:
+            elif self.color == color.black and self.location.rank == 6:
                 return True
             else:
                 return False
@@ -156,7 +156,7 @@ class Pawn(Piece):
             """
             if capture_square.on_board() and \
                     not position.is_square_empty(capture_square) and \
-                    position.piece_at_square(capture_square).color.equals(not self.color.color):
+                    position.piece_at_square(capture_square).color != self.color:
                 """
                 If the capture square is nit empty and it contains a piece of opposing color add the move
                 """
@@ -189,11 +189,11 @@ class Pawn(Piece):
             """
             Finds out if pawn is on enemy center rank.
             """
-            if self.color.equals(color.white) and \
+            if self.color == color.white and \
                     self.location.rank == 4:
                 return True
 
-            elif self.color.equals(color.black) and \
+            elif self.color == color.black and \
                     self.location.rank == 3:
                 return True
 

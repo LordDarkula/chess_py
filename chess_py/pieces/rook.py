@@ -62,7 +62,7 @@ class Rook(Piece):
 
         if current.on_board() and \
                 not position.is_square_empty(current) and \
-                not position.piece_at_square(current).color.equals(self.color):
+                not position.piece_at_square(current).color == self.color:
                 possible.append(Move(current,
                                      piece=self,
                                      status=notation_const.CAPTURE,
