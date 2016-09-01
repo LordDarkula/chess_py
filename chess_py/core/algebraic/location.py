@@ -54,6 +54,19 @@ class Location:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __str__(self):
+        if self.rank is None:
+            rank_str = ""
+        else:
+            rank_str = str(self.rank + 1)
+
+        if self.file is None:
+            file_str = ""
+        else:
+            file_str = chr(self.file + 97)
+
+        return file_str + rank_str
+
     def on_board(self):
         """
         Returns if the move is on the board or not.
