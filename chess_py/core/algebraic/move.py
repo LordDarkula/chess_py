@@ -80,7 +80,7 @@ class Move:
         return not self.__eq__(other)
 
     def __str__(self):
-        move_str = self.end_loc.__str__() + Location(self.start_rank, self.start_file)
+        move_str = Location(self.start_rank, self.start_file).__str__() + self.end_loc.__str__() 
 
         if self.promoted_to_piece is not None:
             move_str = move_str + self.promoted_to_piece.letter
