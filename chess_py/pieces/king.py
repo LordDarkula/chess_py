@@ -103,6 +103,8 @@ class King(Piece):
 
         if not self.has_moved:
             add_castle(lambda x: x.shift_right(), notation_const.KING_SIDE_CASTLE, 7)
+
+            # TODO fix queen castling
             add_castle(lambda x: x.shift_left(), notation_const.QUEEN_SIDE_CASTLE, 0)
 
         super(King, self).set_loc(moves)

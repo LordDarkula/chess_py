@@ -104,6 +104,38 @@ class Board:
         """
         return cls(cls.default_position)
 
+    def __str__(self):
+        """
+        Prints current position in console
+        """
+        b_str = ""
+        # Loops through columns
+        for i in range(len(self.position)):
+
+            b_str + (str(8 - i) + " ")
+            # Loops through rows
+            for j in range(len(self.position[0])):
+
+                # If there is a piece on the square
+                if not self.is_square_empty(Location(7 - i, j)):
+
+                    # Prints out symbol of piece
+                    b_str += (self.position[7 - i][j].symbol + " ")
+                else:
+                    b_str += "_ "
+            b_str += "\n"
+
+        b_str += "a b c d e f g h"
+
+        return b_str
+
+    def copy(self):
+        """
+        Copies the board faster than deepcopy()
+        :rtype Board
+        """
+        return Board([[piece for piece in self.position[index]] for index, row in enumerate(self.position)])
+
     def piece_at_square(self, location):
         """
         Finds the chess piece at a square of the position.
@@ -293,25 +325,3 @@ class Board:
 
         else:
             self.move_piece(Location(move.start_rank, move.start_file), move.end_loc)
-
-    def out(self):
-        """
-        Prints current position in console
-        """
-        # Loops through columns
-        for i in range(len(self.position)):
-
-            print(str(8 - i) + " ", end="")
-            # Loops through rows
-            for j in range(len(self.position[0])):
-
-                # If there is a piece on the square
-                if not self.is_square_empty(Location(7 - i, j)):
-
-                    # Prints out symbol of piece
-                    print(self.position[7 - i][j].symbol + " ", end="")
-                else:
-                    print("_ ", end="")
-            print()
-
-        print("  a b c d e f g h")

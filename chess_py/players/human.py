@@ -27,7 +27,7 @@ class Player:
         :type position: Board
         :rtype Move
         """
-        position.out()
+        print(position)
         if sys.version_info[0] < 3:
             raw = raw_input(self.color.string + "\'s move \n")
         else:
