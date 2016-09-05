@@ -176,12 +176,13 @@ class Board:
         test_board.update(move)
         return test_board.material_advantage(move.color, val_scheme)
 
-    def unfiltered(self, input_color):
+    def all_possible_moves(self, input_color):
         """
         Returns list of all possible moves
         :type input_color Color
         :rtype list
         """
+        print("Running")
         moves = []
 
         # Loops through columns
@@ -193,30 +194,41 @@ class Board:
                     # Tests if square on the board is not empty
                     if piece is not None and piece.color == input_color:
                         # Adds all of piece's possible moves to moves list.
-                        moves.extend(piece.possible_moves(self))
+                        if self.get_king(input_color).in_check(self):
+                            print("King in check")
 
+                            for move in piece.possible_moves(self):
+                                test = self.copy()
+                                test.update(move)
+                                if not test.get_king(input_color).in_check(test):
+                                    moves.append(move)
+                        else:
+                            moves.extend(piece.possible_moves(self))
+
+        for pr_move in moves:
+            print(pr_move)
         return moves
 
-    def all_possible_moves(self, input_color):
-        """
-        Filters list of moves and returns all legal moves
-        :type input_color Color
-        :rtype list
-        """
-        unfiltered = self.unfiltered(input_color)
-
-        if not self.get_king(input_color).in_check(self):
-            return unfiltered
-
-        filtered = []
-
-        for move in unfiltered:
-            test = self.copy()
-            test.update(move)
-            if not test.get_king(input_color).in_check(test):
-                filtered.append(move)
-
-        return filtered
+    # def all_possible_moves(self, input_color):
+    #     """
+    #     Filters list of moves and returns all legal moves
+    #     :type input_color Color
+    #     :rtype list
+    #     """
+    #     unfiltered = self.unfiltered(input_color)
+    #
+    #     if not self.get_king(input_color).in_check(self):
+    #         return unfiltered
+    #
+    #     filtered = []
+    #
+    #     for move in unfiltered:
+    #         test = self.copy()
+    #         test.update(move)
+    #         if not test.get_king(input_color).in_check(test):
+    #             filtered.append(move)
+    #
+    #     return filtered
 
     def find_piece(self, piece):
         """
