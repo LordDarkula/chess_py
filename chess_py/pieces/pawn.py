@@ -42,6 +42,9 @@ class Pawn(Piece):
         self.just_moved_two_steps = False
         super(Pawn, self).__init__(input_color, location, "♟", "♙")
 
+    def __str__(self):
+        return "P"
+
     def square_in_front(self, location):
         """
         Finds square directly in front of Pawn

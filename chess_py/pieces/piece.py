@@ -54,6 +54,10 @@ class Piece:
         return not self.__eq__(other)
 
     @abstractmethod
+    def __str__(self):
+        raise NotImplementedError
+
+    @abstractmethod
     def possible_moves(self, position):
         pass
 

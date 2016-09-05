@@ -37,7 +37,9 @@ class Rook(Piece):
         """
         self.has_moved = False
         super(Rook, self).__init__(input_color, location, "♜", "♖")
-        self.letter = "R"
+
+    def __str__(self):
+        return "R"
 
     def direction_moves(self, direction, position):
         """
