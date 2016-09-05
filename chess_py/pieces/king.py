@@ -20,8 +20,6 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-import copy
-
 from chess_py.core import color
 from chess_py.core.algebraic import notation_const
 from chess_py.core.algebraic.location import Location
@@ -86,7 +84,7 @@ class King(Piece):
                     type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and \
                     not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
 
-                test = copy.deepcopy(position)
+                test = position.copy()
                 test_king_loc = test.find_king(self.color)
 
                 if test.is_square_empty(direction(test_king_loc)) and \
@@ -152,7 +150,7 @@ class King(Piece):
         filtered = []
 
         for move in unfiltered:
-            test = copy.deepcopy(position)
+            test = position.copy()
 
             test_move = Move(end_loc=move.end_loc,
                              piece=test.piece_at_square(self.location),

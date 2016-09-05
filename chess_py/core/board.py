@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 """
 Constructs board object which stores the get_location of all the pieces.
 
@@ -29,7 +28,7 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from __future__ import print_function
-import copy
+from copy import copy as cp
 from math import fabs
 
 from chess_py.core import color
@@ -112,7 +111,7 @@ class Board:
         # Loops through columns
         for i in range(len(self.position)):
 
-            b_str + (str(8 - i) + " ")
+            b_str += (str(8 - i) + " ")
             # Loops through rows
             for j in range(len(self.position[0])):
 
@@ -125,7 +124,7 @@ class Board:
                     b_str += "_ "
             b_str += "\n"
 
-        b_str += "a b c d e f g h"
+        b_str += "  a b c d e f g h"
 
         return b_str
 
@@ -134,7 +133,7 @@ class Board:
         Copies the board faster than deepcopy()
         :rtype Board
         """
-        return Board([[piece for piece in self.position[index]] for index, row in enumerate(self.position)])
+        return Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
 
     def piece_at_square(self, location):
         """
@@ -173,7 +172,7 @@ class Board:
         :type val_scheme Piece_values
         :rtype double
         """
-        test_board = copy.deepcopy(self)
+        test_board = self.copy()
         test_board.update(move)
         return test_board.material_advantage(move.color, val_scheme)
 
@@ -212,7 +211,7 @@ class Board:
         filtered = []
 
         for move in unfiltered:
-            test = copy.deepcopy(self)
+            test = self.copy()
             test.update(move)
             if not test.get_king(input_color).in_check(test):
                 filtered.append(move)

@@ -4,6 +4,7 @@
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/board.py" afterPath="$PROJECT_DIR$/chess_py/core/board.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/pieces/king.py" afterPath="$PROJECT_DIR$/chess_py/pieces/king.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/players/human.py" afterPath="$PROJECT_DIR$/chess_py/players/human.py" />
     </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1473047740656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1473054743446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chess_py$Unittest_LocationTest_testEquals.coverage" NAME="Unittest LocationTest.testEquals Coverage Results" MODIFIED="1472088665040" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$testMain.coverage" NAME="testMain Coverage Results" MODIFIED="1472700838163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$Unittest_LocationTest_testOnBoard.coverage" NAME="Unittest LocationTest.testOnBoard Coverage Results" MODIFIED="1471742065739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -48,23 +49,53 @@
       <file leaf-file-name="piece.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/pieces/piece.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
+            <state relative-caret-position="1056">
               <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="piece_const.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/pieces/piece_const.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/core/board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="106" column="17" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
+            <state relative-caret-position="0">
+              <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
               <folding>
-                <element signature="e#719#756#0" expanded="true" />
-                <element signature="e#3476#3613#0" expanded="false" />
-                <element signature="e#3920#4126#0" expanded="false" />
+                <element signature="e#718#755#0" expanded="true" />
+                <element signature="e#3491#3628#0" expanded="false" />
+                <element signature="e#4829#5035#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/game/game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="968">
+              <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="human.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chess_py/players/human.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="624">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,28 +103,8 @@
       <file leaf-file-name="bishop.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/pieces/bishop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="king.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chess_py/pieces/king.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="249">
-              <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="knight.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chess_py/pieces/knight.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
+            <state relative-caret-position="330">
+              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -102,28 +113,18 @@
       <file leaf-file-name="pawn.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/pieces/pawn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
+            <state relative-caret-position="587">
               <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queen.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chess_py/pieces/queen.py">
+      <file leaf-file-name="knight.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/pieces/knight.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rook.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/chess_py/pieces/rook.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+            <state relative-caret-position="477">
+              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -132,8 +133,8 @@
       <file leaf-file-name="move.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="-73">
+              <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
               <folding>
                 <element signature="e#286#339#0" expanded="true" />
               </folding>
@@ -141,11 +142,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+      <file leaf-file-name="location.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-59">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="1364">
+              <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -192,7 +193,6 @@
         <option value="$PROJECT_DIR$/chess_py/pieces/test.py" />
         <option value="$PROJECT_DIR$/chess_py/game/game_state.py" />
         <option value="$PROJECT_DIR$/../Tree.py" />
-        <option value="$PROJECT_DIR$/chess_py/players/human.py" />
         <option value="$PROJECT_DIR$/chess_py/players/basicAI.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/main.py" />
@@ -218,6 +218,7 @@
         <option value="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
         <option value="$PROJECT_DIR$/chess_py/pieces/king.py" />
         <option value="$PROJECT_DIR$/chess_py/core/board.py" />
+        <option value="$PROJECT_DIR$/chess_py/players/human.py" />
       </list>
     </option>
   </component>
@@ -452,7 +453,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Console Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="SearchEverywhereHistoryKey" value="location&#9;null&#9;null&#10;__init&#9;FILE&#9;file:///usr/local/lib/python3.5/site-packages/pkg_resources/__init__.py&#10;white&#9;null&#9;null&#10;equality&#9;null&#9;null&#10;precondition&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="deepcopy&#9;null&#9;null&#10;location&#9;null&#9;null&#10;__init&#9;FILE&#9;file:///usr/local/lib/python3.5/site-packages/pkg_resources/__init__.py&#10;white&#9;null&#9;null&#10;equality&#9;null&#9;null&#10;precondition&#9;null&#9;null" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChessGui" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="full.screen.before.presentation.mode" value="false" />
@@ -910,9 +911,9 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32142857" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259958" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.360587" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3597561" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35264227" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35264227" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39832285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -962,7 +963,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pieces/bishop.py" />
     <entry file="file://$PROJECT_DIR$/core/board.py" />
     <entry file="file://$PROJECT_DIR$/core/algebraic/notation_const.py" />
     <entry file="file://$PROJECT_DIR$/players/__init__.py" />
@@ -1008,13 +1008,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/test.py" />
     <entry file="file://$PROJECT_DIR$/../Tree.py" />
-    <entry file="file://$PROJECT_DIR$/chess_py/players/human.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-22">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/players/tree.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-741">
@@ -1119,24 +1112,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/game/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="539">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/game/game_state.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/pieces/piece_const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1174,30 +1153,40 @@
         <state relative-caret-position="264">
           <caret line="13" column="84" selection-start-line="13" selection-start-column="84" selection-end-line="13" selection-end-column="84" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
+    <entry file="file:///usr/local/Cellar/python3/3.5.1/Frameworks/Python.framework/Versions/3.5/lib/python3.5/copy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+        <state relative-caret-position="401">
+          <caret line="239" column="7" selection-start-line="239" selection-start-column="7" selection-end-line="239" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/pieces/pawn.py">
+    <entry file="file://$PROJECT_DIR$/chess_py/pieces/king.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+        <state relative-caret-position="37">
+          <caret line="146" column="19" selection-start-line="146" selection-start-column="19" selection-end-line="146" selection-end-column="19" />
+          <folding>
+            <element signature="e#369#400#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/queen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
+        <state relative-caret-position="565">
           <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding />
         </state>
@@ -1205,71 +1194,95 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/rook.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
+        <state relative-caret-position="565">
           <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="e#286#339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-59">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/pieces/king.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="97" column="45" selection-start-line="97" selection-start-column="45" selection-end-line="97" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/pieces/knight.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="35" column="69" selection-start-line="35" selection-start-column="69" selection-end-line="35" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/pieces/bishop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="34" column="12" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/pieces/piece.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
+        <state relative-caret-position="1056">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/pieces/piece_const.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/core/board.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="106" column="17" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
+        <state relative-caret-position="0">
+          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
           <folding>
-            <element signature="e#719#756#0" expanded="true" />
-            <element signature="e#3476#3613#0" expanded="false" />
-            <element signature="e#3920#4126#0" expanded="false" />
+            <element signature="e#718#755#0" expanded="true" />
+            <element signature="e#3491#3628#0" expanded="false" />
+            <element signature="e#4829#5035#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/pieces/bishop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/pieces/pawn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/pieces/knight.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1364">
+          <caret line="62" column="25" selection-start-line="62" selection-start-column="25" selection-end-line="62" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/game/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="968">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-73">
+          <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
+          <folding>
+            <element signature="e#286#339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/players/human.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

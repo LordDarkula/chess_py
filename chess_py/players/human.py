@@ -47,8 +47,8 @@ class Player:
                 raw = input(self.color.string + "\'s move \n")
 
             if len(raw) > 1:
-                raw.strip()
                 move = converter.to_move(raw, self.color)
                 move = converter.make_legal(move, position)
 
+        print("Your move " + str(move))
         return move
