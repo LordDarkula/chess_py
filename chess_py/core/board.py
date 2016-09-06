@@ -182,7 +182,6 @@ class Board:
         :type input_color Color
         :rtype list
         """
-        print("Running")
         moves = []
 
         # Loops through columns
@@ -205,8 +204,6 @@ class Board:
                         else:
                             moves.extend(piece.possible_moves(self))
 
-        for pr_move in moves:
-            print(pr_move)
         return moves
 
     # def all_possible_moves(self, input_color):
@@ -277,7 +274,7 @@ class Board:
         :type location Location
         """
         self.position[location.rank][location.file] = piece
-        piece.get_location = location
+        piece.location = location
 
     def move_piece(self, initial, final):
         """
