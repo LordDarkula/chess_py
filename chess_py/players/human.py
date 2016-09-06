@@ -13,7 +13,7 @@ from chess_py.core.color import Color
 import sys
 
 
-class Player:
+class Human:
     def __init__(self, input_color):
         """
         Creates interface for human player.

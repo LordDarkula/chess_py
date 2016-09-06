@@ -1,3 +1,3 @@
-from chess_py.players.human import Player
+from chess_py.players.human import Human
 
-__all__ = ['Player']
+__all__ = ['Human']

@@ -138,6 +138,7 @@ class King(Piece):
 
             if enemy_move.end_loc == self.location:
                 return True
+
         return False
 
     def possible_moves(self, position):
