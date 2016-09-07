@@ -27,12 +27,21 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 class Location:
     def __init__(self, rank, file):
         """
-        Creates a get_location on a chessboard given x and y coordinates.
+        Creates a location on a chessboard given x and y coordinates.
         :type rank: int
         :type file: int
         """
         self.rank = rank
         self.file = file
+
+    @classmethod
+    def init_alg(cls, alg_str):
+        """
+        Creates a location from algebraic notation like e4
+        :type alg_str: str
+        :rtype Location
+        """
+        return cls(int(alg_str[1]) - 1, ord(alg_str[0]) - 97)
 
     def __key(self):
         return self.rank, self.file

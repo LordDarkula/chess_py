@@ -183,7 +183,7 @@ def to_move(algebraic_string, input_color):
 
 def make_legal(move, position):
     """
-
+    Makes move legal
     :type move Move
     :type position Board
     :rtype Move
@@ -191,6 +191,13 @@ def make_legal(move, position):
     assert isinstance(move, Move)
     for test_move in position.all_possible_moves(move.color):
 
+        if move.status == notation_const.START_LOC_SPECIFIED:
+            if move.end_loc == test_move.end_loc and \
+                            move.start_rank ==test_move.start_rank and \
+                            move.start_file == test_move.start_file:
+                return test_move
+            else:
+                continue
         # Checks for basic equality of essential elements
         if move == test_move:
 
@@ -210,3 +217,39 @@ def make_legal(move, position):
             return test_move
 
     return None
+
+
+def init_alg(alg_str, position):
+    """
+    Initializes a move from long algebraic notation
+    :type alg_str: str
+    :type position Board
+    :rtype Move
+    """
+    end = Location.init_alg(alg_str[2] + alg_str[3])
+    start = Location.init_alg(alg_str[0] + alg_str[1])
+
+    if position.piece_at_square(start) is not None:
+        piece = position.piece_at_square(start)
+    else:
+        raise Exception("Invalid move input")
+
+    pr_piece = None
+    if len(alg_str) == 5:
+        if alg_str[4] == "Q":
+            pr_piece = Queen(piece.color, end)
+        elif alg_str[4] == "R":
+            pr_piece = Rook(piece.color, end)
+        elif alg_str[4] == "B":
+            pr_piece = Bishop(piece.color, end)
+        elif alg_str[4] == "N":
+            pr_piece = Knight(piece.color, end)
+        else:
+            raise Exception("Invalid move input")
+
+    return make_legal(Move(end_loc=end,
+                          piece=piece,
+                          status=notation_const.START_LOC_SPECIFIED,
+                          start_rank=start.rank,
+                          start_file=start.file,
+                          promoted_to_piece=pr_piece), position)

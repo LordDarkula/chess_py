@@ -11,9 +11,7 @@ with meaning defined in notation_const.py
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.algebraic.location import Location
-
-from chess_py.core import color
+from chess_py.core.algebraic import Location
 
 
 class Move:
@@ -57,6 +55,11 @@ class Move:
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Move")
 
+        if other.status is not None and \
+                self.status is not None and \
+                other.status != self.status:
+            return False
+
         if other.start_rank is not None and \
                 self.start_rank is not None and \
                 other.start_rank != self.start_rank:
@@ -99,11 +102,11 @@ class Move:
         Finds if move from current get_location
         """
         if self.end_loc.rank == 0 and \
-                self.color == color.black:
+                not self.color:
             return True
 
         if self.end_loc.rank == 7 and \
-                self.color == color.white:
+                self.color:
             return True
 
         return False

@@ -42,13 +42,10 @@ class Queen(Piece):
         moves = self.rook.possible_moves(position)
         moves.extend(self.bishop.possible_moves(position))
 
-        print("_________")
-        print(self.color.string, self.location)
         for move in moves:
             move.piece = self
             print(move)
 
-        print("_________")
         super(Queen, self).set_loc(moves)
 
         return moves
