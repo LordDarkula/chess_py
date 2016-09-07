@@ -248,8 +248,8 @@ def init_alg(alg_str, position):
             raise Exception("Invalid move input")
 
     return make_legal(Move(end_loc=end,
-                          piece=piece,
-                          status=notation_const.START_LOC_SPECIFIED,
-                          start_rank=start.rank,
-                          start_file=start.file,
-                          promoted_to_piece=pr_piece), position)
+                           piece=piece,
+                           status=notation_const.START_LOC_SPECIFIED,
+                           start_rank=start.rank,
+                           start_file=start.file,
+                           promoted_to_piece=pr_piece), position)

@@ -11,7 +11,7 @@ with meaning defined in notation_const.py
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.algebraic import Location
+from chess_py.core.algebraic.location import Location
 
 
 class Move:
