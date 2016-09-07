@@ -5,6 +5,8 @@ Parent class for all Players.
 """
 
 from abc import ABCMeta, abstractmethod
+from pip._vendor.distlib.compat import raw_input
+import sys
 
 
 class PLayer:
@@ -25,4 +27,15 @@ class PLayer:
         :rtype Move
         """
         pass
+
+    @staticmethod
+    def getUCI():
+        if sys.version_info[0] < 3:
+            return raw_input()
+        else:
+            return input()
+
+    @staticmethod
+    def setUCI(command):
+        print(command)
 
