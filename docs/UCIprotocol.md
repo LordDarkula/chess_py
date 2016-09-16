@@ -1,3 +1,4 @@
+> Written by Stefan-Meyer Kahlen. Taken from [this website](http://wbec-ridderkerk.nl/html/UCIProtocol.html)
 
 Description of the universal chess interface (UCI)    April 2004
 ================================================================
