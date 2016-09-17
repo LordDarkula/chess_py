@@ -13,6 +13,8 @@ script:
   - python tests/testLocation.py
   - python tests/testMove.py
   - python tests/testConverter.py
+  - python tests/testBoard.py
+
 branches:
   only:
     - master
