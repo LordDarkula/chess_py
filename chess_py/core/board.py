@@ -5,26 +5,26 @@ Constructs board object which stores the get_location of all the pieces.
 
 Default Array
 
-[[0th row 0th item,  0th row 1st item,  0th row 2nd item],
- [1st row 0th item,  1st row 1st item,  1st row 2nd item],
- [2nd row 0th item, 2nd row 1st item,  2nd row 2nd item]]
+| [[0th row 0th item,  0th row 1st item,  0th row 2nd item],
+|  [1st row 0th item,  1st row 1st item,  1st row 2nd item],
+|  [2nd row 0th item, 2nd row 1st item,  2nd row 2nd item]]
 
-Default board
-8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ Black pieces
-7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟ Black pawns
-6 ║a6… … … … … …h6
-5 ║… … … … … … … …
-4 ║… … … … … … … …
-3 ║a3… … … … … …h3 Algebraic
-2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ White pawns
-1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ White pieces
--—╚═══════════════
-——-a b c d e f g h
+| Default board
+| 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ Black pieces
+| 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟ Black pawns
+| 6 ║a6… … … … … …h6
+| 5 ║… … … … … … … …
+| 4 ║… … … … … … … …
+| 3 ║a3… … … … … …h3 Algebraic
+| 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ White pawns
+| 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ White pieces
+| -—╚═══════════════
+| ——-a b c d e f g h
 
 Pieces on the board are flipped so white home row is at index 0
 and black home row is at index 7
 
-Copyright © 2016 Aubhro Sengupta. All rights reserved.
+| Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from __future__ import print_function
@@ -91,6 +91,7 @@ class Board:
     def __init__(self, position):
         """
         Initializes 8 by 8 array of objects in file pawn.py to store a chess position.
+
         :type position: list
         """
         self.position = position
@@ -99,7 +100,8 @@ class Board:
     def init_default(cls):
         """
         Alternate init method for default starting position
-        :rtype Board
+
+        :rtype: Board
         """
         return cls(cls.default_position)
 
@@ -131,32 +133,36 @@ class Board:
     def copy(self):
         """
         Copies the board faster than deepcopy()
-        :rtype Board
+
+        :rtype: Board
         """
         return Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
 
     def piece_at_square(self, location):
         """
         Finds the chess piece at a square of the position.
-        :type location Location
-        :rtype Piece
+
+        :type: location Location
+        :rtype: Piece
         """
         return self.position[location.rank][location.file]
 
     def is_square_empty(self, location):
         """
         Finds whether a chess piece occupies a square of the position.
+
         :type location: Location
-        :rtype bool
+        :rtype: bool
         """
         return self.position[location.rank][location.file] is None
 
     def material_advantage(self, input_color, val_scheme):
         """
+        Finds the advantage a particular side possesses given a value scheme.
 
-        :type input_color Color
-        :type val_scheme Piece_values
-        :rtype double
+        :type input_color: Color
+        :type val_scheme: Piece_values
+        :rtype: double
         """
         advantage = 0.0
         for row in self.position:
@@ -168,9 +174,10 @@ class Board:
     def advantage_as_result(self, move, val_scheme):
         """
         Calculates advantage after move is played
-        :type move Move
-        :type val_scheme Piece_values
-        :rtype double
+
+        :type move: Move
+        :type val_scheme: Piece_values
+        :rtype: double
         """
         test_board = self.copy()
         test_board.update(move)
@@ -179,8 +186,9 @@ class Board:
     def all_possible_moves(self, input_color):
         """
         Returns list of all possible moves
-        :type input_color Color
-        :rtype list
+
+        :type input_color: Color
+        :rtype: list
         """
         moves = []
 
@@ -231,8 +239,9 @@ class Board:
         """
         Finds Location of the first piece that matches piece.
         If none is found, None is returned.
-        :type piece Piece
-        :rtype Location
+
+        :type piece: Piece
+        :rtype: Location
         """
         for i in range(len(self.position)):
 
@@ -247,22 +256,25 @@ class Board:
     def find_king(self, input_color):
         """
         Finds the Location of the King of input_color
-        :type input_color Color
-        :rtype Location
+
+        :type input_color: Color
+        :rtype: Location
         """
         return self.find_piece(King(input_color, Location(0, 0)))
 
     def get_king(self, input_color):
         """
         Returns King of input_color
-        :type input_color Color
-        :rtype King
+
+        :type input_color: Color
+        :rtype: King
         """
         return self.piece_at_square(self.find_king(input_color))
 
     def remove_piece_at_square(self, location):
         """
         Removes piece at square
+
         :type location: Location
         """
         self.position[location.rank][location.file] = None
@@ -270,8 +282,9 @@ class Board:
     def place_piece_at_square(self, piece, location):
         """
         Places piece at given get_location
-        :type piece pieces.Piece
-        :type location Location
+
+        :type piece: Piece
+        :type location: Location
         """
         self.position[location.rank][location.file] = piece
         piece.location = location
@@ -279,8 +292,9 @@ class Board:
     def move_piece(self, initial, final):
         """
         Moves piece from one get_location to another
-        :type initial Location
-        :type final Location
+
+        :type initial: Location
+        :type final: Location
         """
         self.place_piece_at_square(self.piece_at_square(initial), final)
         self.remove_piece_at_square(initial)
@@ -288,7 +302,8 @@ class Board:
     def update(self, move):
         """
         Updates position by applying selected move
-        :type move Move
+
+        :type move: Move
         """
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))

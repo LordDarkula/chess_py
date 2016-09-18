@@ -1,0 +1,777 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>chess_py.core package &mdash; chess_py  documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="chess_py  documentation" href="index.html" />
+    <link rel="up" title="chess_py package" href="chess_py.html" />
+    <link rel="next" title="chess_py.core.algebraic package" href="chess_py.core.algebraic.html" />
+    <link rel="prev" title="chess_py package" href="chess_py.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="chess-py-core-package">
+<h1>chess_py.core package<a class="headerlink" href="#chess-py-core-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="chess_py.core.algebraic.html">chess_py.core.algebraic package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#module-chess_py.core.algebraic.converter">chess_py.core.algebraic.converter module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#module-chess_py.core.algebraic.location">chess_py.core.algebraic.location module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#module-chess_py.core.algebraic.move">chess_py.core.algebraic.move module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#module-chess_py.core.algebraic.notation_const">chess_py.core.algebraic.notation_const module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chess_py.core.algebraic.html#module-chess_py.core.algebraic">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-chess_py.core.board">
+<span id="chess-py-core-board-module"></span><h2>chess_py.core.board module<a class="headerlink" href="#module-chess_py.core.board" title="Permalink to this headline">¶</a></h2>
+<p>Constructs board object which stores the get_location of all the pieces.</p>
+<p>Default Array</p>
+<div class="line-block">
+<div class="line">[[0th row 0th item,  0th row 1st item,  0th row 2nd item],</div>
+<div class="line-block">
+<div class="line">[1st row 0th item,  1st row 1st item,  1st row 2nd item],</div>
+<div class="line">[2nd row 0th item, 2nd row 1st item,  2nd row 2nd item]]</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line">Default board</div>
+<div class="line">8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜ Black pieces</div>
+<div class="line">7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟ Black pawns</div>
+<div class="line">6 ║a6… … … … … …h6</div>
+<div class="line">5 ║… … … … … … … …</div>
+<div class="line">4 ║… … … … … … … …</div>
+<div class="line">3 ║a3… … … … … …h3 Algebraic</div>
+<div class="line">2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙ White pawns</div>
+<div class="line">1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ White pieces</div>
+<div class="line">-—╚═══════════════</div>
+<div class="line">——-a b c d e f g h</div>
+</div>
+<p>Pieces on the board are flipped so white home row is at index 0
+and black home row is at index 7</p>
+<div class="line-block">
+<div class="line">Copyright © 2016 Aubhro Sengupta. All rights reserved.</div>
+</div>
+<dl class="class">
+<dt id="chess_py.core.board.Board">
+<em class="property">class </em><code class="descclassname">chess_py.core.board.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard starting position in a chess game.
+Initialized upon startup and is used when init_default constructor is used</p>
+<dl class="method">
+<dt id="chess_py.core.board.Board.advantage_as_result">
+<code class="descname">advantage_as_result</code><span class="sig-paren">(</span><em>move</em>, <em>val_scheme</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.advantage_as_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.advantage_as_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates advantage after move is played</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.all_possible_moves">
+<code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.all_possible_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of all possible moves</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.board.Board.black">
+<code class="descname">black</code><em class="property"> = False</em><a class="headerlink" href="#chess_py.core.board.Board.black" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the board faster than deepcopy()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.board.Board" title="chess_py.core.board.Board">Board</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.board.Board.default_position">
+<code class="descname">default_position</code><em class="property"> = [[&lt;chess_py.pieces.rook.Rook object at 0x1046ee1d0&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee210&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee250&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ee290&gt;, &lt;chess_py.pieces.king.King object at 0x1046ee350&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee390&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee3d0&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ee410&gt;], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ee450&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee490&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee4d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee510&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee550&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee590&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee5d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee610&gt;], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ee650&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee690&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee6d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee710&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee750&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee790&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee7d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee810&gt;], [&lt;chess_py.pieces.rook.Rook object at 0x1046ee850&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee890&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee8d0&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ee910&gt;, &lt;chess_py.pieces.king.King object at 0x1046ee9d0&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046eea10&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046eea50&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046eea90&gt;]]</em><a class="headerlink" href="#chess_py.core.board.Board.default_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.find_king">
+<code class="descname">find_king</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.find_king"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.find_king" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the Location of the King of input_color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.find_piece">
+<code class="descname">find_piece</code><span class="sig-paren">(</span><em>piece</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.find_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.find_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location of the first piece that matches piece.
+If none is found, None is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.get_king">
+<code class="descname">get_king</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.get_king"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.get_king" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns King of input_color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.king.King" title="chess_py.pieces.king.King">King</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.board.Board.init_default">
+<em class="property">classmethod </em><code class="descname">init_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.init_default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.init_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternate init method for default starting position</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.board.Board" title="chess_py.core.board.Board">Board</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.is_square_empty">
+<code class="descname">is_square_empty</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.is_square_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.is_square_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds whether a chess piece occupies a square of the position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.material_advantage">
+<code class="descname">material_advantage</code><span class="sig-paren">(</span><em>input_color</em>, <em>val_scheme</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.material_advantage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.material_advantage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the advantage a particular side possesses given a value scheme.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.move_piece">
+<code class="descname">move_piece</code><span class="sig-paren">(</span><em>initial</em>, <em>final</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.move_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.move_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves piece from one get_location to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.piece_at_square">
+<code class="descname">piece_at_square</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the chess piece at a square of the position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">location Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.Piece" title="chess_py.pieces.Piece">Piece</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.place_piece_at_square">
+<code class="descname">place_piece_at_square</code><span class="sig-paren">(</span><em>piece</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.place_piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.place_piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Places piece at given get_location</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.remove_piece_at_square">
+<code class="descname">remove_piece_at_square</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.remove_piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.remove_piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes piece at square</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates position by applying selected move</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.board.Board.white">
+<code class="descname">white</code><em class="property"> = True</em><a class="headerlink" href="#chess_py.core.board.Board.white" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-chess_py.core.color">
+<span id="chess-py-core-color-module"></span><h2>chess_py.core.color module<a class="headerlink" href="#module-chess_py.core.color" title="Permalink to this headline">¶</a></h2>
+<p>Easy way to access bool values for black and white without directly
+typing True or False.</p>
+<p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+<dl class="class">
+<dt id="chess_py.core.color.Color">
+<em class="property">class </em><code class="descclassname">chess_py.core.color.</code><code class="descname">Color</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.color.Color" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="chess_py.core.color.Color.init_black">
+<em class="property">classmethod </em><code class="descname">init_black</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_black"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.color.Color.init_black" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.color.Color.init_raw">
+<em class="property">classmethod </em><code class="descname">init_raw</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_raw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.color.Color.init_raw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.color.Color.init_white">
+<em class="property">classmethod </em><code class="descname">init_white</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_white"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.color.Color.init_white" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.color.Color.opponent">
+<code class="descname">opponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.opponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.color.Color.opponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds other color
+:rtype Color</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-chess_py.core">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.core" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chess_py.core.to_move">
+<code class="descclassname">chess_py.core.</code><code class="descname">to_move</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.to_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor for initializing a move using algebraic notation.</p>
+<p>pawn move e4
+piece move Nf3
+pawn capture exd5
+piece capture Qxf3
+Castle 00 or 000
+pawn promotion e8=Q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess_py.core.make_legal">
+<code class="descclassname">chess_py.core.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.make_legal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes move legal
+:type move Move
+:type position Board
+:rtype Move</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.Location">
+<em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="chess_py.core.Location.init_alg">
+<em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.init_alg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a location from algebraic notation like e4
+:type alg_str: str
+:rtype Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if the move is on the board or not.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_down">
+<code class="descname">shift_down</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_down_left">
+<code class="descname">shift_down_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_down_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_down_right">
+<code class="descname">shift_down_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_down_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_left">
+<code class="descname">shift_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_right">
+<code class="descname">shift_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_up">
+<code class="descname">shift_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_up_left">
+<code class="descname">shift_up_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_up_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Location.shift_up_right">
+<code class="descname">shift_up_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Location.shift_up_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up right by 1
+:rtype: Location</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.Move">
+<em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>string=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chess_py.core.Move.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether move exists.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Move.out">
+<code class="descname">out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move.out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Move.would_move_be_promotion">
+<code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if move from current get_location</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.Board">
+<em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Board</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard starting position in a chess game.
+Initialized upon startup and is used when init_default constructor is used</p>
+<dl class="method">
+<dt id="chess_py.core.Board.advantage_as_result">
+<code class="descname">advantage_as_result</code><span class="sig-paren">(</span><em>move</em>, <em>val_scheme</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.advantage_as_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.advantage_as_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates advantage after move is played</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.all_possible_moves">
+<code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.all_possible_moves" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns list of all possible moves</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.Board.black">
+<code class="descname">black</code><em class="property"> = False</em><a class="headerlink" href="#chess_py.core.Board.black" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the board faster than deepcopy()</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.board.Board" title="chess_py.core.board.Board">Board</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.Board.default_position">
+<code class="descname">default_position</code><em class="property"> = [[&lt;chess_py.pieces.rook.Rook object at 0x1046ee1d0&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee210&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee250&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ee290&gt;, &lt;chess_py.pieces.king.King object at 0x1046ee350&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee390&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee3d0&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ee410&gt;], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ee450&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee490&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee4d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee510&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee550&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee590&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee5d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee610&gt;], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ee650&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee690&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee6d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee710&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee750&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee790&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee7d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ee810&gt;], [&lt;chess_py.pieces.rook.Rook object at 0x1046ee850&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ee890&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ee8d0&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ee910&gt;, &lt;chess_py.pieces.king.King object at 0x1046ee9d0&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046eea10&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046eea50&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046eea90&gt;]]</em><a class="headerlink" href="#chess_py.core.Board.default_position" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.find_king">
+<code class="descname">find_king</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.find_king"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.find_king" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the Location of the King of input_color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.find_piece">
+<code class="descname">find_piece</code><span class="sig-paren">(</span><em>piece</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.find_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.find_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location of the first piece that matches piece.
+If none is found, None is returned.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.get_king">
+<code class="descname">get_king</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.get_king"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.get_king" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns King of input_color</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.king.King" title="chess_py.pieces.king.King">King</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.Board.init_default">
+<em class="property">classmethod </em><code class="descname">init_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.init_default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.init_default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alternate init method for default starting position</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.board.Board" title="chess_py.core.board.Board">Board</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.is_square_empty">
+<code class="descname">is_square_empty</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.is_square_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.is_square_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds whether a chess piece occupies a square of the position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.material_advantage">
+<code class="descname">material_advantage</code><span class="sig-paren">(</span><em>input_color</em>, <em>val_scheme</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.material_advantage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.material_advantage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the advantage a particular side possesses given a value scheme.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.move_piece">
+<code class="descname">move_piece</code><span class="sig-paren">(</span><em>initial</em>, <em>final</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.move_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.move_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves piece from one get_location to another</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.piece_at_square">
+<code class="descname">piece_at_square</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the chess piece at a square of the position.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">location Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.Piece" title="chess_py.pieces.Piece">Piece</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.place_piece_at_square">
+<code class="descname">place_piece_at_square</code><span class="sig-paren">(</span><em>piece</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.place_piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.place_piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Places piece at given get_location</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.remove_piece_at_square">
+<code class="descname">remove_piece_at_square</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.remove_piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.remove_piece_at_square" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes piece at square</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Board.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>move</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates position by applying selected move</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.Board.white">
+<code class="descname">white</code><em class="property"> = True</em><a class="headerlink" href="#chess_py.core.Board.white" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.Color">
+<em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Color</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="chess_py.core.Color.init_black">
+<em class="property">classmethod </em><code class="descname">init_black</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_black"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.init_black" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.Color.init_raw">
+<em class="property">classmethod </em><code class="descname">init_raw</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_raw"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.init_raw" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="chess_py.core.Color.init_white">
+<em class="property">classmethod </em><code class="descname">init_white</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.init_white"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.init_white" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.Color.opponent">
+<code class="descname">opponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.opponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.opponent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds other color
+:rtype Color</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">chess_py.core package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.board">chess_py.core.board module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.color">chess_py.core.color module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="chess_py.html">chess_py package</a><ul>
+      <li>Previous: <a href="chess_py.html" title="previous chapter">chess_py package</a></li>
+      <li>Next: <a href="chess_py.core.algebraic.html" title="next chapter">chess_py.core.algebraic package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/chess_py.core.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/chess_py.core.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

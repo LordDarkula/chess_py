@@ -4,7 +4,6 @@ from chess_py.pieces.piece_const import Piece_values
 from chess_py.core.color import Color
 from copy import deepcopy as cp
 from chess_py.core.algebraic import notation_const
-from chess_py.players.tree import Tree
 
 
 class Ai:

@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>chess_py.core.algebraic package &mdash; chess_py  documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="chess_py  documentation" href="index.html" />
+    <link rel="up" title="chess_py.core package" href="chess_py.core.html" />
+    <link rel="next" title="chess_py.game package" href="chess_py.game.html" />
+    <link rel="prev" title="chess_py.core package" href="chess_py.core.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="chess-py-core-algebraic-package">
+<h1>chess_py.core.algebraic package<a class="headerlink" href="#chess-py-core-algebraic-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-chess_py.core.algebraic.converter">
+<span id="chess-py-core-algebraic-converter-module"></span><h2>chess_py.core.algebraic.converter module<a class="headerlink" href="#module-chess_py.core.algebraic.converter" title="Permalink to this headline">¶</a></h2>
+<p>Methods that take external input and attempt
+to turn them into usable commands.</p>
+<p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+<dl class="function">
+<dt id="chess_py.core.algebraic.converter.init_alg">
+<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.init_alg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes a move from long algebraic notation
+:type alg_str: str
+:type position Board
+:rtype Move</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess_py.core.algebraic.converter.make_legal">
+<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.make_legal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes move legal
+:type move Move
+:type position Board
+:rtype Move</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess_py.core.algebraic.converter.to_move">
+<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">to_move</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.to_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor for initializing a move using algebraic notation.</p>
+<p>pawn move e4
+piece move Nf3
+pawn capture exd5
+piece capture Qxf3
+Castle 00 or 000
+pawn promotion e8=Q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-chess_py.core.algebraic.location">
+<span id="chess-py-core-algebraic-location-module"></span><h2>chess_py.core.algebraic.location module<a class="headerlink" href="#module-chess_py.core.algebraic.location" title="Permalink to this headline">¶</a></h2>
+<p>Class stores Locations on the Board.
+Locations must be on the board to be initialized properly.
+rank - y coordinate from 0 to 7
+file - x coordinate from 0 to 7</p>
+<p>rank
+7 8 ║… … … … … … … …
+6 7 ║… … … … … … … …
+5 6 ║… … … … … … … …
+4 5 ║… … … … … … … …
+3 4 ║… … … … … … … …
+2 3 ║… … … … … … … …
+1 2 ║… … … … … … … …
+0 1 ║… … … … … … … …
+&#8212;-╚═══════════════
+——&#8212;a b c d e f g h
+&#8212;&#8211;0 1 2 3 4 5 6 7
+&#8212;&#8212;file</p>
+<p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+<dl class="class">
+<dt id="chess_py.core.algebraic.location.Location">
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.location.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="chess_py.core.algebraic.location.Location.init_alg">
+<em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a location from algebraic notation like e4
+:type alg_str: str
+:rtype Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if the move is on the board or not.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_down">
+<code class="descname">shift_down</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_down_left">
+<code class="descname">shift_down_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_down_right">
+<code class="descname">shift_down_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_left">
+<code class="descname">shift_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_right">
+<code class="descname">shift_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_up">
+<code class="descname">shift_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_up_left">
+<code class="descname">shift_up_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.location.Location.shift_up_right">
+<code class="descname">shift_up_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up right by 1
+:rtype: Location</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-chess_py.core.algebraic.move">
+<span id="chess-py-core-algebraic-move-module"></span><h2>chess_py.core.algebraic.move module<a class="headerlink" href="#module-chess_py.core.algebraic.move" title="Permalink to this headline">¶</a></h2>
+<p>Class that stores chess moves.
+Destination, status and piece making move are required
+to initialize Move.</p>
+<p>status - integer value describing type of move
+with meaning defined in notation_const.py</p>
+<p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+<dl class="class">
+<dt id="chess_py.core.algebraic.move.Move">
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.move.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>string=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chess_py.core.algebraic.move.Move.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether move exists.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.move.Move.out">
+<code class="descname">out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.move.Move.would_move_be_promotion">
+<code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if move from current get_location</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-chess_py.core.algebraic.notation_const">
+<span id="chess-py-core-algebraic-notation-const-module"></span><h2>chess_py.core.algebraic.notation_const module<a class="headerlink" href="#module-chess_py.core.algebraic.notation_const" title="Permalink to this headline">¶</a></h2>
+<p>Class stores integer values for various types of moves in algebraic notation.</p>
+<p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+</div>
+<div class="section" id="module-chess_py.core.algebraic">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.core.algebraic" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="chess_py.core.algebraic.to_move">
+<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">to_move</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.to_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor for initializing a move using algebraic notation.</p>
+<p>pawn move e4
+piece move Nf3
+pawn capture exd5
+piece capture Qxf3
+Castle 00 or 000
+pawn promotion e8=Q</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="chess_py.core.algebraic.make_legal">
+<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.make_legal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes move legal
+:type move Move
+:type position Board
+:rtype Move</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.algebraic.Location">
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="classmethod">
+<dt id="chess_py.core.algebraic.Location.init_alg">
+<em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.init_alg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a location from algebraic notation like e4
+:type alg_str: str
+:rtype Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns if the move is on the board or not.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_down">
+<code class="descname">shift_down</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_down_left">
+<code class="descname">shift_down_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_down_right">
+<code class="descname">shift_down_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted down right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_left">
+<code class="descname">shift_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_right">
+<code class="descname">shift_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted right by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_up">
+<code class="descname">shift_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_up_left">
+<code class="descname">shift_up_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up left by 1
+:rtype: Location</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Location.shift_up_right">
+<code class="descname">shift_up_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up_right" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds Location shifted up right by 1
+:rtype: Location</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="chess_py.core.algebraic.Move">
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>string=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="method">
+<dt id="chess_py.core.algebraic.Move.on_board">
+<code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.on_board" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether move exists.
+:rtype bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Move.out">
+<code class="descname">out</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.out"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.out" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.algebraic.Move.would_move_be_promotion">
+<code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if move from current get_location</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">chess_py.core.algebraic package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.algebraic.converter">chess_py.core.algebraic.converter module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.algebraic.location">chess_py.core.algebraic.location module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.algebraic.move">chess_py.core.algebraic.move module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.algebraic.notation_const">chess_py.core.algebraic.notation_const module</a></li>
+<li><a class="reference internal" href="#module-chess_py.core.algebraic">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="chess_py.html">chess_py package</a><ul>
+  <li><a href="chess_py.core.html">chess_py.core package</a><ul>
+      <li>Previous: <a href="chess_py.core.html" title="previous chapter">chess_py.core package</a></li>
+      <li>Next: <a href="chess_py.game.html" title="next chapter">chess_py.game package</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/chess_py.core.algebraic.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/chess_py.core.algebraic.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

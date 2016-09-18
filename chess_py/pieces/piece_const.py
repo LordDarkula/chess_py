@@ -48,10 +48,10 @@ class Piece_values:
 
     def val(self, piece, ref_color):
         """
-
+        Finds value of piece
         :type piece: Piece
         :type ref_color: Color
-        :rtype int
+        :rtype: int
         """
         if piece is None:
             return 0

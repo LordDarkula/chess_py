@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>chess_py.game.game &mdash; chess_py  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="chess_py  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for chess_py.game.game</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Class that holds state of a game.</span>
+<span class="sd">Start game using play(), which returns the result</span>
+<span class="sd">when the game is finished.</span>
+
+<span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">chess_py.core.board</span> <span class="kn">import</span> <span class="n">Board</span>
+<span class="kn">from</span> <span class="nn">chess_py.game.game_state</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">chess_py.core.algebraic.converter</span> <span class="kn">import</span> <span class="n">make_legal</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+
+<div class="viewcode-block" id="Game"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_white</span><span class="p">,</span> <span class="n">player_black</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates new game given the players.</span>
+<span class="sd">        :type player_white: human.Human or ai</span>
+<span class="sd">        :type player_black: human.Human or ai</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_white</span> <span class="o">=</span> <span class="n">player_white</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">player_black</span> <span class="o">=</span> <span class="n">player_black</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">Board</span><span class="o">.</span><span class="n">init_default</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Game.play"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game.play">[docs]</a>    <span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Starts game and returns one of 3 results . .</span>
+
+<span class="sd">        1 - White wins</span>
+<span class="sd">        0.5 - Draw</span>
+<span class="sd">        0 - Black wins</span>
+
+<span class="sd">        :rtype int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">white_move</span><span class="p">(),</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">black_move</span><span class="p">()]</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">color_fn</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">no_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">init_black</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="mi">1</span>
+
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">init_white</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="mi">0</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="mf">0.5</span>
+
+            <span class="n">color_fn</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Game.white_move"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game.white_move">[docs]</a>    <span class="k">def</span> <span class="nf">white_move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player_white</span><span class="o">.</span><span class="n">generate_move</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="n">make_legal</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Game.black_move"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game.black_move">[docs]</a>    <span class="k">def</span> <span class="nf">black_move</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">player_black</span><span class="o">.</span><span class="n">generate_move</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">move</span> <span class="o">=</span> <span class="n">make_legal</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Game.all_possible_moves"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game.all_possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">all_possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">input_color</span><span class="p">)</span></div></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

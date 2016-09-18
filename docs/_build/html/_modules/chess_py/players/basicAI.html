@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>chess_py.players.basicAI &mdash; chess_py  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="top" title="chess_py  documentation" href="../../../index.html" />
+    <link rel="up" title="Module code" href="../../index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for chess_py.players.basicAI</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+
+<span class="kn">from</span> <span class="nn">chess_py.pieces.piece_const</span> <span class="kn">import</span> <span class="n">Piece_values</span>
+<span class="kn">from</span> <span class="nn">chess_py.core.color</span> <span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span> <span class="k">as</span> <span class="n">cp</span>
+<span class="kn">from</span> <span class="nn">chess_py.core.algebraic</span> <span class="kn">import</span> <span class="n">notation_const</span>
+
+
+<div class="viewcode-block" id="Ai"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai">[docs]</a><span class="k">class</span> <span class="nc">Ai</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates interface for human player.</span>
+<span class="sd">        :type input_color: Color</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">input_color</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">piece_scheme</span> <span class="o">=</span> <span class="n">Piece_values</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Ai.generate_move"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.generate_move">[docs]</a>    <span class="k">def</span> <span class="nf">generate_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns valid and legal move given position</span>
+<span class="sd">        :type position: Board</span>
+<span class="sd">        :rtype Move</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">position</span><span class="o">.</span><span class="n">out</span><span class="p">()</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Running tree search&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_quiet_position</span><span class="p">(</span><span class="n">input_color</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">position</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span><span class="p">)]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">move</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">treeSearch</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Final advantage &quot;</span><span class="p">,</span> <span class="n">move</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">move</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+    <span class="nd">@staticmethod</span>
+<div class="viewcode-block" id="Ai.is_quiet_position"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.is_quiet_position">[docs]</a>    <span class="k">def</span> <span class="nf">is_quiet_position</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">input_color</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span> <span class="ow">or</span> \
+                    <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE_AND_PROMOTE</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">input_color</span><span class="o">.</span><span class="n">opponent</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span> <span class="ow">or</span> \
+                            <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE_AND_PROMOTE</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="bp">True</span></div>
+
+<div class="viewcode-block" id="Ai.best_move"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.best_move">[docs]</a>    <span class="k">def</span> <span class="nf">best_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds the best move based on material after the move</span>
+<span class="sd">        :type position Board</span>
+<span class="sd">        :type color Color</span>
+<span class="sd">        :rtype Move</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">moves</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">input_color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+        <span class="n">my_move</span> <span class="o">=</span> <span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">advantage</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">advantage_as_result</span><span class="p">(</span><span class="n">my_move</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_scheme</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+            <span class="c1"># print(&quot;In the best move for&quot;)</span>
+            <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">advantage_as_result</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_scheme</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">advantage</span><span class="p">:</span>
+
+                <span class="n">my_move</span> <span class="o">=</span> <span class="n">move</span>
+                <span class="n">advantage</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">advantage_as_result</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_scheme</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">my_move</span><span class="p">,</span> <span class="n">advantage</span></div>
+
+<div class="viewcode-block" id="Ai.best_reply"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.best_reply">[docs]</a>    <span class="k">def</span> <span class="nf">best_reply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds the best move based on material after the move</span>
+<span class="sd">        :type move Move</span>
+<span class="sd">        :type position Board</span>
+<span class="sd">        :rtype Move</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="n">cp</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">move</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">opponent</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">reply</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">advantage_as_result</span><span class="p">(</span><span class="n">reply</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_scheme</span><span class="p">)</span></div>
+
+
+
+<span class="c1">#TODO if pot_worst is the same as worst decide which move is better for me</span>
+<span class="c1">#TODO safegard against checkmate</span>
+<span class="c1">#TODO build move tree to avoid long wait</span>
+
+<div class="viewcode-block" id="Ai.treeSearch"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.treeSearch">[docs]</a>    <span class="k">def</span> <span class="nf">treeSearch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns valid and legal move given position</span>
+<span class="sd">        :type position: Board</span>
+<span class="sd">        :type depth int</span>
+<span class="sd">        :type color Color</span>
+<span class="sd">        :rtype Move</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Depth: &quot;</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">depth</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>
+
+        <span class="n">moves</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Number of possible moves&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">))</span>
+
+        <span class="n">my_move</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
+            <span class="n">move</span><span class="o">.</span><span class="n">out</span><span class="p">()</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">cp</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">opponent</span><span class="p">()))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">move</span><span class="p">,</span> <span class="mi">100</span>
+            <span class="n">best_reply</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">treeSearch</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="o">.</span><span class="n">opponent</span><span class="p">())</span>
+            <span class="n">best_reply</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">out</span><span class="p">()</span>
+            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;My Advantage&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">best_reply</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">my_move</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">my_move</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">best_reply</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">my_move</span> <span class="o">=</span> <span class="n">move</span><span class="p">,</span> <span class="o">-</span><span class="n">best_reply</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">my_move</span></div>
+
+<div class="viewcode-block" id="Ai.weed_checkmate"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.weed_checkmate">[docs]</a>    <span class="k">def</span> <span class="nf">weed_checkmate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">moves</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;weeding 0ut checkmate&quot;</span><span class="p">)</span>
+        <span class="n">final</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">moves</span><span class="p">)):</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">cp</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+            <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_reply</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">position</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+                <span class="n">final</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">final</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">final</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moves</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">final</span></div>
+
+<div class="viewcode-block" id="Ai.one_move_ahead"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.basicAI.Ai.one_move_ahead">[docs]</a>    <span class="k">def</span> <span class="nf">one_move_ahead</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">move</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+        <span class="n">test</span> <span class="o">=</span> <span class="n">cp</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+        <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_move</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">move</span><span class="o">.</span><span class="n">color</span><span class="o">.</span><span class="n">opponent</span><span class="p">()))</span>
+        <span class="k">return</span> <span class="n">test</span></div></div>
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Author.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
