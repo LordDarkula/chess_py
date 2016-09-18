@@ -2,73 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99923c24-8f44-4db9-bc47-5c2d62dcce06" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.algebraic.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.game.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.pieces.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.players.doctree" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/converter.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/location.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/move.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/board.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/color.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/game/game.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/game/game_state.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/game/interface.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/bishop.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/king.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/knight.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/pawn.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/piece.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/piece_const.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/queen.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/pieces/rook.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/players/basicAI.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/players/human.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/players/player.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.core.algebraic.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.core.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.game.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.pieces.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.players.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/chess_py.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.core.algebraic.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.core.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.game.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.pieces.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.players.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/_build/html/py-modindex.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.core.algebraic.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.core.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.game.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.pieces.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.players.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/chess_py.rst" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docs/make.bat" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/chess_py/players/tree.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_build/doctrees/code.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_build/html/.nojekyll" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_build/html/_sources/code.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/_build/html/code.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/docs/code.rst" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.algebraic.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.algebraic.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.core.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.pieces.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.pieces.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.players.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/chess_py.players.doctree" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/docs/_build/doctrees/environment.pickle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/docs/_build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/objects.inv" afterPath="$PROJECT_DIR$/docs/_build/html/objects.inv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/board.py" afterPath="$PROJECT_DIR$/chess_py/core/board.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/pieces/piece_const.py" afterPath="$PROJECT_DIR$/chess_py/pieces/piece_const.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/players/basicAI.py" afterPath="$PROJECT_DIR$/chess_py/players/basicAI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/.buildinfo" afterPath="$PROJECT_DIR$/docs/_build/html/.buildinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_sources/index.txt" afterPath="$PROJECT_DIR$/docs/_build/html/_sources/index.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/genindex.html" afterPath="$PROJECT_DIR$/docs/_build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/index.html" afterPath="$PROJECT_DIR$/docs/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/search.html" afterPath="$PROJECT_DIR$/docs/_build/html/search.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/algebraic/converter.py" afterPath="$PROJECT_DIR$/chess_py/core/algebraic/converter.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/algebraic/location.py" afterPath="$PROJECT_DIR$/chess_py/core/algebraic/location.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/chess_py/core/algebraic/move.py" afterPath="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/converter.html" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/converter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/location.html" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/location.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/move.html" afterPath="$PROJECT_DIR$/docs/_build/html/_modules/chess_py/core/algebraic/move.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/chess_py.core.algebraic.html" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.core.algebraic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/chess_py.core.html" afterPath="$PROJECT_DIR$/docs/_build/html/chess_py.core.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/docs/_build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/conf.py" afterPath="$PROJECT_DIR$/docs/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.rst" afterPath="$PROJECT_DIR$/docs/index.rst" />
     </list>
     <ignored path="chess_py.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,11 +60,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.travis.yml">
+      <file leaf-file-name="move.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="-252">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notation_const.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/notation_const.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -131,12 +90,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chess_py.players.rst" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/docs/chess_py.players.rst">
+      <file leaf-file-name="converter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/converter.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="334">
+              <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+              <folding>
+                <element signature="e#642#5613#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -163,10 +124,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="board.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="board.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess_py/core/board.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4899">
+            <state relative-caret-position="1386">
               <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
               <folding>
                 <element signature="e#1558#3259#0" expanded="false" />
@@ -175,11 +136,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="location.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2904">
+              <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docs/_build/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="22">
+              <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -192,22 +163,6 @@
               <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
               <folding />
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-            <state split_layout="FIRST">
-              <first_editor relative-caret-position="198">
-                <caret line="25" column="304" selection-start-line="25" selection-start-column="304" selection-end-line="25" selection-end-column="304" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-          <provider editor-type-id="MarkdownFxPreviewEditor">
-            <state />
           </provider>
         </entry>
       </file>
@@ -258,11 +213,8 @@
         <option value="$PROJECT_DIR$/chess_py/pieces/king.py" />
         <option value="$PROJECT_DIR$/chess_py/players/human.py" />
         <option value="$PROJECT_DIR$/chess_py/pieces/queen.py" />
-        <option value="$PROJECT_DIR$/chess_py/core/algebraic/location.py" />
         <option value="$PROJECT_DIR$/chess_py/core/algebraic/notation_const.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
-        <option value="$PROJECT_DIR$/chess_py/core/algebraic/converter.py" />
         <option value="$PROJECT_DIR$/chess_py/players/player.py" />
         <option value="$PROJECT_DIR$/chess_py/game/interface.py" />
         <option value="$PROJECT_DIR$/UCI protocol_files/banner-styles.css" />
@@ -278,6 +230,9 @@
         <option value="$PROJECT_DIR$/chess_py/pieces/piece_const.py" />
         <option value="$PROJECT_DIR$/docs/_build/html/index.html" />
         <option value="$PROJECT_DIR$/chess_py/core/board.py" />
+        <option value="$PROJECT_DIR$/chess_py/core/algebraic/converter.py" />
+        <option value="$PROJECT_DIR$/chess_py/core/algebraic/location.py" />
+        <option value="$PROJECT_DIR$/chess_py/core/algebraic/move.py" />
       </list>
     </option>
   </component>
@@ -503,6 +458,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chess_py" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chess_py" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="chess_py" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algebraic" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -969,7 +946,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="2" width="1680" height="1046" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2942613" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32704404" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -979,7 +956,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259958" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2746331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2746331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1115,13 +1092,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/notation_const.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/game/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1143,30 +1113,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="37" column="30" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#27#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/converter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4840">
-          <caret line="230" column="0" selection-start-line="230" selection-start-column="0" selection-end-line="230" selection-end-column="0" />
-          <folding>
-            <element signature="e#170#201#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1265,14 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="819" column="0" selection-start-line="819" selection-start-column="0" selection-end-line="819" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1411,21 +1355,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docs/_build/html/index.html">
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/converter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="334">
+          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="0" />
+          <folding>
+            <element signature="e#642#5613#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess_py/core/board.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4899">
+        <state relative-caret-position="1386">
           <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
           <folding>
             <element signature="e#1558#3259#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/move.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/notation_const.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="25" column="23" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/_build/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="60" selection-start-line="1" selection-start-column="60" selection-end-line="1" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chess_py/core/algebraic/location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2904">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

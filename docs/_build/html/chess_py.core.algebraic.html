@@ -54,19 +54,30 @@ to turn them into usable commands.</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.init_alg">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.init_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initializes a move from long algebraic notation
-:type alg_str: str
-:type position Board
-:rtype Move</p>
+<dd><p>Initializes a move from long algebraic notation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.make_legal">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.make_legal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Makes move legal
-:type move Move
-:type position Board
-:rtype Move</p>
+<dd><p>Returns the corresponding move from
+all_possible_moves in Board</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -92,21 +103,23 @@ pawn promotion e8=Q</p>
 <span id="chess-py-core-algebraic-location-module"></span><h2>chess_py.core.algebraic.location module<a class="headerlink" href="#module-chess_py.core.algebraic.location" title="Permalink to this headline">¶</a></h2>
 <p>Class stores Locations on the Board.
 Locations must be on the board to be initialized properly.
-rank - y coordinate from 0 to 7
-file - x coordinate from 0 to 7</p>
-<p>rank
-7 8 ║… … … … … … … …
-6 7 ║… … … … … … … …
-5 6 ║… … … … … … … …
-4 5 ║… … … … … … … …
-3 4 ║… … … … … … … …
-2 3 ║… … … … … … … …
-1 2 ║… … … … … … … …
-0 1 ║… … … … … … … …
-&#8212;-╚═══════════════
-——&#8212;a b c d e f g h
-&#8212;&#8211;0 1 2 3 4 5 6 7
-&#8212;&#8212;file</p>
+| rank - y coordinate from 0 to 7
+| file - x coordinate from 0 to 7</p>
+<div class="line-block">
+<div class="line">rank</div>
+<div class="line">7 8 ║… … … … … … … …</div>
+<div class="line">6 7 ║… … … … … … … …</div>
+<div class="line">5 6 ║… … … … … … … …</div>
+<div class="line">4 5 ║… … … … … … … …</div>
+<div class="line">3 4 ║… … … … … … … …</div>
+<div class="line">2 3 ║… … … … … … … …</div>
+<div class="line">1 2 ║… … … … … … … …</div>
+<div class="line">0 1 ║… … … … … … … …</div>
+<div class="line">&#8212;-╚═══════════════</div>
+<div class="line">——&#8212;a b c d e f g h</div>
+<div class="line">&#8212;&#8211;0 1 2 3 4 5 6 7</div>
+<div class="line">&#8212;&#8212;file</div>
+</div>
 <p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
 <dl class="class">
 <dt id="chess_py.core.algebraic.location.Location">
@@ -114,72 +127,141 @@ file - x coordinate from 0 to 7</p>
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.location.Location.init_alg">
 <em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a location from algebraic notation like e4
-:type alg_str: str
-:rtype Location</p>
+<dd><p>Creates a location from algebraic notation like e4</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns if the move is on the board or not.
-:rtype bool</p>
+<dd><p>Returns if the move is on the board or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_down">
 <code class="descname">shift_down</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_down_left">
 <code class="descname">shift_down_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_down_right">
 <code class="descname">shift_down_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_down_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_left">
 <code class="descname">shift_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_right">
 <code class="descname">shift_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_up">
 <code class="descname">shift_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_up_left">
 <code class="descname">shift_up_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_up_right">
 <code class="descname">shift_up_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.shift_up_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -199,8 +281,15 @@ with meaning defined in notation_const.py</p>
 <dd><dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines whether move exists.
-:rtype bool</p>
+<dd><p>Determines whether move exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -211,7 +300,7 @@ with meaning defined in notation_const.py</p>
 <dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.would_move_be_promotion">
 <code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds if move from current get_location</p>
+<dd><p>Finds if move from current location would be a promotion</p>
 </dd></dl>
 
 </dd></dl>
@@ -245,10 +334,16 @@ pawn promotion e8=Q</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.make_legal">
 <code class="descclassname">chess_py.core.algebraic.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.make_legal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Makes move legal
-:type move Move
-:type position Board
-:rtype Move</p>
+<dd><p>Returns the corresponding move from
+all_possible_moves in Board</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="class">
@@ -257,72 +352,141 @@ pawn promotion e8=Q</p>
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.Location.init_alg">
 <em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.init_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a location from algebraic notation like e4
-:type alg_str: str
-:rtype Location</p>
+<dd><p>Creates a location from algebraic notation like e4</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns if the move is on the board or not.
-:rtype bool</p>
+<dd><p>Returns if the move is on the board or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_down">
 <code class="descname">shift_down</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_down_left">
 <code class="descname">shift_down_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_down_right">
 <code class="descname">shift_down_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_down_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_down_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted down right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted down right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_left">
 <code class="descname">shift_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_right">
 <code class="descname">shift_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_up">
 <code class="descname">shift_up</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_up_left">
 <code class="descname">shift_up_left</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_left"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up_left" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up left by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up left by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.shift_up_right">
 <code class="descname">shift_up_right</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.shift_up_right"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.shift_up_right" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds Location shifted up right by 1
-:rtype: Location</p>
+<dd><p>Finds Location shifted up right by 1</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -333,8 +497,15 @@ pawn promotion e8=Q</p>
 <dd><dl class="method">
 <dt id="chess_py.core.algebraic.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Determines whether move exists.
-:rtype bool</p>
+<dd><p>Determines whether move exists.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -345,7 +516,7 @@ pawn promotion e8=Q</p>
 <dl class="method">
 <dt id="chess_py.core.algebraic.Move.would_move_be_promotion">
 <code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds if move from current get_location</p>
+<dd><p>Finds if move from current location would be a promotion</p>
 </dd></dl>
 
 </dd></dl>

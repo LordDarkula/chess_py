@@ -31,8 +31,8 @@ def to_move(algebraic_string, input_color):
     Castle 00 or 000
     pawn promotion e8=Q
 
-    :type algebraic_string: string
-    :type input_color: color.Color
+    :type algebraic_string: str
+    :type input_color: Color
     """
     def edge_rank():
         if input_color == color.white:
@@ -183,10 +183,12 @@ def to_move(algebraic_string, input_color):
 
 def make_legal(move, position):
     """
-    Makes move legal
-    :type move Move
-    :type position Board
-    :rtype Move
+    Returns the corresponding move from
+    all_possible_moves in Board
+
+    :type move: Move
+    :type position: Board
+    :rtype: Move
     """
     assert isinstance(move, Move)
     for test_move in position.all_possible_moves(move.color):
@@ -222,9 +224,10 @@ def make_legal(move, position):
 def init_alg(alg_str, position):
     """
     Initializes a move from long algebraic notation
+
     :type alg_str: str
-    :type position Board
-    :rtype Move
+    :type position: Board
+    :rtype: Move
     """
     end = Location.init_alg(alg_str[2] + alg_str[3])
     start = Location.init_alg(alg_str[0] + alg_str[1])

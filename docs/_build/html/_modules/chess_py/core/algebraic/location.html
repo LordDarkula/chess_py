@@ -45,22 +45,22 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Class stores Locations on the Board.</span>
 <span class="sd">Locations must be on the board to be initialized properly.</span>
-<span class="sd">rank - y coordinate from 0 to 7</span>
-<span class="sd">file - x coordinate from 0 to 7</span>
+<span class="sd">| rank - y coordinate from 0 to 7</span>
+<span class="sd">| file - x coordinate from 0 to 7</span>
 
-<span class="sd">rank</span>
-<span class="sd">7 8 ║… … … … … … … …</span>
-<span class="sd">6 7 ║… … … … … … … …</span>
-<span class="sd">5 6 ║… … … … … … … …</span>
-<span class="sd">4 5 ║… … … … … … … …</span>
-<span class="sd">3 4 ║… … … … … … … …</span>
-<span class="sd">2 3 ║… … … … … … … …</span>
-<span class="sd">1 2 ║… … … … … … … …</span>
-<span class="sd">0 1 ║… … … … … … … …</span>
-<span class="sd">----╚═══════════════</span>
-<span class="sd">——---a b c d e f g h</span>
-<span class="sd">-----0 1 2 3 4 5 6 7</span>
-<span class="sd">------file</span>
+<span class="sd">| rank</span>
+<span class="sd">| 7 8 ║… … … … … … … …</span>
+<span class="sd">| 6 7 ║… … … … … … … …</span>
+<span class="sd">| 5 6 ║… … … … … … … …</span>
+<span class="sd">| 4 5 ║… … … … … … … …</span>
+<span class="sd">| 3 4 ║… … … … … … … …</span>
+<span class="sd">| 2 3 ║… … … … … … … …</span>
+<span class="sd">| 1 2 ║… … … … … … … …</span>
+<span class="sd">| 0 1 ║… … … … … … … …</span>
+<span class="sd">| ----╚═══════════════</span>
+<span class="sd">| ——---a b c d e f g h</span>
+<span class="sd">| -----0 1 2 3 4 5 6 7</span>
+<span class="sd">| ------file</span>
 
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -70,6 +70,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a location on a chessboard given x and y coordinates.</span>
+
 <span class="sd">        :type rank: int</span>
 <span class="sd">        :type file: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -80,8 +81,9 @@
 <div class="viewcode-block" id="Location.init_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.init_alg">[docs]</a>    <span class="k">def</span> <span class="nf">init_alg</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">alg_str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a location from algebraic notation like e4</span>
+
 <span class="sd">        :type alg_str: str</span>
-<span class="sd">        :rtype Location</span>
+<span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">alg_str</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">ord</span><span class="p">(</span><span class="n">alg_str</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="mi">97</span><span class="p">)</span></div>
 
@@ -94,6 +96,7 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds is get_location on board is the same as current equation.</span>
+
 <span class="sd">        :type other: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">):</span>
@@ -106,6 +109,11 @@
         <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds string representation of Location in algebraic form ie &quot;e4&quot;</span>
+
+<span class="sd">        :rtype: str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">rank_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
@@ -121,7 +129,8 @@
 <div class="viewcode-block" id="Location.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns if the move is on the board or not.</span>
-<span class="sd">        :rtype bool</span>
+
+<span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="ow">and</span> \
                 <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
@@ -132,6 +141,7 @@
 <div class="viewcode-block" id="Location.shift_up"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
@@ -139,6 +149,7 @@
 <div class="viewcode-block" id="Location.shift_down"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
@@ -146,6 +157,7 @@
 <div class="viewcode-block" id="Location.shift_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted right by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
@@ -153,6 +165,7 @@
 <div class="viewcode-block" id="Location.shift_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted left by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
@@ -160,6 +173,7 @@
 <div class="viewcode-block" id="Location.shift_up_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up right by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_up</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span></div>
@@ -167,6 +181,7 @@
 <div class="viewcode-block" id="Location.shift_up_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up left by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_up</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span></div>
@@ -174,6 +189,7 @@
 <div class="viewcode-block" id="Location.shift_down_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down right by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_down</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span></div>
@@ -181,6 +197,7 @@
 <div class="viewcode-block" id="Location.shift_down_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down left by 1</span>
+
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_down</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span></div></div>

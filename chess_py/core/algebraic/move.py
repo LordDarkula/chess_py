@@ -21,7 +21,8 @@ class Move:
                  string=None,
                  promoted_to_piece=None):
         """
-        Alternate constructor to create move using object algebraic.Location
+        Constructor to create move using object Location
+
         :type end_loc: Location
         :type piece: Piece
         :type status: int
@@ -83,6 +84,11 @@ class Move:
         return not self.__eq__(other)
 
     def __str__(self):
+        """
+        Finds string representation in long algebraic noatation
+
+        :rtype: str
+        """
         move_str = str(Location(self.start_rank, self.start_file)) + str(self.end_loc)
 
         if self.promoted_to_piece is not None:
@@ -93,13 +99,14 @@ class Move:
     def on_board(self):
         """
         Determines whether move exists.
-        :rtype bool
+
+        :rtype: bool
         """
         return self.end_loc.on_board()
 
     def would_move_be_promotion(self):
         """
-        Finds if move from current get_location
+        Finds if move from current location would be a promotion
         """
         if self.end_loc.rank == 0 and \
                 not self.color:
