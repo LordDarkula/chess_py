@@ -1,5 +1,5 @@
 import unittest
-from chess_py import Move, Location, Pawn, color, notation_const
+from chess_py import Move, Location, Pawn, color, notation_const, Queen
 
 
 class StrTest(unittest.TestCase):
@@ -19,3 +19,13 @@ class StrTest(unittest.TestCase):
 
     def testMoveStr(self):
         self.assertEquals(str(self.white_pawn_move), "a2a3")
+
+        self.white_pawn_move = Move(Location(7, 0),
+                                    piece=self.white_pawn,
+                                    status=notation_const.MOVEMENT,
+                                    start_rank=6,
+                                    start_file=0,
+                                    promoted_to_piece=Queen(color.Color.init_white(),
+                                                            Location(7, 0)))
+
+        self.assertEquals(str(self.white_pawn_move), "a7a8Q")

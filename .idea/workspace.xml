@@ -17,6 +17,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/chess_py$main.coverage" NAME="main Coverage Results" MODIFIED="1474012067974" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/chess_py$testMain.coverage" NAME="testMain Coverage Results" MODIFIED="1472700838163" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
+    <SUITE FILE_PATH="coverage/chess_py$Unittests_in_StrTest.coverage" NAME="Unittests in StrTest Coverage Results" MODIFIED="1474250274715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$Unittest_LocationTest_testOnBoard.coverage" NAME="Unittest LocationTest.testOnBoard Coverage Results" MODIFIED="1471742065739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/chess_py$move.coverage" NAME="move Coverage Results" MODIFIED="1471762785305" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chess_py/core/algebraic" />
     <SUITE FILE_PATH="coverage/chess_py$testMove.coverage" NAME="testMove Coverage Results" MODIFIED="1471763239646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
@@ -58,8 +59,8 @@
       <file leaf-file-name="testStr.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/testStr.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+            <state relative-caret-position="450">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -70,8 +71,8 @@
       <file leaf-file-name="testMove.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/testMove.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="330">
+              <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -130,6 +131,8 @@
               <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
               <folding>
                 <element signature="e#1558#3259#0" expanded="false" />
+                <marker date="1474160732000" expanded="true" signature="25:746" ph="&quot;&quot;&quot;Constructs board object which stores the get_location of all the pieces....&quot;&quot;&quot;" />
+                <marker date="1474160732000" expanded="true" signature="1264:11679" ph="..." />
               </folding>
             </state>
           </provider>
@@ -456,7 +459,7 @@
       <recent name="$PROJECT_DIR$/pieces" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in BoardTest">
+  <component name="RunManager" selected="Python tests.Unittests in StrTest">
     <configuration default="false" name="Unittests in LocationTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -470,29 +473,6 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testLocation.py" />
       <option name="CLASS_NAME" value="LocationTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_CLASS" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
-      <option name="PUREUNITTEST" value="true" />
-      <option name="PARAMS" value="" />
-      <option name="USE_PARAM" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Unittests in MoveTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="chess_py" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testMove.py" />
-      <option name="CLASS_NAME" value="MoveTest" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
@@ -557,6 +537,29 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testBoard.py" />
       <option name="CLASS_NAME" value="BoardTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittests in StrTest" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="chess_py" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/testStr.py" />
+      <option name="CLASS_NAME" value="StrTest" />
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_CLASS" />
@@ -807,18 +810,18 @@
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Python.main" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in LocationTest" />
-      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in MoveTest" />
-      <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in ConverterTest" />
-      <item index="4" class="java.lang.String" itemvalue="Python.testMain" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in BoardTest" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in ConverterTest" />
+      <item index="3" class="java.lang.String" itemvalue="Python.testMain" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in BoardTest" />
+      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in StrTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in BoardTest" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in LocationTest" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testMain" />
-        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittests in ConverterTest" />
-        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in MoveTest" />
+        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in StrTest" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in BoardTest" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.Unittests in LocationTest" />
+        <item index="3" class="java.lang.String" itemvalue="Python.testMain" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in ConverterTest" />
       </list>
     </recent_temporary>
   </component>
@@ -839,35 +842,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 19h 38m 13s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 39m 33s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 19h 38m 39s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 39m 54s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 19h 59m 45s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 40m 00s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 00m 26s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 40m 30s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 00m 47s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 41m 02s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 01m 53s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 42m 15s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 02m 32s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 43m 37s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 06m 07s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 43m 57s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 06m 36s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 17h 44m 09s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_BoardTest - 2016.09.16 at 20h 08m 16s.xml">
-      <configuration name="Unittests in BoardTest" configurationId="tests" />
+    <history-entry file="Unittests_in_StrTest - 2016.09.18 at 18h 57m 56s.xml">
+      <configuration name="Unittests in StrTest" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -890,17 +893,17 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32809225" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3259958" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3710692" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24908425" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2746331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2746331" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39832285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3710692" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39832285" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32740587" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -1150,7 +1153,7 @@
         <state relative-caret-position="0">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1296,6 +1299,8 @@
           <caret line="109" column="11" selection-start-line="109" selection-start-column="11" selection-end-line="109" selection-end-column="11" />
           <folding>
             <element signature="e#1558#3259#0" expanded="false" />
+            <marker date="1474160732000" expanded="true" signature="25:746" ph="&quot;&quot;&quot;Constructs board object which stores the get_location of all the pieces....&quot;&quot;&quot;" />
+            <marker date="1474160732000" expanded="true" signature="1264:11679" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1334,8 +1339,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testMove.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="16" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -1344,8 +1349,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/testStr.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        <state relative-caret-position="450">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
