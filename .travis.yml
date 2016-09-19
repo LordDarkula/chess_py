@@ -14,6 +14,7 @@ script:
   - python tests/testMove.py
   - python tests/testConverter.py
   - python tests/testBoard.py
+  - python tests/testStr.py
 
 branches:
   only:
