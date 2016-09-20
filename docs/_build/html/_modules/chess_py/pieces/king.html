@@ -75,8 +75,9 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a King.</span>
-<span class="sd">        :type input_color Color</span>
-<span class="sd">        :type location Location</span>
+
+<span class="sd">        :type input_color: Color</span>
+<span class="sd">        :type location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">King</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♚&quot;</span><span class="p">,</span> <span class="s2">&quot;♔&quot;</span><span class="p">)</span>
@@ -87,8 +88,9 @@
 <div class="viewcode-block" id="King.unfiltered"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.unfiltered">[docs]</a>    <span class="k">def</span> <span class="nf">unfiltered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates list of possible moves</span>
-<span class="sd">        :type position Board</span>
-<span class="sd">        :rtype list</span>
+
+<span class="sd">        :type position: Board</span>
+<span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -117,10 +119,11 @@
         <span class="k">def</span> <span class="nf">add_castle</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">rook_file</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Adds kingside and queenside</span>
-<span class="sd">            :type direction def</span>
-<span class="sd">            :type status int</span>
-<span class="sd">            :type rook_file int</span>
-<span class="sd">            :rtype list</span>
+
+<span class="sd">            :type direction: def</span>
+<span class="sd">            :type status: int</span>
+<span class="sd">            :type rook_file: int</span>
+<span class="sd">            :rtype: list</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="n">rook_file</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> \
                     <span class="nb">type</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="n">rook_file</span><span class="p">)))</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> \
@@ -173,8 +176,9 @@
 <div class="viewcode-block" id="King.in_check"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.in_check">[docs]</a>    <span class="k">def</span> <span class="nf">in_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if the king is in check</span>
-<span class="sd">        :type position Board</span>
-<span class="sd">        :return:</span>
+
+<span class="sd">        :type position: Board</span>
+<span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">enemy_move</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemy_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
 
@@ -186,8 +190,9 @@
 <div class="viewcode-block" id="King.possible_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Filters unfiltered moves so King cannot walk into check.</span>
-<span class="sd">        :type position Board</span>
-<span class="sd">        :rtype list</span>
+
+<span class="sd">        :type position: Board</span>
+<span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">unfiltered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unfiltered</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
         <span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>

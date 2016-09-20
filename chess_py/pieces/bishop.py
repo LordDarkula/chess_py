@@ -30,6 +30,7 @@ class Bishop(Piece):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
+
         :type input_color: Color
         """
         super(Bishop, self).__init__(input_color, location, "♝", "♗")
@@ -40,8 +41,9 @@ class Bishop(Piece):
     def possible_moves(self, position):
         """
         Returns all possible bishop moves.
-        :type position Board
-        :rtype list
+
+        :type position: Board
+        :rtype: list
         """
         rook = Rook(self.color, self.location)
         moves = []

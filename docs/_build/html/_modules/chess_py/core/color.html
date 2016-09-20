@@ -56,8 +56,9 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes new color using bool with white = True and black = False</span>
+
 <span class="sd">        :type color: bool</span>
-<span class="sd">        :rtype: color.Color</span>
+<span class="sd">        :rtype: Color</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
         <span class="k">if</span> <span class="n">color</span><span class="p">:</span>
@@ -87,7 +88,9 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds out this color is the same as another color.</span>
-<span class="sd">        :type other: color.Color</span>
+
+<span class="sd">        :type other: Color</span>
+<span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">color</span>
@@ -100,7 +103,8 @@
 <div class="viewcode-block" id="Color.opponent"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.color.Color.opponent">[docs]</a>    <span class="k">def</span> <span class="nf">opponent</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds other color</span>
-<span class="sd">        :rtype Color</span>
+
+<span class="sd">        :rtype: Color</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span></div></div>
 </pre></div>

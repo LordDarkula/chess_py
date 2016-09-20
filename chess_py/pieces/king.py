@@ -33,8 +33,9 @@ class King(Piece):
     def __init__(self, input_color, location):
         """
         Creates a King.
-        :type input_color Color
-        :type location Location
+
+        :type input_color: Color
+        :type location: Location
         """
         self.has_moved = False
         super(King, self).__init__(input_color, location, "♚", "♔")
@@ -45,8 +46,9 @@ class King(Piece):
     def unfiltered(self, position):
         """
         Generates list of possible moves
-        :type position Board
-        :rtype list
+
+        :type position: Board
+        :rtype: list
         """
         moves = []
 
@@ -75,10 +77,11 @@ class King(Piece):
         def add_castle(direction, status, rook_file):
             """
             Adds kingside and queenside
-            :type direction def
-            :type status int
-            :type rook_file int
-            :rtype list
+
+            :type direction: def
+            :type status: int
+            :type rook_file: int
+            :rtype: list
             """
             if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and \
                     type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and \
@@ -131,8 +134,9 @@ class King(Piece):
     def in_check(self, position):
         """
         Finds if the king is in check
-        :type position Board
-        :return:
+
+        :type position: Board
+        :return: bool
         """
         for enemy_move in self.enemy_moves(position):
 
@@ -144,8 +148,9 @@ class King(Piece):
     def possible_moves(self, position):
         """
         Filters unfiltered moves so King cannot walk into check.
-        :type position Board
-        :rtype list
+
+        :type position: Board
+        :rtype: list
         """
         unfiltered = self.unfiltered(position)
         filtered = []

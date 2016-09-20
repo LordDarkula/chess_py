@@ -14,8 +14,9 @@ class Color:
     def __init__(self, color):
         """
         Initializes new color using bool with white = True and black = False
+
         :type color: bool
-        :rtype: color.Color
+        :rtype: Color
         """
         self.color = color
         if color:
@@ -45,7 +46,9 @@ class Color:
     def __eq__(self, other):
         """
         Finds out this color is the same as another color.
-        :type other: color.Color
+
+        :type other: Color
+        :rtype: bool
         """
         if type(other) is type(self):
             return self.color == other.color
@@ -58,6 +61,7 @@ class Color:
     def opponent(self):
         """
         Finds other color
-        :rtype Color
+
+        :rtype: Color
         """
         return Color(not self.color)
