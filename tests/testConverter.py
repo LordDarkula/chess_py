@@ -1,5 +1,5 @@
 import unittest
-from chess_py import to_move, make_legal, Board, Move, Location, Pawn, color, notation_const
+from chess_py import short_alg, make_legal, Board, Move, Location, Pawn, color, notation_const
 
 
 class ConverterTest(unittest.TestCase):
@@ -11,7 +11,7 @@ class ConverterTest(unittest.TestCase):
                                 status=notation_const.MOVEMENT)
 
     def testToMove(self):
-        self.failUnless(to_move("e4", color.Color.init_white()) == self.e_four_move)
+        self.failUnless(short_alg("e4", color.Color.init_white()) == self.e_four_move)
 
 if __name__ == '__main__':
     unittest.main()

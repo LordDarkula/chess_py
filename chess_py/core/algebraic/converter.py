@@ -20,7 +20,7 @@ from chess_py.pieces.rook import Rook
 from chess_py.pieces.knight import Knight
 
 
-def to_move(algebraic_string, input_color):
+def short_alg(algebraic_string, input_color):
     """
     Default constructor for initializing a move using algebraic notation.
 
@@ -221,7 +221,7 @@ def make_legal(move, position):
     return None
 
 
-def init_alg(alg_str, position):
+def long_alg(alg_str, position):
     """
     Initializes a move from long algebraic notation
 

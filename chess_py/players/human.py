@@ -36,7 +36,7 @@ class Human:
 
         if len(raw) > 1:
             raw.strip()
-            move = converter.to_move(raw, self.color)
+            move = converter.short_alg(raw, self.color)
             move = converter.make_legal(move, position)
 
         while raw is None or move is None:
@@ -47,8 +47,7 @@ class Human:
                 raw = input(self.color.string + "\'s move \n")
 
             if len(raw) > 1:
-                move = converter.to_move(raw, self.color)
+                move = converter.short_alg(raw, self.color)
                 move = converter.make_legal(move, position)
 
-        print("Your move " + str(move))
         return move

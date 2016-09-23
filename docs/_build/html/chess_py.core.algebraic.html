@@ -53,7 +53,7 @@ to turn them into usable commands.</p>
 <p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.init_alg">
-<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.init_alg" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">long_alg</code><span class="sig-paren">(</span><em>alg_str</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.init_alg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes a move from long algebraic notation</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -82,7 +82,7 @@ all_possible_moves in Board</p>
 
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.to_move">
-<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">to_move</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.to_move" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">short_alg</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.to_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default constructor for initializing a move using algebraic notation.</p>
 <p>pawn move e4
 piece move Nf3
@@ -126,7 +126,7 @@ Locations must be on the board to be initialized properly.
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.location.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.location.Location.init_alg">
-<em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">long_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a location from algebraic notation like e4</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -315,7 +315,7 @@ with meaning defined in notation_const.py</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.core.algebraic" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="chess_py.core.algebraic.to_move">
-<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">to_move</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.to_move" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">short_alg</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#to_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.to_move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Default constructor for initializing a move using algebraic notation.</p>
 <p>pawn move e4
 piece move Nf3
@@ -351,7 +351,7 @@ all_possible_moves in Board</p>
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.Location.init_alg">
-<em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.init_alg" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descname">long_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.init_alg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a location from algebraic notation like e4</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
