@@ -32,7 +32,7 @@ class Piece:
         self.color = input_color
         self.location = location
 
-        if self.color.color == color.white:
+        if self.color == color.white:
             self.symbol = white_symbol
         else:
             self.symbol = black_symbol

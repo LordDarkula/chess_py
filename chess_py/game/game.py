@@ -41,10 +41,10 @@ class Game:
         while True:
             color_fn = next(colors)
             if no_moves(self.position):
-                if self.position.get_king(Color.init_black()).in_check(self.position):
+                if self.position.get_king(Color.black()).in_check(self.position):
                     return 1
 
-                elif self.position.get_king(Color.init_white()).in_check(self.position):
+                elif self.position.get_king(Color.white()).in_check(self.position):
                     return 0
 
                 else:

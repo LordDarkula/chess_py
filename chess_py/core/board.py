@@ -56,14 +56,14 @@ class Board:
     default_position = [
 
         # First rank
-        [Rook(Color(white), Location(0, 0)), Knight(Color(white), Location(0, 1)), Bishop(Color(white), Location(0, 2)),
-         Queen(Color(white), Location(0, 3)), King(Color(white), Location(0, 4)), Bishop(Color(white), Location(0, 5)),
-         Knight(Color(white), Location(0, 6)), Rook(Color(white), Location(0, 7))],
+        [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
+         Queen(white, Location(0, 3)), King(white, Location(0, 4)), Bishop(white, Location(0, 5)),
+         Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
 
         # Second rank
-        [Pawn(Color(white), Location(1, 0)), Pawn(Color(white), Location(1, 1)), Pawn(Color(white), Location(1, 2)),
-         Pawn(Color(white), Location(1, 3)), Pawn(Color(white), Location(1, 4)), Pawn(Color(white), Location(1, 5)),
-         Pawn(Color(white), Location(1, 6)), Pawn(Color(white), Location(1, 7))],
+        [Pawn(white, Location(1, 0)), Pawn(white, Location(1, 1)), Pawn(white, Location(1, 2)),
+         Pawn(white, Location(1, 3)), Pawn(white, Location(1, 4)), Pawn(white, Location(1, 5)),
+         Pawn(white, Location(1, 6)), Pawn(white, Location(1, 7))],
 
         # Third rank
         [None, None, None, None, None, None, None, None],
@@ -78,14 +78,14 @@ class Board:
         [None, None, None, None, None, None, None, None],
 
         # Seventh rank
-        [Pawn(Color(black), Location(6, 0)), Pawn(Color(black), Location(6, 1)), Pawn(Color(black), Location(6, 2)),
-         Pawn(Color(black), Location(6, 3)), Pawn(Color(black), Location(6, 4)), Pawn(Color(black), Location(6, 5)),
-         Pawn(Color(black), Location(6, 6)), Pawn(Color(black), Location(6, 7))],
+        [Pawn(black, Location(6, 0)), Pawn(black, Location(6, 1)), Pawn(black, Location(6, 2)),
+         Pawn(black, Location(6, 3)), Pawn(black, Location(6, 4)), Pawn(black, Location(6, 5)),
+         Pawn(black, Location(6, 6)), Pawn(black, Location(6, 7))],
 
         # Eighth rank
-        [Rook(Color(black), Location(7, 0)), Knight(Color(black), Location(7, 1)), Bishop(Color(black), Location(7, 2)),
-         Queen(Color(black), Location(7, 3)), King(Color(black), Location(7, 4)), Bishop(Color(black), Location(7, 5)),
-         Knight(Color(black), Location(7, 6)), Rook(Color(black), Location(7, 7))]
+        [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
+         Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
+         Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]
     ]
 
     def __init__(self, position):

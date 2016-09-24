@@ -6,36 +6,34 @@ typing True or False.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
-white = True
-black = False
 
 
 class Color:
-    def __init__(self, color):
-        """
-        Initializes new color using bool with white = True and black = False
 
-        :type color: bool
+    def __init__(self, raw):
+        """
+        Initializes new color using a string
+
+        :type raw: str
         :rtype: Color
         """
-        self.color = color
-        if color:
-            self.string = "white"
-        else:
-            self.string = "black"
+        self.color = raw == "white"
+        self.string = raw
 
     @classmethod
-    def init_white(cls):
-        return cls(white)
+    def pwhite(cls):
+        return cls("white")
 
     @classmethod
-    def init_black(cls):
-        return cls(black)
+    def pblack(cls):
+        return cls("black")
 
     @classmethod
-    def init_raw(cls, raw):
-        cls.color = raw == "white"
-        cls.string = raw
+    def _boolean(cls, boolean):
+        if boolean:
+            return cls.pwhite()
+
+        return cls.pblack()
 
     def __key(self):
         return self.color
@@ -64,4 +62,7 @@ class Color:
 
         :rtype: Color
         """
-        return Color(not self.color)
+        return self._boolean(not self.color)
+
+white = Color.pwhite()
+black = Color.pblack()

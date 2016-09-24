@@ -92,7 +92,7 @@ def short_alg(algebraic_string, input_color):
     # Queen side castle
     elif algebraic_string == "000":
         end_loc = Location(edge_rank(), 2)
-        move = Move(end_loc,
+        move = Move(end_loc=end_loc,
                     piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE,
                     start_rank=edge_rank(),
