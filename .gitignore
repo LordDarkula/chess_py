@@ -1,0 +1,9 @@
+
+/build/
+/chess_py.egg-info/
+/dist/
+/docs/_build/
+/.idea/
+__pycache__/
+docs/_static/
+docs/_templates/
