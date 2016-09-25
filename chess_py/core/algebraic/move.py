@@ -117,6 +117,3 @@ class Move:
             return True
 
         return False
-
-    def out(self):
-        print(self.piece.symbol, " Rank: ", self.end_loc.rank, " File:  ", self.end_loc.file, " Status: ", self.status)
