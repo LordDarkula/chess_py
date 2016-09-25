@@ -35,8 +35,11 @@ class Color:
 
         return cls.pblack()
 
+    def __str__(self):
+        return self.string
+
     def __key(self):
-        return self.color
+        return self.color, self.string
 
     def __hash__(self):
         return hash(self.__key())

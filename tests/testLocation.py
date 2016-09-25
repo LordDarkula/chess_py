@@ -11,7 +11,7 @@ class LocationTest(unittest.TestCase):
         self.failIf(Location(4, 5) == Location(5, 4))
 
     def testStr(self):
-        self.failUnless(Location(3, 4).__str__() == "e4")
+        str(self.failUnless(Location(3, 4)) == "e4")
 
     def testOnBoard(self):
         self.failUnless(Location(3, 4).on_board())

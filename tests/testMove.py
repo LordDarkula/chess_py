@@ -7,8 +7,9 @@ import copy
 class MoveTest(unittest.TestCase):
 
     def setUp(self):
-        self.white_pawn = Pawn(color.Color.white(), Location(1, 0))
-        self.black_pawn = Pawn(color.Color.black(), Location(1, 0))
+        self.white_pawn = Pawn(color.white, Location(1, 0))
+        self.black_pawn = Pawn(color.black, Location(1, 0))
+
         self.white_pawn_move = Move(Location(2, 0),
                                     piece=self.white_pawn,
                                     status=notation_const.MOVEMENT)

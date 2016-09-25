@@ -5,7 +5,7 @@ from chess_py import Move, Location, Pawn, color, notation_const, Queen
 class StrTest(unittest.TestCase):
 
     def setUp(self):
-        self.white_pawn = Pawn(color.Color.white(), Location(1, 0))
+        self.white_pawn = Pawn(color.white, Location(1, 0))
         self.white_pawn_move = Move(Location(2, 0),
                                     piece=self.white_pawn,
                                     status=notation_const.MOVEMENT,
@@ -25,7 +25,7 @@ class StrTest(unittest.TestCase):
                                     status=notation_const.MOVEMENT,
                                     start_rank=6,
                                     start_file=0,
-                                    promoted_to_piece=Queen(color.Color.white(),
+                                    promoted_to_piece=Queen(color.white,
                                                             Location(7, 0)))
 
         self.assertEquals(str(self.white_pawn_move), "a7a8Q")

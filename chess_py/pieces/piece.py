@@ -19,10 +19,11 @@ class Piece:
     def __init__(self, input_color, location, white_symbol, black_symbol):
         """
         Initializes a piece that is capable of moving
-        :type input_color Color
-        :type location Location
-        :type white_symbol str
-        :type black_symbol str
+
+        :type input_color: Color
+        :type location: Location
+        :type white_symbol: str
+        :type black_symbol: str
         """
         assert isinstance(input_color, Color)
         assert isinstance(location, Location)
