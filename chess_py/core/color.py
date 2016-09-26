@@ -17,7 +17,7 @@ class Color:
         :type raw: str
         :rtype: Color
         """
-        self.color = raw == "white"
+        self.color = raw.upper() == "WHITE"
         self.string = raw
 
     @classmethod
@@ -69,3 +69,14 @@ class Color:
 
 white = Color.pwhite()
 black = Color.pblack()
+
+
+def raw(string):
+    """
+    Converts string "white" or "black" into
+    corresponding color
+
+    :type string: str
+    :rtype: Color
+    """
+    return Color(string)
