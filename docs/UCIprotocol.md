@@ -415,7 +415,7 @@ Example:
 This is how the communication when the engine boots can look like:
 
 GUI     engine
-
+``` java
 // tell the engine to switch to UCI mode
 uci
 
@@ -495,3 +495,4 @@ stop
 // which is needed for every "go" command sent to tell the GUI
 // that the engine is ready again
 		bestmove g1f3 ponder d8f6
+```
