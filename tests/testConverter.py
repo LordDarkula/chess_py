@@ -10,7 +10,7 @@ class ConverterTest(unittest.TestCase):
                                 piece=Pawn(color.white, Location(1, 4)),
                                 status=notation_const.MOVEMENT)
 
-    def testToMove(self):
+    def shortAlg(self):
         self.failUnless(short_alg("e4", color.white) == self.e_four_move)
 
 if __name__ == '__main__':

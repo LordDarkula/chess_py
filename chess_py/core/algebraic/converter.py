@@ -80,9 +80,14 @@ def short_alg(algebraic_string, input_color):
             return King(input_color, loc)
         return None
 
-    # King side castle
+    def is_kingside(): return algebraic_string == "00"
+
+    def is_queenside(): return algebraic_string == "000"
+
     end_loc = Location(edge_rank(), 6)
-    if algebraic_string == "00":
+
+    # King side castle
+    if is_kingside():
         return Move(end_loc,
                     piece=King(input_color, Location(edge_rank(), 4)),
                     status=notation_const.KING_SIDE_CASTLE,
@@ -90,7 +95,7 @@ def short_alg(algebraic_string, input_color):
                     start_file=4)
 
     # Queen side castle
-    elif algebraic_string == "000":
+    elif is_queenside():
         end_loc = Location(edge_rank(), 2)
         move = Move(end_loc=end_loc,
                     piece=King(input_color, Location(edge_rank(), 4)),
