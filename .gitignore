@@ -7,5 +7,5 @@
 __pycache__/
 docs/_static/
 docs/_templates/
-
-.DS_Store
+*.pyc
+Would skip repository gh-pages/
