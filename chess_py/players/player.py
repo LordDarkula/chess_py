@@ -9,7 +9,7 @@ from pip._vendor.distlib.compat import raw_input
 import sys
 
 
-class PLayer:
+class Player:
     __metaclass__ = ABCMeta
 
     def __init__(self, input_color):

@@ -10,22 +10,25 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 from pip._vendor.distlib.compat import raw_input
 from chess_py.core.algebraic import converter
 from chess_py.core.color import Color
+from chess_py.players.player import Player
 import sys
 
 
-class Human:
+class Human(Player):
     def __init__(self, input_color):
         """
         Creates interface for human player.
+
         :type input_color: Color
         """
-        self.color = input_color
+        super(Human, self).__init__(input_color)
 
     def generate_move(self, position):
         """
         Returns valid and legal move given position
+
         :type position: Board
-        :rtype Move
+        :rtype: Move
         """
         print(position)
         if sys.version_info[0] < 3:
