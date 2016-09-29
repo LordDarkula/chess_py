@@ -15,6 +15,7 @@ class Player:
     def __init__(self, input_color):
         """
         Creates interface for base player.
+
         :type input_color: Color
         """
         self.color = input_color
@@ -23,8 +24,9 @@ class Player:
     def generate_move(self, position):
         """
         Returns valid and legal move given position
+
         :type position: Board
-        :rtype Move
+        :rtype: Move
         """
         pass
 

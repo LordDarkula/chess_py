@@ -19,8 +19,9 @@ class Game:
     def __init__(self, player_white, player_black):
         """
         Creates new game given the players.
-        :type player_white: human.Human or ai
-        :type player_black: human.Human or ai
+
+        :type player_white: Player
+        :type player_black: Player
         """
         self.player_white = player_white
         self.player_black = player_black
@@ -34,7 +35,7 @@ class Game:
         0.5 - Draw
         0 - Black wins
 
-        :rtype int
+        :rtype: int
         """
         colors = [lambda: self.white_move(), lambda: self.black_move()]
         colors = itertools.cycle(colors)

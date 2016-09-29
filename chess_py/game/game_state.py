@@ -13,8 +13,9 @@ from chess_py.core import color
 def no_moves(position):
     """
     Finds if the game is over.
-    :type position Board
-    :rtype bool
+
+    :type position: Board
+    :rtype: bool
     """
     return len(position.all_possible_moves(color.white)) == 0 \
         or len(position.all_possible_moves(color.black)) == 0
