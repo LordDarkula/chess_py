@@ -9,7 +9,8 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from chess_py.core.board import Board
-from chess_py.game.game_state import *
+from chess_py.core import color
+from chess_py.game import game_state
 from chess_py.core.algebraic.converter import make_legal
 import itertools
 
@@ -40,11 +41,11 @@ class Game:
 
         while True:
             color_fn = next(colors)
-            if no_moves(self.position):
-                if self.position.get_king(Color.black()).in_check(self.position):
+            if game_state.no_moves(self.position):
+                if self.position.get_king(color.black).in_check(self.position):
                     return 1
 
-                elif self.position.get_king(Color.white()).in_check(self.position):
+                elif self.position.get_king(color.white).in_check(self.position):
                     return 0
 
                 else:
