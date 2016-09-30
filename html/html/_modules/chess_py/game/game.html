@@ -51,7 +51,8 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">chess_py.core.board</span> <span class="kn">import</span> <span class="n">Board</span>
-<span class="kn">from</span> <span class="nn">chess_py.game.game_state</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">chess_py.core</span> <span class="kn">import</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">chess_py.game</span> <span class="kn">import</span> <span class="n">game_state</span>
 <span class="kn">from</span> <span class="nn">chess_py.core.algebraic.converter</span> <span class="kn">import</span> <span class="n">make_legal</span>
 <span class="kn">import</span> <span class="nn">itertools</span>
 
@@ -60,8 +61,9 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_white</span><span class="p">,</span> <span class="n">player_black</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates new game given the players.</span>
-<span class="sd">        :type player_white: human.Human or ai</span>
-<span class="sd">        :type player_black: human.Human or ai</span>
+
+<span class="sd">        :type player_white: Player</span>
+<span class="sd">        :type player_black: Player</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player_white</span> <span class="o">=</span> <span class="n">player_white</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player_black</span> <span class="o">=</span> <span class="n">player_black</span>
@@ -75,18 +77,18 @@
 <span class="sd">        0.5 - Draw</span>
 <span class="sd">        0 - Black wins</span>
 
-<span class="sd">        :rtype int</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">white_move</span><span class="p">(),</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">black_move</span><span class="p">()]</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">color_fn</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">no_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">black</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">game_state</span><span class="o">.</span><span class="n">no_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
                     <span class="k">return</span> <span class="mi">1</span>
 
-                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">Color</span><span class="o">.</span><span class="n">white</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
                     <span class="k">return</span> <span class="mi">0</span>
 
                 <span class="k">else</span><span class="p">:</span>

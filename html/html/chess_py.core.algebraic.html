@@ -272,12 +272,22 @@ Locations must be on the board to be initialized properly.
 <p>Class that stores chess moves.
 Destination, status and piece making move are required
 to initialize Move.</p>
-<p>status - integer value describing type of move
-with meaning defined in notation_const.py</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">type end_loc:</th><td class="field-body">Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">type piece:</th><td class="field-body">Piece</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">type status:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
 <p>Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
 <dl class="class">
 <dt id="chess_py.core.algebraic.move.Move">
-<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.move.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>string=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.move.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.on_board" title="Permalink to this definition">¶</a></dt>
@@ -308,39 +318,6 @@ with meaning defined in notation_const.py</p>
 </div>
 <div class="section" id="module-chess_py.core.algebraic">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.core.algebraic" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="chess_py.core.algebraic.short_alg">
-<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">short_alg</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#short_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.short_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Default constructor for initializing a move using algebraic notation.</p>
-<p>pawn move e4
-piece move Nf3
-pawn capture exd5
-piece capture Qxf3
-Castle 00 or 000
-pawn promotion e8=Q</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="function">
-<dt id="chess_py.core.algebraic.make_legal">
-<code class="descclassname">chess_py.core.algebraic.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.make_legal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the corresponding move from
-all_possible_moves in Board</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
 <dl class="class">
 <dt id="chess_py.core.algebraic.Location">
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location" title="Permalink to this definition">¶</a></dt>
@@ -488,7 +465,7 @@ all_possible_moves in Board</p>
 
 <dl class="class">
 <dt id="chess_py.core.algebraic.Move">
-<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>string=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="method">
 <dt id="chess_py.core.algebraic.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.on_board" title="Permalink to this definition">¶</a></dt>

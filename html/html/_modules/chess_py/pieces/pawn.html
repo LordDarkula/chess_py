@@ -203,7 +203,7 @@
                     <span class="ow">not</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">capture_square</span><span class="p">)</span> <span class="ow">and</span> \
                     <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">capture_square</span><span class="p">)</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
                 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">                If the capture square is nit empty and it contains a piece of opposing color add the move</span>
+<span class="sd">                If the capture square is not empty and it contains a piece of opposing color add the move</span>
 <span class="sd">                &quot;&quot;&quot;</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">would_move_be_promotion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">):</span>
                     <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">create_promotion_moves</span><span class="p">(</span><span class="n">capture_square</span><span class="p">,</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE_AND_PROMOTE</span><span class="p">))</span>

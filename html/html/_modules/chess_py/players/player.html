@@ -51,34 +51,36 @@
 <span class="kn">import</span> <span class="nn">sys</span>
 
 
-<div class="viewcode-block" id="PLayer"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.PLayer">[docs]</a><span class="k">class</span> <span class="nc">PLayer</span><span class="p">:</span>
+<div class="viewcode-block" id="Player"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.Player">[docs]</a><span class="k">class</span> <span class="nc">Player</span><span class="p">:</span>
     <span class="n">__metaclass__</span> <span class="o">=</span> <span class="n">ABCMeta</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates interface for base player.</span>
+
 <span class="sd">        :type input_color: Color</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">input_color</span>
 
     <span class="nd">@abstractmethod</span>
-<div class="viewcode-block" id="PLayer.generate_move"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.PLayer.generate_move">[docs]</a>    <span class="k">def</span> <span class="nf">generate_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+<div class="viewcode-block" id="Player.generate_move"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.Player.generate_move">[docs]</a>    <span class="k">def</span> <span class="nf">generate_move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns valid and legal move given position</span>
+
 <span class="sd">        :type position: Board</span>
-<span class="sd">        :rtype Move</span>
+<span class="sd">        :rtype: Move</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">pass</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="PLayer.getUCI"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.PLayer.getUCI">[docs]</a>    <span class="k">def</span> <span class="nf">getUCI</span><span class="p">():</span>
+<div class="viewcode-block" id="Player.getUCI"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.Player.getUCI">[docs]</a>    <span class="k">def</span> <span class="nf">getUCI</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">raw_input</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">input</span><span class="p">()</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="PLayer.setUCI"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.PLayer.setUCI">[docs]</a>    <span class="k">def</span> <span class="nf">setUCI</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+<div class="viewcode-block" id="Player.setUCI"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.Player.setUCI">[docs]</a>    <span class="k">def</span> <span class="nf">setUCI</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
         <span class="k">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span></div></div>
 
 </pre></div>
