@@ -200,13 +200,20 @@ class Board:
 
                     # Tests if square on the board is not empty
                     if piece is not None and piece.color == input_color:
+
                         # Adds all of piece's possible moves to moves list.
                         if self.get_king(input_color).in_check(self):
                             print("King in check")
 
+                            """
+                            Loops through all of the King's responses to
+                            see if they get it out of check
+                            """
                             for move in piece.possible_moves(self):
                                 test = self.copy()
                                 test.update(move)
+
+                                # If the King's response gets it out of check, it is legal
                                 if not test.get_king(input_color).in_check(test):
                                     moves.append(move)
                         else:

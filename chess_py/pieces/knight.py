@@ -77,16 +77,20 @@ class Knight(Piece):
 
         moves = []
 
-        for i in range(len(list_of_func)):
-            dest_loc = dest(self.location, list_of_func[i], i)
+        for index, func in enumerate(list_of_func):
+            dest_loc = dest(self.location, func, index)
 
             for j in range(2):
+
                 if not dest_loc[j].on_board():
                     status = notation_const.NOT_IMPLEMENTED
+
                 elif position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
+
                 elif not position.piece_at_square(dest_loc[j]).color == self.color:
                     status = notation_const.CAPTURE
+
                 else:
                     status = notation_const.NOT_IMPLEMENTED
 
