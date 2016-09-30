@@ -161,7 +161,7 @@ class Pawn(Piece):
                     not position.is_square_empty(capture_square) and \
                     position.piece_at_square(capture_square).color != self.color:
                 """
-                If the capture square is nit empty and it contains a piece of opposing color add the move
+                If the capture square is not empty and it contains a piece of opposing color add the move
                 """
                 if self.would_move_be_promotion(self.location):
                     moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))

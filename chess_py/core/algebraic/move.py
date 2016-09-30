@@ -5,8 +5,9 @@ Class that stores chess moves.
 Destination, status and piece making move are required
 to initialize Move.
 
-status - integer value describing type of move
-with meaning defined in notation_const.py
+:type end_loc: Location
+:type piece: Piece
+:type status: int
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
@@ -18,7 +19,6 @@ class Move:
     def __init__(self, end_loc, piece, status,
                  start_rank=None,
                  start_file=None,
-                 string=None,
                  promoted_to_piece=None):
         """
         Constructor to create move using object Location
@@ -38,9 +38,8 @@ class Move:
             self.start_file = start_file
             self.promoted_to_piece = promoted_to_piece
 
-            self.string = string
         else:
-            self.exit = 1
+            raise Exception("Location of move must be on the board")
 
     def __key(self):
         return self.end_loc, self.piece, self.status, self.start_rank, self.start_file, self.promoted_to_piece
