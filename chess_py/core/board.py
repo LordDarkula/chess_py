@@ -110,12 +110,12 @@ class Board:
         Prints current position in console
         """
         b_str = ""
-        # Loops through columns
-        for i in range(len(self.position)):
+        # Loops through rows
+        for i, row in enumerate(self.position):
 
             b_str += (str(8 - i) + " ")
-            # Loops through rows
-            for j in range(len(self.position[0])):
+            # Loops through squares in each row
+            for j, square in enumerate(row):
 
                 # If there is a piece on the square
                 if not self.is_square_empty(Location(7 - i, j)):
@@ -136,7 +136,8 @@ class Board:
 
         :rtype: Board
         """
-        return Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
+        return Board([[cp(piece) for piece in self.position[index]]
+                      for index, row in enumerate(self.position)])
 
     def piece_at_square(self, location):
         """
