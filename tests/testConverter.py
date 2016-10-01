@@ -11,7 +11,8 @@ class ConverterTest(unittest.TestCase):
                                 status=notation_const.MOVEMENT)
 
     def shortAlg(self):
-        self.failUnless(converter.short_alg("e4", color.white) == self.e_four_move)
+        self.failUnless(converter.short_alg("e4", color.white, self.test_board) ==
+                        self.e_four_move)
 
 if __name__ == '__main__':
     unittest.main()

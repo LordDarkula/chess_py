@@ -16,13 +16,13 @@ from chess_py.pieces.king import King
 from chess_py.pieces.pawn import Pawn
 from chess_py.pieces.queen import Queen
 from chess_py.pieces.rook import Rook
-
 from chess_py.pieces.knight import Knight
 
 
-def short_alg(algebraic_string, input_color):
+def incomplete_alg(algebraic_string, input_color):
     """
-    Default constructor for initializing a move using algebraic notation.
+    Converts a string written in short algebraic form into a potentially
+    legal move
 
     pawn move e4
     piece move Nf3
@@ -225,6 +225,25 @@ def make_legal(move, position):
 
     return None
 
+
+def short_alg(algebraic_string, input_color, position):
+    """
+    Converts a string of short algebraic notation into a
+    legal move using current position. If conversion fails,
+    None is returned.
+
+    pawn move e4
+    piece move Nf3
+    pawn capture exd5
+    piece capture Qxf3
+    Castle 00 or 000
+    pawn promotion e8=Q
+
+    :type algebraic_string: str
+    :type input_color: Color
+    :type position: Board
+    """
+    return make_legal(incomplete_alg(algebraic_string, input_color), position)
 
 def long_alg(alg_str, position):
     """
