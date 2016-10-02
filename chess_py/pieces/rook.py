@@ -54,7 +54,7 @@ class Rook(Piece):
         assert isinstance(current, Location)
         while current.on_board() and \
                 position.is_square_empty(current):
-            possible.append(Move(current,
+            possible.append(Move(end_loc=current,
                                  piece=self,
                                  status=notation_const.MOVEMENT,
                                  start_rank=self.location.rank,
@@ -65,7 +65,7 @@ class Rook(Piece):
         if current.on_board() and \
                 not position.is_square_empty(current) and \
                 not position.piece_at_square(current).color == self.color:
-                possible.append(Move(current,
+                possible.append(Move(end_loc=current,
                                      piece=self,
                                      status=notation_const.CAPTURE,
                                      start_rank=self.location.rank,
@@ -92,7 +92,5 @@ class Rook(Piece):
 
         if self.direction_moves(lambda x: x.shift_left(), position) is not None:
             moves.extend(self.direction_moves(lambda x: x.shift_left(), position))
-            
-        super(Rook, self).set_loc(moves)
 
         return moves

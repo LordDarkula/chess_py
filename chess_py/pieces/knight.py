@@ -95,8 +95,10 @@ class Knight(Piece):
                     status = notation_const.NOT_IMPLEMENTED
 
                 if status != notation_const.NOT_IMPLEMENTED:
-                    moves.append(Move(dest_loc[j], self, status))
-
-        super(Knight, self).set_loc(moves)
+                    moves.append(Move(end_loc=dest_loc[j],
+                                      piece=self,
+                                      status=status,
+                                      start_rank=self.location.rank,
+                                      start_file=self.location.file))
 
         return moves

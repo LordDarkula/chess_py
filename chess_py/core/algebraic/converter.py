@@ -200,11 +200,12 @@ def make_legal(move, position):
 
         if move.status == notation_const.START_LOC_SPECIFIED:
             if move.end_loc == test_move.end_loc and \
-                            move.start_rank ==test_move.start_rank and \
+                            move.start_rank == test_move.start_rank and \
                             move.start_file == test_move.start_file:
                 return test_move
             else:
                 continue
+
         # Checks for basic equality of essential elements
         if move == test_move:
 

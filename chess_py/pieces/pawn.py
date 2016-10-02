@@ -84,7 +84,11 @@ class Pawn(Piece):
 
     def create_promotion_moves(self, location, status):
         moves = []
-        move = Move(location, self, status, start_rank=self.location.rank, start_file=self.location.file)
+        move = Move(end_loc=location,
+                    piece=self,
+                    status=status,
+                    start_rank=self.location.rank,
+                    start_file=self.location.file)
 
         def create_each_move(piece):
             move.promoted_to_piece = piece(self.color, move.end_loc)
@@ -125,7 +129,7 @@ class Pawn(Piece):
                 possible.extend(self.create_promotion_moves(self.square_in_front(self.location),
                                                             notation_const.PROMOTE))
             else:
-                move = Move(self.square_in_front(self.location),
+                move = Move(end_loc=self.square_in_front(self.location),
                             piece=self,
                             status=notation_const.MOVEMENT,
                             start_rank=self.location.rank,
@@ -137,7 +141,7 @@ class Pawn(Piece):
                 """
                 If two squares in front of the pawn is empty add the move
                 """
-                possible.append(Move(self.square_in_front(self.square_in_front(self.location)),
+                possible.append(Move(end_loc=self.square_in_front(self.square_in_front(self.location)),
                                      piece=self,
                                      status=notation_const.MOVEMENT,
                                      start_rank=self.location.rank,
@@ -166,7 +170,7 @@ class Pawn(Piece):
                 if self.would_move_be_promotion(self.location):
                     moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
                 else:
-                    move = Move(capture_square,
+                    move = Move(end_loc=capture_square,
                                 piece=self,
                                 status=notation_const.CAPTURE,
                                 start_rank=self.location.rank,
@@ -209,7 +213,7 @@ class Pawn(Piece):
             """
             return my_location.exit == 0 and \
                 not position.is_square_empty(my_location) and \
-                position.piece_at_square(my_location).equals(Pawn(Color(not self.color), my_location)) and \
+                position.piece_at_square(my_location) == Pawn(self.color.opponent(), my_location) and \
                 position.piece_at_square(my_location).just_moved_two_steps
 
         # if pawn is not on a valid en passant get_location then return None
@@ -217,7 +221,7 @@ class Pawn(Piece):
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_right()):
-                possible.append(Move(self.square_in_front(self.location.shift_right()),
+                possible.append(Move(end_loc=self.square_in_front(self.location.shift_right()),
                                      piece=self,
                                      status=notation_const.EN_PASSANT,
                                      start_rank=self.location.rank,
@@ -225,7 +229,7 @@ class Pawn(Piece):
 
             # else if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if opposite_color_pawn_on_square(self.location.shift_left()):
-                possible.append(Move(self.square_in_front(self.location.shift_left()),
+                possible.append(Move(end_loc=self.square_in_front(self.location.shift_left()),
                                      piece=self,
                                      status=notation_const.EN_PASSANT,
                                      start_rank=self.location.rank,
@@ -253,7 +257,5 @@ class Pawn(Piece):
         if self.en_passant_moves(position) is not None:
             # Adds all possible en passant moves returned by en_passant_moves
             moves.extend(self.en_passant_moves(position))
-        
-        super(Pawn, self).set_loc(moves)
 
         return moves

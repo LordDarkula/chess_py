@@ -60,6 +60,9 @@ class Move:
                 other.status != self.status:
             return False
 
+        if other.piece != self.piece:
+            return False
+
         if other.start_rank is not None and \
                 self.start_rank is not None and \
                 other.start_rank != self.start_rank:

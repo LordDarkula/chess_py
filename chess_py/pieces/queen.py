@@ -42,7 +42,8 @@ class Queen(Piece):
         moves = self.rook.possible_moves(position)
         moves.extend(self.bishop.possible_moves(position))
 
-        super(Queen, self).set_loc(moves)
+        for move in moves:
+            move.piece = self
 
         return moves
 

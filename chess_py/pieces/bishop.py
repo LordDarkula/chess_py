@@ -62,7 +62,5 @@ class Bishop(Piece):
 
         for move in moves:
             move.piece = self
-            
-        super(Bishop, self).set_loc(moves)
 
         return moves
