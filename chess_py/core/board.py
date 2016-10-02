@@ -105,6 +105,27 @@ class Board:
         """
         return cls(cls.default_position)
 
+    def __key(self):
+        return self.position
+
+    def __hash__(self):
+        return hash(self.__key())
+
+    def __eq__(self, other):
+        if type(other) is not Board:
+            return False
+
+        for i, row in enumerate(self.position):
+
+            for j, piece in enumerate(row):
+                if piece != other.position[i][j]:
+                    return False
+
+        return True
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
     def __str__(self):
         """
         Prints current position in console

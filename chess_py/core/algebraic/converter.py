@@ -183,7 +183,7 @@ def incomplete_alg(algebraic_string, input_color):
                     promoted_to_piece=set_piece(5, end_loc))
 
     else:
-        raise Exception("Invalid move input")
+        return None
 
 
 def make_legal(move, position):
