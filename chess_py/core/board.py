@@ -246,7 +246,7 @@ class Board:
     def find_piece(self, piece):
         """
         Finds Location of the first piece that matches piece.
-        If none is found, None is returned.
+        If none is found, Exception is raised.
 
         :type piece: Piece
         :rtype: Location
@@ -259,7 +259,7 @@ class Board:
                         self.piece_at_square(loc) == piece:
                     return loc
 
-        return None
+        raise Exception("Piece not found: " + str(piece))
 
     def find_king(self, input_color):
         """
