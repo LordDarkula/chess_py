@@ -20,7 +20,6 @@ rank
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core import color
 from chess_py.core.algebraic import notation_const
 from chess_py.core.algebraic.location import Location
 from chess_py.pieces.piece import Piece
@@ -43,7 +42,7 @@ class King(Piece):
     def __str__(self):
         return "K"
 
-    def unfiltered(self, position):
+    def possible_moves(self, position):
         """
         Generates list of possible moves
 
@@ -52,13 +51,104 @@ class King(Piece):
         """
         moves = []
 
+        def in_check_as_result(pos, move):
+            """
+
+            :type pos: Board
+            :type move: Move
+            """
+            test = pos.copy()
+
+            test.update(move)
+            test_king = test.piece_at_square(move.end_loc)
+
+            if not test_king.in_check(test):
+                return True
+
+            return False
+
+
         def add(function):
             if function(self.location).on_board():
-                if position.is_square_empty(function(self.location)):
-                    moves.append(Move(function(self.location), self, notation_const.MOVEMENT))
 
-                elif position.piece_at_square(function(self.location)).color != self.color:
-                    moves.append(Move(function(self.location), self, notation_const.CAPTURE))
+                move = Move(end_loc=function(self.location),
+                            piece=self,
+                            status=notation_const.MOVEMENT,
+                            start_rank=self.location.rank,
+                            start_file=self.location.file)
+
+                if position.is_square_empty(function(self.location)) and in_check_as_result(position, move):
+                    move.status = notation_const.MOVEMENT
+                    moves.append(move)
+
+
+                else:
+                    move.status = notation_const.CAPTURE
+
+                    if position.piece_at_square(function(self.location)).color != self.color and \
+                        type(position.piece_at_square(function(self.location))) is not King and \
+                        not in_check_as_result(position, move):
+                        moves.append(move)
+
+        def add_castle():
+            """
+            Adds kingside and queenside
+            """
+            if not self.in_check(position) and not self.has_moved:
+
+                # King side castle
+                rook = position.piece_at_square(Location(self.location.rank, 7))
+                # If both the king and rook are in the right place and neither have moved
+                if rook is not None and type(rook) is Rook and not rook.has_moved:
+                    # If it is kingside castle and both spaces are empty
+                    if position.is_square_empty(self.location.shift_right()) and \
+                            position.is_square_empty(self.location.shift_right().shift_right()):
+
+                        test = position.copy()
+                        test.move_piece(self.location, self.location.shift_right())
+
+                        # Cannot castle if in check after moving one square to the right
+                        if test.piece_at_square(self.location.shift_right().in_check()):
+                            return
+
+                        test.move_piece(self.location.shift_right(), self.location.shift_right().shift_right())
+
+                        # Cannot castle if in check after moving one more square to the right
+                        if test.piece_at_square(self.location.shift_right().shift_right().in_check()):
+                            return
+
+                        moves.append(Move(end_loc=self.location.shift_right().shift_right(),
+                                          piece=self,
+                                          status=notation_const.KING_SIDE_CASTLE,
+                                          start_rank=self.location.rank,
+                                          start_file=self.location.file))
+
+                # Queen side castle
+                rook = position.piece_at_square(Location(self.location.rank, 0))
+                # If both the king and rook are in the right place and neither have moved
+                if rook is not None and type(rook) is Rook and not rook.has_moved:
+
+                    # If it is queen side castle and all intermediate squares are empty
+                    if position.is_square_empty(self.location.shift_left()) and \
+                        position.is_square_empty(self.location.shift_left().shift_left()) and \
+                        position.is_square_empty(self.location.shift_left().shift_left().shift_left()):
+
+                            test = position.copy()
+                            test.move_piece(self.location, self.location.shift_left())
+
+                            if test.piece_at_square(self.location.shift_left().in_check()):
+                                return
+
+                            test.move_piece(self.location, self.location.shift_left().shift_left())
+
+                            if test.piece_at_square(self.location.shift_left().shift_left().in_check()):
+                                return
+
+                            moves.append(Move(end_loc=self.location.shift_left().shift_left(),
+                                              piece=self,
+                                              status=notation_const.QUEEN_SIDE_CASTLE,
+                                              start_rank=self.location.rank,
+                                              start_file=self.location.file))
 
         add(lambda x: x.shift_up())
         add(lambda x: x.shift_up_right())
@@ -68,66 +158,7 @@ class King(Piece):
         add(lambda x: x.shift_down_right())
         add(lambda x: x.shift_down_left())
         add(lambda x: x.shift_left())
-
-        def edge_rank():
-            if self.color == color.white:
-                return 0
-            return 7
-
-        def add_castle(direction, status, rook_file):
-            """
-            Adds kingside and queenside
-
-            :type direction: def
-            :type status: int
-            :type rook_file: int
-            :rtype: list
-            """
-            if position.piece_at_square(Location(edge_rank(), rook_file)) is not None and \
-                    type(position.piece_at_square(Location(edge_rank(), rook_file))) is Rook and \
-                    not position.piece_at_square(Location(edge_rank(), rook_file)).has_moved:
-
-                test = position.copy()
-                test_king_loc = test.find_king(self.color)
-
-                if test.is_square_empty(direction(test_king_loc)) and \
-                        test.is_square_empty(direction(direction(test_king_loc))):
-
-                    test.move_piece(test_king_loc, direction(test_king_loc))
-
-                    if not test.get_king(self.color).in_check(position):
-                        moves.append(Move(end_loc=direction(direction(Location(edge_rank(), self.location.file))),
-                                          piece=self,
-                                          status=status,
-                                          start_rank=self.location.rank,
-                                          start_file=self.location.file))
-
-        if not self.has_moved:
-            add_castle(lambda x: x.shift_right(), notation_const.KING_SIDE_CASTLE, 7)
-
-            # TODO fix queen castling
-            add_castle(lambda x: x.shift_left(), notation_const.QUEEN_SIDE_CASTLE, 0)
-
-        super(King, self).set_loc(moves)
-
-        return moves
-
-    def enemy_moves(self, position):
-        moves = []
-
-        # Loops through columns
-        for row in position.position:
-
-            # Loops through rows
-            for piece in row:
-
-                # Tests if square on the board is not empty
-                if piece is not None and \
-                        type(piece) is not King and \
-                        piece.color != self.color:
-
-                    # Adds all of piece's possible moves to moves list.
-                    moves.extend(piece.possible_moves(position))
+        add_castle()
 
         return moves
 
@@ -138,36 +169,17 @@ class King(Piece):
         :type position: Board
         :return: bool
         """
-        for enemy_move in self.enemy_moves(position):
+        # Loops through columns
+        for row in position.position:
 
-            if enemy_move.end_loc == self.location:
-                return True
+            # Loops through rows
+            for piece in row:
 
-        return False
+                if piece is not None and piece.color != self.color:
 
-    def possible_moves(self, position):
-        """
-        Filters unfiltered moves so King cannot walk into check.
+                    for move in piece.possible_moves(position):
 
-        :type position: Board
-        :rtype: list
-        """
-        unfiltered = self.unfiltered(position)
-        filtered = []
+                        if move.end_loc == self.location:
+                            return True
 
-        for move in unfiltered:
-            test = position.copy()
-
-            test_move = Move(end_loc=move.end_loc,
-                             piece=test.piece_at_square(self.location),
-                             status=move.status,
-                             start_rank=self.location.rank,
-                             start_file=self.location.file)
-
-            test.update(test_move)
-            test_king = test.piece_at_square(test_move.end_loc)
-
-            if not test_king.in_check(test):
-                filtered.append(move)
-
-        return filtered
+            return False
