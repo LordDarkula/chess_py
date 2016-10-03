@@ -62,7 +62,6 @@
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">chess_py.core</span> <span class="kn">import</span> <span class="n">color</span>
 <span class="kn">from</span> <span class="nn">chess_py.core.algebraic</span> <span class="kn">import</span> <span class="n">notation_const</span>
 <span class="kn">from</span> <span class="nn">chess_py.core.algebraic.location</span> <span class="kn">import</span> <span class="n">Location</span>
 <span class="kn">from</span> <span class="nn">chess_py.pieces.piece</span> <span class="kn">import</span> <span class="n">Piece</span>
@@ -85,7 +84,7 @@
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;K&quot;</span>
 
-<div class="viewcode-block" id="King.unfiltered"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.unfiltered">[docs]</a>    <span class="k">def</span> <span class="nf">unfiltered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+<div class="viewcode-block" id="King.possible_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates list of possible moves</span>
 
@@ -94,13 +93,104 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
 
+        <span class="k">def</span> <span class="nf">in_check_as_result</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">            :type pos: Board</span>
+<span class="sd">            :type move: Move</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">test</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+            <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+            <span class="n">test_king</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">end_loc</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">test_king</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">True</span>
+
+            <span class="k">return</span> <span class="bp">False</span>
+
+
         <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">function</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span><span class="o">.</span><span class="n">on_board</span><span class="p">():</span>
-                <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)):</span>
-                    <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">),</span> <span class="bp">self</span><span class="p">,</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">))</span>
 
-                <span class="k">elif</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">))</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-                    <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">),</span> <span class="bp">self</span><span class="p">,</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span><span class="p">))</span>
+                <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">),</span>
+                            <span class="n">piece</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                            <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">,</span>
+                            <span class="n">start_rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
+                            <span class="n">start_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">))</span> <span class="ow">and</span> <span class="n">in_check_as_result</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+                    <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span>
+                    <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span>
+
+                    <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">))</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="ow">and</span> \
+                        <span class="nb">type</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">King</span> <span class="ow">and</span> \
+                        <span class="ow">not</span> <span class="n">in_check_as_result</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+                        <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">add_castle</span><span class="p">():</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Adds kingside and queenside</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+
+                <span class="c1"># King side castle</span>
+                <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+                <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
+                <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+                    <span class="c1"># If it is kingside castle and both spaces are empty</span>
+                    <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span> <span class="ow">and</span> \
+                            <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()):</span>
+
+                        <span class="n">test</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                        <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span>
+
+                        <span class="c1"># Cannot castle if in check after moving one square to the right</span>
+                        <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                            <span class="k">return</span>
+
+                        <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span>
+
+                        <span class="c1"># Cannot castle if in check after moving one more square to the right</span>
+                        <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                            <span class="k">return</span>
+
+                        <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">(),</span>
+                                          <span class="n">piece</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                                          <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">KING_SIDE_CASTLE</span><span class="p">,</span>
+                                          <span class="n">start_rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
+                                          <span class="n">start_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">))</span>
+
+                <span class="c1"># Queen side castle</span>
+                <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+                <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
+                <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+
+                    <span class="c1"># If it is queen side castle and all intermediate squares are empty</span>
+                    <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span> <span class="ow">and</span> \
+                        <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span> <span class="ow">and</span> \
+                        <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()):</span>
+
+                            <span class="n">test</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                            <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span>
+
+                            <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                                <span class="k">return</span>
+
+                            <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span>
+
+                            <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                                <span class="k">return</span>
+
+                            <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">(),</span>
+                                              <span class="n">piece</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
+                                              <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">QUEEN_SIDE_CASTLE</span><span class="p">,</span>
+                                              <span class="n">start_rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
+                                              <span class="n">start_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">))</span>
 
         <span class="n">add</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up</span><span class="p">())</span>
         <span class="n">add</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up_right</span><span class="p">())</span>
@@ -110,66 +200,7 @@
         <span class="n">add</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_right</span><span class="p">())</span>
         <span class="n">add</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_left</span><span class="p">())</span>
         <span class="n">add</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span>
-
-        <span class="k">def</span> <span class="nf">edge_rank</span><span class="p">():</span>
-            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">:</span>
-                <span class="k">return</span> <span class="mi">0</span>
-            <span class="k">return</span> <span class="mi">7</span>
-
-        <span class="k">def</span> <span class="nf">add_castle</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">rook_file</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">            Adds kingside and queenside</span>
-
-<span class="sd">            :type direction: def</span>
-<span class="sd">            :type status: int</span>
-<span class="sd">            :type rook_file: int</span>
-<span class="sd">            :rtype: list</span>
-<span class="sd">            &quot;&quot;&quot;</span>
-            <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="n">rook_file</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> \
-                    <span class="nb">type</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="n">rook_file</span><span class="p">)))</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> \
-                    <span class="ow">not</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="n">rook_file</span><span class="p">))</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
-
-                <span class="n">test</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-                <span class="n">test_king_loc</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">find_king</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
-
-                <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">direction</span><span class="p">(</span><span class="n">test_king_loc</span><span class="p">))</span> <span class="ow">and</span> \
-                        <span class="n">test</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">direction</span><span class="p">(</span><span class="n">direction</span><span class="p">(</span><span class="n">test_king_loc</span><span class="p">))):</span>
-
-                    <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="n">test_king_loc</span><span class="p">,</span> <span class="n">direction</span><span class="p">(</span><span class="n">test_king_loc</span><span class="p">))</span>
-
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">test</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
-                        <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">direction</span><span class="p">(</span><span class="n">direction</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">))),</span>
-                                          <span class="n">piece</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-                                          <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="p">,</span>
-                                          <span class="n">start_rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
-                                          <span class="n">start_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
-            <span class="n">add_castle</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_right</span><span class="p">(),</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">KING_SIDE_CASTLE</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-
-            <span class="c1"># TODO fix queen castling</span>
-            <span class="n">add_castle</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_left</span><span class="p">(),</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">QUEEN_SIDE_CASTLE</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-
-        <span class="nb">super</span><span class="p">(</span><span class="n">King</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">set_loc</span><span class="p">(</span><span class="n">moves</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">moves</span></div>
-
-<div class="viewcode-block" id="King.enemy_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.enemy_moves">[docs]</a>    <span class="k">def</span> <span class="nf">enemy_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
-        <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
-
-        <span class="c1"># Loops through columns</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">position</span><span class="o">.</span><span class="n">position</span><span class="p">:</span>
-
-            <span class="c1"># Loops through rows</span>
-            <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-
-                <span class="c1"># Tests if square on the board is not empty</span>
-                <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> \
-                        <span class="nb">type</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">King</span> <span class="ow">and</span> \
-                        <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-
-                    <span class="c1"># Adds all of piece&#39;s possible moves to moves list.</span>
-                    <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="n">position</span><span class="p">))</span>
+        <span class="n">add_castle</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">moves</span></div>
 
@@ -180,39 +211,20 @@
 <span class="sd">        :type position: Board</span>
 <span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">for</span> <span class="n">enemy_move</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">enemy_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
+        <span class="c1"># Loops through columns</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">position</span><span class="o">.</span><span class="n">position</span><span class="p">:</span>
 
-            <span class="k">if</span> <span class="n">enemy_move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">True</span>
+            <span class="c1"># Loops through rows</span>
+            <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
 
-        <span class="k">return</span> <span class="bp">False</span></div>
+                <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
 
-<div class="viewcode-block" id="King.possible_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Filters unfiltered moves so King cannot walk into check.</span>
+                    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
 
-<span class="sd">        :type position: Board</span>
-<span class="sd">        :rtype: list</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">unfiltered</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unfiltered</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
-        <span class="n">filtered</span> <span class="o">=</span> <span class="p">[]</span>
+                        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="bp">True</span>
 
-        <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">unfiltered</span><span class="p">:</span>
-            <span class="n">test</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-            <span class="n">test_move</span> <span class="o">=</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">move</span><span class="o">.</span><span class="n">end_loc</span><span class="p">,</span>
-                             <span class="n">piece</span><span class="o">=</span><span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">),</span>
-                             <span class="n">status</span><span class="o">=</span><span class="n">move</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-                             <span class="n">start_rank</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
-                             <span class="n">start_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">)</span>
-
-            <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">test_move</span><span class="p">)</span>
-            <span class="n">test_king</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">test_move</span><span class="o">.</span><span class="n">end_loc</span><span class="p">)</span>
-
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">test_king</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
-                <span class="n">filtered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">filtered</span></div></div>
+            <span class="k">return</span> <span class="bp">False</span></div></div>
 </pre></div>
 
           </div>

@@ -58,13 +58,13 @@
 <span class="kn">from</span> <span class="nn">chess_py.pieces.pawn</span> <span class="kn">import</span> <span class="n">Pawn</span>
 <span class="kn">from</span> <span class="nn">chess_py.pieces.queen</span> <span class="kn">import</span> <span class="n">Queen</span>
 <span class="kn">from</span> <span class="nn">chess_py.pieces.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
-
 <span class="kn">from</span> <span class="nn">chess_py.pieces.knight</span> <span class="kn">import</span> <span class="n">Knight</span>
 
 
-<div class="viewcode-block" id="short_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.short_alg">[docs]</a><span class="k">def</span> <span class="nf">short_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
+<div class="viewcode-block" id="incomplete_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.incomplete_alg">[docs]</a><span class="k">def</span> <span class="nf">incomplete_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Default constructor for initializing a move using algebraic notation.</span>
+<span class="sd">    Converts a string written in short algebraic form into a potentially</span>
+<span class="sd">    legal move</span>
 
 <span class="sd">    pawn move e4</span>
 <span class="sd">    piece move Nf3</span>
@@ -267,6 +267,25 @@
 
     <span class="k">return</span> <span class="bp">None</span></div>
 
+
+<div class="viewcode-block" id="short_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.short_alg">[docs]</a><span class="k">def</span> <span class="nf">short_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a string of short algebraic notation into a</span>
+<span class="sd">    legal move using current position. If conversion fails,</span>
+<span class="sd">    None is returned.</span>
+
+<span class="sd">    pawn move e4</span>
+<span class="sd">    piece move Nf3</span>
+<span class="sd">    pawn capture exd5</span>
+<span class="sd">    piece capture Qxf3</span>
+<span class="sd">    Castle 00 or 000</span>
+<span class="sd">    pawn promotion e8=Q</span>
+
+<span class="sd">    :type algebraic_string: str</span>
+<span class="sd">    :type input_color: Color</span>
+<span class="sd">    :type position: Board</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">make_legal</span><span class="p">(</span><span class="n">incomplete_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">),</span> <span class="n">position</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="long_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.long_alg">[docs]</a><span class="k">def</span> <span class="nf">long_alg</span><span class="p">(</span><span class="n">alg_str</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>

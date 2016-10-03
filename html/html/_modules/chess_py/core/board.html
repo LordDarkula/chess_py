@@ -152,12 +152,12 @@
 <span class="sd">        Prints current position in console</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">b_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-        <span class="c1"># Loops through columns</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)):</span>
+        <span class="c1"># Loops through rows</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
 
             <span class="n">b_str</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-            <span class="c1"># Loops through rows</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+            <span class="c1"># Loops through squares in each row</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">square</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
 
                 <span class="c1"># If there is a piece on the square</span>
                 <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="mi">7</span> <span class="o">-</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)):</span>
@@ -178,7 +178,8 @@
 
 <span class="sd">        :rtype: Board</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">Board</span><span class="p">([[</span><span class="n">cp</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span> <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)])</span></div>
+        <span class="k">return</span> <span class="n">Board</span><span class="p">([[</span><span class="n">cp</span><span class="p">(</span><span class="n">piece</span><span class="p">)</span> <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">index</span><span class="p">]]</span>
+                      <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)])</span></div>
 
 <div class="viewcode-block" id="Board.piece_at_square"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.piece_at_square">[docs]</a>    <span class="k">def</span> <span class="nf">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -242,13 +243,20 @@
 
                     <span class="c1"># Tests if square on the board is not empty</span>
                     <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">input_color</span><span class="p">:</span>
+
                         <span class="c1"># Adds all of piece&#39;s possible moves to moves list.</span>
                         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">input_color</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                             <span class="k">print</span><span class="p">(</span><span class="s2">&quot;King in check&quot;</span><span class="p">)</span>
 
+                            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                            Loops through all of the King&#39;s responses to</span>
+<span class="sd">                            see if they get it out of check</span>
+<span class="sd">                            &quot;&quot;&quot;</span>
                             <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                                 <span class="n">test</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                                 <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
+
+                                <span class="c1"># If the King&#39;s response gets it out of check, it is legal</span>
                                 <span class="k">if</span> <span class="ow">not</span> <span class="n">test</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">input_color</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">test</span><span class="p">):</span>
                                     <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
                         <span class="k">else</span><span class="p">:</span>

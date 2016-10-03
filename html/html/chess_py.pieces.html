@@ -106,11 +106,6 @@
 <em class="property">class </em><code class="descclassname">chess_py.pieces.king.</code><code class="descname">King</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#chess_py.pieces.piece.Piece" title="chess_py.pieces.piece.Piece"><code class="xref py py-class docutils literal"><span class="pre">chess_py.pieces.piece.Piece</span></code></a></p>
 <dl class="method">
-<dt id="chess_py.pieces.king.King.enemy_moves">
-<code class="descname">enemy_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.enemy_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.enemy_moves" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="chess_py.pieces.king.King.in_check">
 <code class="descname">in_check</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.in_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if the king is in check</p>
@@ -127,20 +122,6 @@
 <dl class="method">
 <dt id="chess_py.pieces.king.King.possible_moves">
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.possible_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filters unfiltered moves so King cannot walk into check.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.pieces.king.King.unfiltered">
-<code class="descname">unfiltered</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.unfiltered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.unfiltered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates list of possible moves</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -420,11 +401,6 @@
 <em class="property">class </em><code class="descclassname">chess_py.pieces.</code><code class="descname">King</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#chess_py.pieces.piece.Piece" title="chess_py.pieces.piece.Piece"><code class="xref py py-class docutils literal"><span class="pre">chess_py.pieces.piece.Piece</span></code></a></p>
 <dl class="method">
-<dt id="chess_py.pieces.King.enemy_moves">
-<code class="descname">enemy_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.enemy_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.enemy_moves" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="chess_py.pieces.King.in_check">
 <code class="descname">in_check</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.in_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if the king is in check</p>
@@ -441,20 +417,6 @@
 <dl class="method">
 <dt id="chess_py.pieces.King.possible_moves">
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.possible_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Filters unfiltered moves so King cannot walk into check.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.pieces.King.unfiltered">
-<code class="descname">unfiltered</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.unfiltered"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.unfiltered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates list of possible moves</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
