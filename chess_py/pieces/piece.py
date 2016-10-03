@@ -65,7 +65,8 @@ class Piece:
     def set_loc(self, moves):
         """
         Adds start_rank and start_file to moves
-        :type moves list
+
+        :type moves: list
         """
         for move in moves:
             move.start_rank = self.location.rank

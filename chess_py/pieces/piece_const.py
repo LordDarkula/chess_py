@@ -30,6 +30,7 @@ class Piece_values:
     def init_manual(cls, PAWN_VALUE, KNIGHT_VALUE, BISHOP_VALUE, ROOK_VALUE, QUEEN_VALUE):
         """
         Manual init method for external piece values
+
         :type PAWN_VALUE: float
         :type KNIGHT_VALUE: float
         :type BISHOP_VALUE: float

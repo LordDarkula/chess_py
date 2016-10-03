@@ -3,21 +3,21 @@
 """
 Class stores Rook on the board
 
-rank
-7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
-6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
-5 6 ║… … … … … … … …
-4 5 ║… … … … … … … …
-3 4 ║… … … … … … … …
-2 3 ║… … … … … … … …
-1 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
-0 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
-----╚═══════════════
-——---a b c d e f g h
------0 1 2 3 4 5 6 7
-------file
+| rank
+| 7 8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
+| 6 7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+| 5 6 ║… … … … … … … …
+| 4 5 ║… … … … … … … …
+| 3 4 ║… … … … … … … …
+| 2 3 ║… … … … … … … …
+| 1 2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+| 0 1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+| ----╚═══════════════
+| ——---a b c d e f g h
+| -----0 1 2 3 4 5 6 7
+| ------file
 
-Copyright © 2016 Aubhro Sengupta. All rights reserved.
+| Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
 from chess_py.core.algebraic import notation_const
@@ -32,8 +32,9 @@ class Rook(Piece):
         """
         Initializes a rook that is capable of being compared to another rook,
         and returning a list of possible moves.
-        :type input_color Color
-        :type location Location
+
+        :type input_color: Color
+        :type location: Location
         """
         self.has_moved = False
         super(Rook, self).__init__(input_color, location, "♜", "♖")
@@ -44,9 +45,10 @@ class Rook(Piece):
     def direction_moves(self, direction, position):
         """
         Finds moves in a given direction
-        :type direction lambda
-        :type position Board
-        :rtype list
+
+        :type direction: lambda
+        :type position: Board
+        :rtype: list
         """
         possible = []
         current = direction(self.location)
@@ -76,8 +78,9 @@ class Rook(Piece):
     def possible_moves(self, position):
         """
         Returns all possible rook moves.
-        :type position Board
-        :rtype list
+
+        :type position: Board
+        :rtype: list
         """
         moves = []
 
