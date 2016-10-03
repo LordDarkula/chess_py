@@ -222,27 +222,6 @@ class Board:
 
         return moves
 
-    # def all_possible_moves(self, input_color):
-    #     """
-    #     Filters list of moves and returns all legal moves
-    #     :type input_color Color
-    #     :rtype list
-    #     """
-    #     unfiltered = self.unfiltered(input_color)
-    #
-    #     if not self.get_king(input_color).in_check(self):
-    #         return unfiltered
-    #
-    #     filtered = []
-    #
-    #     for move in unfiltered:
-    #         test = self.copy()
-    #         test.update(move)
-    #         if not test.get_king(input_color).in_check(test):
-    #             filtered.append(move)
-    #
-    #     return filtered
-
     def find_piece(self, piece):
         """
         Finds Location of the first piece that matches piece.
