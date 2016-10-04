@@ -153,7 +153,7 @@ class Board:
 
     def copy(self):
         """
-        Copies the board faster than deepcopy()
+        Copies the board faster than deepcopy
 
         :rtype: Board
         """

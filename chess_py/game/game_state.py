@@ -21,13 +21,13 @@ def no_moves(position):
         or len(position.all_possible_moves(color.black)) == 0
 
 
-def is_checkmate(position, color):
+def is_checkmate(position, input_color):
     """
     Finds if particular King is checkmated.
 
     :type position: Board
-    :type color: Color
+    :type input_color: Color
     :rtype: bool
     """
     return no_moves(position) and \
-        position.piece_at_square(position.find_king(color)).in_check(position)
+        position.piece_at_square(position.find_king(input_color)).in_check(position)
