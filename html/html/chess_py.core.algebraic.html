@@ -54,14 +54,14 @@ to turn them into usable commands.</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.incomplete_alg">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">incomplete_alg</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#incomplete_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.incomplete_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a string written in short algebraic form into a potentially
-legal move</p>
-<p>pawn move e4
-piece move Nf3
-pawn capture exd5
-piece capture Qxf3
-Castle 00 or 000
-pawn promotion e8=Q</p>
+<dd><p>Converts a string written in short algebraic form into an incomplete move.
+These incomplete moves do not have the initial location specified and
+therefore cannot be used to update the board. IN order to fully utilize
+incomplete move, it must be run through &lt;code&gt;make_legal()&lt;/code&gt; with
+the corresponding position. It is recommended to use
+&lt;code&gt;short_alg()&lt;/code&gt; instead of this method because it returns a complete
+move.</p>
+<p>Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -73,7 +73,10 @@ pawn promotion e8=Q</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.long_alg">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">long_alg</code><span class="sig-paren">(</span><em>alg_str</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#long_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.long_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Initializes a move from long algebraic notation</p>
+<dd><p>Converts a string written in long algebraic form
+and the corresponding position into a complete move
+(initial location specified). Used primarily for
+UCI, but can be used for other purposes.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -87,8 +90,10 @@ pawn promotion e8=Q</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.make_legal">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.make_legal" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the corresponding move from
-all_possible_moves in Board</p>
+<dd><p>Converts an incomplete move (initial &lt;code&gt;Location&lt;/code&gt; not specified)
+and the corresponding position into the a complete move
+with the most likely starting point specified. If no moves match, None
+is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -102,15 +107,11 @@ all_possible_moves in Board</p>
 <dl class="function">
 <dt id="chess_py.core.algebraic.converter.short_alg">
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">short_alg</code><span class="sig-paren">(</span><em>algebraic_string</em>, <em>input_color</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#short_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.short_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Converts a string of short algebraic notation into a
-legal move using current position. If conversion fails,
+<dd><p>Converts a string written in short algebraic form, the color
+of the side whose turn it is, and the corresponding position
+into a complete move that can be played. If no moves match,
 None is returned.</p>
-<p>pawn move e4
-piece move Nf3
-pawn capture exd5
-piece capture Qxf3
-Castle 00 or 000
-pawn promotion e8=Q</p>
+<p>Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

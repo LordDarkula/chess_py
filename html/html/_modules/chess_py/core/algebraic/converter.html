@@ -63,15 +63,15 @@
 
 <div class="viewcode-block" id="incomplete_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.incomplete_alg">[docs]</a><span class="k">def</span> <span class="nf">incomplete_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts a string written in short algebraic form into a potentially</span>
-<span class="sd">    legal move</span>
+<span class="sd">    Converts a string written in short algebraic form into an incomplete move.</span>
+<span class="sd">    These incomplete moves do not have the initial location specified and</span>
+<span class="sd">    therefore cannot be used to update the board. IN order to fully utilize</span>
+<span class="sd">    incomplete move, it must be run through &lt;code&gt;make_legal()&lt;/code&gt; with</span>
+<span class="sd">    the corresponding position. It is recommended to use</span>
+<span class="sd">    &lt;code&gt;short_alg()&lt;/code&gt; instead of this method because it returns a complete</span>
+<span class="sd">    move.</span>
 
-<span class="sd">    pawn move e4</span>
-<span class="sd">    piece move Nf3</span>
-<span class="sd">    pawn capture exd5</span>
-<span class="sd">    piece capture Qxf3</span>
-<span class="sd">    Castle 00 or 000</span>
-<span class="sd">    pawn promotion e8=Q</span>
+<span class="sd">    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</span>
 
 <span class="sd">    :type algebraic_string: str</span>
 <span class="sd">    :type input_color: Color</span>
@@ -79,11 +79,13 @@
     <span class="k">def</span> <span class="nf">edge_rank</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">input_color</span> <span class="o">==</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
+
         <span class="k">return</span> <span class="mi">7</span>
 
     <span class="k">def</span> <span class="nf">set_rank</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns rank given index</span>
+
 <span class="sd">        :type index: int</span>
 <span class="sd">        :rtype int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -122,42 +124,76 @@
             <span class="k">return</span> <span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">loc</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">None</span>
 
-    <span class="k">def</span> <span class="nf">is_kingside</span><span class="p">():</span> <span class="k">return</span> <span class="n">algebraic_string</span> <span class="o">==</span> <span class="s2">&quot;00&quot;</span>
-
-    <span class="k">def</span> <span class="nf">is_queenside</span><span class="p">():</span> <span class="k">return</span> <span class="n">algebraic_string</span> <span class="o">==</span> <span class="s2">&quot;000&quot;</span>
-
     <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="n">edge_rank</span> <span class="o">=</span> <span class="n">edge_rank</span><span class="p">()</span>
+
+    <span class="sd">&quot;&quot;&quot; Assigning boolean expressions to be used for each case. &quot;&quot;&quot;</span>
+
+    <span class="n">is_kingside</span> <span class="o">=</span> <span class="n">algebraic_string</span> <span class="o">==</span> <span class="s2">&quot;00&quot;</span>
+    <span class="n">is_queenside</span> <span class="o">=</span> <span class="n">algebraic_string</span> <span class="o">==</span> <span class="s2">&quot;000&quot;</span>
+
+    <span class="n">pawn_movement</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span>
+    <span class="n">piece_movement</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">capture</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span>
+        <span class="n">file_specified</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">capture</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">file_specified</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">pawn_capture</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+        <span class="n">piece_capture</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pawn_capture</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">piece_capture</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">pawn_promotion</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;=&quot;</span>
+        <span class="n">rank_file_specified</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pawn_promotion</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">rank_file_specified</span> <span class="o">=</span> <span class="bp">False</span>
+
+    <span class="n">pawn_promote_capture</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span>
+
+    <span class="sd">&quot;&quot;&quot; Boolean expressions separated for clarity. &quot;&quot;&quot;</span>
 
     <span class="c1"># King side castle</span>
-    <span class="k">if</span> <span class="n">is_kingside</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">is_kingside</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
-                    <span class="n">piece</span><span class="o">=</span><span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)),</span>
+                    <span class="n">piece</span><span class="o">=</span><span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
                     <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">KING_SIDE_CASTLE</span><span class="p">,</span>
-                    <span class="n">start_rank</span><span class="o">=</span><span class="n">edge_rank</span><span class="p">(),</span>
+                    <span class="n">start_rank</span><span class="o">=</span><span class="n">edge_rank</span><span class="p">,</span>
                     <span class="n">start_file</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
     <span class="c1"># Queen side castle</span>
-    <span class="k">elif</span> <span class="n">is_queenside</span><span class="p">():</span>
-        <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">is_queenside</span><span class="p">:</span>
+        <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
         <span class="n">move</span> <span class="o">=</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
-                    <span class="n">piece</span><span class="o">=</span><span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">(),</span> <span class="mi">4</span><span class="p">)),</span>
+                    <span class="n">piece</span><span class="o">=</span><span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Location</span><span class="p">(</span><span class="n">edge_rank</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
                     <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">QUEEN_SIDE_CASTLE</span><span class="p">,</span>
-                    <span class="n">start_rank</span><span class="o">=</span><span class="n">edge_rank</span><span class="p">(),</span>
+                    <span class="n">start_rank</span><span class="o">=</span><span class="n">edge_rank</span><span class="p">,</span>
                     <span class="n">start_file</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">move</span>
 
     <span class="c1"># Pawn movement</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">pawn_movement</span><span class="p">:</span>
         <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span> <span class="n">piece</span><span class="o">=</span><span class="n">Pawn</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span> <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
+                    <span class="n">piece</span><span class="o">=</span><span class="n">Pawn</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
+                    <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">)</span>
 
     <span class="c1"># Non-pawn Piece movement</span>
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">piece_movement</span><span class="p">:</span>
         <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
         <span class="k">if</span> <span class="n">set_piece</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span> <span class="n">piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span> <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
+                        <span class="n">piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
+                        <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">None</span>
 
@@ -165,60 +201,63 @@
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
 
         <span class="c1"># Capture</span>
-        <span class="k">if</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">capture</span><span class="p">:</span>
             <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            ex Nxf3</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="c1"># If this is a pawn capture</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
-
+            <span class="k">if</span> <span class="n">pawn_capture</span><span class="p">:</span>
                 <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                             <span class="n">piece</span><span class="o">=</span><span class="n">Pawn</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                             <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span><span class="p">,</span>
                             <span class="n">start_file</span><span class="o">=</span><span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 
-            <span class="k">elif</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="c1"># If this is a piece capture</span>
+            <span class="k">elif</span> <span class="n">piece_capture</span><span class="p">:</span>
                 <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                             <span class="n">piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                             <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span><span class="p">)</span>
 
             <span class="c1"># Pawn Promotion</span>
-            <span class="k">elif</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;=&quot;</span><span class="p">:</span>
+            <span class="k">elif</span> <span class="n">pawn_promotion</span><span class="p">:</span>
                 <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                             <span class="n">piece</span><span class="o">=</span><span class="n">Pawn</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                             <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">PROMOTE</span><span class="p">,</span>
                             <span class="n">promoted_to_piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">))</span>
 
             <span class="c1"># Non-pawn Piece movement with file specified</span>
-            <span class="k">elif</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+            <span class="k">elif</span> <span class="n">file_specified</span><span class="p">:</span>
                 <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+                <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                             <span class="n">piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                             <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">,</span>
                             <span class="n">start_file</span><span class="o">=</span><span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">None</span>
 
     <span class="c1"># Multiple options</span>
     <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
 
         <span class="c1"># Non-pawn Piece movement with rank and file specified</span>
-        <span class="k">if</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">isupper</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">rank_file_specified</span><span class="p">:</span>
             <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
-            <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+            <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                         <span class="n">piece</span><span class="o">=</span><span class="n">set_piece</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                         <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">,</span>
                         <span class="n">start_file</span><span class="o">=</span><span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
                         <span class="n">start_rank</span><span class="o">=</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 
-    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">)</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">pawn_promote_capture</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        exd8=Q</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Pawn promote with capture</span>
         <span class="n">end_loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">set_rank</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">set_file</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="p">,</span>
+        <span class="k">return</span> <span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="n">end_loc</span><span class="p">,</span>
                     <span class="n">piece</span><span class="o">=</span><span class="n">Pawn</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">),</span>
                     <span class="n">status</span><span class="o">=</span><span class="n">notation_const</span><span class="o">.</span><span class="n">MOVEMENT</span><span class="p">,</span>
                     <span class="n">start_file</span><span class="o">=</span><span class="n">set_file</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
@@ -230,8 +269,10 @@
 
 <div class="viewcode-block" id="make_legal"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.make_legal">[docs]</a><span class="k">def</span> <span class="nf">make_legal</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Returns the corresponding move from</span>
-<span class="sd">    all_possible_moves in Board</span>
+<span class="sd">    Converts an incomplete move (initial &lt;code&gt;Location&lt;/code&gt; not specified)</span>
+<span class="sd">    and the corresponding position into the a complete move</span>
+<span class="sd">    with the most likely starting point specified. If no moves match, None</span>
+<span class="sd">    is returned.</span>
 
 <span class="sd">    :type move: Move</span>
 <span class="sd">    :type position: Board</span>
@@ -271,16 +312,12 @@
 
 <div class="viewcode-block" id="short_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.short_alg">[docs]</a><span class="k">def</span> <span class="nf">short_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts a string of short algebraic notation into a</span>
-<span class="sd">    legal move using current position. If conversion fails,</span>
+<span class="sd">    Converts a string written in short algebraic form, the color</span>
+<span class="sd">    of the side whose turn it is, and the corresponding position</span>
+<span class="sd">    into a complete move that can be played. If no moves match,</span>
 <span class="sd">    None is returned.</span>
 
-<span class="sd">    pawn move e4</span>
-<span class="sd">    piece move Nf3</span>
-<span class="sd">    pawn capture exd5</span>
-<span class="sd">    piece capture Qxf3</span>
-<span class="sd">    Castle 00 or 000</span>
-<span class="sd">    pawn promotion e8=Q</span>
+<span class="sd">    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</span>
 
 <span class="sd">    :type algebraic_string: str</span>
 <span class="sd">    :type input_color: Color</span>
@@ -290,7 +327,10 @@
 
 <div class="viewcode-block" id="long_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.long_alg">[docs]</a><span class="k">def</span> <span class="nf">long_alg</span><span class="p">(</span><span class="n">alg_str</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Initializes a move from long algebraic notation</span>
+<span class="sd">    Converts a string written in long algebraic form</span>
+<span class="sd">    and the corresponding position into a complete move</span>
+<span class="sd">    (initial location specified). Used primarily for</span>
+<span class="sd">    UCI, but can be used for other purposes.</span>
 
 <span class="sd">    :type alg_str: str</span>
 <span class="sd">    :type position: Board</span>
