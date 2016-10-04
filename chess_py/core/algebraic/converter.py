@@ -21,15 +21,15 @@ from chess_py.pieces.knight import Knight
 
 def incomplete_alg(algebraic_string, input_color):
     """
-    Converts a string written in short algebraic form into a potentially
-    legal move
+    Converts a string written in short algebraic form into an incomplete move.
+    These incomplete moves do not have the initial location specified and
+    therefore cannot be used to update the board. IN order to fully utilize
+    incomplete move, it must be run through <code>make_legal()</code> with
+    the corresponding position. It is recommended to use
+    <code>short_alg()</code> instead of this method because it returns a complete
+    move.
 
-    pawn move e4
-    piece move Nf3
-    pawn capture exd5
-    piece capture Qxf3
-    Castle 00 or 000
-    pawn promotion e8=Q
+    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
 
     :type algebraic_string: str
     :type input_color: Color
@@ -37,11 +37,13 @@ def incomplete_alg(algebraic_string, input_color):
     def edge_rank():
         if input_color == color.white:
             return 0
+
         return 7
 
     def set_rank(index):
         """
         Returns rank given index
+
         :type index: int
         :rtype int
         """
@@ -80,42 +82,76 @@ def incomplete_alg(algebraic_string, input_color):
             return King(input_color, loc)
         return None
 
-    def is_kingside(): return algebraic_string == "00"
-
-    def is_queenside(): return algebraic_string == "000"
-
     end_loc = Location(edge_rank(), 6)
+    edge_rank = edge_rank()
+
+    """ Assigning boolean expressions to be used for each case. """
+
+    is_kingside = algebraic_string == "00"
+    is_queenside = algebraic_string == "000"
+
+    pawn_movement = len(algebraic_string) == 2
+    piece_movement = len(algebraic_string) == 3
+
+    if len(algebraic_string) > 1:
+        capture = algebraic_string[1].upper() == "X"
+        file_specified = algebraic_string[1].isupper()
+    else:
+        capture = False
+        file_specified = False
+
+    if len(algebraic_string) > 0:
+        pawn_capture = not algebraic_string[0].isupper()
+        piece_capture = algebraic_string[0].isupper()
+    else:
+        pawn_capture = False
+        piece_capture = False
+
+    if len(algebraic_string) > 2:
+        pawn_promotion = algebraic_string[2] == "="
+        rank_file_specified = algebraic_string[2].isupper()
+    else:
+        pawn_promotion = False
+        rank_file_specified = False
+
+    pawn_promote_capture = len(algebraic_string) == 6
+
+    """ Boolean expressions separated for clarity. """
 
     # King side castle
-    if is_kingside():
+    if is_kingside:
         return Move(end_loc,
-                    piece=King(input_color, Location(edge_rank(), 4)),
+                    piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.KING_SIDE_CASTLE,
-                    start_rank=edge_rank(),
+                    start_rank=edge_rank,
                     start_file=4)
 
     # Queen side castle
-    elif is_queenside():
-        end_loc = Location(edge_rank(), 2)
+    elif is_queenside:
+        end_loc = Location(edge_rank, 2)
         move = Move(end_loc=end_loc,
-                    piece=King(input_color, Location(edge_rank(), 4)),
+                    piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE,
-                    start_rank=edge_rank(),
+                    start_rank=edge_rank,
                     start_file=4)
 
         return move
 
     # Pawn movement
-    elif len(algebraic_string) == 2:
+    elif pawn_movement:
         end_loc = Location(set_rank(1), set_file(0))
 
-        return Move(end_loc, piece=Pawn(input_color, end_loc), status=notation_const.MOVEMENT)
+        return Move(end_loc=end_loc,
+                    piece=Pawn(input_color, end_loc),
+                    status=notation_const.MOVEMENT)
 
     # Non-pawn Piece movement
-    elif len(algebraic_string) == 3:
+    elif piece_movement:
         end_loc = Location(set_rank(2), set_file(1))
         if set_piece(0, end_loc) is not None:
-            return Move(end_loc, piece=set_piece(0, end_loc), status=notation_const.MOVEMENT)
+            return Move(end_loc=end_loc,
+                        piece=set_piece(0, end_loc),
+                        status=notation_const.MOVEMENT)
         else:
             return None
 
@@ -123,60 +159,63 @@ def incomplete_alg(algebraic_string, input_color):
     elif len(algebraic_string) == 4:
 
         # Capture
-        if algebraic_string[1].upper() == "X":
+        if capture:
             """
             ex Nxf3
             """
             # If this is a pawn capture
-            if not algebraic_string[0].isupper():
-
+            if pawn_capture:
                 end_loc = Location(set_rank(3), set_file(2))
-                return Move(end_loc,
+                return Move(end_loc=end_loc,
                             piece=Pawn(input_color, end_loc),
                             status=notation_const.CAPTURE,
                             start_file=set_file(0))
 
-            elif algebraic_string[0].isupper():
+            # If this is a piece capture
+            elif piece_capture:
                 end_loc = Location(set_rank(3), set_file(2))
-                return Move(end_loc,
+                return Move(end_loc=end_loc,
                             piece=set_piece(0, end_loc),
                             status=notation_const.CAPTURE)
 
             # Pawn Promotion
-            elif algebraic_string[2] == "=":
+            elif pawn_promotion:
                 end_loc = Location(set_rank(1), set_file(0))
-                return Move(end_loc,
+                return Move(end_loc=end_loc,
                             piece=Pawn(input_color, end_loc),
                             status=notation_const.PROMOTE,
                             promoted_to_piece=set_piece(3, end_loc))
 
             # Non-pawn Piece movement with file specified
-            elif algebraic_string[1].isupper():
+            elif file_specified:
                 end_loc = Location(set_rank(3), set_file(2))
-                return Move(end_loc,
+                return Move(end_loc=end_loc,
                             piece=set_piece(1, end_loc),
                             status=notation_const.MOVEMENT,
                             start_file=set_file(0))
+
+            else:
+                return None
 
     # Multiple options
     elif len(algebraic_string) == 5:
 
         # Non-pawn Piece movement with rank and file specified
-        if algebraic_string[2].isupper():
+        if rank_file_specified:
             end_loc = Location(set_rank(4), set_file(3))
-            return Move(end_loc,
+            return Move(end_loc=end_loc,
                         piece=set_piece(2, end_loc),
                         status=notation_const.MOVEMENT,
                         start_file=set_file(0),
                         start_rank=set_rank(1))
 
-    elif len(algebraic_string) == 6:
+    elif pawn_promote_capture:
         """
         exd8=Q
         """
         # Pawn promote with capture
         end_loc = Location(set_rank(3), set_file(2))
-        return Move(end_loc,
+        return Move(end_loc=end_loc,
                     piece=Pawn(input_color, end_loc),
                     status=notation_const.MOVEMENT,
                     start_file=set_file(0),
@@ -188,8 +227,10 @@ def incomplete_alg(algebraic_string, input_color):
 
 def make_legal(move, position):
     """
-    Returns the corresponding move from
-    all_possible_moves in Board
+    Converts an incomplete move (initial <code>Location</code> not specified)
+    and the corresponding position into the a complete move
+    with the most likely starting point specified. If no moves match, None
+    is returned.
 
     :type move: Move
     :type position: Board
@@ -229,16 +270,12 @@ def make_legal(move, position):
 
 def short_alg(algebraic_string, input_color, position):
     """
-    Converts a string of short algebraic notation into a
-    legal move using current position. If conversion fails,
+    Converts a string written in short algebraic form, the color
+    of the side whose turn it is, and the corresponding position
+    into a complete move that can be played. If no moves match,
     None is returned.
 
-    pawn move e4
-    piece move Nf3
-    pawn capture exd5
-    piece capture Qxf3
-    Castle 00 or 000
-    pawn promotion e8=Q
+    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
 
     :type algebraic_string: str
     :type input_color: Color
@@ -248,7 +285,10 @@ def short_alg(algebraic_string, input_color, position):
 
 def long_alg(alg_str, position):
     """
-    Initializes a move from long algebraic notation
+    Converts a string written in long algebraic form
+    and the corresponding position into a complete move
+    (initial location specified). Used primarily for
+    UCI, but can be used for other purposes.
 
     :type alg_str: str
     :type position: Board
