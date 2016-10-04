@@ -147,6 +147,27 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">cls</span><span class="p">(</span><span class="n">cls</span><span class="o">.</span><span class="n">default_position</span><span class="p">)</span></div>
 
+    <span class="k">def</span> <span class="nf">__key</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span>
+
+    <span class="k">def</span> <span class="nf">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__key</span><span class="p">())</span>
+
+    <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">Board</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">piece</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">piece</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+
+        <span class="k">return</span> <span class="bp">True</span>
+
+    <span class="k">def</span> <span class="nf">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">__eq__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Prints current position in console</span>
@@ -174,7 +195,7 @@
 
 <div class="viewcode-block" id="Board.copy"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Copies the board faster than deepcopy()</span>
+<span class="sd">        Copies the board faster than deepcopy</span>
 
 <span class="sd">        :rtype: Board</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -264,31 +285,10 @@
 
         <span class="k">return</span> <span class="n">moves</span></div>
 
-    <span class="c1"># def all_possible_moves(self, input_color):</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     Filters list of moves and returns all legal moves</span>
-    <span class="c1">#     :type input_color Color</span>
-    <span class="c1">#     :rtype list</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     unfiltered = self.unfiltered(input_color)</span>
-    <span class="c1">#</span>
-    <span class="c1">#     if not self.get_king(input_color).in_check(self):</span>
-    <span class="c1">#         return unfiltered</span>
-    <span class="c1">#</span>
-    <span class="c1">#     filtered = []</span>
-    <span class="c1">#</span>
-    <span class="c1">#     for move in unfiltered:</span>
-    <span class="c1">#         test = self.copy()</span>
-    <span class="c1">#         test.update(move)</span>
-    <span class="c1">#         if not test.get_king(input_color).in_check(test):</span>
-    <span class="c1">#             filtered.append(move)</span>
-    <span class="c1">#</span>
-    <span class="c1">#     return filtered</span>
-
 <div class="viewcode-block" id="Board.find_piece"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.find_piece">[docs]</a>    <span class="k">def</span> <span class="nf">find_piece</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">piece</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location of the first piece that matches piece.</span>
-<span class="sd">        If none is found, None is returned.</span>
+<span class="sd">        If none is found, Exception is raised.</span>
 
 <span class="sd">        :type piece: Piece</span>
 <span class="sd">        :rtype: Location</span>
@@ -301,7 +301,7 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span> <span class="o">==</span> <span class="n">piece</span><span class="p">:</span>
                     <span class="k">return</span> <span class="n">loc</span>
 
-        <span class="k">return</span> <span class="bp">None</span></div>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Piece not found: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">piece</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="Board.find_king"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.find_king">[docs]</a>    <span class="k">def</span> <span class="nf">find_king</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

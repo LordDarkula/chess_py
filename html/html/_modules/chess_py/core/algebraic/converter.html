@@ -242,11 +242,12 @@
 
         <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">START_LOC_SPECIFIED</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="n">test_move</span><span class="o">.</span><span class="n">end_loc</span> <span class="ow">and</span> \
-                            <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="o">==</span><span class="n">test_move</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">and</span> \
+                            <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="o">==</span> <span class="n">test_move</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">and</span> \
                             <span class="n">move</span><span class="o">.</span><span class="n">start_file</span> <span class="o">==</span> <span class="n">test_move</span><span class="o">.</span><span class="n">start_file</span><span class="p">:</span>
                 <span class="k">return</span> <span class="n">test_move</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">continue</span>
+
         <span class="c1"># Checks for basic equality of essential elements</span>
         <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="n">test_move</span><span class="p">:</span>
 

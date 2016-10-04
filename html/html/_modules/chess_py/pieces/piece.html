@@ -107,7 +107,8 @@
 <div class="viewcode-block" id="Piece.set_loc"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece.Piece.set_loc">[docs]</a>    <span class="k">def</span> <span class="nf">set_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">moves</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds start_rank and start_file to moves</span>
-<span class="sd">        :type moves list</span>
+
+<span class="sd">        :type moves: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
             <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span>

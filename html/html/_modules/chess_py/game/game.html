@@ -85,10 +85,10 @@
         <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
             <span class="n">color_fn</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">game_state</span><span class="o">.</span><span class="n">no_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
-                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">game_state</span><span class="o">.</span><span class="n">is_checkmate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">):</span>
                     <span class="k">return</span> <span class="mi">1</span>
 
-                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
+                <span class="k">elif</span> <span class="n">game_state</span><span class="o">.</span><span class="n">is_checkmate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">black</span><span class="p">):</span>
                     <span class="k">return</span> <span class="mi">0</span>
 
                 <span class="k">else</span><span class="p">:</span>
