@@ -1,20 +1,31 @@
 # -*- coding: utf-8 -*-
 
 """
-Class stores Locations on the Board.
-Locations must be on the board to be initialized properly.
+Class stores Locations on the Board in form <code>Location(rank, file)</code>.
 | rank - y coordinate from 0 to 7
 | file - x coordinate from 0 to 7
 
+Can be initialized with coordinates not
+on the chess board, however, such locations
+will not wowrk properly with other classes
+such as <code>Board</code>. 
+
+Location is immutable.
+
+Examples (shown on board below):
+| a = Location(0, 0)
+| b = Location(7, 7)
+| c = Location(3, 4)
+
 | rank
-| 7 8 ║… … … … … … … …
+| 7 8 ║… … … … … … … b
 | 6 7 ║… … … … … … … …
 | 5 6 ║… … … … … … … …
 | 4 5 ║… … … … … … … …
-| 3 4 ║… … … … … … … …
+| 3 4 ║… … … … c … … …
 | 2 3 ║… … … … … … … …
 | 1 2 ║… … … … … … … …
-| 0 1 ║… … … … … … … …
+| 0 1 ║a … … … … … … …
 | ----╚═══════════════
 | ——---a b c d e f g h
 | -----0 1 2 3 4 5 6 7
@@ -38,7 +49,10 @@ class Location:
     @classmethod
     def init_alg(cls, alg_str):
         """
-        Creates a location from algebraic notation like e4
+        Creates a location from a two character string consisting of 
+        the file then rank written in algebraic notation.
+        
+        Examples: e4, b5, a7
 
         :type alg_str: str
         :rtype: Location
@@ -53,7 +67,9 @@ class Location:
 
     def __eq__(self, other):
         """
-        Finds is get_location on board is the same as current equation.
+        Tests to see if both locations
+        are the same ie rank and file is 
+        the same.
 
         :type other: Location
         """
@@ -87,6 +103,8 @@ class Location:
     def on_board(self):
         """
         Returns if the move is on the board or not.
+        If the rank and file are both in between
+        0 and 7, this method will return True.
 
         :rtype: bool
         """
