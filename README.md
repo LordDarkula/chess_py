@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/LordDarkula/chess_py.svg?branch=master)](https://travis-ci.org/LordDarkula/chess_py)
 [![PyPI version](https://badge.fury.io/py/chess_py.svg)](https://pypi.python.org/pypi/chess_py)
-[![Python27](https://img.shields.io/badge/python-2.7-blue.svg)]
-[![Python35](https://img.shields.io/badge/python-3.5-blue.svg)]
-[![License](https://img.shields.io/cocoapods/l/EasyQL.svg?style=flat)](https://github.com/lorddarkula/chess_py/LICENSE)
+[![Python27](https://img.shields.io/badge/python-2.7-blue.svg)](https://www.python.org/download/releases/2.7/)
+[![Python35](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
+[![License](https://img.shields.io/cocoapods/l/EasyQL.svg?style=flat)](https://github.com/LordDarkula/chess_py/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/twitter-@LordDarkula-blue.svg?style=flat)](http://twitter.com/LordDarkula)
 ```
 
@@ -31,7 +31,6 @@ Chess_py is an open source chess client and framework written in python. Can cre
 ##Installation
 
 To use as a standalone chess client, download or clone, navigate inside chess_py directory, and type the following.
-> Works on Python 2 and 3
 
 ```bash
 python main.py
