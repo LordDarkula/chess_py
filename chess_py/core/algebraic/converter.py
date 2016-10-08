@@ -85,38 +85,8 @@ def incomplete_alg(algebraic_string, input_color):
     end_loc = Location(edge_rank(), 6)
     edge_rank = edge_rank()
 
-    """ Assigning boolean expressions to be used for each case. """
-
     is_kingside = algebraic_string == "00"
     is_queenside = algebraic_string == "000"
-
-    pawn_movement = len(algebraic_string) == 2
-    piece_movement = len(algebraic_string) == 3
-
-    if len(algebraic_string) > 1:
-        capture = algebraic_string[1].upper() == "X"
-        file_specified = algebraic_string[1].isupper()
-    else:
-        capture = False
-        file_specified = False
-
-    if len(algebraic_string) > 0:
-        pawn_capture = not algebraic_string[0].isupper()
-        piece_capture = algebraic_string[0].isupper()
-    else:
-        pawn_capture = False
-        piece_capture = False
-
-    if len(algebraic_string) > 2:
-        pawn_promotion = algebraic_string[2] == "="
-        rank_file_specified = algebraic_string[2].isupper()
-    else:
-        pawn_promotion = False
-        rank_file_specified = False
-
-    pawn_promote_capture = len(algebraic_string) == 6
-
-    """ Boolean expressions separated for clarity. """
 
     # King side castle
     if is_kingside:
@@ -127,7 +97,7 @@ def incomplete_alg(algebraic_string, input_color):
                     start_file=4)
 
     # Queen side castle
-    elif is_queenside:
+    if is_queenside:
         end_loc = Location(edge_rank, 2)
         move = Move(end_loc=end_loc,
                     piece=King(input_color, Location(edge_rank, 4)),
@@ -137,8 +107,11 @@ def incomplete_alg(algebraic_string, input_color):
 
         return move
 
+    pawn_movement = len(algebraic_string) == 2
+    piece_movement = len(algebraic_string) == 3
+
     # Pawn movement
-    elif pawn_movement:
+    if pawn_movement:
         end_loc = Location(set_rank(1), set_file(0))
 
         return Move(end_loc=end_loc,
@@ -146,7 +119,7 @@ def incomplete_alg(algebraic_string, input_color):
                     status=notation_const.MOVEMENT)
 
     # Non-pawn Piece movement
-    elif piece_movement:
+    if piece_movement:
         end_loc = Location(set_rank(2), set_file(1))
         if set_piece(0, end_loc) is not None:
             return Move(end_loc=end_loc,
@@ -156,10 +129,18 @@ def incomplete_alg(algebraic_string, input_color):
             return None
 
     # Multiple options
-    elif len(algebraic_string) == 4:
+    if len(algebraic_string) == 4:
+
+        capture = algebraic_string[1].upper() == "X"
 
         # Capture
         if capture:
+
+            pawn_capture = not algebraic_string[0].isupper()
+            piece_capture = algebraic_string[0].isupper()
+            pawn_promotion = algebraic_string[2] == "="
+            file_specified = algebraic_string[1].isupper()
+
             """
             ex Nxf3
             """
@@ -198,7 +179,9 @@ def incomplete_alg(algebraic_string, input_color):
                 return None
 
     # Multiple options
-    elif len(algebraic_string) == 5:
+    if len(algebraic_string) == 5:
+
+        rank_file_specified = algebraic_string[2].isupper()
 
         # Non-pawn Piece movement with rank and file specified
         if rank_file_specified:
@@ -209,7 +192,9 @@ def incomplete_alg(algebraic_string, input_color):
                         start_file=set_file(0),
                         start_rank=set_rank(1))
 
-    elif pawn_promote_capture:
+    pawn_promote_capture = len(algebraic_string) == 6
+
+    if pawn_promote_capture:
         """
         exd8=Q
         """
@@ -221,8 +206,7 @@ def incomplete_alg(algebraic_string, input_color):
                     start_file=set_file(0),
                     promoted_to_piece=set_piece(5, end_loc))
 
-    else:
-        return None
+    return None
 
 
 def make_legal(move, position):
