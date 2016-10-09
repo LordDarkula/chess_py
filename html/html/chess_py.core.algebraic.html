@@ -123,20 +123,28 @@ None is returned.</p>
 </div>
 <div class="section" id="module-chess_py.core.algebraic.location">
 <span id="chess-py-core-algebraic-location-module"></span><h2>chess_py.core.algebraic.location module<a class="headerlink" href="#module-chess_py.core.algebraic.location" title="Permalink to this headline">¶</a></h2>
-<p>Class stores Locations on the Board.
-Locations must be on the board to be initialized properly.
+<p>Class stores Locations on the Board in form &lt;code&gt;Location(rank, file)&lt;/code&gt;.
 | rank - y coordinate from 0 to 7
 | file - x coordinate from 0 to 7</p>
+<p>Can be initialized with coordinates not
+on the chess board, however, such locations
+will not wowrk properly with other classes
+such as &lt;code&gt;Board&lt;/code&gt;.</p>
+<p>Location is immutable.</p>
+<p>Examples (shown on board below):
+| a = Location(0, 0)
+| b = Location(7, 7)
+| c = Location(3, 4)</p>
 <div class="line-block">
 <div class="line">rank</div>
-<div class="line">7 8 ║… … … … … … … …</div>
+<div class="line">7 8 ║… … … … … … … b</div>
 <div class="line">6 7 ║… … … … … … … …</div>
 <div class="line">5 6 ║… … … … … … … …</div>
 <div class="line">4 5 ║… … … … … … … …</div>
-<div class="line">3 4 ║… … … … … … … …</div>
+<div class="line">3 4 ║… … … … c … … …</div>
 <div class="line">2 3 ║… … … … … … … …</div>
 <div class="line">1 2 ║… … … … … … … …</div>
-<div class="line">0 1 ║… … … … … … … …</div>
+<div class="line">0 1 ║a … … … … … … …</div>
 <div class="line">&#8212;-╚═══════════════</div>
 <div class="line">——&#8212;a b c d e f g h</div>
 <div class="line">&#8212;&#8211;0 1 2 3 4 5 6 7</div>
@@ -149,7 +157,9 @@ Locations must be on the board to be initialized properly.
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.location.Location.init_alg">
 <em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a location from algebraic notation like e4</p>
+<dd><p>Creates a location from a two character string consisting of 
+the file then rank written in algebraic notation.</p>
+<p>Examples: e4, b5, a7</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -163,7 +173,9 @@ Locations must be on the board to be initialized properly.
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns if the move is on the board or not.</p>
+<dd><p>Returns if the move is on the board or not.
+If the rank and file are both in between
+0 and 7, this method will return True.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -346,7 +358,9 @@ to initialize Move.</p>
 <dd><dl class="classmethod">
 <dt id="chess_py.core.algebraic.Location.init_alg">
 <em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.init_alg" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates a location from algebraic notation like e4</p>
+<dd><p>Creates a location from a two character string consisting of 
+the file then rank written in algebraic notation.</p>
+<p>Examples: e4, b5, a7</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -360,7 +374,9 @@ to initialize Move.</p>
 <dl class="method">
 <dt id="chess_py.core.algebraic.Location.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Location.on_board" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns if the move is on the board or not.</p>
+<dd><p>Returns if the move is on the board or not.
+If the rank and file are both in between
+0 and 7, this method will return True.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

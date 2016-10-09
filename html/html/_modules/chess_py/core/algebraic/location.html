@@ -43,20 +43,31 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Class stores Locations on the Board.</span>
-<span class="sd">Locations must be on the board to be initialized properly.</span>
+<span class="sd">Class stores Locations on the Board in form &lt;code&gt;Location(rank, file)&lt;/code&gt;.</span>
 <span class="sd">| rank - y coordinate from 0 to 7</span>
 <span class="sd">| file - x coordinate from 0 to 7</span>
 
+<span class="sd">Can be initialized with coordinates not</span>
+<span class="sd">on the chess board, however, such locations</span>
+<span class="sd">will not wowrk properly with other classes</span>
+<span class="sd">such as &lt;code&gt;Board&lt;/code&gt;. </span>
+
+<span class="sd">Location is immutable.</span>
+
+<span class="sd">Examples (shown on board below):</span>
+<span class="sd">| a = Location(0, 0)</span>
+<span class="sd">| b = Location(7, 7)</span>
+<span class="sd">| c = Location(3, 4)</span>
+
 <span class="sd">| rank</span>
-<span class="sd">| 7 8 ║… … … … … … … …</span>
+<span class="sd">| 7 8 ║… … … … … … … b</span>
 <span class="sd">| 6 7 ║… … … … … … … …</span>
 <span class="sd">| 5 6 ║… … … … … … … …</span>
 <span class="sd">| 4 5 ║… … … … … … … …</span>
-<span class="sd">| 3 4 ║… … … … … … … …</span>
+<span class="sd">| 3 4 ║… … … … c … … …</span>
 <span class="sd">| 2 3 ║… … … … … … … …</span>
 <span class="sd">| 1 2 ║… … … … … … … …</span>
-<span class="sd">| 0 1 ║… … … … … … … …</span>
+<span class="sd">| 0 1 ║a … … … … … … …</span>
 <span class="sd">| ----╚═══════════════</span>
 <span class="sd">| ——---a b c d e f g h</span>
 <span class="sd">| -----0 1 2 3 4 5 6 7</span>
@@ -80,7 +91,10 @@
     <span class="nd">@classmethod</span>
 <div class="viewcode-block" id="Location.init_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.init_alg">[docs]</a>    <span class="k">def</span> <span class="nf">init_alg</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">alg_str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates a location from algebraic notation like e4</span>
+<span class="sd">        Creates a location from a two character string consisting of </span>
+<span class="sd">        the file then rank written in algebraic notation.</span>
+<span class="sd">        </span>
+<span class="sd">        Examples: e4, b5, a7</span>
 
 <span class="sd">        :type alg_str: str</span>
 <span class="sd">        :rtype: Location</span>
@@ -95,7 +109,9 @@
 
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Finds is get_location on board is the same as current equation.</span>
+<span class="sd">        Tests to see if both locations</span>
+<span class="sd">        are the same ie rank and file is </span>
+<span class="sd">        the same.</span>
 
 <span class="sd">        :type other: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -129,6 +145,8 @@
 <div class="viewcode-block" id="Location.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns if the move is on the board or not.</span>
+<span class="sd">        If the rank and file are both in between</span>
+<span class="sd">        0 and 7, this method will return True.</span>
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>

@@ -132,7 +132,8 @@ Prints position and takes move written in algebraic notation as string input</p>
 </div>
 <div class="section" id="module-chess_py.players.player">
 <span id="chess-py-players-player-module"></span><h2>chess_py.players.player module<a class="headerlink" href="#module-chess_py.players.player" title="Permalink to this headline">¶</a></h2>
-<p>Parent class for all Players.</p>
+<p>Parent class of chess engines built on chess_py. This class must be inherited
+and abstract method &lt;code&gt;generate_move(self, position) must be implemented.&lt;/code&gt;.</p>
 <dl class="class">
 <dt id="chess_py.players.player.Player">
 <em class="property">class </em><code class="descclassname">chess_py.players.player.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.player.Player" title="Permalink to this definition">¶</a></dt>
@@ -140,7 +141,8 @@ Prints position and takes move written in algebraic notation as string input</p>
 <dl class="method">
 <dt id="chess_py.players.player.Player.generate_move">
 <code class="descname">generate_move</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.generate_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.player.Player.generate_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns valid and legal move given position</p>
+<dd><p>Must be implemented by classes that extend &lt;code&gt;Player&lt;/code&gt;.
+Must return object of type &lt;code&gt;Move&lt;/code&gt;.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -154,12 +156,31 @@ Prints position and takes move written in algebraic notation as string input</p>
 <dl class="staticmethod">
 <dt id="chess_py.players.player.Player.getUCI">
 <em class="property">static </em><code class="descname">getUCI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.getUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.player.Player.getUCI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Internal method used by &lt;code&gt;Interface&lt;/code&gt;
+to read UCI commands from external GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="chess_py.players.player.Player.setUCI">
 <em class="property">static </em><code class="descname">setUCI</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.setUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.player.Player.setUCI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Internal method used by &lt;code&gt;Interface&lt;/code&gt;
+to write UCI commands to the console so they
+can be read by external GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
@@ -193,7 +214,8 @@ Prints position and takes move written in algebraic notation as string input</p>
 <dl class="method">
 <dt id="chess_py.players.Player.generate_move">
 <code class="descname">generate_move</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.generate_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.generate_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns valid and legal move given position</p>
+<dd><p>Must be implemented by classes that extend &lt;code&gt;Player&lt;/code&gt;.
+Must return object of type &lt;code&gt;Move&lt;/code&gt;.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -207,12 +229,31 @@ Prints position and takes move written in algebraic notation as string input</p>
 <dl class="staticmethod">
 <dt id="chess_py.players.Player.getUCI">
 <em class="property">static </em><code class="descname">getUCI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.getUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.getUCI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Internal method used by &lt;code&gt;Interface&lt;/code&gt;
+to read UCI commands from external GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="staticmethod">
 <dt id="chess_py.players.Player.setUCI">
 <em class="property">static </em><code class="descname">setUCI</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.setUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.setUCI" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Internal method used by &lt;code&gt;Interface&lt;/code&gt;
+to write UCI commands to the console so they
+can be read by external GUI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
