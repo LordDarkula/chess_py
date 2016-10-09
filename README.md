@@ -38,12 +38,12 @@ python main.py
 
 To install package  
 
-##### pip
+### pip
 ```bash
 pip install chess_py
 ```
 
-##### Or manually
+### Or manually
 ```bash
 python setup.py install
 ```
@@ -74,7 +74,7 @@ To build a chess engine on with chess_py, inherit Player and implement generate_
 ```python
 
 # Engine which plays the move with the highest immediate material advantage
-class my_engine:
+class My_engine:
     def __init__(self, color):
     
       # Creates piece value scheme to specify value of each piece.
@@ -110,4 +110,10 @@ class my_engine:
             best_move_advantage = advantage
       
       return move
+
+# If file is run as script, a Game is set up between My_engine and Human and result is printed.
+if __name__ == "__main__":
+    new_game = My_engine(Human(color.white), Human(color.black))
+    print("Result: ", new_game.play())
 ```
+
