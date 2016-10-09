@@ -47,7 +47,7 @@ pip install chess_py
 ```bash
 python setup.py install
 ```
-# Documentation
+## Documentation
 
 View complete technical documentation [here](http://lorddarkula.github.io/chess_py).
 
