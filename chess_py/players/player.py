@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Parent class for all Players.
+Parent class of chess engines built on chess_py. This class must be inherited
+and abstract method <code>generate_move(self, position) must be implemented.</code>.
 """
 
 from abc import ABCMeta, abstractmethod
@@ -23,7 +24,8 @@ class Player:
     @abstractmethod
     def generate_move(self, position):
         """
-        Returns valid and legal move given position
+        Must be implemented by classes that extend <code>Player</code>.
+        Must return object of type <code>Move</code>.
 
         :type position: Board
         :rtype: Move
@@ -32,6 +34,12 @@ class Player:
 
     @staticmethod
     def getUCI():
+        """
+        Internal method used by <code>Interface</code>
+        to read UCI commands from external GUI.
+
+        :rtype: str
+        """
         if sys.version_info[0] < 3:
             return raw_input()
         else:
@@ -39,5 +47,12 @@ class Player:
 
     @staticmethod
     def setUCI(command):
+        """
+        Internal method used by <code>Interface</code>
+        to write UCI commands to the console so they
+        can be read by external GUI.
+
+        :type command: str
+        """
         print(command)
 

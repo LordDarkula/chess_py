@@ -23,7 +23,7 @@ class UCI:
             option = self.read()
 
         self.write("id name " + self.engine)
-        self.write("id author " + self.author)
+        self.write0("id author " + self.author)
 
         self.write("uciok")
 
