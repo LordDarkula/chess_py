@@ -98,9 +98,22 @@ class Move:
 
         return move_str
 
+    def start_loc(self) -> Location:
+        """
+        Finds start Location of move if specified.
+        Otherwise throws an AttributeError
+
+        :rtype: Location
+        """
+        if self.start_rank is None or self.start_file is None:
+            raise AttributeError("start_rank and start_file must be specified")
+
+        return Location(self.start_rank, self.start_file)
+
     def on_board(self):
         """
-        Determines whether move exists.
+        Determines whether end Location of this Move
+        is on the board.
 
         :rtype: bool
         """
