@@ -84,14 +84,15 @@ class Pawn(Piece):
 
     def create_promotion_moves(self, location, status):
         moves = []
-        move = Move(end_loc=location,
-                    piece=self,
-                    status=status,
-                    start_rank=self.location.rank,
-                    start_file=self.location.file)
 
         def create_each_move(piece):
-            move.promoted_to_piece = piece(self.color, move.end_loc)
+            move = Move(end_loc=location,
+                        piece=self,
+                        status=status,
+                        start_rank=self.location.rank,
+                        start_file=self.location.file,
+                        promoted_to_piece=piece(self.color, location))
+
             moves.append(move)
 
         create_each_move(Queen)
@@ -104,6 +105,7 @@ class Pawn(Piece):
     def forward_moves(self, position):
         """
         Finds all possible forward moves
+
         :type: position: board.Board
         :rtype: list
         """
@@ -112,6 +114,7 @@ class Pawn(Piece):
         def on_home_row():
             """
             Finds out if the piece is on the home row.
+
             :return bool for whether piece is on home row or not
             """
             if self.color == color.white and self.location.rank == 1:
