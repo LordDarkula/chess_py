@@ -24,9 +24,9 @@ def incomplete_alg(algebraic_string, input_color):
     Converts a string written in short algebraic form into an incomplete move.
     These incomplete moves do not have the initial location specified and
     therefore cannot be used to update the board. IN order to fully utilize
-    incomplete move, it must be run through <code>make_legal()</code> with
+    incomplete move, it must be run through ``make_legal()`` with
     the corresponding position. It is recommended to use
-    <code>short_alg()</code> instead of this method because it returns a complete
+    ``short_alg()`` instead of this method because it returns a complete
     move.
 
     Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
@@ -211,7 +211,7 @@ def incomplete_alg(algebraic_string, input_color):
 
 def make_legal(move, position):
     """
-    Converts an incomplete move (initial <code>Location</code> not specified)
+    Converts an incomplete move (initial ``Location`` not specified)
     and the corresponding position into the a complete move
     with the most likely starting point specified. If no moves match, None
     is returned.

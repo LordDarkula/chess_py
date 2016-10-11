@@ -5,7 +5,7 @@ Class that holds state of a game.
 
 Takes two subclasses of Player as defined
 in chess_py.players.player.Player, and calls 
-<code>generate_move(position)</code>
+``generate_move(position)``
 from each of the players and updates the board using 
 each corresponding result.
 
@@ -38,9 +38,9 @@ class Game:
     def play(self):
         """
         Starts game and returns one of 3 results . 
-        Iterates between methods <code>white_move()</code> and
-        <code>black_move()</code> until game ends. Each
-        method calls the respective player's <code>generate_move()</code>
+        Iterates between methods ``white_move()`` and
+        ``black_move()`` until game ends. Each
+        method calls the respective player's ``generate_move()``
         method.
 
         :rtype: int
@@ -64,7 +64,7 @@ class Game:
 
     def white_move(self):
         """
-        Calls the white player's <code>generate_move()</code>
+        Calls the white player's ``generate_move()``
         method and updates the board with the move returned.
         """
         move = self.player_white.generate_move(self.position)
@@ -73,7 +73,7 @@ class Game:
 
     def black_move(self):
         """
-        Calls the black player's <code>generate_move()</code>
+        Calls the black player's ``generate_move()``
         method and updates the board with the move returned.
         """
         move = self.player_black.generate_move(self.position)
@@ -84,7 +84,7 @@ class Game:
         """
         Finds all possible moves a particular player can
         play during a game. Calling this method is recommended over
-        calling the <code>all_possible_moves(input_color)</code>
-        from this <code>Board</code> directly.
+        calling the ``all_possible_moves(input_color)``
+        from this ``Board`` directly.
         """
         return self.position.all_possible_moves(input_color)

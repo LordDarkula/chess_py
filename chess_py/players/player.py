@@ -2,7 +2,7 @@
 
 """
 Parent class of chess engines built on chess_py. This class must be inherited
-and abstract method <code>generate_move(self, position) must be implemented.</code>.
+and abstract method ``generate_move(self, position) must be implemented.``.
 """
 
 from abc import ABCMeta, abstractmethod
@@ -24,8 +24,8 @@ class Player:
     @abstractmethod
     def generate_move(self, position):
         """
-        Must be implemented by classes that extend <code>Player</code>.
-        Must return object of type <code>Move</code>.
+        Must be implemented by classes that extend ``Player``.
+        Must return object of type ``Move``.
 
         :type position: Board
         :rtype: Move
@@ -35,7 +35,7 @@ class Player:
     @staticmethod
     def getUCI():
         """
-        Internal method used by <code>Interface</code>
+        Internal method used by ``Interface``
         to read UCI commands from external GUI.
 
         :rtype: str
@@ -48,7 +48,7 @@ class Player:
     @staticmethod
     def setUCI(command):
         """
-        Internal method used by <code>Interface</code>
+        Internal method used by ``Interface``
         to write UCI commands to the console so they
         can be read by external GUI.
 

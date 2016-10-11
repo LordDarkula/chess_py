@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
 """
-Class stores Locations on the Board in form <code>Location(rank, file)</code>.
+Class stores Locations on the Board in form ``Location(rank, file)``.
+
 | rank - y coordinate from 0 to 7
 | file - x coordinate from 0 to 7
 
 Can be initialized with coordinates not
 on the chess board, however, such locations
 will not wowrk properly with other classes
-such as <code>Board</code>. 
+such as ``Board``.
 
 Location is immutable.
 
