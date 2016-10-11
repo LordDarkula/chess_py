@@ -66,9 +66,9 @@
 <span class="sd">    Converts a string written in short algebraic form into an incomplete move.</span>
 <span class="sd">    These incomplete moves do not have the initial location specified and</span>
 <span class="sd">    therefore cannot be used to update the board. IN order to fully utilize</span>
-<span class="sd">    incomplete move, it must be run through &lt;code&gt;make_legal()&lt;/code&gt; with</span>
+<span class="sd">    incomplete move, it must be run through ``make_legal()`` with</span>
 <span class="sd">    the corresponding position. It is recommended to use</span>
-<span class="sd">    &lt;code&gt;short_alg()&lt;/code&gt; instead of this method because it returns a complete</span>
+<span class="sd">    ``short_alg()`` instead of this method because it returns a complete</span>
 <span class="sd">    move.</span>
 
 <span class="sd">    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</span>
@@ -253,7 +253,7 @@
 
 <div class="viewcode-block" id="make_legal"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.converter.make_legal">[docs]</a><span class="k">def</span> <span class="nf">make_legal</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts an incomplete move (initial &lt;code&gt;Location&lt;/code&gt; not specified)</span>
+<span class="sd">    Converts an incomplete move (initial ``Location`` not specified)</span>
 <span class="sd">    and the corresponding position into the a complete move</span>
 <span class="sd">    with the most likely starting point specified. If no moves match, None</span>
 <span class="sd">    is returned.</span>

@@ -51,7 +51,7 @@
 <p>Class that holds state of a game.</p>
 <p>Takes two subclasses of Player as defined
 in chess_py.players.player.Player, and calls 
-&lt;code&gt;generate_move(position)&lt;/code&gt;
+<code class="docutils literal"><span class="pre">generate_move(position)</span></code>
 from each of the players and updates the board using 
 each corresponding result.</p>
 <p>Start game using play(), which returns the result 
@@ -66,14 +66,14 @@ when the game is finished.</p>
 <code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game.all_possible_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all possible moves a particular player can
 play during a game. Calling this method is recommended over
-calling the &lt;code&gt;all_possible_moves(input_color)&lt;/code&gt;
-from this &lt;code&gt;Board&lt;/code&gt; directly.</p>
+calling the <code class="docutils literal"><span class="pre">all_possible_moves(input_color)</span></code>
+from this <code class="docutils literal"><span class="pre">Board</span></code> directly.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.game.game.Game.black_move">
 <code class="descname">black_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.black_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game.black_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the black player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+<dd><p>Calls the black player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method and updates the board with the move returned.</p>
 </dd></dl>
 
@@ -81,9 +81,9 @@ method and updates the board with the move returned.</p>
 <dt id="chess_py.game.game.Game.play">
 <code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game.play" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts game and returns one of 3 results . 
-Iterates between methods &lt;code&gt;white_move()&lt;/code&gt; and
-&lt;code&gt;black_move()&lt;/code&gt; until game ends. Each
-method calls the respective player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+Iterates between methods <code class="docutils literal"><span class="pre">white_move()</span></code> and
+<code class="docutils literal"><span class="pre">black_move()</span></code> until game ends. Each
+method calls the respective player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -98,7 +98,7 @@ method.</p>
 <dl class="method">
 <dt id="chess_py.game.game.Game.white_move">
 <code class="descname">white_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.white_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game.white_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the white player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+<dd><p>Calls the white player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method and updates the board with the move returned.</p>
 </dd></dl>
 
@@ -192,14 +192,14 @@ game is over, and if a King is checkmated.</p>
 <code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.all_possible_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all possible moves a particular player can
 play during a game. Calling this method is recommended over
-calling the &lt;code&gt;all_possible_moves(input_color)&lt;/code&gt;
-from this &lt;code&gt;Board&lt;/code&gt; directly.</p>
+calling the <code class="docutils literal"><span class="pre">all_possible_moves(input_color)</span></code>
+from this <code class="docutils literal"><span class="pre">Board</span></code> directly.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="chess_py.game.Game.black_move">
 <code class="descname">black_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.black_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.black_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the black player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+<dd><p>Calls the black player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method and updates the board with the move returned.</p>
 </dd></dl>
 
@@ -207,9 +207,9 @@ method and updates the board with the move returned.</p>
 <dt id="chess_py.game.Game.play">
 <code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.play" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts game and returns one of 3 results . 
-Iterates between methods &lt;code&gt;white_move()&lt;/code&gt; and
-&lt;code&gt;black_move()&lt;/code&gt; until game ends. Each
-method calls the respective player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+Iterates between methods <code class="docutils literal"><span class="pre">white_move()</span></code> and
+<code class="docutils literal"><span class="pre">black_move()</span></code> until game ends. Each
+method calls the respective player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -224,7 +224,7 @@ method.</p>
 <dl class="method">
 <dt id="chess_py.game.Game.white_move">
 <code class="descname">white_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.white_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.white_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the white player&#8217;s &lt;code&gt;generate_move()&lt;/code&gt;
+<dd><p>Calls the white player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
 method and updates the board with the move returned.</p>
 </dd></dl>
 

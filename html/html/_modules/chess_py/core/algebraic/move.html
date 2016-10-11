@@ -140,9 +140,22 @@
 
         <span class="k">return</span> <span class="n">move_str</span>
 
+<div class="viewcode-block" id="Move.start_loc"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.start_loc">[docs]</a>    <span class="k">def</span> <span class="nf">start_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds start Location of move if specified.</span>
+<span class="sd">        Otherwise throws an AttributeError</span>
+
+<span class="sd">        :rtype: Location</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;start_rank and start_file must be specified&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Move.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Determines whether move exists.</span>
+<span class="sd">        Determines whether end Location of this Move</span>
+<span class="sd">        is on the board.</span>
 
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
