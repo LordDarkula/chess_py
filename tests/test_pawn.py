@@ -1,7 +1,7 @@
 from unittest import TestCase
 from chess_py.core.algebraic import notation_const
 from chess_py.core import Board
-from chess_py.core.algebraic.location import Location
+from chess_py.core.algebraic import Location, Move
 from chess_py.pieces import Queen, Rook, Bishop, Knight
 from chess_py import color
 
@@ -38,7 +38,23 @@ class TestPawn(TestCase):
         self.assertEqual(moves[3].promoted_to_piece, Knight(color.white, Location.init_alg("e8")))
 
     def test_forward_moves(self):
-        self.fail()
+        moves = self.white_pawn.forward_moves(self.position)
+        self.assertEqual(len(moves), 2)
+
+        self.assertEqual(moves[0], Move(end_loc=self.white_pawn.square_in_front(self.white_pawn.location),
+                                        piece=self.white_pawn,
+                                        status=notation_const.MOVEMENT,
+                                        start_rank=self.white_pawn.location.rank,
+                                        start_file=self.white_pawn.location.file))
+
+        moves = self.black_pawn.forward_moves(self.position)
+        self.assertEqual(len(moves), 2)
+
+        self.assertEqual(moves[0], Move(end_loc=self.black_pawn.square_in_front(self.black_pawn.location),
+                                        piece=self.black_pawn,
+                                        status=notation_const.MOVEMENT,
+                                        start_rank=self.black_pawn.location.rank,
+                                        start_file=self.black_pawn.location.file))
 
     def test_capture_moves(self):
         self.fail()

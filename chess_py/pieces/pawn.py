@@ -104,9 +104,10 @@ class Pawn(Piece):
 
     def forward_moves(self, position):
         """
-        Finds all possible forward moves
+        Finds possible moves one step and two steps in front
+        of Pawn.
 
-        :type: position: board.Board
+        :type: position: Board
         :rtype: list
         """
         possible = []

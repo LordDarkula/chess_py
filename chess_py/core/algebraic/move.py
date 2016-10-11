@@ -98,7 +98,7 @@ class Move:
 
         return move_str
 
-    def start_loc(self) -> Location:
+    def start_loc(self):
         """
         Finds start Location of move if specified.
         Otherwise throws an AttributeError
