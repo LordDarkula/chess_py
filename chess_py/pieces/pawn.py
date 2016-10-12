@@ -151,7 +151,7 @@ class Pawn(Piece):
                                      start_rank=self.location.rank,
                                      start_file=self.location.file))
 
-            return possible
+        return possible
 
     def capture_moves(self, position):
         """
