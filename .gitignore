@@ -7,6 +7,6 @@
 __pycache__/
 docs/_static/
 docs/_templates/
+/gh-pages/
 *.pyc
 *.DS_Store
-Would skip repository gh000-pages/
