@@ -13,6 +13,7 @@ such as <code>Board</code>.
 Location is immutable.
 
 Examples (shown on board below):
+
 | a = Location(0, 0)
 | b = Location(7, 7)
 | c = Location(3, 4)
