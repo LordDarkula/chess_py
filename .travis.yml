@@ -10,11 +10,8 @@ install: "python setup.py install"
 
 # command to run tests
 script:
-  - python tests/testLocation.py
-  - python tests/testMove.py
-  - python tests/testConverter.py
-  - python tests/testBoard.py
-  - python tests/testStr.py
+  - cd test
+  - python -m unittest discover
 
 branches:
   only:
