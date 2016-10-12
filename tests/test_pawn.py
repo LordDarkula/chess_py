@@ -38,7 +38,9 @@ class TestPawn(TestCase):
         self.assertEqual(moves[3].promoted_to_piece, Knight(color.white, Location.init_alg("e8")))
 
     def test_forward_moves(self):
+        self.white_pawn.location = Location.init_alg("e2")
         moves = self.white_pawn.forward_moves(self.position)
+        print(self.white_pawn.on_home_row())
         self.assertEqual(len(moves), 2)
 
         self.assertEqual(moves[0], Move(end_loc=self.white_pawn.square_in_front(self.white_pawn.location),

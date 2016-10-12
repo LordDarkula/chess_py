@@ -23,7 +23,6 @@ Class stores Pawn on the board
 from chess_py.core import color
 from chess_py.core.algebraic import notation_const
 from chess_py.core.algebraic.move import Move
-from chess_py.core.color import Color
 from chess_py.pieces.bishop import Bishop
 from chess_py.pieces.piece import Piece
 from chess_py.pieces.queen import Queen
@@ -44,6 +43,19 @@ class Pawn(Piece):
 
     def __str__(self):
         return "P"
+
+    def on_home_row(self):
+        """
+        Finds out if the piece is on the home row.
+
+        :return bool for whether piece is on home row or not
+        """
+        if self.color == color.white and self.location.rank == 1:
+            return True
+        elif self.color == color.black and self.location.rank == 6:
+            return True
+        else:
+            return False
 
     def square_in_front(self, location):
         """
@@ -112,19 +124,6 @@ class Pawn(Piece):
         """
         possible = []
 
-        def on_home_row():
-            """
-            Finds out if the piece is on the home row.
-
-            :return bool for whether piece is on home row or not
-            """
-            if self.color == color.white and self.location.rank == 1:
-                return True
-            elif self.color == color.black and self.location.rank == 6:
-                return True
-            else:
-                return False
-
         if position.is_square_empty(self.square_in_front(self.location)):
             """
             If square in front is empty add the move
@@ -141,7 +140,7 @@ class Pawn(Piece):
 
                 possible.append(move)
 
-            if on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
+            if self.on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
                 """
                 If two squares in front of the pawn is empty add the move
                 """
@@ -156,7 +155,8 @@ class Pawn(Piece):
     def capture_moves(self, position):
         """
         Finds out all possible capture moves
-        :rtype list
+
+        :rtype: list
         """
         moves = []
         capture_square = self.location
@@ -173,6 +173,7 @@ class Pawn(Piece):
                 """
                 if self.would_move_be_promotion(self.location):
                     moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
+
                 else:
                     move = Move(end_loc=capture_square,
                                 piece=self,
