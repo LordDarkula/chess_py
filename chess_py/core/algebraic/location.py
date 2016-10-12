@@ -14,6 +14,7 @@ such as ``Board``.
 Location is immutable.
 
 Examples (shown on board below):
+
 | a = Location(0, 0)
 | b = Location(7, 7)
 | c = Location(3, 4)
