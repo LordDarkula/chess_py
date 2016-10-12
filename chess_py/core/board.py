@@ -299,7 +299,7 @@ class Board:
 
     def move_piece(self, initial, final):
         """
-        Moves piece from one get_location to another
+        Moves piece from one location to another
 
         :type initial: Location
         :type final: Location

@@ -194,12 +194,16 @@ class Pawn(Piece):
     def en_passant_moves(self, position):
         """
         Finds possible en passant moves.
+
+        :rtype: list
         """
         possible = []
 
         def on_en_passant_valid_location():
             """
             Finds out if pawn is on enemy center rank.
+
+            :rtype: bool
             """
             if self.color == color.white and \
                     self.location.rank == 4:
@@ -214,9 +218,10 @@ class Pawn(Piece):
         def opposite_color_pawn_on_square(my_location):
             """
             Finds if their is opponent's pawn is next to this pawn
+
             :rtype: bool
             """
-            return my_location.exit == 0 and \
+            return my_location.on_board() and \
                 not position.is_square_empty(my_location) and \
                 position.piece_at_square(my_location) == Pawn(self.color.opponent(), my_location) and \
                 position.piece_at_square(my_location).just_moved_two_steps
