@@ -13,6 +13,6 @@ script:
   - cd tests
   - python -m unittest discover
 
-branches:0
+branches:
   only:
     - master
