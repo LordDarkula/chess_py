@@ -32,14 +32,13 @@ class Piece:
 
         self.color = input_color
         self.location = location
+        self.list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(),
+                             lambda x: x.shift_down(), lambda x: x.shift_left()]
 
         if self.color == color.white:
             self.symbol = white_symbol
         else:
             self.symbol = black_symbol
-
-        self.list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(), lambda x: x.shift_down(),
-                        lambda x: x.shift_left()]
 
     def __key(self):
         return self.color, self.location
