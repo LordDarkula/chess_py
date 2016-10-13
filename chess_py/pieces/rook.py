@@ -67,9 +67,7 @@ class Rook(Piece):
 
             current = direction(current)
 
-        if current.on_board() and \
-                not position.is_square_empty(current) and \
-                position.piece_at_square(current).color != self.color:
+        if self.contains_opposite_color_piece(current, position):
                 possible.append(side_move(notation_const.CAPTURE))
 
         return possible

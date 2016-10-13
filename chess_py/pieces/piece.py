@@ -62,6 +62,19 @@ class Piece:
     def possible_moves(self, position):
         pass
 
+    def contains_opposite_color_piece(self, square, position):
+        """
+        Finds if square on the board is occupied by a ``Piece``
+        belonging to the opponent.
+
+        :type square: Location
+        :type position: Board
+        :rtype: bool
+        """
+        return square.on_board() and \
+                    not position.is_square_empty(square) and \
+                    position.piece_at_square(square).color != self.color
+
     def set_loc(self, moves):
         """
         Adds start_rank and start_file to moves
