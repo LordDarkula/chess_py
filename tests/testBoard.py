@@ -2,7 +2,7 @@ import unittest
 from chess_py import Board, Location, Pawn, Knight, Rook, King, color
 
 
-class BoardTest(unittest.TestCase):
+class TestBoard(unittest.TestCase):
     def setUp(self):
         self.board = Board.init_default()
 
