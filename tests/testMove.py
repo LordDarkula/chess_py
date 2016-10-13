@@ -21,7 +21,7 @@ class MoveTest(unittest.TestCase):
                                     start_file=5)
 
     def testStr(self):
-        self.assertEquals(str(self.white_pawn_move), "a2a3")
+        self.assertEquals(str(self.start_specified), "f4a3")
 
         self.white_pawn_move = Move(Location(7, 0),
                                     piece=self.white_pawn,
@@ -36,33 +36,15 @@ class MoveTest(unittest.TestCase):
 
         test_copy = copy.copy(self.white_pawn_move)
         print(self.white_pawn_move == test_copy)
-        self.assertTrue(self.white_pawn_move == Move(end_loc=Location(2, 0),
+        self.assertEqual(self.white_pawn_move, Move(end_loc=Location(2, 0),
                                                      piece=self.white_pawn,
                                                      status=notation_const.MOVEMENT))
 
-        self.assertTrue(self.white_pawn_move == Move(end_loc=Location(2, 0),
+        self.assertEqual(self.white_pawn_move, Move(end_loc=Location(2, 0),
                                                      piece=self.white_pawn,
                                                      status=notation_const.MOVEMENT,
                                                      start_rank=1,
                                                      start_file=0))
-
-        self.assertTrue(self.white_pawn_move == Move(end_loc=Location(1, 0),
-                                                 piece=self.white_pawn,
-                                                 status=notation_const.MOVEMENT))
-
-        self.assertTrue(self.white_pawn_move == Move(end_loc=Location(2, 0),
-                                                 piece=self.black_pawn,
-                                                 status=notation_const.MOVEMENT))
-
-        self.assertTrue(self.white_pawn_move == Move(end_loc=Location(2, 0),
-                                                 piece=self.white_pawn,
-                                                 status=notation_const.CAPTURE))
-
-        self.assertTrue(self.start_specified == Move(end_loc=Location(2, 0),
-                                                 piece=self.white_pawn,
-                                                 status=notation_const.MOVEMENT,
-                                                 start_rank=1,
-                                                 start_file=0))
 
     def testOnBoard(self):
         self.assertTrue(self.white_pawn_move.on_board())
