@@ -66,10 +66,11 @@ class Knight(Piece):
             """
             Returns both destinations that result when the knight is moved two steps in
             one of the cardinal directions
-            :type loc Location
-            :type function def
-            :type ind int
-            :rtype tuple
+
+            :type loc: Location
+            :type function: def
+            :type ind: int
+            :rtype: tuple
             """
 
             return list_of_func[cycle(ind)[0]](function(function(loc))), list_of_func[cycle(ind)[1]](function(

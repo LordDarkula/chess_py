@@ -55,32 +55,27 @@ class Move:
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Move")
 
-        if other.status is not None and \
-                self.status is not None and \
-                other.status != self.status:
-            return False
+        for index, item in enumerate(self.__key()):
+            if not self.check_equals_or_none(item, other.__key()[index]):
+                return False
 
-        if other.piece != self.piece:
-            return False
+        return True
 
-        if other.start_rank is not None and \
-                self.start_rank is not None and \
-                other.start_rank != self.start_rank:
-            return False
+    @staticmethod
+    def check_equals_or_none(var1, var2):
+        """
+        If either is None then return True,
+        otherwise compare them and return
+        if they are equal.
 
-        if other.start_file is not None and \
-                self.start_file is not None and \
-                other.start_file != self.start_file:
-            return False
+        :type var1: object
+        :type var2: object
+        :rtype: bool
+        """
+        if var1 is None or var2 is None:
+            return True
 
-        if other.promoted_to_piece is not None and \
-                self.promoted_to_piece is not None and \
-                not self.promoted_to_piece.equals(other.promoted_to_piece):
-            return False
-
-        return self.end_loc == other.end_loc and \
-            self.piece == other.piece and \
-            self.status == other.status
+        return var1 == var2
 
     def __ne__(self, other):
         return not self.__eq__(other)
