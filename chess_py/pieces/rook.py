@@ -53,25 +53,24 @@ class Rook(Piece):
         possible = []
         current = direction(self.location)
 
+        def side_move(status):
+            return Move(end_loc=current,
+                        piece=self,
+                        status=status,
+                        start_rank=self.location.rank,
+                        start_file=self.location.file)
+
         assert isinstance(current, Location)
         while current.on_board() and \
                 position.is_square_empty(current):
-            possible.append(Move(end_loc=current,
-                                 piece=self,
-                                 status=notation_const.MOVEMENT,
-                                 start_rank=self.location.rank,
-                                 start_file=self.location.file))
+            possible.append(side_move(notation_const.MOVEMENT))
 
             current = direction(current)
 
         if current.on_board() and \
                 not position.is_square_empty(current) and \
-                not position.piece_at_square(current).color == self.color:
-                possible.append(Move(end_loc=current,
-                                     piece=self,
-                                     status=notation_const.CAPTURE,
-                                     start_rank=self.location.rank,
-                                     start_file=self.location.file))
+                position.piece_at_square(current).color != self.color:
+                possible.append(side_move(notation_const.CAPTURE))
 
         return possible
 
