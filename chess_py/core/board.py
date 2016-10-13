@@ -75,26 +75,23 @@ class Board:
          Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
 
         # Second rank
-        [Pawn(white, Location(1, 0)), Pawn(white, Location(1, 1)), Pawn(white, Location(1, 2)),
-         Pawn(white, Location(1, 3)), Pawn(white, Location(1, 4)), Pawn(white, Location(1, 5)),
-         Pawn(white, Location(1, 6)), Pawn(white, Location(1, 7))],
+        [Pawn(white, Location(1, file)) for file in range(8)],
+
 
         # Third rank
-        [None, None, None, None, None, None, None, None],
+        [None for _ in range(8)],
 
         # Fourth rank
-        [None, None, None, None, None, None, None, None],
+        [None for _ in range(8)],
 
         # Fifth rank
-        [None, None, None, None, None, None, None, None],
+        [None for _ in range(8)],
 
         # Sixth rank
-        [None, None, None, None, None, None, None, None],
+        [None for _ in range(8)],
 
         # Seventh rank
-        [Pawn(black, Location(6, 0)), Pawn(black, Location(6, 1)), Pawn(black, Location(6, 2)),
-         Pawn(black, Location(6, 3)), Pawn(black, Location(6, 4)), Pawn(black, Location(6, 5)),
-         Pawn(black, Location(6, 6)), Pawn(black, Location(6, 7))],
+        [Pawn(black, Location(6, file)) for file in range(8)],
 
         # Eighth rank
         [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
