@@ -70,7 +70,7 @@ class TestPawn(TestCase):
                                         start_file=self.black_pawn.location.file))
 
     def test_capture_moves(self):
-        self.position.move_piece(Location.init_alg("d7"), Location.init_alg("d4"))
+        self.position.move_piece(Location.init_alg("d7"), Location.init_alg("d5"))
         self.position.move_piece(Location.init_alg("e2"), Location.init_alg("e4"))
 
         black_pawn = self.position.piece_at_square(Location.init_alg("d5"))
@@ -95,15 +95,6 @@ class TestPawn(TestCase):
         move = black_pawn.en_passant_moves(self.position)
 
         self.assertEqual(len(move), 1)
-
-        print(move[0].end_loc)
-        print(Move(end_loc=black_pawn.square_in_front(black_pawn.location.shift_right()),
-                                     piece=black_pawn,
-                                     status=notation_const.EN_PASSANT,
-                                     start_rank=black_pawn.location.rank,
-                                     start_file=black_pawn.location.file).end_loc)
-
-
         self.assertEqual(move[0], Move(end_loc=black_pawn.square_in_front(black_pawn.location.shift_right()),
                                      piece=black_pawn,
                                      status=notation_const.EN_PASSANT,
@@ -111,4 +102,7 @@ class TestPawn(TestCase):
                                      start_file=black_pawn.location.file))
 
     def test_possible_moves(self):
-        self.fail()
+        self.assertEqual(len(self.white_pawn.possible_moves(self.position)), 2)
+        self.position.move_piece(Location.init_alg("e2"), Location.init_alg("e3"))
+        self.assertEqual(len(self.white_pawn.possible_moves(self.position)), 1)
+
