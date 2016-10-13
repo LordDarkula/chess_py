@@ -1,6 +1,7 @@
 # chess_py
 
 [![Build Status](https://travis-ci.org/LordDarkula/chess_py.svg?branch=master)](https://travis-ci.org/LordDarkula/chess_py)
+[![Code Climate](https://codeclimate.com/github/LordDarkula/chess_py/badges/gpa.svg)](https://codeclimate.com/github/LordDarkula/chess_py)
 [![PyPI version](https://badge.fury.io/py/chess_py.svg)](https://pypi.python.org/pypi/chess_py)
 [![Python27](https://img.shields.io/badge/python-2.7-blue.svg)](https://www.python.org/download/releases/2.7/)
 [![Python35](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
