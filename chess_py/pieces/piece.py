@@ -38,6 +38,9 @@ class Piece:
         else:
             self.symbol = black_symbol
 
+        self.list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(), lambda x: x.shift_down(),
+                        lambda x: x.shift_left()]
+
     def __key(self):
         return self.color, self.location
 

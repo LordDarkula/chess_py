@@ -81,16 +81,8 @@ class Rook(Piece):
         """
         moves = []
 
-        if self.direction_moves(lambda x: x.shift_up(), position) is not None:
-            moves.extend(self.direction_moves(lambda x: x.shift_up(), position))
-
-        if self.direction_moves(lambda x: x.shift_right(), position) is not None:
-            moves.extend(self.direction_moves(lambda x: x.shift_right(), position))
-
-        if self.direction_moves(lambda x: x.shift_down(), position) is not None:
-            moves.extend(self.direction_moves(lambda x: x.shift_down(), position))
-
-        if self.direction_moves(lambda x: x.shift_left(), position) is not None:
-            moves.extend(self.direction_moves(lambda x: x.shift_left(), position))
+        for fn in self.list_of_func:
+            if self.direction_moves(fn, position) is not None:
+                moves.extend(self.direction_moves(fn, position))
 
         return moves

@@ -45,9 +45,6 @@ class Knight(Piece):
         :rtype: list
         """
 
-        list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(), lambda x: x.shift_down(),
-                        lambda x: x.shift_left()]
-
         def cycle(index):
             """
             Cycles indexes containing shift directions perpendicular to current shift
@@ -73,12 +70,12 @@ class Knight(Piece):
             :rtype: tuple
             """
 
-            return list_of_func[cycle(ind)[0]](function(function(loc))), list_of_func[cycle(ind)[1]](function(
-                function(loc)))
+            return self.list_of_func[cycle(ind)[0]](function(function(loc))), \
+                   self.list_of_func[cycle(ind)[1]](function(function(loc)))
 
         moves = []
 
-        for index, func in enumerate(list_of_func):
+        for index, func in enumerate(self.list_of_func):
             dest_loc = dest(self.location, func, index)
 
             for j in range(2):
