@@ -57,7 +57,7 @@ class Piece_values:
         if piece is None:
             return 0
 
-        if ref_color.equals(piece.color):
+        if ref_color == piece.color:
             const = 1
         else:
             const = -1
