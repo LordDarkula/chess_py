@@ -81,7 +81,7 @@ class Rook(Piece):
         """
         moves = []
 
-        for fn in self.list_of_func:
+        for fn in self.cross_fn:
             if self.direction_moves(fn, position) is not None:
                 moves.extend(self.direction_moves(fn, position))
 

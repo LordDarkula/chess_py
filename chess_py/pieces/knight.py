@@ -70,12 +70,12 @@ class Knight(Piece):
             :rtype: tuple
             """
 
-            return self.list_of_func[cycle(ind)[0]](function(function(loc))), \
-                   self.list_of_func[cycle(ind)[1]](function(function(loc)))
+            return self.cross_fn[cycle(ind)[0]](function(function(loc))), \
+                   self.cross_fn[cycle(ind)[1]](function(function(loc)))
 
         moves = []
 
-        for index, func in enumerate(self.list_of_func):
+        for index, func in enumerate(self.cross_fn):
             dest_loc = dest(self.location, func, index)
 
             for j in range(2):

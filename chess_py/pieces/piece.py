@@ -32,8 +32,12 @@ class Piece:
 
         self.color = input_color
         self.location = location
-        self.list_of_func = [lambda x: x.shift_up(), lambda x: x.shift_right(),
-                             lambda x: x.shift_down(), lambda x: x.shift_left()]
+
+        self.cross_fn = [lambda x: x.shift_up(), lambda x: x.shift_right(),
+                    lambda x: x.shift_down(), lambda x: x.shift_left()]
+
+        self.diag_fn = [lambda x: x.shift_up_right(), lambda x: x.shift_up_left(),
+                   lambda x: x.shift_down_right(), lambda x: x.shift_down_left()]
 
         if self.color == color.white:
             self.symbol = white_symbol

@@ -48,10 +48,7 @@ class Bishop(Piece):
         rook = Rook(self.color, self.location)
         moves = []
 
-        fns = [lambda x: x.shift_up_right(), lambda x: x.shift_up_left(),
-               lambda x: x.shift_down_right(), lambda x: x.shift_down_left()]
-
-        for fn in fns:
+        for fn in self.cross_fn:
             if rook.direction_moves(fn, position) is not None:
                 moves.extend(rook.direction_moves(fn, position))
 
