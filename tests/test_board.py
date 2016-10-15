@@ -1,5 +1,5 @@
 from unittest import TestCase
-from chess_py import color, Location, Board, Pawn, Knight, Bishop, Rook, Queen, King
+from chess_py import color, Location, Board, Pawn, Knight, Bishop, Rook, Queen, King, piece_const
 
 
 class TestBoard(TestCase):
@@ -62,6 +62,45 @@ class TestBoard(TestCase):
         self.failIf(self.board.is_square_empty(Location(0, 3)))
 
     def test_material_advantage(self):
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 0)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), 0)
+
+        self.board.position[0][0] = None
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), -5)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), 5)
+
+        self.board = Board.init_default()
+        self.board.position[0][1] = None
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), -3)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), 3)
+
+        self.board = Board.init_default()
+        self.board.position[7][0] = None
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 5)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -5)
+
+        self.board = Board.init_default()
+        self.board.position[7][3] = None
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 9)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -9)
+
+        self.board = Board.init_default()
+        self.board.position[7][2] = None
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 3)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -3)
+
+    def test_advantage_as_result(self):
+        self.fail()
+
+    def test_all_possible_moves(self):
+        self.fail()
+
+    def test_find_piece(self):
         self.assertEquals(self.board.find_piece(Rook(color.white, Location(0, 0))),
                           Location(0, 0))
 
@@ -71,13 +110,6 @@ class TestBoard(TestCase):
         self.assertNotEquals(self.board.find_piece(Rook(color.black, Location(7, 0))),
                              Location(3, 0))
 
-    def test_advantage_as_result(self):
-        self.fail()
-
-    def test_all_possible_moves(self):
-        self.fail()
-
-    def test_find_piece(self):
         self.assertEqual(self.board.find_piece(Pawn(color.white, Location(0, 0))),
                          Location.init_alg("a2"))
 
