@@ -131,7 +131,10 @@ class TestBoard(TestCase):
                           King(color.black, Location(7, 4)))
 
     def test_remove_piece_at_square(self):
-        self.fail()
+        test_board = Board.init_default()
+        test_board.position[0][0] = None
+        self.board.remove_piece_at_square(Location(0, 0))
+        self.assertEqual(self.board, test_board)
 
     def test_place_piece_at_square(self):
         self.fail()
