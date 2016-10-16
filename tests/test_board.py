@@ -44,8 +44,7 @@ class TestBoard(TestCase):
         [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
          Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
          Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]])
-        print(test)
-        print(self.board)
+
         self.assertEqual(self.board, test)
 
     def test_copy(self):

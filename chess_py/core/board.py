@@ -105,9 +105,8 @@ class Board:
         return hash(self.__key())
 
     def __eq__(self, other):
-        print(other)
 
-        if type(other) is not Board:
+        if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other type to Board")
 
         for i, row in enumerate(self.position):
