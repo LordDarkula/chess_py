@@ -107,7 +107,28 @@ class TestBoard(TestCase):
                                                         piece_const.Piece_values()), -1)
 
     def test_all_possible_moves(self):
-        self.fail()
+        """
+        Print statement to easily get the list of moves in string form.
+        Used for constructing tests.
+
+        for move in self.board.all_possible_moves(color.white):
+            print("\""+ str(move) + "\", ", end="")
+        """
+        moves = ["b1c3", "b1a3", "g1h3", "g1f3", "a2a3", "a2a4", "b2b3", "b2b4",
+                 "c2c3", "c2c4", "d2d3", "d2d4", "e2e3", "e2e4", "f2f3", "f2f4",
+                 "g2g3", "g2g4", "h2h3", "h2h4"]
+
+        for index, move in enumerate(self.board.all_possible_moves(color.white)):
+            self.assertEqual(moves[index], str(move))
+
+        self.board.update(converter.long_alg("e2e4", self.board))
+
+        moves = ["a7a6", "a7a5", "b7b6", "b7b5", "c7c6", "c7c5", "d7d6", "d7d5",
+                 "e7e6", "e7e5", "f7f6", "f7f5", "g7g6", "g7g5", "h7h6", "h7h5",
+                 "b8a6", "b8c6", "g8f6", "g8h6"]
+
+        for index, move in enumerate(self.board.all_possible_moves(color.black)):
+            self.assertEqual(moves[index], str(move))
 
     def test_find_piece(self):
         self.assertEquals(self.board.find_piece(Rook(color.white, Location(0, 0))),
@@ -146,10 +167,31 @@ class TestBoard(TestCase):
         self.assertEqual(self.board, test_board)
 
     def test_place_piece_at_square(self):
-        self.fail()
+        test = Board.init_default()
+        pawn = Pawn(color.white, Location.init_alg("e3"))
+
+        test.position[2][4] = pawn
+
+        self.board.place_piece_at_square(pawn, Location.init_alg("e3"))
+
+        self.assertEqual(self.board, test)
 
     def test_move_piece(self):
-        self.fail()
+        test = Board.init_default()
+        pawn = test.position[1][4]
+        test.position[1][4] = None
+        test.position[3][4] = pawn
+
+        self.board.move_piece(Location.init_alg("e2"), Location.init_alg("e4"))
+
+        self.assertEqual(self.board, test)
 
     def test_update(self):
-        self.fail()
+        test = Board.init_default()
+        pawn = test.position[1][4]
+        test.position[1][4] = None
+        test.position[3][4] = pawn
+
+        self.board.update(converter.long_alg("e2e4", self.board))
+
+        self.assertEqual(self.board, test)

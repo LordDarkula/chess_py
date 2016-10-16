@@ -112,6 +112,7 @@ class Board:
         for i, row in enumerate(self.position):
 
             for j, piece in enumerate(row):
+
                 if piece != other.position[i][j]:
                     return False
 
