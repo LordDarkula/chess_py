@@ -114,6 +114,17 @@
 <em class="property">class </em><code class="descclassname">chess_py.pieces.king.</code><code class="descname">King</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#chess_py.pieces.piece.Piece" title="chess_py.pieces.piece.Piece"><code class="xref py py-class docutils literal"><span class="pre">chess_py.pieces.piece.Piece</span></code></a></p>
 <dl class="method">
+<dt id="chess_py.pieces.king.King.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>function</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.pieces.king.King.add_castle">
+<code class="descname">add_castle</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.add_castle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.add_castle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds kingside and queenside</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="chess_py.pieces.king.King.in_check">
 <code class="descname">in_check</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.in_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if the king is in check</p>
@@ -123,6 +134,19 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
 </tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chess_py.pieces.king.King.in_check_as_result">
+<em class="property">static </em><code class="descname">in_check_as_result</code><span class="sig-paren">(</span><em>pos</em>, <em>move</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check_as_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.king.King.in_check_as_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if playing move would put king
+in check.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
 </tbody>
 </table>
 </dd></dl>
@@ -208,8 +232,15 @@
 <dl class="method">
 <dt id="chess_py.pieces.pawn.Pawn.capture_moves">
 <code class="descname">capture_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.capture_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.capture_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds out all possible capture moves
-:rtype list</p>
+<dd><p>Finds out all possible capture moves</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -221,6 +252,14 @@
 <dt id="chess_py.pieces.pawn.Pawn.en_passant_moves">
 <code class="descname">en_passant_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.en_passant_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.en_passant_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds possible en passant moves.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -238,6 +277,13 @@ of Pawn.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.pieces.pawn.Pawn.on_home_row">
+<code class="descname">on_home_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.on_home_row"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.on_home_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds out if the piece is on the home row.</p>
+<p>:return bool for whether piece is on home row or not</p>
 </dd></dl>
 
 <dl class="method">
@@ -284,6 +330,21 @@ of Pawn.</p>
 <dt id="chess_py.pieces.piece.Piece">
 <em class="property">class </em><code class="descclassname">chess_py.pieces.piece.</code><code class="descname">Piece</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em>, <em>white_symbol</em>, <em>black_symbol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.piece.Piece" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="chess_py.pieces.piece.Piece.contains_opposite_color_piece">
+<code class="descname">contains_opposite_color_piece</code><span class="sig-paren">(</span><em>square</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece.contains_opposite_color_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.piece.Piece.contains_opposite_color_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if square on the board is occupied by a <code class="docutils literal"><span class="pre">Piece</span></code>
+belonging to the opponent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="chess_py.pieces.piece.Piece.possible_moves">
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.piece.Piece.possible_moves" title="Permalink to this definition">¶</a></dt>
@@ -451,6 +512,17 @@ of Pawn.</p>
 <em class="property">class </em><code class="descclassname">chess_py.pieces.</code><code class="descname">King</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#chess_py.pieces.piece.Piece" title="chess_py.pieces.piece.Piece"><code class="xref py py-class docutils literal"><span class="pre">chess_py.pieces.piece.Piece</span></code></a></p>
 <dl class="method">
+<dt id="chess_py.pieces.King.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>function</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.add"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="chess_py.pieces.King.add_castle">
+<code class="descname">add_castle</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.add_castle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.add_castle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds kingside and queenside</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="chess_py.pieces.King.in_check">
 <code class="descname">in_check</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.in_check" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if the king is in check</p>
@@ -460,6 +532,19 @@ of Pawn.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
 </tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="chess_py.pieces.King.in_check_as_result">
+<em class="property">static </em><code class="descname">in_check_as_result</code><span class="sig-paren">(</span><em>pos</em>, <em>move</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/king.html#King.in_check_as_result"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.King.in_check_as_result" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if playing move would put king
+in check.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
 </tbody>
 </table>
 </dd></dl>
@@ -501,8 +586,15 @@ of Pawn.</p>
 <dl class="method">
 <dt id="chess_py.pieces.Pawn.capture_moves">
 <code class="descname">capture_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.capture_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Pawn.capture_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds out all possible capture moves
-:rtype list</p>
+<dd><p>Finds out all possible capture moves</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -514,6 +606,14 @@ of Pawn.</p>
 <dt id="chess_py.pieces.Pawn.en_passant_moves">
 <code class="descname">en_passant_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.en_passant_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Pawn.en_passant_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds possible en passant moves.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
@@ -531,6 +631,13 @@ of Pawn.</p>
 </tr>
 </tbody>
 </table>
+</dd></dl>
+
+<dl class="method">
+<dt id="chess_py.pieces.Pawn.on_home_row">
+<code class="descname">on_home_row</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.on_home_row"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Pawn.on_home_row" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds out if the piece is on the home row.</p>
+<p>:return bool for whether piece is on home row or not</p>
 </dd></dl>
 
 <dl class="method">
@@ -572,6 +679,21 @@ of Pawn.</p>
 <dt id="chess_py.pieces.Piece">
 <em class="property">class </em><code class="descclassname">chess_py.pieces.</code><code class="descname">Piece</code><span class="sig-paren">(</span><em>input_color</em>, <em>location</em>, <em>white_symbol</em>, <em>black_symbol</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Piece" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="chess_py.pieces.Piece.contains_opposite_color_piece">
+<code class="descname">contains_opposite_color_piece</code><span class="sig-paren">(</span><em>square</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece.contains_opposite_color_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Piece.contains_opposite_color_piece" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds if square on the board is occupied by a <code class="docutils literal"><span class="pre">Piece</span></code>
+belonging to the opponent.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 <dl class="method">
 <dt id="chess_py.pieces.Piece.possible_moves">
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece.html#Piece.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.Piece.possible_moves" title="Permalink to this definition">¶</a></dt>

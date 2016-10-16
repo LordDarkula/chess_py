@@ -62,10 +62,9 @@
 <span class="sd">| Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">chess_py.pieces.piece</span> <span class="kn">import</span> <span class="n">Piece</span>
-<span class="kn">from</span> <span class="nn">chess_py.pieces.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
-
-<span class="kn">from</span> <span class="nn">chess_py.core.color</span> <span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">.piece</span> <span class="kn">import</span> <span class="n">Piece</span>
+<span class="kn">from</span> <span class="nn">.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
+<span class="kn">from</span> <span class="nn">..core.color</span> <span class="kn">import</span> <span class="n">Color</span>
 
 
 <div class="viewcode-block" id="Bishop"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.bishop.Bishop">[docs]</a><span class="k">class</span> <span class="nc">Bishop</span><span class="p">(</span><span class="n">Piece</span><span class="p">):</span>
@@ -90,20 +89,12 @@
         <span class="n">rook</span> <span class="o">=</span> <span class="n">Rook</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
 
-        <span class="k">if</span> <span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up_right</span><span class="p">(),</span> <span class="n">position</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up_right</span><span class="p">(),</span> <span class="n">position</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up_left</span><span class="p">(),</span> <span class="n">position</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_up_left</span><span class="p">(),</span> <span class="n">position</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_right</span><span class="p">(),</span> <span class="n">position</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_right</span><span class="p">(),</span> <span class="n">position</span><span class="p">))</span>
-
-        <span class="k">if</span> <span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_left</span><span class="p">(),</span> <span class="n">position</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">shift_down_left</span><span class="p">(),</span> <span class="n">position</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">diag_fn</span><span class="p">:</span>
+            <span class="n">moves</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">rook</span><span class="o">.</span><span class="n">direction_moves</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">position</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
             <span class="n">move</span><span class="o">.</span><span class="n">piece</span> <span class="o">=</span> <span class="bp">self</span>
+
 
         <span class="k">return</span> <span class="n">moves</span></div></div>
 </pre></div>

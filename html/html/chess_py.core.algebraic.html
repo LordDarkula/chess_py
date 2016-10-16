@@ -123,18 +123,22 @@ None is returned.</p>
 </div>
 <div class="section" id="module-chess_py.core.algebraic.location">
 <span id="chess-py-core-algebraic-location-module"></span><h2>chess_py.core.algebraic.location module<a class="headerlink" href="#module-chess_py.core.algebraic.location" title="Permalink to this headline">¶</a></h2>
-<p>Class stores Locations on the Board in form <code class="docutils literal"><span class="pre">Location(rank,</span> <span class="pre">file)</span></code>.
-| rank - y coordinate from 0 to 7
-| file - x coordinate from 0 to 7</p>
+<p>Class stores Locations on the Board in form <code class="docutils literal"><span class="pre">Location(rank,</span> <span class="pre">file)</span></code>.</p>
+<div class="line-block">
+<div class="line">rank - y coordinate from 0 to 7</div>
+<div class="line">file - x coordinate from 0 to 7</div>
+</div>
 <p>Can be initialized with coordinates not
 on the chess board, however, such locations
 will not wowrk properly with other classes
 such as <code class="docutils literal"><span class="pre">Board</span></code>.</p>
 <p>Location is immutable.</p>
-<p>Examples (shown on board below):
-| a = Location(0, 0)
-| b = Location(7, 7)
-| c = Location(3, 4)</p>
+<p>Examples (shown on board below):</p>
+<div class="line-block">
+<div class="line">a = Location(0, 0)</div>
+<div class="line">b = Location(7, 7)</div>
+<div class="line">c = Location(3, 4)</div>
+</div>
 <div class="line-block">
 <div class="line">rank</div>
 <div class="line">7 8 ║… … … … … … … b</div>
@@ -322,7 +326,23 @@ to initialize Move.</p>
 <dl class="class">
 <dt id="chess_py.core.algebraic.move.Move">
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.move.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><dl class="staticmethod">
+<dt id="chess_py.core.algebraic.move.Move.check_equals_or_none">
+<em class="property">static </em><code class="descname">check_equals_or_none</code><span class="sig-paren">(</span><em>var1</em>, <em>var2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.check_equals_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.check_equals_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>If either is None then return True,
+otherwise compare them and return
+if they are equal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.on_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines whether end Location of this Move
@@ -520,7 +540,23 @@ If the rank and file are both in between
 <dl class="class">
 <dt id="chess_py.core.algebraic.Move">
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><dl class="staticmethod">
+<dt id="chess_py.core.algebraic.Move.check_equals_or_none">
+<em class="property">static </em><code class="descname">check_equals_or_none</code><span class="sig-paren">(</span><em>var1</em>, <em>var2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.check_equals_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.check_equals_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>If either is None then return True,
+otherwise compare them and return
+if they are equal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="chess_py.core.algebraic.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.Move.on_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines whether end Location of this Move

@@ -48,11 +48,11 @@
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">chess_py.pieces.bishop</span> <span class="kn">import</span> <span class="n">Bishop</span>
-<span class="kn">from</span> <span class="nn">chess_py.pieces.pawn</span> <span class="kn">import</span> <span class="n">Pawn</span>
-<span class="kn">from</span> <span class="nn">chess_py.pieces.queen</span> <span class="kn">import</span> <span class="n">Queen</span>
-<span class="kn">from</span> <span class="nn">chess_py.pieces.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
-<span class="kn">from</span> <span class="nn">chess_py.pieces.knight</span> <span class="kn">import</span> <span class="n">Knight</span>
+<span class="kn">from</span> <span class="nn">.bishop</span> <span class="kn">import</span> <span class="n">Bishop</span>
+<span class="kn">from</span> <span class="nn">.pawn</span> <span class="kn">import</span> <span class="n">Pawn</span>
+<span class="kn">from</span> <span class="nn">.queen</span> <span class="kn">import</span> <span class="n">Queen</span>
+<span class="kn">from</span> <span class="nn">.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
+<span class="kn">from</span> <span class="nn">.knight</span> <span class="kn">import</span> <span class="n">Knight</span>
 
 
 <div class="viewcode-block" id="Piece_values"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece_const.Piece_values">[docs]</a><span class="k">class</span> <span class="nc">Piece_values</span><span class="p">:</span>
@@ -99,7 +99,7 @@
         <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
 
-        <span class="k">if</span> <span class="n">ref_color</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">piece</span><span class="o">.</span><span class="n">color</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ref_color</span> <span class="o">==</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
             <span class="n">const</span> <span class="o">=</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">const</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>

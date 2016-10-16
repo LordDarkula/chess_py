@@ -45,64 +45,8 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-chess_py.players.basicAI">
-<span id="chess-py-players-basicai-module"></span><h2>chess_py.players.basicAI module<a class="headerlink" href="#module-chess_py.players.basicAI" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="chess_py.players.basicAI.Ai">
-<em class="property">class </em><code class="descclassname">chess_py.players.basicAI.</code><code class="descname">Ai</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="chess_py.players.basicAI.Ai.best_move">
-<code class="descname">best_move</code><span class="sig-paren">(</span><em>position</em>, <em>color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.best_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.best_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the best move based on material after the move
-:type position Board
-:type color Color
-:rtype Move</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.players.basicAI.Ai.best_reply">
-<code class="descname">best_reply</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.best_reply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.best_reply" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the best move based on material after the move
-:type move Move
-:type position Board
-:rtype Move</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.players.basicAI.Ai.generate_move">
-<code class="descname">generate_move</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.generate_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.generate_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns valid and legal move given position
-:type position: Board
-:rtype Move</p>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="chess_py.players.basicAI.Ai.is_quiet_position">
-<em class="property">static </em><code class="descname">is_quiet_position</code><span class="sig-paren">(</span><em>input_color</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.is_quiet_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.is_quiet_position" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="chess_py.players.basicAI.Ai.one_move_ahead">
-<code class="descname">one_move_ahead</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.one_move_ahead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.one_move_ahead" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="chess_py.players.basicAI.Ai.treeSearch">
-<code class="descname">treeSearch</code><span class="sig-paren">(</span><em>position</em>, <em>depth</em>, <em>color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.treeSearch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.treeSearch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns valid and legal move given position
-:type position: Board
-:type depth int
-:type color Color
-:rtype Move</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.players.basicAI.Ai.weed_checkmate">
-<code class="descname">weed_checkmate</code><span class="sig-paren">(</span><em>moves</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/basicAI.html#Ai.weed_checkmate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.basicAI.Ai.weed_checkmate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="chess-py-players-basicai-module">
+<h2>chess_py.players.basicAI module<a class="headerlink" href="#chess-py-players-basicai-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-chess_py.players.human">
 <span id="chess-py-players-human-module"></span><h2>chess_py.players.human module<a class="headerlink" href="#module-chess_py.players.human" title="Permalink to this headline">¶</a></h2>
@@ -270,7 +214,7 @@ can be read by external GUI.</p>
   <ul>
 <li><a class="reference internal" href="#">chess_py.players package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-chess_py.players.basicAI">chess_py.players.basicAI module</a></li>
+<li><a class="reference internal" href="#chess-py-players-basicai-module">chess_py.players.basicAI module</a></li>
 <li><a class="reference internal" href="#module-chess_py.players.human">chess_py.players.human module</a></li>
 <li><a class="reference internal" href="#module-chess_py.players.player">chess_py.players.player module</a></li>
 <li><a class="reference internal" href="#module-chess_py.players">Module contents</a></li>

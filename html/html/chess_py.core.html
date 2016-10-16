@@ -124,11 +124,6 @@ Initialized upon startup and is used when init_default constructor is used</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="chess_py.core.board.Board.black">
-<code class="descname">black</code><em class="property"> = &lt;chess_py.core.color.Color instance&gt;</em><a class="headerlink" href="#chess_py.core.board.Board.black" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="chess_py.core.board.Board.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.copy" title="Permalink to this definition">¶</a></dt>
@@ -142,11 +137,6 @@ Initialized upon startup and is used when init_default constructor is used</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="chess_py.core.board.Board.default_position">
-<code class="descname">default_position</code><em class="property"> = [[&lt;chess_py.pieces.rook.Rook object at 0x1046def50&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046def90&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046defd0&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ef050&gt;, &lt;chess_py.pieces.king.King object at 0x1046ef110&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef150&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef190&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ef1d0&gt;], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ef210&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef250&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef290&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef2d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef310&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef350&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef390&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef3d0&gt;], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ef410&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef450&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef490&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef4d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef510&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef550&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef590&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef5d0&gt;], [&lt;chess_py.pieces.rook.Rook object at 0x1046ef610&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef650&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef690&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ef6d0&gt;, &lt;chess_py.pieces.king.King object at 0x1046ef790&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef7d0&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef810&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ef850&gt;]]</em><a class="headerlink" href="#chess_py.core.board.Board.default_position" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.board.Board.find_king">
@@ -194,7 +184,7 @@ If none is found, Exception is raised.</p>
 <dl class="classmethod">
 <dt id="chess_py.core.board.Board.init_default">
 <em class="property">classmethod </em><code class="descname">init_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.init_default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.init_default" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alternate init method for default starting position</p>
+<dd><p>Creates a <a href="#id1"><span class="problematic" id="id2">``</span></a>Board&#8217;&#8217; with the standard chess starting position.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -236,7 +226,7 @@ If none is found, Exception is raised.</p>
 <dl class="method">
 <dt id="chess_py.core.board.Board.move_piece">
 <code class="descname">move_piece</code><span class="sig-paren">(</span><em>initial</em>, <em>final</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.move_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.move_piece" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moves piece from one get_location to another</p>
+<dd><p>Moves piece from one location to another</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -296,11 +286,6 @@ If none is found, Exception is raised.</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="chess_py.core.board.Board.white">
-<code class="descname">white</code><em class="property"> = &lt;chess_py.core.color.Color instance&gt;</em><a class="headerlink" href="#chess_py.core.board.Board.white" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -509,7 +494,23 @@ If the rank and file are both in between
 <dl class="class">
 <dt id="chess_py.core.Move">
 <em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><dl class="staticmethod">
+<dt id="chess_py.core.Move.check_equals_or_none">
+<em class="property">static </em><code class="descname">check_equals_or_none</code><span class="sig-paren">(</span><em>var1</em>, <em>var2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.check_equals_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move.check_equals_or_none" title="Permalink to this definition">¶</a></dt>
+<dd><p>If either is None then return True,
+otherwise compare them and return
+if they are equal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="chess_py.core.Move.on_board">
 <code class="descname">on_board</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.on_board"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Move.on_board" title="Permalink to this definition">¶</a></dt>
 <dd><p>Determines whether end Location of this Move
@@ -580,11 +581,6 @@ Initialized upon startup and is used when init_default constructor is used</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="chess_py.core.Board.black">
-<code class="descname">black</code><em class="property"> = &lt;chess_py.core.color.Color instance&gt;</em><a class="headerlink" href="#chess_py.core.Board.black" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="chess_py.core.Board.copy">
 <code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.copy" title="Permalink to this definition">¶</a></dt>
@@ -598,11 +594,6 @@ Initialized upon startup and is used when init_default constructor is used</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="chess_py.core.Board.default_position">
-<code class="descname">default_position</code><em class="property"> = [[&lt;chess_py.pieces.rook.Rook object at 0x1046def50&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046def90&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046defd0&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ef050&gt;, &lt;chess_py.pieces.king.King object at 0x1046ef110&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef150&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef190&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ef1d0&gt;], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ef210&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef250&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef290&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef2d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef310&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef350&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef390&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef3d0&gt;], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [None, None, None, None, None, None, None, None], [&lt;chess_py.pieces.pawn.Pawn object at 0x1046ef410&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef450&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef490&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef4d0&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef510&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef550&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef590&gt;, &lt;chess_py.pieces.pawn.Pawn object at 0x1046ef5d0&gt;], [&lt;chess_py.pieces.rook.Rook object at 0x1046ef610&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef650&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef690&gt;, &lt;chess_py.pieces.queen.Queen object at 0x1046ef6d0&gt;, &lt;chess_py.pieces.king.King object at 0x1046ef790&gt;, &lt;chess_py.pieces.bishop.Bishop object at 0x1046ef7d0&gt;, &lt;chess_py.pieces.knight.Knight object at 0x1046ef810&gt;, &lt;chess_py.pieces.rook.Rook object at 0x1046ef850&gt;]]</em><a class="headerlink" href="#chess_py.core.Board.default_position" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.Board.find_king">
@@ -650,7 +641,7 @@ If none is found, Exception is raised.</p>
 <dl class="classmethod">
 <dt id="chess_py.core.Board.init_default">
 <em class="property">classmethod </em><code class="descname">init_default</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.init_default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.init_default" title="Permalink to this definition">¶</a></dt>
-<dd><p>Alternate init method for default starting position</p>
+<dd><p>Creates a <a href="#id3"><span class="problematic" id="id4">``</span></a>Board&#8217;&#8217; with the standard chess starting position.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -692,7 +683,7 @@ If none is found, Exception is raised.</p>
 <dl class="method">
 <dt id="chess_py.core.Board.move_piece">
 <code class="descname">move_piece</code><span class="sig-paren">(</span><em>initial</em>, <em>final</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.move_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Board.move_piece" title="Permalink to this definition">¶</a></dt>
-<dd><p>Moves piece from one get_location to another</p>
+<dd><p>Moves piece from one location to another</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -752,40 +743,6 @@ If none is found, Exception is raised.</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="chess_py.core.Board.white">
-<code class="descname">white</code><em class="property"> = &lt;chess_py.core.color.Color instance&gt;</em><a class="headerlink" href="#chess_py.core.Board.white" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="chess_py.core.Color">
-<em class="property">class </em><code class="descclassname">chess_py.core.</code><code class="descname">Color</code><span class="sig-paren">(</span><em>raw</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="chess_py.core.Color.opponent">
-<code class="descname">opponent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.opponent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.opponent" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds other color</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.color.Color" title="chess_py.core.color.Color">Color</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="classmethod">
-<dt id="chess_py.core.Color.pblack">
-<em class="property">classmethod </em><code class="descname">pblack</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.pblack"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.pblack" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="classmethod">
-<dt id="chess_py.core.Color.pwhite">
-<em class="property">classmethod </em><code class="descname">pwhite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/color.html#Color.pwhite"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.Color.pwhite" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
