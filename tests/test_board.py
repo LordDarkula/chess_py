@@ -45,16 +45,16 @@ class TestBoard(TestCase):
 
         for num, row in enumerate(self.board.position):
             for index, piece in enumerate(row):
-                self.assertEquals(piece, tester.position[num][index])
+                self.assertEqual(piece, tester.position[num][index])
 
     def test_piece_at_square(self):
-        self.assertEquals(self.board.piece_at_square(Location(0, 0)),
+        self.assertEqual(self.board.piece_at_square(Location(0, 0)),
                           Rook(color.white, Location(0, 0)))
 
-        self.assertEquals(self.board.piece_at_square(Location(1, 0)),
+        self.assertEqual(self.board.piece_at_square(Location(1, 0)),
                           Pawn(color.white, Location(1, 0)))
 
-        self.assertEquals(self.board.piece_at_square(Location(0, 1)),
+        self.assertEqual(self.board.piece_at_square(Location(0, 1)),
                           Knight(color.white, Location(0, 1)))
 
     def test_is_square_empty(self):
@@ -131,10 +131,10 @@ class TestBoard(TestCase):
             self.assertEqual(moves[index], str(move))
 
     def test_find_piece(self):
-        self.assertEquals(self.board.find_piece(Rook(color.white, Location(0, 0))),
+        self.assertEqual(self.board.find_piece(Rook(color.white, Location(0, 0))),
                           Location(0, 0))
 
-        self.assertEquals(self.board.find_piece(Rook(color.black, Location(7, 0))),
+        self.assertEqual(self.board.find_piece(Rook(color.black, Location(7, 0))),
                           Location(7, 0))
 
         self.assertNotEquals(self.board.find_piece(Rook(color.black, Location(7, 0))),
@@ -147,17 +147,17 @@ class TestBoard(TestCase):
                          Location.init_alg("b1"))
 
     def test_find_king(self):
-        self.assertEquals(self.board.find_king(color.white),
+        self.assertEqual(self.board.find_king(color.white),
                           Location(0, 4))
 
-        self.assertEquals(self.board.find_king(color.black),
+        self.assertEqual(self.board.find_king(color.black),
                           Location(7, 4))
 
     def test_get_king(self):
-        self.assertEquals(self.board.get_king(color.white),
+        self.assertEqual(self.board.get_king(color.white),
                           King(color.white, Location(0, 4)))
 
-        self.assertEquals(self.board.get_king(color.black),
+        self.assertEqual(self.board.get_king(color.black),
                           King(color.black, Location(7, 4)))
 
     def test_remove_piece_at_square(self):
