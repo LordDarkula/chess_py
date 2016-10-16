@@ -1,7 +1,5 @@
 from unittest import TestCase
 from chess_py.core.board import Board
-import chess_py
-print(chess_py.__file__)
 from chess_py.core import color
 from chess_py.core.algebraic.location import Location
 from chess_py import Pawn, Knight, Bishop, Rook, Queen, King, piece_const, converter

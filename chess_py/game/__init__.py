@@ -1,4 +1,4 @@
-from chess_py.game.game import Game
-from chess_py.game import game_state
+from .game import Game
+from . import game_state
 
 __all__ = ['Game', 'game_state']

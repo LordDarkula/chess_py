@@ -28,6 +28,7 @@ and black home row is at index 7
 """
 
 from __future__ import print_function
+
 from copy import copy as cp
 from math import fabs
 
