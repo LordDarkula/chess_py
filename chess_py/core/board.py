@@ -183,7 +183,7 @@ class Board:
         advantage = 0.0
         for row in self.position:
             for piece in row:
-                advantage += val_scheme.val(piece, input_color)
+                advantage += val_scheme.val(piece=piece, ref_color=input_color)
 
         return advantage
 

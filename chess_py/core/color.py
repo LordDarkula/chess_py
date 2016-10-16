@@ -79,4 +79,4 @@ def raw(string):
     :type string: str
     :rtype: Color
     """
-    return Color(string)
+    return Color(string.lower())
