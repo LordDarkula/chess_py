@@ -105,6 +105,7 @@ class Board:
         return hash(self.__key())
 
     def __eq__(self, other):
+        print(other)
 
         if type(other) is not Board:
             raise TypeError("Cannot compare other type to Board")
