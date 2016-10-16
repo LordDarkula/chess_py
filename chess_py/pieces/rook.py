@@ -20,11 +20,10 @@ Class stores Rook on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.algebraic import notation_const
-from chess_py.core.algebraic.location import Location
-from chess_py.pieces.piece import Piece
-
-from chess_py.core.algebraic.move import Move
+from .piece import Piece
+from ..core.algebraic import notation_const
+from ..core.algebraic.location import Location
+from ..core.algebraic.move import Move
 
 
 class Rook(Piece):

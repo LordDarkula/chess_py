@@ -20,10 +20,9 @@ Class stores Bishop on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.pieces.piece import Piece
-from chess_py.pieces.rook import Rook
-
-from chess_py.core.color import Color
+from .piece import Piece
+from .rook import Rook
+from ..core.color import Color
 
 
 class Bishop(Piece):

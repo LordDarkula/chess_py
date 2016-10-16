@@ -7,7 +7,7 @@ game is over, and if a King is checkmated.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core import color
+from ..core import color
 
 
 def no_moves(position):

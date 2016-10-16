@@ -6,11 +6,11 @@ Constants for piece values in the game
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.pieces.bishop import Bishop
-from chess_py.pieces.pawn import Pawn
-from chess_py.pieces.queen import Queen
-from chess_py.pieces.rook import Rook
-from chess_py.pieces.knight import Knight
+from .bishop import Bishop
+from .pawn import Pawn
+from .queen import Queen
+from .rook import Rook
+from .knight import Knight
 
 
 class Piece_values:

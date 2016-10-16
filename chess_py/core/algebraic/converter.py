@@ -7,16 +7,16 @@ to turn them into usable commands.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core import color
-from chess_py.core.algebraic import notation_const
-from chess_py.core.algebraic.location import Location
-from chess_py.core.algebraic.move import Move
-from chess_py.pieces.bishop import Bishop
-from chess_py.pieces.king import King
-from chess_py.pieces.pawn import Pawn
-from chess_py.pieces.queen import Queen
-from chess_py.pieces.rook import Rook
-from chess_py.pieces.knight import Knight
+from .. import color
+from . import notation_const
+from .location import Location
+from .move import Move
+from ...pieces.bishop import Bishop
+from ...pieces.king import King
+from ...pieces.pawn import Pawn
+from ...pieces.queen import Queen
+from ...pieces.rook import Rook
+from ...pieces.knight import Knight
 
 
 def incomplete_alg(algebraic_string, input_color):

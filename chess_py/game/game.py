@@ -16,11 +16,12 @@ when the game is finished.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.board import Board
-from chess_py.core import color
-from chess_py.game import game_state
-from chess_py.core.algebraic.converter import make_legal
 import itertools
+
+from ..core.board import Board
+from ..core import color
+from . import game_state
+from ..core.algebraic.converter import make_legal
 
 
 class Game:

@@ -31,16 +31,15 @@ from __future__ import print_function
 from copy import copy as cp
 from math import fabs
 
-from chess_py.core import color
-from chess_py.core.algebraic import notation_const
-from chess_py.core.algebraic.location import Location
-from chess_py.core.color import Color
-from chess_py.pieces.bishop import Bishop
-from chess_py.pieces.king import King
-from chess_py.pieces.pawn import Pawn
-from chess_py.pieces.queen import Queen
-from chess_py.pieces.rook import Rook
-from chess_py.pieces.knight import Knight
+from . import color
+from .algebraic import notation_const
+from .algebraic.location import Location
+from ..pieces.bishop import Bishop
+from ..pieces.king import King
+from ..pieces.pawn import Pawn
+from ..pieces.queen import Queen
+from ..pieces.rook import Rook
+from ..pieces.knight import Knight
 
 
 class Board:
@@ -106,8 +105,9 @@ class Board:
         return hash(self.__key())
 
     def __eq__(self, other):
+
         if type(other) is not Board:
-            return False
+            raise TypeError("Cannot compare other type to Board")
 
         for i, row in enumerate(self.position):
 

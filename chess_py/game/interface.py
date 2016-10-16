@@ -1,5 +1,7 @@
-from chess_py.core import Board
+
 from multiprocessing import Process
+
+from ..core import Board
 
 
 class UCI:

@@ -1,5 +1,10 @@
 from unittest import TestCase
-from chess_py import color, Location, Board, Pawn, Knight, Bishop, Rook, Queen, King, piece_const, converter
+from chess_py.core.board import Board
+import chess_py
+print(chess_py.__file__)
+from chess_py.core import color
+from chess_py.core.algebraic.location import Location
+from chess_py import Pawn, Knight, Bishop, Rook, Queen, King, piece_const, converter
 
 
 class TestBoard(TestCase):
@@ -9,7 +14,7 @@ class TestBoard(TestCase):
     def test_init_default(self):
         white = color.white
         black = color.black
-        self.assertEqual(self.board, Board([
+        test = Board([
 
         # First rank
         [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
@@ -38,7 +43,10 @@ class TestBoard(TestCase):
         # Eighth rank
         [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
          Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
-         Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]]))
+         Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]])
+        print(test)
+        print(self.board)
+        self.assertEqual(self.board, test)
 
     def test_copy(self):
         tester = Board.init_default()
@@ -58,8 +66,8 @@ class TestBoard(TestCase):
                           Knight(color.white, Location(0, 1)))
 
     def test_is_square_empty(self):
-        self.failUnless(self.board.is_square_empty(Location(2, 0)))
-        self.failIf(self.board.is_square_empty(Location(0, 3)))
+        self.assertTrue(self.board.is_square_empty(Location(2, 0)))
+        self.assertFalse(self.board.is_square_empty(Location(0, 3)))
 
     def test_material_advantage(self):
         self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 0)

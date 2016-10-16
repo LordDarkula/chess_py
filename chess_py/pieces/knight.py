@@ -20,10 +20,9 @@ Class stores Knight on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.algebraic import notation_const
-from chess_py.pieces.piece import Piece
-
-from chess_py.core.algebraic.move import Move
+from ..core.algebraic import notation_const
+from ..pieces.piece import Piece
+from ..core.algebraic.move import Move
 
 
 class Knight(Piece):

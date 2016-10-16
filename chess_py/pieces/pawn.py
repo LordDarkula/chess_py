@@ -20,15 +20,14 @@ Class stores Pawn on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core import color
-from chess_py.core.algebraic import notation_const
-from chess_py.core.algebraic.move import Move
-from chess_py.pieces.bishop import Bishop
-from chess_py.pieces.piece import Piece
-from chess_py.pieces.queen import Queen
-from chess_py.pieces.rook import Rook
-
-from chess_py.pieces.knight import Knight
+from .bishop import Bishop
+from .piece import Piece
+from .queen import Queen
+from .rook import Rook
+from .knight import Knight
+from ..core import color
+from ..core.algebraic import notation_const
+from ..core.algebraic.move import Move
 
 
 class Pawn(Piece):

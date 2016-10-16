@@ -12,7 +12,7 @@ to initialize Move.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from chess_py.core.algebraic.location import Location
+from .location import Location
 
 
 class Move:
