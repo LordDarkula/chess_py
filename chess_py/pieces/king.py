@@ -53,11 +53,12 @@ class King(Piece):
 
         :type pos: Board
         :type move: Move
+        :rtype: bool
         """
         test = pos.copy()
 
         test.update(move)
-        test_king = test.piece_at_square(move.end_loc)
+        test_king = test.get_king(move.color)
 
         return test_king.in_check(test)
 
