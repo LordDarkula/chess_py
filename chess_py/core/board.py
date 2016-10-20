@@ -182,6 +182,13 @@ class Board:
         :type val_scheme: Piece_values
         :rtype: double
         """
+        if self.get_king(input_color).in_check(self) and len(self.all_possible_moves(input_color)) == 0:
+            return -100
+
+        if self.get_king(input_color.opponent()).in_check(self) and \
+                        len(self.all_possible_moves(input_color.opponent())) == 0:
+            return 100
+
         advantage = 0.0
         for row in self.position:
             for piece in row:
