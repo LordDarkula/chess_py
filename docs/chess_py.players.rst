@@ -4,14 +4,6 @@ chess_py.players package
 Submodules
 ----------
 
-chess_py.players.basicAI module
--------------------------------
-
-.. automodule:: chess_py.players.basicAI
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 chess_py.players.human module
 -----------------------------
 
