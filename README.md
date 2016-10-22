@@ -73,9 +73,11 @@ result = new_game.play()
 To build a chess engine on with chess_py, inherit Player and implement generate_move() 
 
 ```python
+import chess_py
+from chess_py import Game, Human, color
 
 # Engine which plays the move with the highest immediate material advantage
-class My_engine:
+class My_engine(chess_py.Player):
     def __init__(self, color):
     
       # Creates piece value scheme to specify value of each piece.
@@ -114,7 +116,7 @@ class My_engine:
 
 # If file is run as script, a Game is set up between My_engine and Human and result is printed.
 if __name__ == "__main__":
-    new_game = My_engine(Human(color.white), Human(color.black))
+    new_game = Game(My_engine(color.white), Human(color.black))
     
     # white wins - 0, black wins - 1, draw - 0.5 
     print("Result: ", new_game.play())
