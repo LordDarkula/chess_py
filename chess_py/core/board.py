@@ -61,7 +61,7 @@ class Board:
     @classmethod
     def init_default(cls):
         """
-        Creates a ``Board'' with the standard chess starting position.
+        Creates a ``Board`` with the standard chess starting position.
 
         :rtype: Board
         """
