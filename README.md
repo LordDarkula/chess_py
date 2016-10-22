@@ -39,7 +39,7 @@ python main.py
 
 To install package  
 
-### pip
+### ``pip`` (*Recommended*)
 ```bash
 pip install chess_py
 ```
@@ -52,7 +52,7 @@ python setup.py install
 
 View complete technical documentation [here](http://lorddarkula.github.io/chess_py).
 
-## Great! How do you use it? (An Example)
+## Great! How do you use it? (*An Example*)
 
 Chess_py has the capability of creating games between players, either human, or AI 
 
