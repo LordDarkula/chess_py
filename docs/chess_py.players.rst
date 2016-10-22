@@ -1,9 +1,6 @@
 chess_py.players package
 ========================
 
-Submodules
-----------
-
 chess_py.players.human module
 -----------------------------
 
@@ -20,11 +17,3 @@ chess_py.players.player module
     :undoc-members:
     :show-inheritance:
 
-
-Module contents
----------------
-
-.. automodule:: chess_py.players
-    :members:
-    :undoc-members:
-    :show-inheritance:

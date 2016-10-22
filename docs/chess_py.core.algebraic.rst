@@ -1,9 +1,6 @@
 chess_py.core.algebraic package
 ===============================
 
-Submodules
-----------
-
 chess_py.core.algebraic.converter module
 ----------------------------------------
 
@@ -32,15 +29,6 @@ chess_py.core.algebraic.notation_const module
 ---------------------------------------------
 
 .. automodule:: chess_py.core.algebraic.notation_const
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: chess_py.core.algebraic
     :members:
     :undoc-members:
     :show-inheritance:

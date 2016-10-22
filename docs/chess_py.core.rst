@@ -27,11 +27,3 @@ chess_py.core.color module
     :undoc-members:
     :show-inheritance:
 
-
-Module contents
----------------
-
-.. automodule:: chess_py.core
-    :members:
-    :undoc-members:
-    :show-inheritance:

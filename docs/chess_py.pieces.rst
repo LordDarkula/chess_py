@@ -1,9 +1,6 @@
 chess_py.pieces package
 =======================
 
-Submodules
-----------
-
 chess_py.pieces.bishop module
 -----------------------------
 
@@ -68,11 +65,3 @@ chess_py.pieces.rook module
     :undoc-members:
     :show-inheritance:
 
-
-Module contents
----------------
-
-.. automodule:: chess_py.pieces
-    :members:
-    :undoc-members:
-    :show-inheritance:
