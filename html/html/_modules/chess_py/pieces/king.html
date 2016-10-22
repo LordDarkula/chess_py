@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.pieces.king &mdash; chess_py  documentation</title>
+    <title>chess_py.pieces.king &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -27,6 +27,7 @@
     <link rel="up" title="Module code" href="../../index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -62,13 +63,11 @@
 <span class="sd">| Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.piece</span> <span class="kn">import</span> <span class="n">Piece</span>
-<span class="kn">from</span> <span class="nn">.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
-<span class="kn">from</span> <span class="nn">..core.algebraic</span> <span class="kn">import</span> <span class="n">notation_const</span>
-<span class="kn">from</span> <span class="nn">..core.algebraic.location</span> <span class="kn">import</span> <span class="n">Location</span>
-
-
-<span class="kn">from</span> <span class="nn">chess_py.core.algebraic.move</span> <span class="kn">import</span> <span class="n">Move</span>
+<span class="kn">from</span> <span class="nn">.piece</span> <span class="k">import</span> <span class="n">Piece</span>
+<span class="kn">from</span> <span class="nn">.rook</span> <span class="k">import</span> <span class="n">Rook</span>
+<span class="kn">from</span> <span class="nn">..core.algebraic</span> <span class="k">import</span> <span class="n">notation_const</span>
+<span class="kn">from</span> <span class="nn">..core.algebraic.location</span> <span class="k">import</span> <span class="n">Location</span>
+<span class="kn">from</span> <span class="nn">..core.algebraic.move</span> <span class="k">import</span> <span class="n">Move</span>
 
 
 <div class="viewcode-block" id="King"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King">[docs]</a><span class="k">class</span> <span class="nc">King</span><span class="p">(</span><span class="n">Piece</span><span class="p">):</span>
@@ -80,7 +79,7 @@
 <span class="sd">        :type location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">King</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♚&quot;</span><span class="p">,</span> <span class="s2">&quot;♔&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cardinal_directions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross_fn</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">cardinal_directions</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">diag_fn</span><span class="p">)</span>
 
@@ -95,11 +94,12 @@
 
 <span class="sd">        :type pos: Board</span>
 <span class="sd">        :type move: Move</span>
+<span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">test</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
         <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
-        <span class="n">test_king</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">end_loc</span><span class="p">)</span>
+        <span class="n">test_king</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">test_king</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">test</span><span class="p">)</span></div>
 
@@ -136,7 +136,7 @@
             <span class="c1"># King side castle</span>
             <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
             <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
-            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
                 <span class="c1"># If it is kingside castle and both spaces are empty</span>
                 <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span> <span class="ow">and</span> \
                         <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()):</span>
@@ -165,7 +165,7 @@
             <span class="c1"># Queen side castle</span>
             <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
             <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
-            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
 
                 <span class="c1"># If it is queen side castle and all intermediate squares are empty</span>
                 <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span> <span class="ow">and</span> \
@@ -222,14 +222,14 @@
             <span class="c1"># Loops through rows</span>
             <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
 
-                <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
 
                     <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
 
                         <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
-                            <span class="k">return</span> <span class="bp">True</span>
+                            <span class="k">return</span> <span class="kc">True</span>
 
-            <span class="k">return</span> <span class="bp">False</span></div></div>
+            <span class="k">return</span> <span class="kc">False</span></div></div>
 </pre></div>
 
           </div>
@@ -248,8 +248,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -263,8 +263,8 @@
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
     </div>
 

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.core.algebraic.move &mdash; chess_py  documentation</title>
+    <title>chess_py.core.algebraic.move &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -27,6 +27,7 @@
     <link rel="up" title="Module code" href="../../../index.html" />
    
   <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -54,14 +55,14 @@
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.location</span> <span class="kn">import</span> <span class="n">Location</span>
+<span class="kn">from</span> <span class="nn">.location</span> <span class="k">import</span> <span class="n">Location</span>
 
 
-<div class="viewcode-block" id="Move"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move">[docs]</a><span class="k">class</span> <span class="nc">Move</span><span class="p">:</span>
+<div class="viewcode-block" id="Move"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move">[docs]</a><span class="k">class</span> <span class="nc">Move</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">end_loc</span><span class="p">,</span> <span class="n">piece</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span>
-                 <span class="n">start_rank</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">start_file</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
-                 <span class="n">promoted_to_piece</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+                 <span class="n">start_rank</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">start_file</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">promoted_to_piece</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor to create move using object Location</span>
 
@@ -99,12 +100,12 @@
 
         <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__key</span><span class="p">()):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_equals_or_none</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">__key</span><span class="p">()[</span><span class="n">index</span><span class="p">]):</span>
-                <span class="k">return</span> <span class="bp">False</span>
+                <span class="k">return</span> <span class="kc">False</span>
 
-        <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="Move.check_equals_or_none"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.check_equals_or_none">[docs]</a>    <span class="k">def</span> <span class="nf">check_equals_or_none</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
+<div class="viewcode-block" id="Move.check_equals_or_none"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move.check_equals_or_none">[docs]</a>    <span class="k">def</span> <span class="nf">check_equals_or_none</span><span class="p">(</span><span class="n">var1</span><span class="p">,</span> <span class="n">var2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        If either is None then return True,</span>
 <span class="sd">        otherwise compare them and return</span>
@@ -114,8 +115,8 @@
 <span class="sd">        :type var2: object</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">var1</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">var2</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">if</span> <span class="n">var1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">var2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">return</span> <span class="n">var1</span> <span class="o">==</span> <span class="n">var2</span></div>
 
@@ -130,24 +131,24 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">move_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span><span class="p">))</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">end_loc</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">promoted_to_piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">promoted_to_piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">move_str</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">promoted_to_piece</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">move_str</span>
 
-<div class="viewcode-block" id="Move.start_loc"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.start_loc">[docs]</a>    <span class="k">def</span> <span class="nf">start_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Move.start_loc"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move.start_loc">[docs]</a>    <span class="k">def</span> <span class="nf">start_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds start Location of move if specified.</span>
 <span class="sd">        Otherwise throws an AttributeError</span>
 
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;start_rank and start_file must be specified&quot;</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">start_rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Move.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Move.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Determines whether end Location of this Move</span>
 <span class="sd">        is on the board.</span>
@@ -156,19 +157,19 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_loc</span><span class="o">.</span><span class="n">on_board</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Move.would_move_be_promotion"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Move.would_move_be_promotion">[docs]</a>    <span class="k">def</span> <span class="nf">would_move_be_promotion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Move.would_move_be_promotion"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move.would_move_be_promotion">[docs]</a>    <span class="k">def</span> <span class="nf">would_move_be_promotion</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if move from current location would be a promotion</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_loc</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> \
                 <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">end_loc</span><span class="o">.</span><span class="n">rank</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> \
                 <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
-        <span class="k">return</span> <span class="bp">False</span></div></div>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
 </pre></div>
 
           </div>
@@ -187,8 +188,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -202,8 +203,8 @@
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
     </div>
 

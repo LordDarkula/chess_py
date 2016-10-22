@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.pieces.piece_const &mdash; chess_py  documentation</title>
+    <title>chess_py.pieces.piece_const &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -28,6 +28,7 @@
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
@@ -48,11 +49,11 @@
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">.bishop</span> <span class="kn">import</span> <span class="n">Bishop</span>
-<span class="kn">from</span> <span class="nn">.pawn</span> <span class="kn">import</span> <span class="n">Pawn</span>
-<span class="kn">from</span> <span class="nn">.queen</span> <span class="kn">import</span> <span class="n">Queen</span>
-<span class="kn">from</span> <span class="nn">.rook</span> <span class="kn">import</span> <span class="n">Rook</span>
-<span class="kn">from</span> <span class="nn">.knight</span> <span class="kn">import</span> <span class="n">Knight</span>
+<span class="kn">from</span> <span class="nn">.bishop</span> <span class="k">import</span> <span class="n">Bishop</span>
+<span class="kn">from</span> <span class="nn">.pawn</span> <span class="k">import</span> <span class="n">Pawn</span>
+<span class="kn">from</span> <span class="nn">.queen</span> <span class="k">import</span> <span class="n">Queen</span>
+<span class="kn">from</span> <span class="nn">.rook</span> <span class="k">import</span> <span class="n">Rook</span>
+<span class="kn">from</span> <span class="nn">.knight</span> <span class="k">import</span> <span class="n">Knight</span>
 
 
 <div class="viewcode-block" id="Piece_values"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece_const.Piece_values">[docs]</a><span class="k">class</span> <span class="nc">Piece_values</span><span class="p">:</span>
@@ -96,7 +97,7 @@
 <span class="sd">        :type ref_color: Color</span>
 <span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
 
         <span class="k">if</span> <span class="n">ref_color</span> <span class="o">==</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
@@ -134,8 +135,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -149,8 +150,8 @@
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
     </div>
 

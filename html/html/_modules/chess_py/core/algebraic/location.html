@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.core.algebraic.location &mdash; chess_py  documentation</title>
+    <title>chess_py.core.algebraic.location &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="../../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
@@ -27,6 +27,7 @@
     <link rel="up" title="Module code" href="../../../index.html" />
    
   <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -79,8 +80,8 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
-<div class="viewcode-block" id="Location"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location">[docs]</a><span class="k">class</span> <span class="nc">Location</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="nb">file</span><span class="p">):</span>
+<div class="viewcode-block" id="Location"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location">[docs]</a><span class="k">class</span> <span class="nc">Location</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rank</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a location on a chessboard given x and y coordinates.</span>
 
@@ -88,10 +89,10 @@
 <span class="sd">        :type file: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">=</span> <span class="n">rank</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="nb">file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">=</span> <span class="n">file</span>
 
     <span class="nd">@classmethod</span>
-<div class="viewcode-block" id="Location.init_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.init_alg">[docs]</a>    <span class="k">def</span> <span class="nf">init_alg</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">alg_str</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.init_alg"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.init_alg">[docs]</a>    <span class="k">def</span> <span class="nf">init_alg</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">alg_str</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a location from a two character string consisting of </span>
 <span class="sd">        the file then rank written in algebraic notation.</span>
@@ -132,19 +133,19 @@
 
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">rank_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">rank_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">file_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">file_str</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">+</span> <span class="mi">97</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">file_str</span> <span class="o">+</span> <span class="n">rank_str</span>
 
-<div class="viewcode-block" id="Location.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.on_board"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.on_board">[docs]</a>    <span class="k">def</span> <span class="nf">on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns if the move is on the board or not.</span>
 <span class="sd">        If the rank and file are both in between</span>
@@ -154,11 +155,11 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="ow">and</span> \
                 <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">True</span>
+            <span class="k">return</span> <span class="kc">True</span>
 
-        <span class="k">return</span> <span class="bp">False</span></div>
+        <span class="k">return</span> <span class="kc">False</span></div>
 
-<div class="viewcode-block" id="Location.shift_up"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_up"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_up">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up by 1</span>
 
@@ -166,7 +167,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Location.shift_down"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_down"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_down">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down by 1</span>
 
@@ -174,7 +175,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Location.shift_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted right by 1</span>
 
@@ -182,7 +183,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Location.shift_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted left by 1</span>
 
@@ -190,7 +191,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">file</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Location.shift_up_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_up_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_up_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up right by 1</span>
 
@@ -198,7 +199,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_up</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Location.shift_up_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_up_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_up_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_up_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_up_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted up left by 1</span>
 
@@ -206,7 +207,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_up</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Location.shift_down_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_down_right"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_down_right">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_right</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down right by 1</span>
 
@@ -214,7 +215,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shift_down</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="Location.shift_down_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.Location.shift_down_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Location.shift_down_left"><a class="viewcode-back" href="../../../../chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location.shift_down_left">[docs]</a>    <span class="k">def</span> <span class="nf">shift_down_left</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds Location shifted down left by 1</span>
 
@@ -240,8 +241,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -255,8 +256,8 @@
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
     </div>
 

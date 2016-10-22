@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.game package &mdash; chess_py  documentation</title>
+    <title>chess_py.game package &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -30,6 +30,7 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
@@ -43,9 +44,6 @@
             
   <div class="section" id="chess-py-game-package">
 <h1>chess_py.game package<a class="headerlink" href="#chess-py-game-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="module-chess_py.game.game">
 <span id="chess-py-game-game-module"></span><h2>chess_py.game.game module<a class="headerlink" href="#module-chess_py.game.game" title="Permalink to this headline">¶</a></h2>
 <p>Class that holds state of a game.</p>
@@ -61,7 +59,8 @@ when the game is finished.</p>
 <dl class="class">
 <dt id="chess_py.game.game.Game">
 <em class="property">class </em><code class="descclassname">chess_py.game.game.</code><code class="descname">Game</code><span class="sig-paren">(</span><em>player_white</em>, <em>player_black</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
 <dt id="chess_py.game.game.Game.all_possible_moves">
 <code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.game.Game.all_possible_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all possible moves a particular player can
@@ -144,7 +143,8 @@ game is over, and if a King is checkmated.</p>
 <dl class="class">
 <dt id="chess_py.game.interface.UCI">
 <em class="property">class </em><code class="descclassname">chess_py.game.interface.</code><code class="descname">UCI</code><span class="sig-paren">(</span><em>player</em>, <em>engine_name</em>, <em>author</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/interface.html#UCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.interface.UCI" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
 <dt id="chess_py.game.interface.UCI.play">
 <code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/interface.html#UCI.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.interface.UCI.play" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -193,55 +193,6 @@ send commands to the console.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-chess_py.game">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.game" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="chess_py.game.Game">
-<em class="property">class </em><code class="descclassname">chess_py.game.</code><code class="descname">Game</code><span class="sig-paren">(</span><em>player_white</em>, <em>player_black</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="method">
-<dt id="chess_py.game.Game.all_possible_moves">
-<code class="descname">all_possible_moves</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.all_possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.all_possible_moves" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds all possible moves a particular player can
-play during a game. Calling this method is recommended over
-calling the <code class="docutils literal"><span class="pre">all_possible_moves(input_color)</span></code>
-from this <code class="docutils literal"><span class="pre">Board</span></code> directly.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.game.Game.black_move">
-<code class="descname">black_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.black_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.black_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the black player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
-method and updates the board with the move returned.</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.game.Game.play">
-<code class="descname">play</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.play"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.play" title="Permalink to this definition">¶</a></dt>
-<dd><p>Starts game and returns one of 3 results . 
-Iterates between methods <code class="docutils literal"><span class="pre">white_move()</span></code> and
-<code class="docutils literal"><span class="pre">black_move()</span></code> until game ends. Each
-method calls the respective player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
-method.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="chess_py.game.Game.white_move">
-<code class="descname">white_move</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/game/game.html#Game.white_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.game.Game.white_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the white player&#8217;s <code class="docutils literal"><span class="pre">generate_move()</span></code>
-method and updates the board with the move returned.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 </div>
 
 
@@ -253,11 +204,9 @@ method and updates the board with the move returned.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">chess_py.game package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-chess_py.game.game">chess_py.game.game module</a></li>
 <li><a class="reference internal" href="#module-chess_py.game.game_state">chess_py.game.game_state module</a></li>
 <li><a class="reference internal" href="#module-chess_py.game.interface">chess_py.game.interface module</a></li>
-<li><a class="reference internal" href="#module-chess_py.game">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -282,8 +231,8 @@ method and updates the board with the move returned.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -297,8 +246,8 @@ method and updates the board with the move returned.</p>
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
       <a href="_sources/chess_py.game.txt"

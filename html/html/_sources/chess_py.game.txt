@@ -1,9 +1,6 @@
 chess_py.game package
 =====================
 
-Submodules
-----------
-
 chess_py.game.game module
 -------------------------
 
@@ -24,15 +21,6 @@ chess_py.game.interface module
 ------------------------------
 
 .. automodule:: chess_py.game.interface
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: chess_py.game
     :members:
     :undoc-members:
     :show-inheritance:

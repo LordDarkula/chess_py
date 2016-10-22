@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.players package &mdash; chess_py  documentation</title>
+    <title>chess_py.players package &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -29,6 +29,7 @@
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
@@ -42,12 +43,6 @@
             
   <div class="section" id="chess-py-players-package">
 <h1>chess_py.players package<a class="headerlink" href="#chess-py-players-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="chess-py-players-basicai-module">
-<h2>chess_py.players.basicAI module<a class="headerlink" href="#chess-py-players-basicai-module" title="Permalink to this headline">¶</a></h2>
-</div>
 <div class="section" id="module-chess_py.players.human">
 <span id="chess-py-players-human-module"></span><h2>chess_py.players.human module<a class="headerlink" href="#module-chess_py.players.human" title="Permalink to this headline">¶</a></h2>
 <p>Included class for human interaction via console.
@@ -65,7 +60,7 @@ Prints position and takes move written in algebraic notation as string input</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move" title="chess_py.core.algebraic.move.Move">Move</a></td>
 </tr>
 </tbody>
 </table>
@@ -91,7 +86,7 @@ Must return object of type <code class="docutils literal"><span class="pre">Move
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.move.Move" title="chess_py.core.algebraic.move.Move">Move</a></td>
 </tr>
 </tbody>
 </table>
@@ -129,79 +124,6 @@ can be read by external GUI.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-chess_py.players">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-chess_py.players" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="chess_py.players.Human">
-<em class="property">class </em><code class="descclassname">chess_py.players.</code><code class="descname">Human</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/human.html#Human"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Human" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#chess_py.players.player.Player" title="chess_py.players.player.Player"><code class="xref py py-class docutils literal"><span class="pre">chess_py.players.player.Player</span></code></a></p>
-<dl class="method">
-<dt id="chess_py.players.Human.generate_move">
-<code class="descname">generate_move</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/human.html#Human.generate_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Human.generate_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns valid and legal move given position</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="chess_py.players.Player">
-<em class="property">class </em><code class="descclassname">chess_py.players.</code><code class="descname">Player</code><span class="sig-paren">(</span><em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="chess_py.players.Player.generate_move">
-<code class="descname">generate_move</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.generate_move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.generate_move" title="Permalink to this definition">¶</a></dt>
-<dd><p>Must be implemented by classes that extend <code class="docutils literal"><span class="pre">Player</span></code>.
-Must return object of type <code class="docutils literal"><span class="pre">Move</span></code>.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.Move" title="chess_py.core.algebraic.Move">Move</a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="chess_py.players.Player.getUCI">
-<em class="property">static </em><code class="descname">getUCI</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.getUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.getUCI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Internal method used by <code class="docutils literal"><span class="pre">Interface</span></code>
-to read UCI commands from external GUI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="staticmethod">
-<dt id="chess_py.players.Player.setUCI">
-<em class="property">static </em><code class="descname">setUCI</code><span class="sig-paren">(</span><em>command</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/players/player.html#Player.setUCI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.players.Player.setUCI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Internal method used by <code class="docutils literal"><span class="pre">Interface</span></code>
-to write UCI commands to the console so they
-can be read by external GUI.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
-</div>
 </div>
 
 
@@ -213,11 +135,8 @@ can be read by external GUI.</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">chess_py.players package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#chess-py-players-basicai-module">chess_py.players.basicAI module</a></li>
 <li><a class="reference internal" href="#module-chess_py.players.human">chess_py.players.human module</a></li>
 <li><a class="reference internal" href="#module-chess_py.players.player">chess_py.players.player module</a></li>
-<li><a class="reference internal" href="#module-chess_py.players">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -241,8 +160,8 @@ can be read by external GUI.</p>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -256,8 +175,8 @@ can be read by external GUI.</p>
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
       <a href="_sources/chess_py.players.txt"

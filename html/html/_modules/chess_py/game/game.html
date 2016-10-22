@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>chess_py.game.game &mdash; chess_py  documentation</title>
+    <title>chess_py.game.game &#8212; chess_py  documentation</title>
     
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
@@ -27,6 +27,7 @@
     <link rel="up" title="Module code" href="../../index.html" />
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
@@ -60,10 +61,10 @@
 
 <span class="kn">import</span> <span class="nn">itertools</span>
 
-<span class="kn">from</span> <span class="nn">..core.board</span> <span class="kn">import</span> <span class="n">Board</span>
-<span class="kn">from</span> <span class="nn">..core</span> <span class="kn">import</span> <span class="n">color</span>
-<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">game_state</span>
-<span class="kn">from</span> <span class="nn">..core.algebraic.converter</span> <span class="kn">import</span> <span class="n">make_legal</span>
+<span class="kn">from</span> <span class="nn">..core.board</span> <span class="k">import</span> <span class="n">Board</span>
+<span class="kn">from</span> <span class="nn">..core</span> <span class="k">import</span> <span class="n">color</span>
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">game_state</span>
+<span class="kn">from</span> <span class="nn">..core.algebraic.converter</span> <span class="k">import</span> <span class="n">make_legal</span>
 
 
 <div class="viewcode-block" id="Game"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.game.Game">[docs]</a><span class="k">class</span> <span class="nc">Game</span><span class="p">:</span>
@@ -91,7 +92,7 @@
         <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">white_move</span><span class="p">(),</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">black_move</span><span class="p">()]</span>
         <span class="n">colors</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">cycle</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 
-        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">color_fn</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">game_state</span><span class="o">.</span><span class="n">no_moves</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">):</span>
                 <span class="k">if</span> <span class="n">game_state</span><span class="o">.</span><span class="n">is_checkmate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">):</span>
@@ -149,8 +150,8 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
@@ -164,8 +165,8 @@
       &copy;2016, Author.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
     </div>
 
