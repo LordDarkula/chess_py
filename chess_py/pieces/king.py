@@ -24,9 +24,7 @@ from .piece import Piece
 from .rook import Rook
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
-
-
-from chess_py.core.algebraic.move import Move
+from ..core.algebraic.move import Move
 
 
 class King(Piece):

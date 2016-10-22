@@ -35,8 +35,8 @@ class Rook(Piece):
         :type input_color: Color
         :type location: Location
         """
-        self.has_moved = False
         super(Rook, self).__init__(input_color, location, "♜", "♖")
+        self.has_moved = False
 
     def __str__(self):
         return "R"
