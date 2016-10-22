@@ -6,6 +6,10 @@
 Welcome to chess_py's documentation!
 ====================================
 
+:author: Aubhro Sengupta
+:project:    https://github.com/LordDarkula/chess_py
+:PyGotham Talk:   https://2016.pygotham.org/talks/324/abstractions-and-building/
+
 Contents:
 
 .. toctree::
