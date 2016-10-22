@@ -1,9 +1,6 @@
 chess_py package
 ================
 
-Subpackages
------------
-
 .. toctree::
 
     chess_py.core

@@ -8,9 +8,6 @@ Subpackages
 
     chess_py.core.algebraic
 
-Submodules
-----------
-
 chess_py.core.board module
 --------------------------
 
