@@ -50,8 +50,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'chess_py'
-copyright = u'2016, Author'
-author = u'Author'
+copyright = u'2016, Aubhro Sengupta'
+author = u'Aubhro Sengupta'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
