@@ -49,7 +49,8 @@ class Piece_values:
 
     def val(self, piece, ref_color):
         """
-        Finds value of piece
+        Finds value of ``Piece``
+
         :type piece: Piece
         :type ref_color: Color
         :rtype: int

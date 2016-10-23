@@ -1,5 +1,5 @@
 from unittest import TestCase
-from chess_py import color, Location, Board, King, converter
+from chess_py import color, Location, Board, King, converter, notation_const
 
 
 class TestKing(TestCase):
@@ -64,7 +64,16 @@ class TestKing(TestCase):
             0)
 
     def test_add_castle(self):
-        self.fail()
+        self.board.update(converter.short_alg("e4", color.white, self.board))
+        self.board.update(converter.short_alg("Nf3", color.white, self.board))
+        self.board.update(converter.short_alg("Be2", color.white, self.board))
+
+        print(self.board)
+
+        self.assertEqual(
+            len(self.board.get_king(color.white).add_castle(self.board)), 1)
+        self.assertEqual(
+            self.board.get_king(color.white).add_castle(self.board)[0].status, notation_const.KING_SIDE_CASTLE)
 
     def test_possible_moves(self):
         self.fail()

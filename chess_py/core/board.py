@@ -264,6 +264,20 @@ class Board:
 
         raise Exception("Piece not found: " + str(piece))
 
+    def get_piece(self, piece_type, input_color):
+        for i in range(len(self.position)):
+
+            for j in range(len(self.position)):
+                loc = Location(i, j)
+                piece = self.piece_at_square(loc)
+
+                if not self.is_square_empty(loc) and \
+                    isinstance(piece_type, piece and \
+                        piece.color == input_color):
+                    return loc
+
+        raise Exception("Piece not found: " + str(piece_type))
+
     def find_king(self, input_color):
         """
         Finds the Location of the King of input_color

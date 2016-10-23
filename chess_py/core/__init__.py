@@ -1,4 +1,5 @@
+from . import algebraic
 from .algebraic import Move, Location, converter, notation_const
 from .board import Board
 
-__all__ = ['converter', 'Location', 'Move', 'notation_const', 'Board', 'color']
+__all__ = (['Board', 'color'] + algebraic.__all__)

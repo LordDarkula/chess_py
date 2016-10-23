@@ -83,6 +83,15 @@ class King(Piece):
 
         return []
 
+    # def add_kingside_casle(self, position):
+    #     """
+    #
+    #     :type position Board
+    #     :return:
+    #     """
+    #     if not self.in_check(position) and not self.has_moved and position.:
+
+
     def add_castle(self, position):
         """
         Adds kingside and queenside
