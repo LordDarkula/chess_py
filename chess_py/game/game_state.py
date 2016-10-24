@@ -14,7 +14,7 @@ def no_moves(position):
     """
     Finds if the game is over.
 
-    :type position: Board
+    :type: position: Board
     :rtype: bool
     """
     return len(position.all_possible_moves(color.white)) == 0 \
@@ -25,8 +25,8 @@ def is_checkmate(position, input_color):
     """
     Finds if particular King is checkmated.
 
-    :type position: Board
-    :type input_color: Color
+    :type: position: Board
+    :type: input_color: Color
     :rtype: bool
     """
     return no_moves(position) and \

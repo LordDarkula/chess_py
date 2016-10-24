@@ -31,11 +31,11 @@ class Piece_values:
         """
         Manual init method for external piece values
 
-        :type PAWN_VALUE: float
-        :type KNIGHT_VALUE: float
-        :type BISHOP_VALUE: float
-        :type ROOK_VALUE: float
-        :type QUEEN_VALUE: float
+        :type: PAWN_VALUE: float
+        :type: KNIGHT_VALUE: float
+        :type: BISHOP_VALUE: float
+        :type: ROOK_VALUE: float
+        :type: QUEEN_VALUE: float
         """
         cls.PAWN_VALUE = PAWN_VALUE
 
@@ -51,8 +51,8 @@ class Piece_values:
         """
         Finds value of ``Piece``
 
-        :type piece: Piece
-        :type ref_color: Color
+        :type: piece: Piece
+        :type: ref_color: Color
         :rtype: int
         """
         if piece is None:

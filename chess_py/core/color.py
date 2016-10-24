@@ -14,7 +14,7 @@ class Color:
         """
         Initializes new color using a string
 
-        :type raw: str
+        :type: raw: str
         :rtype: Color
         """
         self.color = raw.upper() == "WHITE"
@@ -48,7 +48,7 @@ class Color:
         """
         Finds out this color is the same as another color.
 
-        :type other: Color
+        :type: other: Color
         :rtype: bool
         """
         if type(other) is type(self):
@@ -76,7 +76,7 @@ def raw(string):
     Converts string "white" or "black" into
     corresponding color
 
-    :type string: str
+    :type: string: str
     :rtype: Color
     """
     return Color(string.lower())

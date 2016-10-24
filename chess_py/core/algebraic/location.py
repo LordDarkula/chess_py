@@ -42,8 +42,8 @@ class Location:
         """
         Creates a location on a chessboard given x and y coordinates.
 
-        :type rank: int
-        :type file: int
+        :type: rank: int
+        :type: file: int
         """
         self.rank = rank
         self.file = file
@@ -56,7 +56,7 @@ class Location:
         
         Examples: e4, b5, a7
 
-        :type alg_str: str
+        :type: alg_str: str
         :rtype: Location
         """
         return cls(int(alg_str[1]) - 1, ord(alg_str[0]) - 97)
@@ -73,7 +73,7 @@ class Location:
         are the same ie rank and file is 
         the same.
 
-        :type other: Location
+        :type: other: Location
         """
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Location")

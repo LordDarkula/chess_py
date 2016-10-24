@@ -5,9 +5,9 @@ Class that stores chess moves.
 Destination, status and piece making move are required
 to initialize Move.
 
-:type end_loc: Location
-:type piece: Piece
-:type status: int
+:type: end_loc: Location
+:type: piece: Piece
+:type: status: int
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
@@ -23,9 +23,9 @@ class Move:
         """
         Constructor to create move using object Location
 
-        :type end_loc: Location
-        :type piece: Piece
-        :type status: int
+        :type: end_loc: Location
+        :type: piece: Piece
+        :type: status: int
         """
         if self.on_board:
             self.end_loc = end_loc
@@ -50,7 +50,7 @@ class Move:
     def __eq__(self, other):
         """
         Finds if move is same move as this one.
-        :type other: Move
+        :type: other: Move
         """
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other types with Move")
@@ -68,8 +68,8 @@ class Move:
         otherwise compare them and return
         if they are equal.
 
-        :type var1: object
-        :type var2: object
+        :type: var1: object
+        :type: var2: object
         :rtype: bool
         """
         if var1 is None or var2 is None:

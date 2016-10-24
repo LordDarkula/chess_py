@@ -29,8 +29,8 @@ class Game:
         """
         Creates new game given the players.
 
-        :type player_white: Player
-        :type player_black: Player
+        :type: player_white: Player
+        :type: player_black: Player
         """
         self.player_white = player_white
         self.player_black = player_black

@@ -29,8 +29,8 @@ class Knight(Piece):
     def __init__(self, input_color, location):
         """
         Initializes Knight
-        :type input_color: Color
-        :type location Location
+        :type: input_color: Color
+        :type: location Location
         """
         super(Knight, self).__init__(input_color, location, "♞", "♘")
 
@@ -40,14 +40,14 @@ class Knight(Piece):
     def possible_moves(self, position):
         """
         Finds all possible knight moves
-        :type position Board
+        :type: position Board
         :rtype: list
         """
 
         def cycle(index):
             """
             Cycles indexes containing shift directions perpendicular to current shift
-            :type index int
+            :type: index int
             :rtype tuple
             """
             if index == 0:
@@ -63,9 +63,9 @@ class Knight(Piece):
             Returns both destinations that result when the knight is moved two steps in
             one of the cardinal directions
 
-            :type loc: Location
-            :type function: def
-            :type ind: int
+            :type: loc: Location
+            :type: function: def
+            :type: ind: int
             :rtype: tuple
             """
 

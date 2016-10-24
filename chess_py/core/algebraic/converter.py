@@ -31,8 +31,8 @@ def incomplete_alg(algebraic_string, input_color):
 
     Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
 
-    :type algebraic_string: str
-    :type input_color: Color
+    :type: algebraic_string: str
+    :type: input_color: Color
     """
     def edge_rank():
         if input_color == color.white:
@@ -44,24 +44,26 @@ def incomplete_alg(algebraic_string, input_color):
         """
         Returns rank given index
 
-        :type index: int
-        :rtype int
+        :type: index: int
+        :rtype: int
         """
         return int(algebraic_string[index]) - 1
 
     def set_file(index):
         """
         Returns file given index
-        :type index: int
-        :rtype int
+
+        :type: index: int
+        :rtype: int
         """
         return ord(algebraic_string[index]) - 97
 
     def set_piece(index, loc):
         """
         Returns specific piece given index of piece.
-        :type index: int
-        :type loc Location
+
+        :type: index: int
+        :type: loc Location
         """
         piece = algebraic_string[index].strip()
         piece = piece.upper()
@@ -216,8 +218,8 @@ def make_legal(move, position):
     with the most likely starting point specified. If no moves match, None
     is returned.
 
-    :type move: Move
-    :type position: Board
+    :type: move: Move
+    :type: position: Board
     :rtype: Move
     """
     assert isinstance(move, Move)
@@ -261,9 +263,9 @@ def short_alg(algebraic_string, input_color, position):
 
     Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
 
-    :type algebraic_string: str
-    :type input_color: Color
-    :type position: Board
+    :type: algebraic_string: str
+    :type: input_color: Color
+    :type: position: Board
     """
     return make_legal(incomplete_alg(algebraic_string, input_color), position)
 
@@ -274,8 +276,8 @@ def long_alg(alg_str, position):
     (initial location specified). Used primarily for
     UCI, but can be used for other purposes.
 
-    :type alg_str: str
-    :type position: Board
+    :type: alg_str: str
+    :type: position: Board
     :rtype: Move
     """
     end = Location.init_alg(alg_str[2] + alg_str[3])

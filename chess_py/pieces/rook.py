@@ -32,8 +32,8 @@ class Rook(Piece):
         Initializes a rook that is capable of being compared to another rook,
         and returning a list of possible moves.
 
-        :type input_color: Color
-        :type location: Location
+        :type: input_color: Color
+        :type: location: Location
         """
         super(Rook, self).__init__(input_color, location, "♜", "♖")
         self.has_moved = False
@@ -45,8 +45,8 @@ class Rook(Piece):
         """
         Finds moves in a given direction
 
-        :type direction: lambda
-        :type position: Board
+        :type: direction: lambda
+        :type: position: Board
         :rtype: list
         """
         possible = []
@@ -74,7 +74,7 @@ class Rook(Piece):
         """
         Returns all possible rook moves.
 
-        :type position: Board
+        :type: position: Board
         :rtype: list
         """
         moves = []

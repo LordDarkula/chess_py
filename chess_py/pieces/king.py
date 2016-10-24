@@ -32,8 +32,8 @@ class King(Piece):
         """
         Creates a King.
 
-        :type input_color: Color
-        :type location: Location
+        :type: input_color: Color
+        :type: location: Location
         """
         super(King, self).__init__(input_color, location, "♚", "♔")
         self.has_moved = False
@@ -49,8 +49,8 @@ class King(Piece):
         Finds if playing move would put king
         in check.
 
-        :type pos: Board
-        :type move: Move
+        :type: pos: Board
+        :type: move: Move
         :rtype: bool
         """
         test = pos.copy()
@@ -86,7 +86,7 @@ class King(Piece):
     # def add_kingside_casle(self, position):
     #     """
     #
-    #     :type position Board
+    #     :type: position Board
     #     :return:
     #     """
     #     if not self.in_check(position) and not self.has_moved and position.:
@@ -163,7 +163,7 @@ class King(Piece):
         """
         Generates list of possible moves
 
-        :type position: Board
+        :type: position: Board
         :rtype: list
         """
         moves = []
@@ -179,7 +179,7 @@ class King(Piece):
         """
         Finds if the king is in check
 
-        :type position: Board
+        :type: position: Board
         :return: bool
         """
         # Loops through columns

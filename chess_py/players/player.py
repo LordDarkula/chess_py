@@ -17,7 +17,7 @@ class Player:
         """
         Creates interface for base player.
 
-        :type input_color: Color
+        :type: input_color: Color
         """
         self.color = input_color
 
@@ -27,7 +27,7 @@ class Player:
         Must be implemented by classes that extend ``Player``.
         Must return object of type ``Move``.
 
-        :type position: Board
+        :type: position: Board
         :rtype: Move
         """
         pass
@@ -52,7 +52,7 @@ class Player:
         to write UCI commands to the console so they
         can be read by external GUI.
 
-        :type command: str
+        :type: command: str
         """
         print(command)
 

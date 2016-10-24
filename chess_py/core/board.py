@@ -54,7 +54,7 @@ class Board:
         Creates a ``Board`` given an array of ``Piece`` and ``None''
         objects to represent the given position of the board.
 
-        :type position: list
+        :type: position: list
         """
         self.position = position
 
@@ -160,7 +160,7 @@ class Board:
         """
         Finds the chess piece at a square of the position.
 
-        :type: location Location
+        :type:: location Location
         :rtype: Piece
         """
         return self.position[location.rank][location.file]
@@ -169,7 +169,7 @@ class Board:
         """
         Finds whether a chess piece occupies a square of the position.
 
-        :type location: Location
+        :type: location: Location
         :rtype: bool
         """
         return self.position[location.rank][location.file] is None
@@ -178,8 +178,8 @@ class Board:
         """
         Finds the advantage a particular side possesses given a value scheme.
 
-        :type input_color: Color
-        :type val_scheme: Piece_values
+        :type: input_color: Color
+        :type: val_scheme: Piece_values
         :rtype: double
         """
         if self.get_king(input_color).in_check(self) and len(self.all_possible_moves(input_color)) == 0:
@@ -200,8 +200,8 @@ class Board:
         """
         Calculates advantage after move is played
 
-        :type move: Move
-        :type val_scheme: Piece_values
+        :type: move: Move
+        :type: val_scheme: Piece_values
         :rtype: double
         """
         test_board = self.copy()
@@ -212,7 +212,7 @@ class Board:
         """
         Returns list of all possible moves
 
-        :type input_color: Color
+        :type: input_color: Color
         :rtype: list
         """
         moves = []
@@ -251,7 +251,7 @@ class Board:
         Finds Location of the first piece that matches piece.
         If none is found, Exception is raised.
 
-        :type piece: Piece
+        :type: piece: Piece
         :rtype: Location
         """
         for i in range(len(self.position)):
@@ -282,7 +282,7 @@ class Board:
         """
         Finds the Location of the King of input_color
 
-        :type input_color: Color
+        :type: input_color: Color
         :rtype: Location
         """
         return self.find_piece(King(input_color, Location(0, 0)))
@@ -291,7 +291,7 @@ class Board:
         """
         Returns King of input_color
 
-        :type input_color: Color
+        :type: input_color: Color
         :rtype: King
         """
         return self.piece_at_square(self.find_king(input_color))
@@ -300,7 +300,7 @@ class Board:
         """
         Removes piece at square
 
-        :type location: Location
+        :type: location: Location
         """
         self.position[location.rank][location.file] = None
 
@@ -308,8 +308,8 @@ class Board:
         """
         Places piece at given get_location
 
-        :type piece: Piece
-        :type location: Location
+        :type: piece: Piece
+        :type: location: Location
         """
         self.position[location.rank][location.file] = piece
         piece.location = location
@@ -318,8 +318,8 @@ class Board:
         """
         Moves piece from one location to another
 
-        :type initial: Location
-        :type final: Location
+        :type: initial: Location
+        :type: final: Location
         """
         self.place_piece_at_square(self.piece_at_square(initial), final)
         self.remove_piece_at_square(initial)
@@ -328,7 +328,7 @@ class Board:
         """
         Updates position by applying selected move
 
-        :type move: Move
+        :type: move: Move
         """
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))

@@ -21,10 +21,10 @@ class Piece:
         """
         Initializes a piece that is capable of moving
 
-        :type input_color: Color
-        :type location: Location
-        :type white_symbol: str
-        :type black_symbol: str
+        :type: input_color: Color
+        :type: location: Location
+        :type: white_symbol: str
+        :type: black_symbol: str
         """
         assert isinstance(input_color, Color)
         assert isinstance(location, Location)
@@ -54,7 +54,7 @@ class Piece:
     def __eq__(self, other):
         """
         Finds out if piece is the same type and color as self
-        :type other: Piece
+        :type: other: Piece
         """
         return type(other) is type(self) and other.color == self.color
 
@@ -74,8 +74,8 @@ class Piece:
         Finds if square on the board is occupied by a ``Piece``
         belonging to the opponent.
 
-        :type square: Location
-        :type position: Board
+        :type: square: Location
+        :type: position: Board
         :rtype: bool
         """
         return square.on_board() and \
@@ -86,7 +86,7 @@ class Piece:
         """
         Adds start_rank and start_file to moves
 
-        :type moves: list
+        :type: moves: list
         """
         for move in moves:
             move.start_rank = self.location.rank

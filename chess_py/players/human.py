@@ -19,7 +19,7 @@ class Human(Player):
         """
         Creates interface for human player.
 
-        :type input_color: Color
+        :type: input_color: Color
         """
         super(Human, self).__init__(input_color)
 
@@ -27,7 +27,7 @@ class Human(Player):
         """
         Returns valid and legal move given position
 
-        :type position: Board
+        :type: position: Board
         :rtype: Move
         """
         print(position)

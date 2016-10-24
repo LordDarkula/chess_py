@@ -8,7 +8,7 @@ class UCI:
     def __init__(self, player, engine_name, author):
         """
 
-        :type player Player
+        :type: player Player
         """
         self.player = player
         self.engine = engine_name
@@ -49,7 +49,7 @@ class UCI:
         Called by the main process when it needs to
         send commands to the console.
 
-        :type command: str
+        :type: command: str
         """
         self.player.setUCI(command)
 
@@ -57,7 +57,7 @@ class UCI:
         """
         Runs multiple processes in parallel.
 
-        :type fns: def
+        :type: fns: def
         """
         proc = []
         for fn in fns:

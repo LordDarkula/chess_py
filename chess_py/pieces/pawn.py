@@ -34,8 +34,8 @@ class Pawn(Piece):
     def __init__(self, input_color, location):
         """
         Initializes a Pawn that is capable of moving
-        :type input_color color.Color
-        :type location Location
+        :type: input_color color.Color
+        :type: location Location
         """
         self.just_moved_two_steps = False
         super(Pawn, self).__init__(input_color, location, "♟", "♙")
@@ -59,7 +59,7 @@ class Pawn(Piece):
     def square_in_front(self, location):
         """
         Finds square directly in front of Pawn
-        :type location Location
+        :type: location Location
         :rtype Location
         """
         if self.color == color.white:
@@ -70,7 +70,7 @@ class Pawn(Piece):
     def two_squares_in_front(self, location):
         """
         Finds square two squares in front of Pawn
-        :type location: Location
+        :type: location: Location
         :rtype get_location
         """
         return self.square_in_front(self.square_in_front(location))
@@ -78,7 +78,7 @@ class Pawn(Piece):
     def would_move_be_promotion(self, location):
         """
         Finds if move from current get_location would result in promotion
-        :type: Location
+        :type:: Location
         :rtype: bool
         """
 
@@ -118,7 +118,7 @@ class Pawn(Piece):
         Finds possible moves one step and two steps in front
         of Pawn.
 
-        :type: position: Board
+        :type:: position: Board
         :rtype: list
         """
         possible = []
@@ -248,7 +248,7 @@ class Pawn(Piece):
         """
         Finds out the locations of possible moves given board.Board position.
         :pre get_location is on board and piece at specified get_location on position
-        :type position: board.Board
+        :type: position: board.Board
         :rtype list
         """
         moves = []
