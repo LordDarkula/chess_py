@@ -57,7 +57,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">engine_name</span><span class="p">,</span> <span class="n">author</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :type player Player</span>
+<span class="sd">        :type: player Player</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">player</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine_name</span>
@@ -98,7 +98,7 @@
 <span class="sd">        Called by the main process when it needs to</span>
 <span class="sd">        send commands to the console.</span>
 
-<span class="sd">        :type command: str</span>
+<span class="sd">        :type: command: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">setUCI</span><span class="p">(</span><span class="n">command</span><span class="p">)</span></div>
 
@@ -106,7 +106,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Runs multiple processes in parallel.</span>
 
-<span class="sd">        :type fns: def</span>
+<span class="sd">        :type: fns: def</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">proc</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">:</span>

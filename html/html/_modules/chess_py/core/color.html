@@ -63,7 +63,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes new color using a string</span>
 
-<span class="sd">        :type raw: str</span>
+<span class="sd">        :type: raw: str</span>
 <span class="sd">        :rtype: Color</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;WHITE&quot;</span>
@@ -97,7 +97,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds out this color is the same as another color.</span>
 
-<span class="sd">        :type other: Color</span>
+<span class="sd">        :type: other: Color</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -125,7 +125,7 @@
 <span class="sd">    Converts string &quot;white&quot; or &quot;black&quot; into</span>
 <span class="sd">    corresponding color</span>
 
-<span class="sd">    :type string: str</span>
+<span class="sd">    :type: string: str</span>
 <span class="sd">    :rtype: Color</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">Color</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span></div>

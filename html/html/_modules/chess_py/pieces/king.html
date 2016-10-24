@@ -81,8 +81,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Creates a King.</span>
 
-<span class="sd">        :type input_color: Color</span>
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: input_color: Color</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">King</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♚&quot;</span><span class="p">,</span> <span class="s2">&quot;♔&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span> <span class="o">=</span> <span class="kc">False</span>
@@ -98,8 +98,8 @@
 <span class="sd">        Finds if playing move would put king</span>
 <span class="sd">        in check.</span>
 
-<span class="sd">        :type pos: Board</span>
-<span class="sd">        :type move: Move</span>
+<span class="sd">        :type: pos: Board</span>
+<span class="sd">        :type: move: Move</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">test</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -131,6 +131,15 @@
                 <span class="k">return</span> <span class="p">[</span><span class="n">move</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="p">[]</span></div>
+
+    <span class="c1"># def add_kingside_casle(self, position):</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="c1">#     :type: position Board</span>
+    <span class="c1">#     :return:</span>
+    <span class="c1">#     &quot;&quot;&quot;</span>
+    <span class="c1">#     if not self.in_check(position) and not self.has_moved and position.:</span>
+
 
 <div class="viewcode-block" id="King.add_castle"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.add_castle">[docs]</a>    <span class="k">def</span> <span class="nf">add_castle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -203,7 +212,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Generates list of possible moves</span>
 
-<span class="sd">        :type position: Board</span>
+<span class="sd">        :type: position: Board</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
@@ -219,7 +228,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if the king is in check</span>
 
-<span class="sd">        :type position: Board</span>
+<span class="sd">        :type: position: Board</span>
 <span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Loops through columns</span>

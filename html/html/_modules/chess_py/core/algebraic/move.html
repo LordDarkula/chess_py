@@ -54,9 +54,9 @@
 <span class="sd">Destination, status and piece making move are required</span>
 <span class="sd">to initialize Move.</span>
 
-<span class="sd">:type end_loc: Location</span>
-<span class="sd">:type piece: Piece</span>
-<span class="sd">:type status: int</span>
+<span class="sd">:type: end_loc: Location</span>
+<span class="sd">:type: piece: Piece</span>
+<span class="sd">:type: status: int</span>
 
 <span class="sd">Copyright © 2016 Aubhro Sengupta. All rights reserved.</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -72,9 +72,9 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Constructor to create move using object Location</span>
 
-<span class="sd">        :type end_loc: Location</span>
-<span class="sd">        :type piece: Piece</span>
-<span class="sd">        :type status: int</span>
+<span class="sd">        :type: end_loc: Location</span>
+<span class="sd">        :type: piece: Piece</span>
+<span class="sd">        :type: status: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">on_board</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">=</span> <span class="n">end_loc</span>
@@ -99,7 +99,7 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if move is same move as this one.</span>
-<span class="sd">        :type other: Move</span>
+<span class="sd">        :type: other: Move</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__class__</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Cannot compare other types with Move&quot;</span><span class="p">)</span>
@@ -117,8 +117,8 @@
 <span class="sd">        otherwise compare them and return</span>
 <span class="sd">        if they are equal.</span>
 
-<span class="sd">        :type var1: object</span>
-<span class="sd">        :type var2: object</span>
+<span class="sd">        :type: var1: object</span>
+<span class="sd">        :type: var2: object</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">var1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">var2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>

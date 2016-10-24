@@ -81,8 +81,8 @@
 <span class="sd">        Initializes a rook that is capable of being compared to another rook,</span>
 <span class="sd">        and returning a list of possible moves.</span>
 
-<span class="sd">        :type input_color: Color</span>
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: input_color: Color</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Rook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♜&quot;</span><span class="p">,</span> <span class="s2">&quot;♖&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">has_moved</span> <span class="o">=</span> <span class="kc">False</span>
@@ -94,8 +94,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds moves in a given direction</span>
 
-<span class="sd">        :type direction: lambda</span>
-<span class="sd">        :type position: Board</span>
+<span class="sd">        :type: direction: lambda</span>
+<span class="sd">        :type: position: Board</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">possible</span> <span class="o">=</span> <span class="p">[]</span>
@@ -123,7 +123,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns all possible rook moves.</span>
 
-<span class="sd">        :type position: Board</span>
+<span class="sd">        :type: position: Board</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>

@@ -113,6 +113,10 @@ Initialized upon startup and is used when init_default constructor is used</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">move: Move</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">val_scheme: Piece_values</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
 </tr>
 </tbody>
@@ -127,7 +131,9 @@ Initialized upon startup and is used when init_default constructor is used</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">input_color: Color</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -155,7 +161,9 @@ Initialized upon startup and is used when init_default constructor is used</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">input_color: Color</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
 </tr>
 </tbody>
 </table>
@@ -170,7 +178,9 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">piece: Piece</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.core.algebraic.html#chess_py.core.algebraic.location.Location" title="chess_py.core.algebraic.location.Location">Location</a></td>
 </tr>
 </tbody>
 </table>
@@ -184,11 +194,18 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.king.King" title="chess_py.pieces.king.King">King</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">input_color: Color</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.king.King" title="chess_py.pieces.king.King">King</a></td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="method">
+<dt id="chess_py.core.board.Board.get_piece">
+<code class="descname">get_piece</code><span class="sig-paren">(</span><em>piece_type</em>, <em>input_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.get_piece"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.get_piece" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="classmethod">
 <dt id="chess_py.core.board.Board.init_default">
@@ -212,7 +229,9 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">location: Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
@@ -226,6 +245,10 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">input_color: Color</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">val_scheme: Piece_values</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">double</td>
 </tr>
 </tbody>
@@ -240,6 +263,10 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">initial: Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">final: Location</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -248,16 +275,8 @@ If none is found, Exception is raised.</p>
 <dt id="chess_py.core.board.Board.piece_at_square">
 <code class="descname">piece_at_square</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/board.html#Board.piece_at_square"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.board.Board.piece_at_square" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the chess piece at a square of the position.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">location Location</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="chess_py.pieces.html#chess_py.pieces.piece.Piece" title="chess_py.pieces.piece.Piece">Piece</a></td>
-</tr>
-</tbody>
-</table>
+<p>:type:: location Location
+:rtype: Piece</p>
 </dd></dl>
 
 <dl class="method">
@@ -268,6 +287,10 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">piece: Piece</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">location: Location</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -280,6 +303,8 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">location: Location</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -292,6 +317,8 @@ If none is found, Exception is raised.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">move: Move</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -343,7 +370,9 @@ corresponding color</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.color.Color" title="chess_py.core.color.Color">Color</a></td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">string: str</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#chess_py.core.color.Color" title="chess_py.core.color.Color">Color</a></td>
 </tr>
 </tbody>
 </table>

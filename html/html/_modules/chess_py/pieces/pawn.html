@@ -83,8 +83,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a Pawn that is capable of moving</span>
-<span class="sd">        :type input_color color.Color</span>
-<span class="sd">        :type location Location</span>
+<span class="sd">        :type: input_color color.Color</span>
+<span class="sd">        :type: location Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">just_moved_two_steps</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Pawn</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♟&quot;</span><span class="p">,</span> <span class="s2">&quot;♙&quot;</span><span class="p">)</span>
@@ -108,7 +108,7 @@
 <div class="viewcode-block" id="Pawn.square_in_front"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.pawn.Pawn.square_in_front">[docs]</a>    <span class="k">def</span> <span class="nf">square_in_front</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds square directly in front of Pawn</span>
-<span class="sd">        :type location Location</span>
+<span class="sd">        :type: location Location</span>
 <span class="sd">        :rtype Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">:</span>
@@ -119,7 +119,7 @@
 <div class="viewcode-block" id="Pawn.two_squares_in_front"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.pawn.Pawn.two_squares_in_front">[docs]</a>    <span class="k">def</span> <span class="nf">two_squares_in_front</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds square two squares in front of Pawn</span>
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        :rtype get_location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">square_in_front</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">square_in_front</span><span class="p">(</span><span class="n">location</span><span class="p">))</span></div>
@@ -127,7 +127,7 @@
 <div class="viewcode-block" id="Pawn.would_move_be_promotion"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.pawn.Pawn.would_move_be_promotion">[docs]</a>    <span class="k">def</span> <span class="nf">would_move_be_promotion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if move from current get_location would result in promotion</span>
-<span class="sd">        :type: Location</span>
+<span class="sd">        :type:: Location</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
@@ -167,7 +167,7 @@
 <span class="sd">        Finds possible moves one step and two steps in front</span>
 <span class="sd">        of Pawn.</span>
 
-<span class="sd">        :type: position: Board</span>
+<span class="sd">        :type:: position: Board</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">possible</span> <span class="o">=</span> <span class="p">[]</span>
@@ -297,7 +297,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds out the locations of possible moves given board.Board position.</span>
 <span class="sd">        :pre get_location is on board and piece at specified get_location on position</span>
-<span class="sd">        :type position: board.Board</span>
+<span class="sd">        :type: position: board.Board</span>
 <span class="sd">        :rtype list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>

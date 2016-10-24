@@ -103,7 +103,7 @@
 <span class="sd">        Creates a ``Board`` given an array of ``Piece`` and ``None&#39;&#39;</span>
 <span class="sd">        objects to represent the given position of the board.</span>
 
-<span class="sd">        :type position: list</span>
+<span class="sd">        :type: position: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">position</span>
 
@@ -209,7 +209,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds the chess piece at a square of the position.</span>
 
-<span class="sd">        :type: location Location</span>
+<span class="sd">        :type:: location Location</span>
 <span class="sd">        :rtype: Piece</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">][</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">]</span></div>
@@ -218,7 +218,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds whether a chess piece occupies a square of the position.</span>
 
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">][</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span></div>
@@ -227,8 +227,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds the advantage a particular side possesses given a value scheme.</span>
 
-<span class="sd">        :type input_color: Color</span>
-<span class="sd">        :type val_scheme: Piece_values</span>
+<span class="sd">        :type: input_color: Color</span>
+<span class="sd">        :type: val_scheme: Piece_values</span>
 <span class="sd">        :rtype: double</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">input_color</span><span class="p">)</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_possible_moves</span><span class="p">(</span><span class="n">input_color</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -249,8 +249,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Calculates advantage after move is played</span>
 
-<span class="sd">        :type move: Move</span>
-<span class="sd">        :type val_scheme: Piece_values</span>
+<span class="sd">        :type: move: Move</span>
+<span class="sd">        :type: val_scheme: Piece_values</span>
 <span class="sd">        :rtype: double</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">test_board</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -261,7 +261,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns list of all possible moves</span>
 
-<span class="sd">        :type input_color: Color</span>
+<span class="sd">        :type: input_color: Color</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">moves</span> <span class="o">=</span> <span class="p">[]</span>
@@ -300,7 +300,7 @@
 <span class="sd">        Finds Location of the first piece that matches piece.</span>
 <span class="sd">        If none is found, Exception is raised.</span>
 
-<span class="sd">        :type piece: Piece</span>
+<span class="sd">        :type: piece: Piece</span>
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)):</span>
@@ -313,11 +313,25 @@
 
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Piece not found: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">piece</span><span class="p">))</span></div>
 
+<div class="viewcode-block" id="Board.get_piece"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.get_piece">[docs]</a>    <span class="k">def</span> <span class="nf">get_piece</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">piece_type</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)):</span>
+
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)):</span>
+                <span class="n">loc</span> <span class="o">=</span> <span class="n">Location</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+                <span class="n">piece</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">loc</span><span class="p">)</span> <span class="ow">and</span> \
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">piece_type</span><span class="p">,</span> <span class="n">piece</span> <span class="ow">and</span> \
+                        <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="n">input_color</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="n">loc</span>
+
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Piece not found: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">piece_type</span><span class="p">))</span></div>
+
 <div class="viewcode-block" id="Board.find_king"><a class="viewcode-back" href="../../../chess_py.core.html#chess_py.core.board.Board.find_king">[docs]</a>    <span class="k">def</span> <span class="nf">find_king</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds the Location of the King of input_color</span>
 
-<span class="sd">        :type input_color: Color</span>
+<span class="sd">        :type: input_color: Color</span>
 <span class="sd">        :rtype: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_piece</span><span class="p">(</span><span class="n">King</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Location</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span></div>
@@ -326,7 +340,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns King of input_color</span>
 
-<span class="sd">        :type input_color: Color</span>
+<span class="sd">        :type: input_color: Color</span>
 <span class="sd">        :rtype: King</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">find_king</span><span class="p">(</span><span class="n">input_color</span><span class="p">))</span></div>
@@ -335,7 +349,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Removes piece at square</span>
 
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">][</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
@@ -343,8 +357,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Places piece at given get_location</span>
 
-<span class="sd">        :type piece: Piece</span>
-<span class="sd">        :type location: Location</span>
+<span class="sd">        :type: piece: Piece</span>
+<span class="sd">        :type: location: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">[</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">][</span><span class="n">location</span><span class="o">.</span><span class="n">file</span><span class="p">]</span> <span class="o">=</span> <span class="n">piece</span>
         <span class="n">piece</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">location</span></div>
@@ -353,8 +367,8 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Moves piece from one location to another</span>
 
-<span class="sd">        :type initial: Location</span>
-<span class="sd">        :type final: Location</span>
+<span class="sd">        :type: initial: Location</span>
+<span class="sd">        :type: final: Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">place_piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">initial</span><span class="p">),</span> <span class="n">final</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">remove_piece_at_square</span><span class="p">(</span><span class="n">initial</span><span class="p">)</span></div>
@@ -363,7 +377,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Updates position by applying selected move</span>
 
-<span class="sd">        :type move: Move</span>
+<span class="sd">        :type: move: Move</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">KING_SIDE_CASTLE</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">end_loc</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">Location</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">end_loc</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>

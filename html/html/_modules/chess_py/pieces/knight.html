@@ -78,8 +78,8 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes Knight</span>
-<span class="sd">        :type input_color: Color</span>
-<span class="sd">        :type location Location</span>
+<span class="sd">        :type: input_color: Color</span>
+<span class="sd">        :type: location Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Knight</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">location</span><span class="p">,</span> <span class="s2">&quot;♞&quot;</span><span class="p">,</span> <span class="s2">&quot;♘&quot;</span><span class="p">)</span>
 
@@ -89,14 +89,14 @@
 <div class="viewcode-block" id="Knight.possible_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.knight.Knight.possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds all possible knight moves</span>
-<span class="sd">        :type position Board</span>
+<span class="sd">        :type: position Board</span>
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">def</span> <span class="nf">cycle</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
             <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Cycles indexes containing shift directions perpendicular to current shift</span>
-<span class="sd">            :type index int</span>
+<span class="sd">            :type: index int</span>
 <span class="sd">            :rtype tuple</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -112,9 +112,9 @@
 <span class="sd">            Returns both destinations that result when the knight is moved two steps in</span>
 <span class="sd">            one of the cardinal directions</span>
 
-<span class="sd">            :type loc: Location</span>
-<span class="sd">            :type function: def</span>
-<span class="sd">            :type ind: int</span>
+<span class="sd">            :type: loc: Location</span>
+<span class="sd">            :type: function: def</span>
+<span class="sd">            :type: ind: int</span>
 <span class="sd">            :rtype: tuple</span>
 <span class="sd">            &quot;&quot;&quot;</span>
 

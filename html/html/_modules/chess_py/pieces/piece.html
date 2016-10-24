@@ -70,10 +70,10 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initializes a piece that is capable of moving</span>
 
-<span class="sd">        :type input_color: Color</span>
-<span class="sd">        :type location: Location</span>
-<span class="sd">        :type white_symbol: str</span>
-<span class="sd">        :type black_symbol: str</span>
+<span class="sd">        :type: input_color: Color</span>
+<span class="sd">        :type: location: Location</span>
+<span class="sd">        :type: white_symbol: str</span>
+<span class="sd">        :type: black_symbol: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">input_color</span><span class="p">,</span> <span class="n">Color</span><span class="p">)</span>
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">location</span><span class="p">,</span> <span class="n">Location</span><span class="p">)</span>
@@ -103,7 +103,7 @@
     <span class="k">def</span> <span class="nf">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds out if piece is the same type and color as self</span>
-<span class="sd">        :type other: Piece</span>
+<span class="sd">        :type: other: Piece</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">other</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="ow">and</span> <span class="n">other</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
 
@@ -123,8 +123,8 @@
 <span class="sd">        Finds if square on the board is occupied by a ``Piece``</span>
 <span class="sd">        belonging to the opponent.</span>
 
-<span class="sd">        :type square: Location</span>
-<span class="sd">        :type position: Board</span>
+<span class="sd">        :type: square: Location</span>
+<span class="sd">        :type: position: Board</span>
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">square</span><span class="o">.</span><span class="n">on_board</span><span class="p">()</span> <span class="ow">and</span> \
@@ -135,7 +135,7 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Adds start_rank and start_file to moves</span>
 
-<span class="sd">        :type moves: list</span>
+<span class="sd">        :type: moves: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">moves</span><span class="p">:</span>
             <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span>

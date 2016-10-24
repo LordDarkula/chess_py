@@ -80,8 +80,8 @@
 
 <span class="sd">    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</span>
 
-<span class="sd">    :type algebraic_string: str</span>
-<span class="sd">    :type input_color: Color</span>
+<span class="sd">    :type: algebraic_string: str</span>
+<span class="sd">    :type: input_color: Color</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="nf">edge_rank</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">input_color</span> <span class="o">==</span> <span class="n">color</span><span class="o">.</span><span class="n">white</span><span class="p">:</span>
@@ -93,24 +93,26 @@
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns rank given index</span>
 
-<span class="sd">        :type index: int</span>
-<span class="sd">        :rtype int</span>
+<span class="sd">        :type: index: int</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="o">-</span> <span class="mi">1</span>
 
     <span class="k">def</span> <span class="nf">set_file</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns file given index</span>
-<span class="sd">        :type index: int</span>
-<span class="sd">        :rtype int</span>
+
+<span class="sd">        :type: index: int</span>
+<span class="sd">        :rtype: int</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="nb">ord</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">[</span><span class="n">index</span><span class="p">])</span> <span class="o">-</span> <span class="mi">97</span>
 
     <span class="k">def</span> <span class="nf">set_piece</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">loc</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns specific piece given index of piece.</span>
-<span class="sd">        :type index: int</span>
-<span class="sd">        :type loc Location</span>
+
+<span class="sd">        :type: index: int</span>
+<span class="sd">        :type: loc Location</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">piece</span> <span class="o">=</span> <span class="n">algebraic_string</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
         <span class="n">piece</span> <span class="o">=</span> <span class="n">piece</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
@@ -265,8 +267,8 @@
 <span class="sd">    with the most likely starting point specified. If no moves match, None</span>
 <span class="sd">    is returned.</span>
 
-<span class="sd">    :type move: Move</span>
-<span class="sd">    :type position: Board</span>
+<span class="sd">    :type: move: Move</span>
+<span class="sd">    :type: position: Board</span>
 <span class="sd">    :rtype: Move</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">move</span><span class="p">,</span> <span class="n">Move</span><span class="p">)</span>
@@ -310,9 +312,9 @@
 
 <span class="sd">    Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q</span>
 
-<span class="sd">    :type algebraic_string: str</span>
-<span class="sd">    :type input_color: Color</span>
-<span class="sd">    :type position: Board</span>
+<span class="sd">    :type: algebraic_string: str</span>
+<span class="sd">    :type: input_color: Color</span>
+<span class="sd">    :type: position: Board</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">make_legal</span><span class="p">(</span><span class="n">incomplete_alg</span><span class="p">(</span><span class="n">algebraic_string</span><span class="p">,</span> <span class="n">input_color</span><span class="p">),</span> <span class="n">position</span><span class="p">)</span></div>
 
@@ -323,8 +325,8 @@
 <span class="sd">    (initial location specified). Used primarily for</span>
 <span class="sd">    UCI, but can be used for other purposes.</span>
 
-<span class="sd">    :type alg_str: str</span>
-<span class="sd">    :type position: Board</span>
+<span class="sd">    :type: alg_str: str</span>
+<span class="sd">    :type: position: Board</span>
 <span class="sd">    :rtype: Move</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">Location</span><span class="o">.</span><span class="n">init_alg</span><span class="p">(</span><span class="n">alg_str</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">alg_str</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>

@@ -89,7 +89,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -142,7 +144,9 @@
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
 </table>
@@ -157,6 +161,10 @@ in check.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">pos: Board</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">move: Move</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
@@ -171,7 +179,9 @@ in check.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
@@ -209,7 +219,7 @@ in check.</p>
 <dt id="chess_py.pieces.knight.Knight.possible_moves">
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/knight.html#Knight.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.knight.Knight.possible_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all possible knight moves
-:type position Board
+:type: position Board
 :rtype: list</p>
 </dd></dl>
 
@@ -279,16 +289,8 @@ in check.</p>
 <code class="descname">forward_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.forward_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.forward_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds possible moves one step and two steps in front
 of Pawn.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
-</tr>
-</tbody>
-</table>
+<p>:type:: position: Board
+:rtype: list</p>
 </dd></dl>
 
 <dl class="method">
@@ -303,7 +305,7 @@ of Pawn.</p>
 <code class="descname">possible_moves</code><span class="sig-paren">(</span><em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.possible_moves"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.possible_moves" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds out the locations of possible moves given board.Board position.
 :pre get_location is on board and piece at specified get_location on position
-:type position: board.Board
+:type: position: board.Board
 :rtype list</p>
 </dd></dl>
 
@@ -311,7 +313,7 @@ of Pawn.</p>
 <dt id="chess_py.pieces.pawn.Pawn.square_in_front">
 <code class="descname">square_in_front</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.square_in_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.square_in_front" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds square directly in front of Pawn
-:type location Location
+:type: location Location
 :rtype Location</p>
 </dd></dl>
 
@@ -319,7 +321,7 @@ of Pawn.</p>
 <dt id="chess_py.pieces.pawn.Pawn.two_squares_in_front">
 <code class="descname">two_squares_in_front</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.two_squares_in_front"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.two_squares_in_front" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds square two squares in front of Pawn
-:type location: Location
+:type: location: Location
 :rtype get_location</p>
 </dd></dl>
 
@@ -327,7 +329,7 @@ of Pawn.</p>
 <dt id="chess_py.pieces.pawn.Pawn.would_move_be_promotion">
 <code class="descname">would_move_be_promotion</code><span class="sig-paren">(</span><em>location</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/pawn.html#Pawn.would_move_be_promotion"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.pawn.Pawn.would_move_be_promotion" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if move from current get_location would result in promotion
-:type: Location
+:type:: Location
 :rtype: bool</p>
 </dd></dl>
 
@@ -351,6 +353,10 @@ belonging to the opponent.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">square: Location</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
 </tr>
 </tbody>
@@ -370,6 +376,8 @@ belonging to the opponent.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">moves: list</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -393,6 +401,16 @@ belonging to the opponent.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">PAWN_VALUE: float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">KNIGHT_VALUE: float</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">BISHOP_VALUE: float</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">ROOK_VALUE: float</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">QUEEN_VALUE: float</td>
+</tr>
 </tbody>
 </table>
 </dd></dl>
@@ -400,10 +418,19 @@ belonging to the opponent.</p>
 <dl class="method">
 <dt id="chess_py.pieces.piece_const.Piece_values.val">
 <code class="descname">val</code><span class="sig-paren">(</span><em>piece</em>, <em>ref_color</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/pieces/piece_const.html#Piece_values.val"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.pieces.piece_const.Piece_values.val" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds value of piece
-:type piece: Piece
-:type ref_color: Color
-:rtype: int</p>
+<dd><p>Finds value of <code class="docutils literal"><span class="pre">Piece</span></code></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">piece: Piece</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">ref_color: Color</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
@@ -475,6 +502,10 @@ belonging to the opponent.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">direction: lambda</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
@@ -489,7 +520,9 @@ belonging to the opponent.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">position: Board</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
 </tbody>
 </table>
