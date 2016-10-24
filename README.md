@@ -50,7 +50,7 @@ python setup.py install
 ```
 ## Documentation
 
-View complete technical documentation [here](http://lorddarkula.github.io/chess_py).
+View complete technical documentation [here](http://lorddarkula.github.io/chess_py/html/html/index.html).
 
 ## Great! How do you use it? (*An Example*)
 
