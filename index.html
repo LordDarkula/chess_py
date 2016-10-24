@@ -1,1 +1,192 @@
-<meta http-equiv="refresh" content="0; url=http://lorddarkula.github.io/chess_py/html/html/index.html" />
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640">
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen">
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Chess py by LordDarkula</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/LordDarkula/chess_py">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Chess py</h1>
+            <h2>Chess library for simple chess engine creation</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/LordDarkula/chess_py/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/LordDarkula/chess_py/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+        <h1>
+<a id="chess_py" class="anchor" href="#chess_py" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>chess_py</h1>
+
+<p><a href="https://travis-ci.org/LordDarkula/chess_py"><img src="https://travis-ci.org/LordDarkula/chess_py.svg?branch=master" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/LordDarkula/chess_py"><img src="https://codeclimate.com/github/LordDarkula/chess_py/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://pypi.python.org/pypi/chess_py"><img src="https://badge.fury.io/py/chess_py.svg" alt="PyPI version"></a>
+<a href="https://www.python.org/download/releases/2.7/"><img src="https://img.shields.io/badge/python-2.7-blue.svg" alt="Python27"></a>
+<a href="https://www.python.org/downloads/release/python-350/"><img src="https://img.shields.io/badge/python-3.5-blue.svg" alt="Python35"></a>
+<a href="https://github.com/LordDarkula/chess_py/blob/master/LICENSE"><img src="https://img.shields.io/cocoapods/l/EasyQL.svg?style=flat" alt="License"></a>
+<a href="http://twitter.com/LordDarkula"><img src="https://img.shields.io/badge/twitter-@LordDarkula-blue.svg?style=flat" alt="Twitter"></a></p>
+
+<pre><code>
+8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
+7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
+6 ║… … … … … … … …
+5 ║… … … … … … … …
+4 ║… … … … … … … …
+3 ║… … … … … … … …
+2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
+1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
+--╚═══════════════
+——-a b c d e f g h
+</code></pre>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>chess_py is available under the MIT license. See the LICENSE file for more info.
+Copyright © 2016 Aubhro Sengupta. All rights reserved.</p>
+
+<h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>Chess_py is an open source chess client and framework written in python. Can create chess matches and provide players with data regarding current position, possible moves and eventual result of the game. UCI integration in progress.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>To use as a immediately start up a game between two human players in the console, navigate inside the root directory of the package and run main.py. </p>
+
+<div class="highlight highlight-source-shell"><pre>python main.py</pre></div>
+
+<p>To install package  </p>
+
+<h3>
+<a id="pip-recommended" class="anchor" href="#pip-recommended" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>pip</code> (<em>Recommended</em>)</h3>
+
+<div class="highlight highlight-source-shell"><pre>pip install chess_py</pre></div>
+
+<h3>
+<a id="or-manually" class="anchor" href="#or-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Or manually</h3>
+
+<div class="highlight highlight-source-shell"><pre>python setup.py install</pre></div>
+
+<h2>
+<a id="documentation" class="anchor" href="#documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Documentation</h2>
+
+<p>View complete technical documentation <a href="http://lorddarkula.github.io/chess_py/html/html/index.html">here</a>.</p>
+
+<h2>
+<a id="great-how-do-you-use-it-an-example" class="anchor" href="#great-how-do-you-use-it-an-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Great! How do you use it? (<em>An Example</em>)</h2>
+
+<p>Chess_py has the capability of creating games between players, either human, or AI </p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">import</span> chess_py
+<span class="pl-k">from</span> chess_py <span class="pl-k">import</span> Game, Human, color
+
+<span class="pl-s"><span class="pl-pds">"""</span> Creates a Game with 2 humans. </span>
+<span class="pl-s">When run, this will open the console,<span class="pl-pds">"""</span></span>
+new_game <span class="pl-k">=</span> Game(Human(color.white), Human(color.black))
+
+<span class="pl-s"><span class="pl-pds">"""</span> After game is completed, outcome will be stored in result.</span>
+<span class="pl-s">The integer result will be one of three values. </span>
+<span class="pl-s">white wins - 0, black wins - 1, draw - 0.5 <span class="pl-pds">"""</span></span>
+result <span class="pl-k">=</span> new_game.play()</pre></div>
+
+<p>To build a chess engine on with chess_py, inherit Player and implement generate_move() </p>
+
+<div class="highlight highlight-source-python"><pre><span class="pl-k">import</span> chess_py
+<span class="pl-k">from</span> chess_py <span class="pl-k">import</span> Game, Human, color
+
+<span class="pl-c"># Engine which plays the move with the highest immediate material advantage</span>
+<span class="pl-k">class</span> <span class="pl-en">My_engine</span>(<span class="pl-e">chess_py</span>.<span class="pl-e">Player</span>):
+    <span class="pl-k">def</span> <span class="pl-c1">__init__</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">color</span>):
+
+      <span class="pl-c"># Creates piece value scheme to specify value of each piece.</span>
+      <span class="pl-v">self</span>.piece_values <span class="pl-k">=</span> chess_py.Piece_values.init_manual(<span class="pl-v">PAWN_VALUE</span><span class="pl-k">=</span><span class="pl-c1">1</span>,
+                                                            <span class="pl-v">KNIGHT_VALUE</span><span class="pl-k">=</span><span class="pl-c1">3</span>,
+                                                            <span class="pl-v">BISHOP_VALUE</span><span class="pl-k">=</span><span class="pl-c1">3</span>,
+                                                            <span class="pl-v">ROOK_VALUE</span><span class="pl-k">=</span><span class="pl-c1">5</span>,
+                                                            <span class="pl-v">QUEEN_VALUE</span><span class="pl-k">=</span><span class="pl-c1">9</span>)
+
+      <span class="pl-c"># Super call makes color a global</span>
+      <span class="pl-c1">super</span>(Human, <span class="pl-v">self</span>).<span class="pl-c1">__init__</span>(input_color)
+
+    <span class="pl-k">def</span> <span class="pl-en">generate_move</span>(<span class="pl-smi"><span class="pl-smi">self</span></span>, <span class="pl-smi">position</span>):
+      <span class="pl-c"># position parameter is an object of type Board</span>
+
+      <span class="pl-c"># Finds all possible moves I can play.</span>
+      moves <span class="pl-k">=</span> position.all_possible_moves(<span class="pl-v">self</span>.color)
+
+      <span class="pl-c"># Initalizes best move and advantage after it has been played to dummy values.</span>
+      best_move <span class="pl-k">=</span> <span class="pl-c1">None</span>
+      best_move_advantage <span class="pl-k">=</span> <span class="pl-k">-</span><span class="pl-c1">99</span>
+
+      <span class="pl-c"># Loops through possible moves</span>
+      <span class="pl-k">for</span> move <span class="pl-k">in</span> move:
+        <span class="pl-s"><span class="pl-pds">"""</span> advantage_as_result(move, piece_values) finds numerical advantage</span>
+<span class="pl-s">        as specified by piece value scheme above. Returns negative values for</span>
+<span class="pl-s">        positions of disadvantage. Returns +/-99 for checkmate. <span class="pl-pds">"""</span></span>
+        advantage <span class="pl-k">=</span> position.advantage_as_result(move, <span class="pl-v">self</span>.piece_values)
+
+        <span class="pl-c"># If this move is better than best move, it is the best move.</span>
+        <span class="pl-k">if</span> advantage <span class="pl-k">&gt;=</span> best_move_advantage:
+            best_move <span class="pl-k">=</span> move
+            best_move_advantage <span class="pl-k">=</span> advantage
+
+      <span class="pl-k">return</span> move
+
+<span class="pl-c"># If file is run as script, a Game is set up between My_engine and Human and result is printed.</span>
+<span class="pl-k">if</span> <span class="pl-c1">__name__</span> <span class="pl-k">==</span> <span class="pl-s"><span class="pl-pds">"</span>__main__<span class="pl-pds">"</span></span>:
+    new_game <span class="pl-k">=</span> Game(My_engine(color.white), Human(color.black))
+
+    <span class="pl-c"># white wins - 0, black wins - 1, draw - 0.5 </span>
+    <span class="pl-c1">print</span>(<span class="pl-s"><span class="pl-pds">"</span>Result: <span class="pl-pds">"</span></span>, new_game.play())</pre></div>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/LordDarkula">LordDarkula</a> can be found on <a href="https://github.com/LordDarkula/chess_py">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="https://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
