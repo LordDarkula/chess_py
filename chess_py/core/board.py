@@ -148,9 +148,6 @@ class Board:
         return b_str
 
     def __iter__(self):
-        return self
-
-    def __next__(self):
         for row in self.position:
             for square in row:
                 yield square
