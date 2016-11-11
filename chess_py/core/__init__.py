@@ -1,4 +1,4 @@
-from . import algebraic
+from . import algebraic, color
 from .algebraic import Move, Location, converter, notation_const
 from .board import Board
 

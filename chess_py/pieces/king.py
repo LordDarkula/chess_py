@@ -54,7 +54,7 @@ class King(Piece):
         :rtype: bool
         """
         test = pos.copy()
-
+        move.piece = test.get_king(move.color)
         test.update(move)
         test_king = test.get_king(move.color)
 
@@ -83,15 +83,6 @@ class King(Piece):
 
         return []
 
-    # def add_kingside_casle(self, position):
-    #     """
-    #
-    #     :type: position Board
-    #     :return:
-    #     """
-    #     if not self.in_check(position) and not self.has_moved and position.:
-
-
     def add_castle(self, position):
         """
         Adds kingside and queenside
@@ -102,7 +93,7 @@ class King(Piece):
             # King side castle
             rook = position.piece_at_square(Location(self.location.rank, 7))
             # If both the king and rook are in the right place and neither have moved
-            if rook is not None and type(rook) is Rook and not rook.has_moved:
+            if rook is not None and isinstance(rook, Rook) and not rook.has_moved:
                 # If it is kingside castle and both spaces are empty
                 if position.is_square_empty(self.location.shift_right()) and \
                         position.is_square_empty(self.location.shift_right().shift_right()):
@@ -111,7 +102,7 @@ class King(Piece):
                     test.move_piece(self.location, self.location.shift_right())
 
                     # Cannot castle if in check after moving one square to the right
-                    if test.piece_at_square(self.location.shift_right().in_check()):
+                    if test.piece_at_square(self.location.shift_right()).in_check(position):
                         return
 
                     test.move_piece(self.location.shift_right(),
@@ -119,7 +110,7 @@ class King(Piece):
 
                     # Cannot castle if in check after moving one more square to the right
                     if test.piece_at_square(self.location.shift_right()
-                                                    .shift_right().in_check()):
+                                                    .shift_right()).in_check(position):
                         return
 
                     moves.append(Move(end_loc=self.location.shift_right().shift_right(),
@@ -131,7 +122,7 @@ class King(Piece):
             # Queen side castle
             rook = position.piece_at_square(Location(self.location.rank, 0))
             # If both the king and rook are in the right place and neither have moved
-            if rook is not None and type(rook) is Rook and not rook.has_moved:
+            if rook is not None and isinstance(rook, Rook) and not rook.has_moved:
 
                 # If it is queen side castle and all intermediate squares are empty
                 if position.is_square_empty(self.location.shift_left()) and \
@@ -142,13 +133,13 @@ class King(Piece):
                     test = position.copy()
                     test.move_piece(self.location, self.location.shift_left())
 
-                    if test.piece_at_square(self.location.shift_left().in_check()):
+                    if test.piece_at_square(self.location.shift_left()).in_check(position):
                         return
 
                     test.move_piece(self.location, self.location.shift_left().shift_left())
 
                     if test.piece_at_square(self.location.shift_left()
-                                                    .shift_left().in_check()):
+                                                    .shift_left()).in_check(position):
                         return
 
                     moves.append(Move(end_loc=self.location.shift_left().shift_left(),

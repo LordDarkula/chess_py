@@ -354,6 +354,7 @@ class Board:
 
         if type(move.piece) is King or type(move.piece) is Rook:
             move.piece.has_moved = True
+            print(self)
 
         if move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:

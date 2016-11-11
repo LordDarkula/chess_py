@@ -68,8 +68,6 @@ class TestKing(TestCase):
         self.board.update(converter.short_alg("Nf3", color.white, self.board))
         self.board.update(converter.short_alg("Be2", color.white, self.board))
 
-        print(self.board)
-
         self.assertEqual(
             len(self.board.get_king(color.white).add_castle(self.board)), 1)
         self.assertEqual(
