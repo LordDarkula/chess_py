@@ -1,5 +1,7 @@
 # chess_py
 
+![Board](http://i.stack.imgur.com/yQaOq.png)
+
 [![Build Status](https://travis-ci.org/LordDarkula/chess_py.svg?branch=master)](https://travis-ci.org/LordDarkula/chess_py)
 [![Code Climate](https://codeclimate.com/github/LordDarkula/chess_py/badges/gpa.svg)](https://codeclimate.com/github/LordDarkula/chess_py)
 [![PyPI version](https://badge.fury.io/py/chess_py.svg)](https://pypi.python.org/pypi/chess_py)
@@ -7,19 +9,6 @@
 [![Python35](https://img.shields.io/badge/python-3.5-blue.svg)](https://www.python.org/downloads/release/python-350/)
 [![License](https://img.shields.io/cocoapods/l/EasyQL.svg?style=flat)](https://github.com/LordDarkula/chess_py/blob/master/LICENSE)
 [![Twitter](https://img.shields.io/badge/twitter-@LordDarkula-blue.svg?style=flat)](http://twitter.com/LordDarkula)
-```
-
-8 ║♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜
-7 ║♟ ♟ ♟ ♟ ♟ ♟ ♟ ♟
-6 ║… … … … … … … …
-5 ║… … … … … … … …
-4 ║… … … … … … … …
-3 ║… … … … … … … …
-2 ║♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙
-1 ║♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖
---╚═══════════════
-——-a b c d e f g h
-```
 
 ## License
 chess_py is available under the MIT license. See the LICENSE file for more info.
