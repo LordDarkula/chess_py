@@ -37,15 +37,13 @@ class Piece_values:
         :type: ROOK_VALUE: float
         :type: QUEEN_VALUE: float
         """
-        cls.PAWN_VALUE = PAWN_VALUE
-
-        cls.KNIGHT_VALUE = KNIGHT_VALUE
-
-        cls.BISHOP_VALUE = BISHOP_VALUE
-
-        cls.ROOK_VALUE = ROOK_VALUE
-
-        cls.QUEEN_VALUE = QUEEN_VALUE
+        piece_values = cls()
+        piece_values.PAWN_VALUE = PAWN_VALUE
+        piece_values.KNIGHT_VALUE = KNIGHT_VALUE
+        piece_values.BISHOP_VALUE = BISHOP_VALUE
+        piece_values.ROOK_VALUE = ROOK_VALUE
+        piece_values.QUEEN_VALUE = QUEEN_VALUE
+        return piece_values
 
     def val(self, piece, ref_color):
         """

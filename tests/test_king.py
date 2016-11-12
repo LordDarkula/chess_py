@@ -1,5 +1,5 @@
 from unittest import TestCase
-from chess_py import color, Location, Board, King, converter, notation_const
+from chess_py import color, Location, Board, King, converter, notation_const, Rook
 
 
 class TestKing(TestCase):
@@ -13,6 +13,10 @@ class TestKing(TestCase):
         self.board.move_piece(Location.init_alg("d8"), Location.init_alg("f3"))
 
 
+        print(self.board)
+        print([str(move) for move in self.board.all_possible_moves(color.black)])
+        self.board.update(converter.long_alg("f3f2", self.board))
+        print(self.board)
         self.assertTrue(King.in_check_as_result(self.board,
                                                  converter.long_alg("f3f2", self.board)))
 
@@ -74,7 +78,17 @@ class TestKing(TestCase):
             self.board.get_king(color.white).add_castle(self.board)[0].status, notation_const.KING_SIDE_CASTLE)
 
     def test_possible_moves(self):
-        self.fail()
+        self.board = Board([[None for _ in range(8)] for _ in range(8)])
+        my_king = King(color.white, Location.init_alg("f3"))
+        self.board.place_piece_at_square(my_king, Location.init_alg("f3"))
+        moves = ['f3f4', 'f3g3', 'f3f2', 'f3e3', 'f3g4', 'f3e4', 'f3g2', 'f3e2']
+
+        for i, move in enumerate(my_king.possible_moves(self.board)):
+            self.assertEqual(move, converter.long_alg(moves[i], self.board))
 
     def test_in_check(self):
-        self.fail()
+        self.board = Board([[None for _ in range(8)] for _ in range(8)])
+        my_king = King(color.white, Location.init_alg("f3"))
+        self.board.place_piece_at_square(my_king, Location.init_alg("f3"))
+        self.board.place_piece_at_square(Rook(color.black, Location.init_alg("f1")), Location.init_alg("f1"))
+        self.assertTrue(my_king.in_check(self.board))
