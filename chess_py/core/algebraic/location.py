@@ -45,8 +45,8 @@ class Location:
         :type: rank: int
         :type: file: int
         """
-        self.rank = rank
-        self.file = file
+        self._rank = rank
+        self._file = file
 
     @classmethod
     def init_alg(cls, alg_str):
@@ -61,8 +61,16 @@ class Location:
         """
         return cls(int(alg_str[1]) - 1, ord(alg_str[0]) - 97)
 
+    @property
+    def rank(self):
+        return self._rank
+
+    @property
+    def file(self):
+        return self._file
+
     def __key(self):
-        return self.rank, self.file
+        return self._rank, self._file
 
     def __hash__(self):
         return hash(self.__key())
@@ -90,15 +98,15 @@ class Location:
 
         :rtype: str
         """
-        if self.rank is None:
+        if self._rank is None:
             rank_str = ""
         else:
-            rank_str = str(self.rank + 1)
+            rank_str = str(self._rank + 1)
 
-        if self.file is None:
+        if self._file is None:
             file_str = ""
         else:
-            file_str = chr(self.file + 97)
+            file_str = chr(self._file + 97)
 
         return file_str + rank_str
 
@@ -110,8 +118,8 @@ class Location:
 
         :rtype: bool
         """
-        if -1 < self.rank < 8 and \
-                -1 < self.file < 8:
+        if -1 < self._rank < 8 and \
+                -1 < self._file < 8:
             return True
 
         return False
@@ -122,7 +130,7 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self.rank + 1, self.file)
+        return Location(self._rank + 1, self._file)
 
     def shift_down(self):
         """
@@ -130,7 +138,7 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self.rank - 1, self.file)
+        return Location(self._rank - 1, self._file)
 
     def shift_right(self):
         """
@@ -138,7 +146,7 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self.rank, self.file + 1)
+        return Location(self._rank, self._file + 1)
 
     def shift_left(self):
         """
@@ -146,7 +154,7 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self.rank, self.file - 1)
+        return Location(self._rank, self._file - 1)
 
     def shift_up_right(self):
         """
