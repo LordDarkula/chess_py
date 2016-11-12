@@ -21,6 +21,7 @@ Class stores King on the board
 """
 
 from .piece import Piece
+from .queen import Queen
 from .rook import Rook
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
@@ -46,7 +47,7 @@ class King(Piece):
     @staticmethod
     def in_check_as_result(pos, move):
         """
-        Finds if playing move would put king
+        Finds if playing my move would put this king
         in check.
 
         :type: pos: Board
@@ -54,7 +55,6 @@ class King(Piece):
         :rtype: bool
         """
         test = pos.copy()
-        move.piece = test.get_king(move.color)
         test.update(move)
         test_king = test.get_king(move.color)
 
@@ -180,10 +180,19 @@ class King(Piece):
             for piece in row:
 
                 if piece is not None and piece.color != self.color:
+                    if isinstance(piece, King):
+                        for fn in self.cross_fn:
+                            if fn(self.location) == piece.location:
+                                return True
+
+                        for fn in self.diag_fn:
+                            if fn(self.location) == piece.location:
+                                return True
+
+                        continue
 
                     for move in piece.possible_moves(position):
 
                         if move.end_loc == self.location:
                             return True
-
-            return False
+        return False
