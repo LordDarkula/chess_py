@@ -9,7 +9,6 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 from pip._vendor.distlib.compat import raw_input
 from chess_py.core.algebraic import converter
-from chess_py.core.color import Color
 from chess_py.players.player import Player
 import sys
 

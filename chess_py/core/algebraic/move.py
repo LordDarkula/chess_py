@@ -12,6 +12,8 @@ to initialize Move.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+import warnings
+
 from .location import Location
 
 
@@ -28,7 +30,7 @@ class Move:
         :type: status: int
         """
         if self.on_board:
-            self.end_loc = end_loc
+            self._end_loc = end_loc
 
             self.status = status
             self.piece = piece
@@ -41,8 +43,17 @@ class Move:
         else:
             raise Exception("Location of move must be on the board")
 
+    @property
+    def end_loc(self):
+        return self._end_loc
+
+    @end_loc.setter
+    def end_loc(self, end_loc):
+        warnings.warn("Mutating end_loc attribute in Move should not be done")
+        self._end_loc = end_loc
+
     def __key(self):
-        return self.end_loc, self.piece, self.status, self.start_rank, self.start_file, self.promoted_to_piece
+        return self._end_loc, self.piece, self.status, self.start_rank, self.start_file, self.promoted_to_piece
 
     def __hash__(self):
         return hash(self.__key())
@@ -86,7 +97,7 @@ class Move:
 
         :rtype: str
         """
-        move_str = str(Location(self.start_rank, self.start_file)) + str(self.end_loc)
+        move_str = str(Location(self.start_rank, self.start_file)) + str(self._end_loc)
 
         if self.promoted_to_piece is not None:
             move_str += str(self.promoted_to_piece)
@@ -113,18 +124,11 @@ class Move:
 
         :rtype: bool
         """
-        return self.end_loc.on_board()
+        return self._end_loc.on_board()
 
     def would_move_be_promotion(self):
         """
         Finds if move from current location would be a promotion
         """
-        if self.end_loc.rank == 0 and \
-                not self.color:
-            return True
-
-        if self.end_loc.rank == 7 and \
-                self.color:
-            return True
-
-        return False
+        return (self._end_loc.rank == 0 and not self.color) or \
+                (self._end_loc.rank == 7 and self.color)
