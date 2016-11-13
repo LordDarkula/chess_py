@@ -22,7 +22,6 @@ Class stores Bishop on the board
 
 from .piece import Piece
 from .rook import Rook
-from ..core.color import Color
 
 
 class Bishop(Piece):
