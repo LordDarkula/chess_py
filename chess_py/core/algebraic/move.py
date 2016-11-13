@@ -31,7 +31,7 @@ class Move:
         """
         self._end_loc = end_loc
         self._status = status
-        self.piece = piece
+        self._piece = piece
         self.color = piece.color
         self.start_rank = start_rank
         self.start_file = start_file
@@ -58,8 +58,17 @@ class Move:
         warnings.warn("Mutating status attribute in Move should not be done")
         self._status = status
 
+    @property
+    def piece(self):
+        return self._piece
+
+    @piece.setter
+    def piece(self, piece):
+        warnings.warn("Mutating piece attribute in Move should not be done")
+        self._piece = piece
+
     def __key(self):
-        return self._end_loc, self.piece, self._status, \
+        return self._end_loc, self._piece, self._status, \
                self.start_rank, self.start_file, self.promoted_to_piece
 
     def __hash__(self):

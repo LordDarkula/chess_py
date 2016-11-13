@@ -1,7 +1,7 @@
 import unittest
+import copy
 
 from chess_py import Move, Location, notation_const, Pawn, color, Queen
-import copy
 
 
 class MoveTest(unittest.TestCase):
