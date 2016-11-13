@@ -38,7 +38,7 @@ class Move:
         self.promoted_to_piece = promoted_to_piece
 
         if not self.on_board():
-            raise Exception("Location of move must be on the board")
+            warnings.warn("Location of move must be on the board")
 
     @property
     def end_loc(self):
