@@ -21,7 +21,6 @@ Class stores King on the board
 """
 
 from .piece import Piece
-from .queen import Queen
 from .rook import Rook
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
@@ -71,14 +70,13 @@ class King(Piece):
 
             if position.is_square_empty(function(self.location)) and \
                     not self.in_check_as_result(position, move):
-
                 return [move]
 
             move.status = notation_const.CAPTURE
 
             if position.piece_at_square(function(self.location)).color != self.color and \
-                type(position.piece_at_square(function(self.location))) is not King and \
-                not self.in_check_as_result(position, move):
+                            type(position.piece_at_square(function(self.location))) is not King and \
+                    not self.in_check_as_result(position, move):
                 return [move]
 
         return []
@@ -173,26 +171,24 @@ class King(Piece):
         :type: position: Board
         :return: bool
         """
-        # Loops through columns
-        for row in position.position:
+        # Loops board
+        for square in position:
 
-            # Loops through rows
-            for piece in row:
-
-                if piece is not None and piece.color != self.color:
-                    if isinstance(piece, King):
-                        for fn in self.cross_fn:
-                            if fn(self.location) == piece.location:
-                                return True
-
-                        for fn in self.diag_fn:
-                            if fn(self.location) == piece.location:
-                                return True
-
-                        continue
-
-                    for move in piece.possible_moves(position):
-
-                        if move.end_loc == self.location:
+            if square is not None and square.color != self.color:
+                piece = square
+                if isinstance(piece, King):
+                    for fn in self.cross_fn:
+                        if fn(self.location) == piece.location:
                             return True
+
+                    for fn in self.diag_fn:
+                        if fn(self.location) == piece.location:
+                            return True
+
+                    continue
+
+                for move in piece.possible_moves(position):
+
+                    if move.end_loc == self.location:
+                        return True
         return False
