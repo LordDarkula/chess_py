@@ -49,7 +49,7 @@ class Move:
         warnings.warn("Mutating end_loc attribute in Move should not be done")
         self._end_loc = end_loc
 
-    @@property
+    @property
     def status(self):
         return self._status
 
