@@ -29,9 +29,6 @@ class Move:
         :type: piece: Piece
         :type: status: int
         """
-        if not self.on_board():
-            raise Exception("Location of move must be on the board")
-
         self._end_loc = end_loc
         self._status = status
         self.piece = piece
@@ -39,6 +36,9 @@ class Move:
         self.start_rank = start_rank
         self.start_file = start_file
         self.promoted_to_piece = promoted_to_piece
+
+        if not self.on_board():
+            raise Exception("Location of move must be on the board")
 
     @property
     def end_loc(self):
@@ -131,7 +131,7 @@ class Move:
 
         :rtype: bool
         """
-        return self._end_loc.on_board()
+        return self.end_loc.on_board()
 
     def would_move_be_promotion(self):
         """
