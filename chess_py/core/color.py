@@ -9,7 +9,6 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 
 class Color:
-
     def __init__(self, raw):
         """
         Initializes new color using a string
@@ -17,8 +16,8 @@ class Color:
         :type: raw: str
         :rtype: Color
         """
-        self.color = raw.upper() == "WHITE"
-        self.string = raw
+        self._color = raw.upper() == "WHITE"
+        self._string = raw
 
     @classmethod
     def pwhite(cls):
@@ -36,10 +35,10 @@ class Color:
         return cls.pblack()
 
     def __str__(self):
-        return self.string
+        return self._string
 
     def __key(self):
-        return self.color, self.string
+        return self._color, self._string
 
     def __hash__(self):
         return hash(self.__key())
@@ -51,10 +50,10 @@ class Color:
         :type: other: Color
         :rtype: bool
         """
-        if type(other) is type(self):
-            return self.color == other.color
+        if isinstance(other, Color):
+            return self._string == str(other)
 
-        return self.color == other
+        return self._color == other
 
     def __ne__(self, other):
         return not self.__eq__(other)
@@ -65,13 +64,13 @@ class Color:
 
         :rtype: Color
         """
-        return self._boolean(not self.color)
+        return self._boolean(not self._color)
 
 white = Color.pwhite()
 black = Color.pblack()
 
 
-def raw(string):
+def from_string(string):
     """
     Converts string "white" or "black" into
     corresponding color

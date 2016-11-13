@@ -32,9 +32,9 @@ class Human(Player):
         """
         print(position)
         if sys.version_info[0] < 3:
-            raw = raw_input(self.color.string + "\'s move \n")
+            raw = raw_input(str(self.color) + "\'s move \n")
         else:
-            raw = input(self.color.string + "\'s move \n")
+            raw = input(str(self.color) + "\'s move \n")
         move = None
 
         if len(raw) > 1:
@@ -44,9 +44,9 @@ class Human(Player):
         while raw is None or move is None:
 
             if sys.version_info[0] < 3:
-                raw = raw_input(self.color.string + "\'s move \n")
+                raw = raw_input(str(self.color) + "\'s move \n")
             else:
-                raw = input(self.color.string + "\'s move \n")
+                raw = input(str(self.color) + "\'s move \n")
 
             if len(raw) > 1:
                 move = converter.short_alg(raw, self.color, position)

@@ -56,13 +56,13 @@ class Move:
             raise TypeError("Cannot compare other types with Move")
 
         for index, item in enumerate(self.__key()):
-            if not self.check_equals_or_none(item, other.__key()[index]):
+            if not self._check_equals_or_none(item, other.__key()[index]):
                 return False
 
         return True
 
     @staticmethod
-    def check_equals_or_none(var1, var2):
+    def _check_equals_or_none(var1, var2):
         """
         If either is None then return True,
         otherwise compare them and return
