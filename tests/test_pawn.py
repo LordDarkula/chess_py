@@ -30,7 +30,7 @@ class TestPawn(TestCase):
         self.white_pawn.location = Location.init_alg("e7")
         moves = self.white_pawn.create_promotion_moves(Location.init_alg("e7"), notation_const.CAPTURE)
         self.assertEqual(len(moves), 4)
-        self.assertEqual(moves[0].start_loc(), Location.init_alg("e7"))
+        self.assertEqual(moves[0].start_loc, Location.init_alg("e7"))
 
         self.assertEqual(moves[0].promoted_to_piece, Queen(color.white, Location.init_alg("e8")))
         self.assertEqual(moves[1].promoted_to_piece, Rook(color.white, Location.init_alg("e8")))

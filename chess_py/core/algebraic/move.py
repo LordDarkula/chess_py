@@ -29,19 +29,16 @@ class Move:
         :type: piece: Piece
         :type: status: int
         """
-        if self.on_board:
-            self._end_loc = end_loc
-
-            self.status = status
-            self.piece = piece
-            self.color = piece.color
-
-            self.start_rank = start_rank
-            self.start_file = start_file
-            self.promoted_to_piece = promoted_to_piece
-
-        else:
+        if not self.on_board():
             raise Exception("Location of move must be on the board")
+
+        self._end_loc = end_loc
+        self._status = status
+        self.piece = piece
+        self.color = piece.color
+        self.start_rank = start_rank
+        self.start_file = start_file
+        self.promoted_to_piece = promoted_to_piece
 
     @property
     def end_loc(self):
@@ -52,8 +49,18 @@ class Move:
         warnings.warn("Mutating end_loc attribute in Move should not be done")
         self._end_loc = end_loc
 
+    @@property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self, status):
+        warnings.warn("Mutating status attribute in Move should not be done")
+        self._status = status
+
     def __key(self):
-        return self._end_loc, self.piece, self.status, self.start_rank, self.start_file, self.promoted_to_piece
+        return self._end_loc, self.piece, self._status, \
+               self.start_rank, self.start_file, self.promoted_to_piece
 
     def __hash__(self):
         return hash(self.__key())
