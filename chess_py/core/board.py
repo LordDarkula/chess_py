@@ -350,10 +350,10 @@ class Board:
             return
 
         if type(move.piece) is Pawn:
-            self.piece_at_square(move.start_loc()).just_moved_two_steps = False
+            self.piece_at_square(move.start_loc).just_moved_two_steps = False
 
         if type(move.piece) is King or type(move.piece) is Rook:
-            self.piece_at_square(move.start_loc()).has_moved = True
+            self.piece_at_square(move.start_loc).has_moved = True
 
         if move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:

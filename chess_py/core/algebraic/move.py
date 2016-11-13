@@ -93,6 +93,7 @@ class Move:
 
         return move_str
 
+    @property
     def start_loc(self):
         """
         Finds start Location of move if specified.
