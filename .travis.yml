@@ -7,11 +7,12 @@ python:
   - "3.5"
 # command to install dependencies
 install: python setup.py install
+install: pip install pytest
 
 # command to run tests
 script:
   - cd tests
-  - python -m unittest discover
+  - pytest
 
 branches:
   only:
