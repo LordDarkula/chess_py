@@ -215,7 +215,7 @@ def make_legal(move, position):
     """
     Converts an incomplete move (initial ``Location`` not specified)
     and the corresponding position into the a complete move
-    with the most likely starting point specified. If no moves match, None
+    with the most likely starting point specified. If no moves match, ``None``
     is returned.
 
     :type: move: Move
@@ -233,22 +233,7 @@ def make_legal(move, position):
             else:
                 continue
 
-        # Checks for basic equality of essential elements
         if move == test_move:
-
-            if move.status == notation_const.KING_SIDE_CASTLE or \
-                    move.status == notation_const.QUEEN_SIDE_CASTLE:
-                return test_move
-
-            if move.start_rank is not None and move.start_rank is not test_move.start_rank:
-                continue
-
-            if move.start_file is not None and move.start_file is not test_move.start_file:
-                continue
-
-            if move.promoted_to_piece is not None and move.promoted_to_piece is not test_move.promoted_to_piece:
-                continue
-
             return test_move
 
     return None
