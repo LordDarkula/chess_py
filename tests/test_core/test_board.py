@@ -1,7 +1,6 @@
 from unittest import TestCase
-from chess_py.core.board import Board
-from chess_py.core import color
-from chess_py.core.algebraic.location import Location
+
+from chess_py import Board, color, Location
 from chess_py import Pawn, Knight, Bishop, Rook, Queen, King, piece_const, converter
 
 
@@ -107,8 +106,6 @@ class TestBoard(TestCase):
                                                     piece_const.Piece_values()), 0)
 
         self.board.update(converter.short_alg("e3", color.white, self.board))
-        print(self.board)
-        print(converter.incomplete_alg("Bd2", color.white).piece)
 
         self.assertEqual(self.board.advantage_as_result(converter.short_alg("Bd2", color.white, self.board),
                                                         piece_const.Piece_values()), -1)
@@ -144,7 +141,7 @@ class TestBoard(TestCase):
         self.assertEqual(self.board.find_piece(Rook(color.black, Location(7, 0))),
                           Location(7, 0))
 
-        self.assertNotEquals(self.board.find_piece(Rook(color.black, Location(7, 0))),
+        self.assertNotEqual(self.board.find_piece(Rook(color.black, Location(7, 0))),
                              Location(3, 0))
 
         self.assertEqual(self.board.find_piece(Pawn(color.white, Location(0, 0))),
