@@ -1,8 +1,9 @@
 import unittest
+
 from chess_py import Location
 
 
-class LocationTest(unittest.TestCase):
+class TestLocation(unittest.TestCase):
 
     def testEquals(self):
         self.assertEqual(Location(8, 8), Location(8, 8))

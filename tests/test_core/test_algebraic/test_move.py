@@ -4,7 +4,7 @@ import copy
 from chess_py import Move, Location, notation_const, Pawn, color, Queen
 
 
-class MoveTest(unittest.TestCase):
+class TestMove(unittest.TestCase):
 
     def setUp(self):
         self.white_pawn = Pawn(color.white, Location(1, 0))
