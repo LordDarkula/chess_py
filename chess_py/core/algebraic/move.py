@@ -68,7 +68,7 @@ class Move:
         self._piece = piece
 
     def __key(self):
-        return self._end_loc, self._piece, self._status, \
+        return self.end_loc, self.piece, self.status, \
                self.start_rank, self.start_file, self.promoted_to_piece
 
     def __hash__(self):

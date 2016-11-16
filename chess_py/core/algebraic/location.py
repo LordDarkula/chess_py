@@ -70,7 +70,7 @@ class Location:
         return self._file
 
     def __key(self):
-        return self._rank, self._file
+        return self.rank, self.file
 
     def __hash__(self):
         return hash(self.__key())
