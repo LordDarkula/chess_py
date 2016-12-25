@@ -35,6 +35,7 @@ from math import fabs
 from . import color
 from .algebraic import notation_const
 from .algebraic.location import Location
+from ..pieces.piece import Piece
 from ..pieces.bishop import Bishop
 from ..pieces.king import King
 from ..pieces.pawn import Pawn
@@ -134,13 +135,20 @@ class Board:
             # Loops through squares in each row
             for j, square in enumerate(row):
 
+                piece = self.piece_at_square(Location(7 - i, j))
+
                 # If there is a piece on the square
-                if not self.is_square_empty(Location(7 - i, j)):
+                if isinstance(piece, Piece):
 
                     # Prints out symbol of piece
-                    b_str += (self.position[7 - i][j].symbol + " ")
-                else:
+                    b_str += (str(self.position[7 - i][j].symbol) + " ")
+
+                elif piece is None:
                     b_str += "_ "
+
+                else:
+                    b_str += str(piece) + " "
+
             b_str += "\n"
 
         b_str += "  a b c d e f g h"

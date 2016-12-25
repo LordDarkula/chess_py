@@ -8,7 +8,7 @@ class UCI:
     def __init__(self, player, engine_name, author):
         """
 
-        :type: player Player
+        :type: player: Player
         """
         self.player = player
         self.engine = engine_name
@@ -22,15 +22,29 @@ class UCI:
         self.set_up()
 
     def set_up(self):
-        option = self.latest_input
-
-        while option != "uci":
-            option = self.latest_input
+        self.wait_for("uci")
 
         self.write("id name " + self.engine)
         self.write("id author " + self.author)
 
         self.write("uciok")
+
+        self.wait_for("ucinewgame")
+        self.start_game()
+
+    def start_game(self):
+        if self.latest_input == "isready":
+            self.write("readyok")
+
+        self.wait_for("")
+
+    def wait_for(self, command):
+        """
+        Waits until ``self.latest_input`` is a certain command
+        :type command:
+        """
+        while self.latest_input != command:
+            pass
 
     def read(self):
         """

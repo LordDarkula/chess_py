@@ -40,10 +40,7 @@ class Player:
 
         :rtype: str
         """
-        if sys.version_info[0] < 3:
-            return raw_input()
-        else:
-            return input()
+        return sys.stdin.read()
 
     @staticmethod
     def setUCI(command):
@@ -54,5 +51,5 @@ class Player:
 
         :type: command: str
         """
-        print(command)
+        sys.stdout.write(command)
 
