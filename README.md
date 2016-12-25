@@ -11,8 +11,11 @@
 [![Twitter](https://img.shields.io/badge/twitter-@LordDarkula-blue.svg?style=flat)](http://twitter.com/LordDarkula)
 
 ## License
-chess_py is available under the MIT license. See the LICENSE file for more info.
+chess_py is available under the MIT license. See the [LICENSE](https://github.com/LordDarkula/chess_py/blob/master/LICENSE) file for more info.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
+
+## Talk @Pygotham 2016
+I gave a talk at PyGotham 2016 on this library. Abstract can be found [here](https://2016.pygotham.org/talks/324/abstractions-and-building/).
 
 ## Introduction
 
