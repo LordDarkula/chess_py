@@ -343,6 +343,9 @@ class Board:
 
         :type: move: Move
         """
+        if move is None:
+            raise Exception("Move cannot be None")
+
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))
             move.piece.get_location = Location(move.end_loc.rank, 6)
