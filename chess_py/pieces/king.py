@@ -20,6 +20,8 @@ Class stores King on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from copy import copy
+
 from .piece import Piece
 from .rook import Rook
 from ..core.algebraic import notation_const
@@ -53,7 +55,7 @@ class King(Piece):
         :type: move: Move
         :rtype: bool
         """
-        test = pos.copy()
+        test = copy(pos)
         test.update(move)
         test_king = test.get_king(move.color)
 
@@ -96,7 +98,7 @@ class King(Piece):
                 if position.is_square_empty(self.location.shift_right()) and \
                         position.is_square_empty(self.location.shift_right().shift_right()):
 
-                    test = position.copy()
+                    test = copy(position)
                     test.move_piece(self.location, self.location.shift_right())
 
                     # Cannot castle if in check after moving one square to the right
@@ -128,7 +130,7 @@ class King(Piece):
                         position.is_square_empty(self.location.shift_left()
                                                          .shift_left().shift_left()):
 
-                    test = position.copy()
+                    test = copy(position)
                     test.move_piece(self.location, self.location.shift_left())
 
                     if test.piece_at_square(self.location.shift_left()).in_check(position):

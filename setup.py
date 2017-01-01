@@ -4,7 +4,7 @@ from setuptools import setup
 import setuptools
 
 setup(name='chess_py',
-      version='2.2',
+      version='2.3',
       description='Python chess client',
       platforms='MacOS X',
       classifiers=[
