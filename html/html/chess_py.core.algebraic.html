@@ -111,7 +111,7 @@ UCI, but can be used for other purposes.</p>
 <code class="descclassname">chess_py.core.algebraic.converter.</code><code class="descname">make_legal</code><span class="sig-paren">(</span><em>move</em>, <em>position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/converter.html#make_legal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.converter.make_legal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts an incomplete move (initial <code class="docutils literal"><span class="pre">Location</span></code> not specified)
 and the corresponding position into the a complete move
-with the most likely starting point specified. If no moves match, None
+with the most likely starting point specified. If no moves match, <code class="docutils literal"><span class="pre">None</span></code>
 is returned.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -188,6 +188,11 @@ such as <code class="docutils literal"><span class="pre">Board</span></code>.</p
 <dt id="chess_py.core.algebraic.location.Location">
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.location.</code><code class="descname">Location</code><span class="sig-paren">(</span><em>rank</em>, <em>file</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="chess_py.core.algebraic.location.Location.file">
+<code class="descname">file</code><a class="headerlink" href="#chess_py.core.algebraic.location.Location.file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="classmethod">
 <dt id="chess_py.core.algebraic.location.Location.init_alg">
 <em class="property">classmethod </em><code class="descname">init_alg</code><span class="sig-paren">(</span><em>alg_str</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/location.html#Location.init_alg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.location.Location.init_alg" title="Permalink to this definition">¶</a></dt>
@@ -221,6 +226,11 @@ If the rank and file are both in between
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.algebraic.location.Location.rank">
+<code class="descname">rank</code><a class="headerlink" href="#chess_py.core.algebraic.location.Location.rank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.location.Location.shift_down">
@@ -359,25 +369,10 @@ to initialize Move.</p>
 <dt id="chess_py.core.algebraic.move.Move">
 <em class="property">class </em><code class="descclassname">chess_py.core.algebraic.move.</code><code class="descname">Move</code><span class="sig-paren">(</span><em>end_loc</em>, <em>piece</em>, <em>status</em>, <em>start_rank=None</em>, <em>start_file=None</em>, <em>promoted_to_piece=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
-<dl class="staticmethod">
-<dt id="chess_py.core.algebraic.move.Move.check_equals_or_none">
-<em class="property">static </em><code class="descname">check_equals_or_none</code><span class="sig-paren">(</span><em>var1</em>, <em>var2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.check_equals_or_none"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.check_equals_or_none" title="Permalink to this definition">¶</a></dt>
-<dd><p>If either is None then return True,
-otherwise compare them and return
-if they are equal.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Type:</th><td class="field-body">var1: object</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">var2: object</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
+<dl class="attribute">
+<dt id="chess_py.core.algebraic.move.Move.end_loc">
+<code class="descname">end_loc</code><a class="headerlink" href="#chess_py.core.algebraic.move.Move.end_loc" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.on_board">
@@ -394,9 +389,14 @@ is on the board.</p>
 </table>
 </dd></dl>
 
-<dl class="method">
+<dl class="attribute">
+<dt id="chess_py.core.algebraic.move.Move.piece">
+<code class="descname">piece</code><a class="headerlink" href="#chess_py.core.algebraic.move.Move.piece" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="chess_py.core.algebraic.move.Move.start_loc">
-<code class="descname">start_loc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/chess_py/core/algebraic/move.html#Move.start_loc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#chess_py.core.algebraic.move.Move.start_loc" title="Permalink to this definition">¶</a></dt>
+<code class="descname">start_loc</code><a class="headerlink" href="#chess_py.core.algebraic.move.Move.start_loc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds start Location of move if specified.
 Otherwise throws an AttributeError</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -408,6 +408,11 @@ Otherwise throws an AttributeError</p>
 </tbody>
 </table>
 </dd></dl>
+
+<dl class="attribute">
+<dt id="chess_py.core.algebraic.move.Move.status">
+<code class="descname">status</code><a class="headerlink" href="#chess_py.core.algebraic.move.Move.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="chess_py.core.algebraic.move.Move.would_move_be_promotion">

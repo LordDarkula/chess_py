@@ -57,7 +57,7 @@
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">engine_name</span><span class="p">,</span> <span class="n">author</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">        :type: player Player</span>
+<span class="sd">        :type: player: Player</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">player</span> <span class="o">=</span> <span class="n">player</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine_name</span>
@@ -71,15 +71,29 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">set_up</span><span class="p">()</span></div>
 
 <div class="viewcode-block" id="UCI.set_up"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.interface.UCI.set_up">[docs]</a>    <span class="k">def</span> <span class="nf">set_up</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="n">option</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_input</span>
-
-        <span class="k">while</span> <span class="n">option</span> <span class="o">!=</span> <span class="s2">&quot;uci&quot;</span><span class="p">:</span>
-            <span class="n">option</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="s2">&quot;uci&quot;</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;id name &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;id author &quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">author</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;uciok&quot;</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;uciok&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="s2">&quot;ucinewgame&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_game</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="UCI.start_game"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.interface.UCI.start_game">[docs]</a>    <span class="k">def</span> <span class="nf">start_game</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_input</span> <span class="o">==</span> <span class="s2">&quot;isready&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;readyok&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="UCI.wait_for"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.interface.UCI.wait_for">[docs]</a>    <span class="k">def</span> <span class="nf">wait_for</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Waits until ``self.latest_input`` is a certain command</span>
+<span class="sd">        :type command:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">latest_input</span> <span class="o">!=</span> <span class="n">command</span><span class="p">:</span>
+            <span class="k">pass</span></div>
 
 <div class="viewcode-block" id="UCI.read"><a class="viewcode-back" href="../../../chess_py.game.html#chess_py.game.interface.UCI.read">[docs]</a>    <span class="k">def</span> <span class="nf">read</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>

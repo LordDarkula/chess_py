@@ -89,10 +89,7 @@
 
 <span class="sd">        :rtype: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">raw_input</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">input</span><span class="p">()</span></div>
+        <span class="k">return</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span></div>
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="Player.setUCI"><a class="viewcode-back" href="../../../chess_py.players.html#chess_py.players.player.Player.setUCI">[docs]</a>    <span class="k">def</span> <span class="nf">setUCI</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
@@ -103,7 +100,7 @@
 
 <span class="sd">        :type: command: str</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">command</span><span class="p">)</span></div></div>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">command</span><span class="p">)</span></div></div>
 
 </pre></div>
 

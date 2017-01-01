@@ -264,7 +264,7 @@
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Converts an incomplete move (initial ``Location`` not specified)</span>
 <span class="sd">    and the corresponding position into the a complete move</span>
-<span class="sd">    with the most likely starting point specified. If no moves match, None</span>
+<span class="sd">    with the most likely starting point specified. If no moves match, ``None``</span>
 <span class="sd">    is returned.</span>
 
 <span class="sd">    :type: move: Move</span>
@@ -282,22 +282,7 @@
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">continue</span>
 
-        <span class="c1"># Checks for basic equality of essential elements</span>
         <span class="k">if</span> <span class="n">move</span> <span class="o">==</span> <span class="n">test_move</span><span class="p">:</span>
-
-            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">KING_SIDE_CASTLE</span> <span class="ow">or</span> \
-                    <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">QUEEN_SIDE_CASTLE</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">test_move</span>
-
-            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">move</span><span class="o">.</span><span class="n">start_rank</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">test_move</span><span class="o">.</span><span class="n">start_rank</span><span class="p">:</span>
-                <span class="k">continue</span>
-
-            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">start_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">move</span><span class="o">.</span><span class="n">start_file</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">test_move</span><span class="o">.</span><span class="n">start_file</span><span class="p">:</span>
-                <span class="k">continue</span>
-
-            <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">promoted_to_piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">move</span><span class="o">.</span><span class="n">promoted_to_piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">test_move</span><span class="o">.</span><span class="n">promoted_to_piece</span><span class="p">:</span>
-                <span class="k">continue</span>
-
             <span class="k">return</span> <span class="n">test_move</span>
 
     <span class="k">return</span> <span class="kc">None</span></div>

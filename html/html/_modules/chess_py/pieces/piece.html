@@ -118,6 +118,9 @@
 <div class="viewcode-block" id="Piece.possible_moves"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece.Piece.possible_moves">[docs]</a>    <span class="k">def</span> <span class="nf">possible_moves</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
+    <span class="k">def</span> <span class="nf">__copy__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)(</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
+
 <div class="viewcode-block" id="Piece.contains_opposite_color_piece"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece.Piece.contains_opposite_color_piece">[docs]</a>    <span class="k">def</span> <span class="nf">contains_opposite_color_piece</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">square</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Finds if square on the board is occupied by a ``Piece``</span>

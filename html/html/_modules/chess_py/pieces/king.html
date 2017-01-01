@@ -95,7 +95,7 @@
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="King.in_check_as_result"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.in_check_as_result">[docs]</a>    <span class="k">def</span> <span class="nf">in_check_as_result</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Finds if playing move would put king</span>
+<span class="sd">        Finds if playing my move would put this king</span>
 <span class="sd">        in check.</span>
 
 <span class="sd">        :type: pos: Board</span>
@@ -103,7 +103,6 @@
 <span class="sd">        :rtype: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">test</span> <span class="o">=</span> <span class="n">pos</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
         <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">move</span><span class="p">)</span>
         <span class="n">test_king</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">get_king</span><span class="p">(</span><span class="n">move</span><span class="o">.</span><span class="n">color</span><span class="p">)</span>
 
@@ -120,26 +119,16 @@
 
             <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">))</span> <span class="ow">and</span> \
                     <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_check_as_result</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
-
                 <span class="k">return</span> <span class="p">[</span><span class="n">move</span><span class="p">]</span>
 
             <span class="n">move</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">notation_const</span><span class="o">.</span><span class="n">CAPTURE</span>
 
             <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">))</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="ow">and</span> \
-                <span class="nb">type</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">King</span> <span class="ow">and</span> \
-                <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_check_as_result</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
+                            <span class="nb">type</span><span class="p">(</span><span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">King</span> <span class="ow">and</span> \
+                    <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_check_as_result</span><span class="p">(</span><span class="n">position</span><span class="p">,</span> <span class="n">move</span><span class="p">):</span>
                 <span class="k">return</span> <span class="p">[</span><span class="n">move</span><span class="p">]</span>
 
         <span class="k">return</span> <span class="p">[]</span></div>
-
-    <span class="c1"># def add_kingside_casle(self, position):</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#</span>
-    <span class="c1">#     :type: position Board</span>
-    <span class="c1">#     :return:</span>
-    <span class="c1">#     &quot;&quot;&quot;</span>
-    <span class="c1">#     if not self.in_check(position) and not self.has_moved and position.:</span>
-
 
 <div class="viewcode-block" id="King.add_castle"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.king.King.add_castle">[docs]</a>    <span class="k">def</span> <span class="nf">add_castle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -151,7 +140,7 @@
             <span class="c1"># King side castle</span>
             <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
             <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
-            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rook</span><span class="p">,</span> <span class="n">Rook</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
                 <span class="c1"># If it is kingside castle and both spaces are empty</span>
                 <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span> <span class="ow">and</span> \
                         <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()):</span>
@@ -160,7 +149,7 @@
                     <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span>
 
                     <span class="c1"># Cannot castle if in check after moving one square to the right</span>
-                    <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
                         <span class="k">return</span>
 
                     <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">(),</span>
@@ -168,7 +157,7 @@
 
                     <span class="c1"># Cannot castle if in check after moving one more square to the right</span>
                     <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span>
-                                                    <span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                                                    <span class="o">.</span><span class="n">shift_right</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
                         <span class="k">return</span>
 
                     <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_right</span><span class="p">()</span><span class="o">.</span><span class="n">shift_right</span><span class="p">(),</span>
@@ -180,7 +169,7 @@
             <span class="c1"># Queen side castle</span>
             <span class="n">rook</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="n">Location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
             <span class="c1"># If both the king and rook are in the right place and neither have moved</span>
-            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">rook</span><span class="p">)</span> <span class="ow">is</span> <span class="n">Rook</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rook</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">rook</span><span class="p">,</span> <span class="n">Rook</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">rook</span><span class="o">.</span><span class="n">has_moved</span><span class="p">:</span>
 
                 <span class="c1"># If it is queen side castle and all intermediate squares are empty</span>
                 <span class="k">if</span> <span class="n">position</span><span class="o">.</span><span class="n">is_square_empty</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span> <span class="ow">and</span> \
@@ -191,13 +180,13 @@
                     <span class="n">test</span> <span class="o">=</span> <span class="n">position</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
                     <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span>
 
-                    <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                    <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
                         <span class="k">return</span>
 
                     <span class="n">test</span><span class="o">.</span><span class="n">move_piece</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">())</span>
 
                     <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">piece_at_square</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span>
-                                                    <span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">in_check</span><span class="p">()):</span>
+                                                    <span class="o">.</span><span class="n">shift_left</span><span class="p">())</span><span class="o">.</span><span class="n">in_check</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
                         <span class="k">return</span>
 
                     <span class="n">moves</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Move</span><span class="p">(</span><span class="n">end_loc</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">shift_left</span><span class="p">()</span><span class="o">.</span><span class="n">shift_left</span><span class="p">(),</span>
@@ -231,20 +220,27 @@
 <span class="sd">        :type: position: Board</span>
 <span class="sd">        :return: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Loops through columns</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">position</span><span class="o">.</span><span class="n">position</span><span class="p">:</span>
+        <span class="c1"># Loops board</span>
+        <span class="k">for</span> <span class="n">square</span> <span class="ow">in</span> <span class="n">position</span><span class="p">:</span>
 
-            <span class="c1"># Loops through rows</span>
-            <span class="k">for</span> <span class="n">piece</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
-
-                <span class="k">if</span> <span class="n">piece</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">piece</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
-
-                    <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
-
-                        <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">square</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">square</span><span class="o">.</span><span class="n">color</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="p">:</span>
+                <span class="n">piece</span> <span class="o">=</span> <span class="n">square</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">piece</span><span class="p">,</span> <span class="n">King</span><span class="p">):</span>
+                    <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross_fn</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">fn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span> <span class="o">==</span> <span class="n">piece</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
                             <span class="k">return</span> <span class="kc">True</span>
 
-            <span class="k">return</span> <span class="kc">False</span></div></div>
+                    <span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">diag_fn</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">fn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">)</span> <span class="o">==</span> <span class="n">piece</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="kc">True</span>
+
+                    <span class="k">continue</span>
+
+                <span class="k">for</span> <span class="n">move</span> <span class="ow">in</span> <span class="n">piece</span><span class="o">.</span><span class="n">possible_moves</span><span class="p">(</span><span class="n">position</span><span class="p">):</span>
+
+                    <span class="k">if</span> <span class="n">move</span><span class="o">.</span><span class="n">end_loc</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">location</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div></div>
 </pre></div>
 
           </div>

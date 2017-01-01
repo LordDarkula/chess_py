@@ -86,15 +86,13 @@
 <span class="sd">        :type: ROOK_VALUE: float</span>
 <span class="sd">        :type: QUEEN_VALUE: float</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cls</span><span class="o">.</span><span class="n">PAWN_VALUE</span> <span class="o">=</span> <span class="n">PAWN_VALUE</span>
-
-        <span class="n">cls</span><span class="o">.</span><span class="n">KNIGHT_VALUE</span> <span class="o">=</span> <span class="n">KNIGHT_VALUE</span>
-
-        <span class="n">cls</span><span class="o">.</span><span class="n">BISHOP_VALUE</span> <span class="o">=</span> <span class="n">BISHOP_VALUE</span>
-
-        <span class="n">cls</span><span class="o">.</span><span class="n">ROOK_VALUE</span> <span class="o">=</span> <span class="n">ROOK_VALUE</span>
-
-        <span class="n">cls</span><span class="o">.</span><span class="n">QUEEN_VALUE</span> <span class="o">=</span> <span class="n">QUEEN_VALUE</span></div>
+        <span class="n">piece_values</span> <span class="o">=</span> <span class="n">cls</span><span class="p">()</span>
+        <span class="n">piece_values</span><span class="o">.</span><span class="n">PAWN_VALUE</span> <span class="o">=</span> <span class="n">PAWN_VALUE</span>
+        <span class="n">piece_values</span><span class="o">.</span><span class="n">KNIGHT_VALUE</span> <span class="o">=</span> <span class="n">KNIGHT_VALUE</span>
+        <span class="n">piece_values</span><span class="o">.</span><span class="n">BISHOP_VALUE</span> <span class="o">=</span> <span class="n">BISHOP_VALUE</span>
+        <span class="n">piece_values</span><span class="o">.</span><span class="n">ROOK_VALUE</span> <span class="o">=</span> <span class="n">ROOK_VALUE</span>
+        <span class="n">piece_values</span><span class="o">.</span><span class="n">QUEEN_VALUE</span> <span class="o">=</span> <span class="n">QUEEN_VALUE</span>
+        <span class="k">return</span> <span class="n">piece_values</span></div>
 
 <div class="viewcode-block" id="Piece_values.val"><a class="viewcode-back" href="../../../chess_py.pieces.html#chess_py.pieces.piece_const.Piece_values.val">[docs]</a>    <span class="k">def</span> <span class="nf">val</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">piece</span><span class="p">,</span> <span class="n">ref_color</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
