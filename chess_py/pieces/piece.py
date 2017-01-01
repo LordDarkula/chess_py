@@ -69,6 +69,9 @@ class Piece:
     def possible_moves(self, position):
         pass
 
+    def __copy__(self):
+        return type(self)(self.color, self.location)
+
     def contains_opposite_color_piece(self, square, position):
         """
         Finds if square on the board is occupied by a ``Piece``

@@ -160,7 +160,7 @@ class Board:
             for square in row:
                 yield square
 
-    def copy(self):
+    def __copy__(self):
         """
         Copies the board faster than deepcopy
 
