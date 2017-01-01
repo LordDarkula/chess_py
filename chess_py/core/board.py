@@ -217,7 +217,7 @@ class Board:
         :type: val_scheme: Piece_values
         :rtype: double
         """
-        test_board = self.__copy__()
+        test_board = cp(self)
         test_board.update(move)
         return test_board.material_advantage(move.color, val_scheme)
 
@@ -248,7 +248,7 @@ class Board:
                             see if they get it out of check
                             """
                             for move in piece.possible_moves(self):
-                                test = self.__copy__()
+                                test = cp(self)
                                 test.update(move)
 
                                 # If the King's response gets it out of check, it is legal
