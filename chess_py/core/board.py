@@ -253,7 +253,7 @@ class Board:
                             see if they get it out of check
                             """
                             if not isinstance(piece, King):
-                                king_loc = self.get_king(input_color)
+                                king_loc = self.get_king(input_color).location
                                 for move in piece.possible_moves(self):
                                     test = cp(self)
                                     test.update(move)
