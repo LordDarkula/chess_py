@@ -166,8 +166,7 @@ class Board:
 
         :rtype: Board
         """
-        self.board = Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
-        return self.board
+        return Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
 
     def piece_at_square(self, location):
         """
@@ -231,11 +230,7 @@ class Board:
         """
         moves = []
 
-        in_check = self.get_king(input_color).in_check(self)
-
-        if in_check:
-            print("In check")
-            print(self)
+        king_loc = self.get_king(input_color).location
 
         # Loops through columns
         for row in self.position:
@@ -243,26 +238,19 @@ class Board:
             # Loops through rows
             for piece in row:
 
-                    # Tests if square on the board is not empty
-                    if piece is not None and piece.color == input_color:
+                # Tests if square on the board is not empty
+                if piece is not None and piece.color == input_color:
 
-                        # Adds all of piece's possible moves to moves list.
-                        if in_check:
-                            """
-                            Loops through all of the King's responses to
-                            see if they get it out of check
-                            """
-                            if not isinstance(piece, King):
-                                king_loc = self.get_king(input_color).location
-                                for move in piece.possible_moves(self):
-                                    test = cp(self)
-                                    test.update(move)
+                    for move in piece.possible_moves(self):
 
-                                    # If the King's response gets it out of check, it is legal
-                                    if not test.piece_at_square(king_loc).in_check(test):
-                                        moves.append(move)
-                        else:
-                            moves.extend(piece.possible_moves(self))
+                        test = cp(self)
+                        test.update(move)
+
+                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(self):
+                            moves.append(move)
+
+                        elif isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(self):
+                            moves.append(move)
 
         return moves
 
@@ -282,6 +270,8 @@ class Board:
                         self.piece_at_square(loc) == piece:
                     return loc
 
+        print(self)
+
         raise Exception("Piece not found: " + str(piece))
 
     def get_piece(self, piece_type, input_color):
@@ -295,6 +285,8 @@ class Board:
                     isinstance(piece_type, piece and \
                         piece.color == input_color):
                     return loc
+
+        print(self)
 
         raise Exception("Piece not found: " + str(piece_type))
 

@@ -21,7 +21,6 @@ Class stores Rook on the board
 """
 
 from .piece import Piece
-from . import King
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
 from ..core.algebraic.move import Move
@@ -66,7 +65,7 @@ class Rook(Piece):
             possible.append(side_move(notation_const.MOVEMENT))
             current = direction(current)
 
-        if not isinstance(position.piece_at_square(current), King) and \
+        if current.on_board() and \
                 self.contains_opposite_color_piece(current, position):
             possible.append(side_move(notation_const.CAPTURE))
 

@@ -1,4 +1,5 @@
 from unittest import TestCase
+
 from chess_py.core.algebraic import notation_const
 from chess_py.core import Board
 from chess_py.core.algebraic import Location, Move
