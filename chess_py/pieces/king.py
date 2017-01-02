@@ -81,7 +81,7 @@ class King(Piece):
             move.status = notation_const.CAPTURE
 
             if position.piece_at_square(function(self.location)).color != self.color and \
-                            type(position.piece_at_square(function(self.location))) is not King and \
+                            not isinstance(position.piece_at_square(function(self.location)), King) and \
                     not in_check_as_res:
                 return [move]
 

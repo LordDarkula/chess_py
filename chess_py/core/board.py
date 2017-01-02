@@ -195,11 +195,12 @@ class Board:
         :type: val_scheme: Piece_values
         :rtype: double
         """
-        if self.get_king(input_color).in_check(self) and len(self.all_possible_moves(input_color)) == 0:
+        all_poss_moves = self.all_possible_moves(input_color)
+
+        if self.get_king(input_color).in_check(self) and len(all_poss_moves) == 0:
             return -100
 
-        if self.get_king(input_color.opponent()).in_check(self) and \
-                        len(self.all_possible_moves(input_color.opponent())) == 0:
+        if self.get_king(input_color.opponent()).in_check(self) and len(all_poss_moves) == 0:
             return 100
 
         advantage = 0.0
@@ -232,6 +233,10 @@ class Board:
 
         in_check = self.get_king(input_color).in_check(self)
 
+        if in_check:
+            print("In check")
+            print(self)
+
         # Loops through columns
         for row in self.position:
 
@@ -243,19 +248,19 @@ class Board:
 
                         # Adds all of piece's possible moves to moves list.
                         if in_check:
-                            print("King in check")
-
                             """
                             Loops through all of the King's responses to
                             see if they get it out of check
                             """
-                            for move in piece.possible_moves(self):
-                                test = cp(self)
-                                test.update(move)
+                            if not isinstance(piece, King):
+                                king_loc = self.get_king(input_color)
+                                for move in piece.possible_moves(self):
+                                    test = cp(self)
+                                    test.update(move)
 
-                                # If the King's response gets it out of check, it is legal
-                                if not test.get_king(input_color).in_check(test):
-                                    moves.append(move)
+                                    # If the King's response gets it out of check, it is legal
+                                    if not test.piece_at_square(king_loc).in_check(test):
+                                        moves.append(move)
                         else:
                             moves.extend(piece.possible_moves(self))
 
