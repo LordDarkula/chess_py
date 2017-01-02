@@ -230,6 +230,8 @@ class Board:
         """
         moves = []
 
+        in_check = self.get_king(input_color).in_check(self)
+
         # Loops through columns
         for row in self.position:
 
@@ -240,7 +242,7 @@ class Board:
                     if piece is not None and piece.color == input_color:
 
                         # Adds all of piece's possible moves to moves list.
-                        if self.get_king(input_color).in_check(self):
+                        if in_check:
                             print("King in check")
 
                             """

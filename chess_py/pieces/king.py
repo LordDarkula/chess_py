@@ -70,15 +70,19 @@ class King(Piece):
                         start_rank=self.location.rank,
                         start_file=self.location.file)
 
-            if position.is_square_empty(function(self.location)) and \
-                    not self.in_check_as_result(position, move):
-                return [move]
+            in_check_as_res = self.in_check_as_result(position, move)
+
+            if position.is_square_empty(function(self.location)):
+                if not in_check_as_res:
+                    return [move]
+
+                return []
 
             move.status = notation_const.CAPTURE
 
             if position.piece_at_square(function(self.location)).color != self.color and \
                             type(position.piece_at_square(function(self.location))) is not King and \
-                    not self.in_check_as_result(position, move):
+                    not in_check_as_res:
                 return [move]
 
         return []
