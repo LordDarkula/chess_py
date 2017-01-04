@@ -29,5 +29,5 @@ def is_checkmate(position, input_color):
     :type: input_color: Color
     :rtype: bool
     """
-    return no_moves(position) and \
+    return len(position.all_possible_moves(input_color)) == 0 and \
         position.piece_at_square(position.find_king(input_color)).in_check(position)

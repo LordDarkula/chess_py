@@ -58,8 +58,16 @@ class King(Piece):
         test = copy(pos)
         test.update(move)
         test_king = test.get_king(move.color)
+        enemy_king = test.get_king(move.color.opponent())
 
-        return test_king.in_check(test)
+
+        x = test_king.location.file - enemy_king.location.file
+        y = test_king.location.rank - enemy_king.location.rank
+
+
+
+
+        return x > 1 or y > 1
 
     def add(self, function, position):
         if function(self.location).on_board():

@@ -80,6 +80,7 @@ class Move:
         :type: other: Move
         """
         if not isinstance(other, self.__class__):
+            print(type(other))
             raise TypeError("Cannot compare other types with Move")
 
         for index, item in enumerate(self.__key()):

@@ -194,12 +194,12 @@ class Board:
         :type: val_scheme: Piece_values
         :rtype: double
         """
-        all_poss_moves = self.all_possible_moves(input_color)
 
-        if self.get_king(input_color).in_check(self) and len(all_poss_moves) == 0:
+        if self.get_king(input_color).in_check(self) and len(self.all_possible_moves(input_color)) == 0:
             return -100
 
-        if self.get_king(input_color.opponent()).in_check(self) and len(all_poss_moves) == 0:
+        if self.get_king(input_color.opponent()).in_check(self) and \
+                        len(self.all_possible_moves(input_color.opponent())) == 0:
             return 100
 
         advantage = 0.0
@@ -228,6 +228,9 @@ class Board:
         :type: input_color: Color
         :rtype: list
         """
+        print("all_poss_moves called")
+        print(self)
+
         moves = []
 
         king_loc = self.get_king(input_color).location
@@ -246,10 +249,11 @@ class Board:
                         test = cp(self)
                         test.update(move)
 
-                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(self):
+                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
                             moves.append(move)
+                            continue
 
-                        elif isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(self):
+                        if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
                             moves.append(move)
 
         return moves
