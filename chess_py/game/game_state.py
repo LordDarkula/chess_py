@@ -17,8 +17,8 @@ def no_moves(position):
     :type: position: Board
     :rtype: bool
     """
-    return len(position.all_possible_moves(color.white)) == 0 \
-        or len(position.all_possible_moves(color.black)) == 0
+    return position.no_moves(color.white) \
+        or position.no_moves(color.black)
 
 
 def is_checkmate(position, input_color):
@@ -29,5 +29,5 @@ def is_checkmate(position, input_color):
     :type: input_color: Color
     :rtype: bool
     """
-    return len(position.all_possible_moves(input_color)) == 0 and \
-        position.piece_at_square(position.find_king(input_color)).in_check(position)
+    return position.no_moves(input_color) and \
+        position.get_king(input_color).in_check(position)

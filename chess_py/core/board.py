@@ -195,11 +195,10 @@ class Board:
         :rtype: double
         """
 
-        if self.get_king(input_color).in_check(self) and len(self.all_possible_moves(input_color)) == 0:
+        if self.get_king(input_color).in_check(self) and self.no_moves(input_color):
             return -100
 
-        if self.get_king(input_color.opponent()).in_check(self) and \
-                        len(self.all_possible_moves(input_color.opponent())) == 0:
+        if self.get_king(input_color.opponent()).in_check(self) and self.no_moves(input_color.opponent):
             return 100
 
         advantage = 0.0
@@ -229,10 +228,34 @@ class Board:
         :rtype: list
         """
         print("all_poss_moves called")
-        print(self)
 
         moves = []
 
+        # Loops through columns
+        for row in self.position:
+
+            # Loops through rows
+            for piece in row:
+
+                # Tests if square on the board is not empty
+                if piece is not None and piece.color == input_color:
+
+                    for move in piece.possible_moves(self):
+
+                        test = cp(self)
+                        test.update(move)
+
+                        if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
+                            moves.append(move)
+                            continue
+
+                        king_loc = self.get_king(input_color).location
+                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
+                            moves.append(move)
+
+        return moves
+
+    def no_moves(self, input_color):
         king_loc = self.get_king(input_color).location
 
         # Loops through columns
@@ -250,13 +273,12 @@ class Board:
                         test.update(move)
 
                         if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
-                            moves.append(move)
-                            continue
+                            return False
 
                         if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
-                            moves.append(move)
+                            return False
 
-        return moves
+        return True
 
     def find_piece(self, piece):
         """
