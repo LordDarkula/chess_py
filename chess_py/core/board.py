@@ -201,12 +201,7 @@ class Board:
         if self.get_king(input_color.opponent()).in_check(self) and self.no_moves(input_color.opponent()):
             return 100
 
-        advantage = 0.0
-        for row in self.position:
-            for piece in row:
-                advantage += val_scheme.val(piece=piece, ref_color=input_color)
-
-        return advantage
+        return sum([val_scheme.val(piece, input_color) for piece in self])
 
     def advantage_as_result(self, move, val_scheme):
         """
@@ -229,27 +224,23 @@ class Board:
         """
         print("all_poss_moves called")
 
-        # Loops through columns
-        for row in self.position:
+        for piece in self:
 
-            # Loops through rows
-            for piece in row:
+            # Tests if square on the board is not empty
+            if piece is not None and piece.color == input_color:
 
-                # Tests if square on the board is not empty
-                if piece is not None and piece.color == input_color:
+                for move in piece.possible_moves(self):
 
-                    for move in piece.possible_moves(self):
+                    test = cp(self)
+                    test.update(move)
 
-                        test = cp(self)
-                        test.update(move)
+                    if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
+                        yield move
+                        continue
 
-                        if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
-                            yield move
-                            continue
-
-                        king_loc = self.get_king(input_color).location
-                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
-                            yield move
+                    king_loc = self.get_king(input_color).location
+                    if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
+                        yield move
 
     def no_moves(self, input_color):
         king_loc = self.get_king(input_color).location
