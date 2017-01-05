@@ -198,7 +198,7 @@ class Board:
         if self.get_king(input_color).in_check(self) and self.no_moves(input_color):
             return -100
 
-        if self.get_king(input_color.opponent()).in_check(self) and self.no_moves(input_color.opponent):
+        if self.get_king(input_color.opponent()).in_check(self) and self.no_moves(input_color.opponent()):
             return 100
 
         advantage = 0.0
@@ -229,8 +229,6 @@ class Board:
         """
         print("all_poss_moves called")
 
-        moves = []
-
         # Loops through columns
         for row in self.position:
 
@@ -246,14 +244,12 @@ class Board:
                         test.update(move)
 
                         if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
-                            moves.append(move)
+                            yield move
                             continue
 
                         king_loc = self.get_king(input_color).location
                         if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
-                            moves.append(move)
-
-        return moves
+                            yield move
 
     def no_moves(self, input_color):
         king_loc = self.get_king(input_color).location
