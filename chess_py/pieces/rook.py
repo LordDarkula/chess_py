@@ -20,6 +20,8 @@ Class stores Rook on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+import itertools
+
 from .piece import Piece
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
@@ -49,7 +51,6 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
-        possible = []
         current = direction(self.location)
 
         def side_move(status):
@@ -62,14 +63,12 @@ class Rook(Piece):
         assert isinstance(current, Location)
         while current.on_board() and \
                 position.is_square_empty(current):
-            possible.append(side_move(notation_const.MOVEMENT))
+            yield side_move(notation_const.MOVEMENT)
             current = direction(current)
 
         if current.on_board() and \
                 self.contains_opposite_color_piece(current, position):
-            possible.append(side_move(notation_const.CAPTURE))
-
-        return possible
+            yield side_move(notation_const.CAPTURE)
 
     def possible_moves(self, position):
         """
@@ -78,9 +77,5 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
-        moves = []
-
-        for fn in self.cross_fn:
-            moves.extend(self.direction_moves(fn, position))
-
-        return moves
+        for move in itertools.chain(*[self.direction_moves(fn, position) for fn in self.cross_fn]):
+            yield move

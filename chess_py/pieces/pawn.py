@@ -19,6 +19,7 @@ Class stores Pawn on the board
 
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+import itertools
 
 from .bishop import Bishop
 from .piece import Piece
@@ -222,11 +223,5 @@ class Pawn(Piece):
         :type: position: board.Board
         :rtype list
         """
-        for move in self.forward_moves(position):
-            yield move
-
-        for move in self.capture_moves(position):
-            yield move
-
-        for move in self.en_passant_moves(position):
+        for move in itertools.chain(self.forward_moves(position), self.capture_moves(position), self.en_passant_moves(position)):
             yield move

@@ -20,6 +20,8 @@ Class stores Queen on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+import itertools
+
 from .piece import Piece
 from .rook import Rook
 from .bishop import Bishop
@@ -38,11 +40,8 @@ class Queen(Piece):
         self.rook = Rook(self.color, self.location)
         self.bishop = Bishop(self.color, self.location)
 
-        moves = self.rook.possible_moves(position)
-        moves.extend(self.bishop.possible_moves(position))
-
-        for move in moves:
+        for move in itertools.chain(self.rook.possible_moves(position),
+                                    self.bishop.possible_moves(position)):
             move.piece = self
-
-        return moves
+            yield move
 

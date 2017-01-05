@@ -20,6 +20,8 @@ Class stores Bishop on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+import itertools
+
 from .piece import Piece
 from .rook import Rook
 
@@ -44,13 +46,6 @@ class Bishop(Piece):
         :rtype: list
         """
         rook = Rook(self.color, self.location)
-        moves = []
 
-        for fn in self.diag_fn:
-            moves.extend(rook.direction_moves(fn, position))
-
-        for move in moves:
-            move.piece = self
-
-
-        return moves
+        for move in itertools.chain(*[rook.direction_moves(fn, position) for fn in self.diag_fn]):
+            yield move
