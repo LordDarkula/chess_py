@@ -37,50 +37,47 @@ class Knight(Piece):
     def __str__(self):
         return "N"
 
+    def cycle(self, index):
+        """
+        Cycles indexes containing shift directions perpendicular to current shift
+        :type: index int
+        :rtype tuple
+        """
+        if index == 0:
+            return index + 1, index + 3
+
+        elif index == 3:
+            return index - 1, index - 3
+
+        return index + 1, index - 1
+
+    def dest(self, loc, function, ind):
+        """
+        Returns both destinations that result when the knight is moved two steps in
+        one of the cardinal directions
+
+        :type: loc: Location
+        :type: function: def
+        :type: ind: int
+        :rtype: tuple
+        """
+
+        return self.cross_fn[self.cycle(ind)[0]](function(function(loc))), \
+               self.cross_fn[self.cycle(ind)[1]](function(function(loc)))
+
     def possible_moves(self, position):
         """
         Finds all possible knight moves
         :type: position Board
         :rtype: list
         """
-
-        def cycle(index):
-            """
-            Cycles indexes containing shift directions perpendicular to current shift
-            :type: index int
-            :rtype tuple
-            """
-            if index == 0:
-                return index + 1, index + 3
-
-            elif index == 3:
-                return index - 1, index - 3
-
-            return index + 1, index - 1
-
-        def dest(loc, function, ind):
-            """
-            Returns both destinations that result when the knight is moved two steps in
-            one of the cardinal directions
-
-            :type: loc: Location
-            :type: function: def
-            :type: ind: int
-            :rtype: tuple
-            """
-
-            return self.cross_fn[cycle(ind)[0]](function(function(loc))), \
-                   self.cross_fn[cycle(ind)[1]](function(function(loc)))
-
-        moves = []
-
         for index, func in enumerate(self.cross_fn):
-            dest_loc = dest(self.location, func, index)
+            dest_loc = self.dest(self.location, func, index)
 
             for j in range(2):
 
                 if not dest_loc[j].on_board():
-                    status = notation_const.NOT_IMPLEMENTED
+                    continue
 
                 elif position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
@@ -91,11 +88,8 @@ class Knight(Piece):
                 else:
                     status = notation_const.NOT_IMPLEMENTED
 
-                if status != notation_const.NOT_IMPLEMENTED:
-                    moves.append(Move(end_loc=dest_loc[j],
+                yield Move(end_loc=dest_loc[j],
                                       piece=self,
                                       status=status,
                                       start_rank=self.location.rank,
-                                      start_file=self.location.file))
-
-        return moves
+                                      start_file=self.location.file)

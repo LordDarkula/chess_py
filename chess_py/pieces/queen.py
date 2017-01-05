@@ -44,4 +44,3 @@ class Queen(Piece):
                                     self.bishop.possible_moves(position)):
             move.piece = self
             yield move
-
