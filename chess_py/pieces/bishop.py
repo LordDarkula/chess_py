@@ -48,4 +48,5 @@ class Bishop(Piece):
         rook = Rook(self.color, self.location)
 
         for move in itertools.chain(*[rook.direction_moves(fn, position) for fn in self.diag_fn]):
+            move.piece = self
             yield move
