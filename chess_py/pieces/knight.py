@@ -86,7 +86,7 @@ class Knight(Piece):
                     status = notation_const.CAPTURE
 
                 else:
-                    status = notation_const.NOT_IMPLEMENTED
+                    continue
 
                 yield Move(end_loc=dest_loc[j],
                                       piece=self,

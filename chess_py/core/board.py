@@ -238,7 +238,7 @@ class Board:
                         yield move
                         continue
 
-                    king_loc = self.get_king(input_color).location
+                    king_loc = test.get_king(input_color).location
                     if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
                         yield move
 
