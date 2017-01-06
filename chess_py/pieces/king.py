@@ -20,6 +20,8 @@ Class stores King on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+import math
+import itertools
 from copy import copy
 
 from .piece import Piece
@@ -60,14 +62,10 @@ class King(Piece):
         test_king = test.get_king(move.color)
         enemy_king = test.get_king(move.color.opponent())
 
+        x = math.fabs(test_king.location.file - enemy_king.location.file)
+        y = math.fabs(test_king.location.rank - enemy_king.location.rank)
 
-        x = test_king.location.file - enemy_king.location.file
-        y = test_king.location.rank - enemy_king.location.rank
-
-
-
-
-        return x > 1 or y > 1
+        return x <= 1 and y <= 1
 
     def add(self, function, position):
         if function(self.location).on_board():
@@ -115,7 +113,7 @@ class King(Piece):
 
                     # Cannot castle if in check after moving one square to the right
                     if test.piece_at_square(self.location.shift_right()).in_check(position):
-                        return
+                        return []
 
                     test.move_piece(self.location.shift_right(),
                                     self.location.shift_right().shift_right())
@@ -123,7 +121,7 @@ class King(Piece):
                     # Cannot castle if in check after moving one more square to the right
                     if test.piece_at_square(self.location.shift_right()
                                                     .shift_right()).in_check(position):
-                        return
+                        return []
 
                     moves.append(Move(end_loc=self.location.shift_right().shift_right(),
                                       piece=self,
@@ -146,13 +144,13 @@ class King(Piece):
                     test.move_piece(self.location, self.location.shift_left())
 
                     if test.piece_at_square(self.location.shift_left()).in_check(position):
-                        return
+                        return []
 
                     test.move_piece(self.location, self.location.shift_left().shift_left())
 
                     if test.piece_at_square(self.location.shift_left()
                                                     .shift_left()).in_check(position):
-                        return
+                        return []
 
                     moves.append(Move(end_loc=self.location.shift_left().shift_left(),
                                       piece=self,
@@ -169,35 +167,29 @@ class King(Piece):
         :type: position: Board
         :rtype: list
         """
-        moves = []
+        for move in itertools.chain(*[self.add(fn, position) for fn in self.cardinal_directions]):
+            yield move
 
-        for fn in self.cardinal_directions:
-            moves.extend(self.add(fn, position))
-
-        moves.extend(self.add_castle(position))
-
-        return moves
+        for move in self.add_castle(position):
+            yield move
 
     def in_check(self, position):
         """
-        Finds if the king is in check
+        Finds if the king is in check or if both kings are touching.
 
         :type: position: Board
         :return: bool
         """
         # Loops board
-        for square in position:
+        for piece in position:
 
-            if square is not None and square.color != self.color:
-                piece = square
+            if piece is not None and piece.color != self.color:
                 if isinstance(piece, King):
-                    for fn in self.cross_fn:
-                        if fn(self.location) == piece.location:
-                            return True
+                    x = math.fabs(piece.location.file - self.location.file)
+                    y = math.fabs(piece.location.rank - self.location.rank)
 
-                    for fn in self.diag_fn:
-                        if fn(self.location) == piece.location:
-                            return True
+                    if x <= 1 and y <= 1:
+                        return True
 
                     continue
 
