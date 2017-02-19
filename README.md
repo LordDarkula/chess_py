@@ -19,7 +19,7 @@ I gave a talk at PyGotham 2016 on this library. Abstract can be found [here](htt
 
 ## Introduction
 
-Chess_py is an open source chess client and framework written in python. Can create chess matches and provide players with data regarding current position, possible moves and eventual result of the game. UCI integration in progress.
+Chess_py is an open source chess library written in Python. Made to create chess engines. Handles the chess so you can focus on the engine.
 
 ## Installation
 
