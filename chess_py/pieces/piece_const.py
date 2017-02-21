@@ -17,7 +17,7 @@ class Piece_values:
     def __init__(self):
         self.PAWN_VALUE = 1
         self.KNIGHT_VALUE = 3
-        self.BISHOP_VALUE = 3
+        self.BISHOP_VALUE = 3.5
         self.ROOK_VALUE = 5
         self.QUEEN_VALUE = 9
 
