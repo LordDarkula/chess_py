@@ -11,4 +11,4 @@ class TestKnight(TestCase):
         knight = self.empty_pos.piece_at_square(Location.init_alg("e4"))
 
         moves = knight.possible_moves(self.empty_pos)
-        self.assertEqual(len(moves), 8)
+        self.assertEqual(len(list(moves)), 8)

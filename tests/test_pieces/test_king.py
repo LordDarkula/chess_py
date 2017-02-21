@@ -19,7 +19,7 @@ class TestKing(TestCase):
 
     def test_add(self):
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda  x: x.shift_up(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda  x: x.shift_up(), self.board))),
             0)
 
         self.board.update(converter.long_alg("e2e4", self.board))
