@@ -41,8 +41,7 @@ class King(Piece):
         """
         super(King, self).__init__(input_color, location, "♚", "♔")
         self.has_moved = False
-        self.cardinal_directions = self.cross_fn
-        self.cardinal_directions.extend(self.diag_fn)
+        self.cardinal_directions = self.cross_fn + self.diag_fn
 
     def __str__(self):
         return "K"
@@ -67,31 +66,34 @@ class King(Piece):
 
         return x <= 1 and y <= 1
 
+    def loc_adjacent_to_opponent_king(self, location, position):
+        enemy_king = position.get_king(self.color.opponent())
+
+        x = math.fabs(location.file - enemy_king.location.file)
+        y = math.fabs(location.rank - enemy_king.location.rank)
+
+        return x <= 1 and y <= 1
+
     def add(self, function, position):
         if function(self.location).on_board():
 
-            move = Move(end_loc=function(self.location),
-                        piece=self,
-                        status=notation_const.MOVEMENT,
-                        start_rank=self.location.rank,
-                        start_file=self.location.file)
+            loc_adj = self.loc_adjacent_to_opponent_king(function(self.location), position)
 
-            in_check_as_res = self.in_check_as_result(position, move)
-
-            if position.is_square_empty(function(self.location)):
-                if not in_check_as_res:
-                    return [move]
-
-                return []
-
-            move.status = notation_const.CAPTURE
+            if position.is_square_empty(function(self.location)) and not loc_adj:
+                yield Move(end_loc=function(self.location),
+                            piece=self,
+                            status=notation_const.MOVEMENT,
+                            start_rank=self.location.rank,
+                            start_file=self.location.file)
 
             if position.piece_at_square(function(self.location)).color != self.color and \
                             not isinstance(position.piece_at_square(function(self.location)), King) and \
-                    not in_check_as_res:
-                return [move]
-
-        return []
+                    not loc_adj:
+                yield Move(end_loc=function(self.location),
+                        piece=self,
+                        status=notation_const.CAPTURE,
+                        start_rank=self.location.rank,
+                        start_file=self.location.file)
 
     def add_castle(self, position):
         """
