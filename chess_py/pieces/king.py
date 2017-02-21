@@ -77,18 +77,19 @@ class King(Piece):
     def add(self, function, position):
         if function(self.location).on_board():
 
-            loc_adj = self.loc_adjacent_to_opponent_king(function(self.location), position)
+            loc_adj_in_check = self.loc_adjacent_to_opponent_king(function(self.location), position)
 
-            if position.is_square_empty(function(self.location)) and not loc_adj:
+            if position.is_square_empty(function(self.location)) and not loc_adj_in_check:
                 yield Move(end_loc=function(self.location),
                             piece=self,
                             status=notation_const.MOVEMENT,
                             start_rank=self.location.rank,
                             start_file=self.location.file)
 
-            if position.piece_at_square(function(self.location)).color != self.color and \
-                            not isinstance(position.piece_at_square(function(self.location)), King) and \
-                    not loc_adj:
+            if not position.is_square_empty(function(self.location)) and \
+                    position.piece_at_square(function(self.location)).color != self.color and \
+                    not isinstance(position.piece_at_square(function(self.location)), King) and \
+                    not loc_adj_in_check:
                 yield Move(end_loc=function(self.location),
                         piece=self,
                         status=notation_const.CAPTURE,

@@ -95,8 +95,10 @@ class TestBoard(TestCase):
         self.board = Board.init_default()
         self.board.position[7][2] = None
 
-        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 3)
-        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -3)
+        print(self.board)
+
+        self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 3.5)
+        self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -3.5)
 
     def test_advantage_as_result(self):
         self.assertEqual(self.board.advantage_as_result(converter.long_alg("e2e4", self.board), piece_const.Piece_values()), 0)
