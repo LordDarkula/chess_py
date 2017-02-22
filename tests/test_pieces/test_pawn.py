@@ -3,7 +3,7 @@ from unittest import TestCase
 from chess_py.core.algebraic import notation_const
 from chess_py.core import Board
 from chess_py.core.algebraic import Location, Move
-from chess_py.pieces import Queen, Rook, Bishop, Knight
+from chess_py.pieces import Queen, Rook, Bishop, Knight, Pawn
 from chess_py import color
 
 
@@ -29,8 +29,8 @@ class TestPawn(TestCase):
 
     def test_create_promotion_moves(self):
         self.white_pawn.location = Location.init_alg("e7")
-        moves = self.white_pawn.create_promotion_moves(Location.init_alg("e7"), notation_const.CAPTURE)
-        self.assertEqual(len(moves), 4)
+        moves = list(self.white_pawn.create_promotion_moves(Location.init_alg("e7"), notation_const.CAPTURE))
+        self.assertEqual(len(list(moves)), 4)
         self.assertEqual(moves[0].start_loc, Location.init_alg("e7"))
 
         self.assertEqual(moves[0].promoted_to_piece, Queen(color.white, Location.init_alg("e8")))
@@ -40,7 +40,7 @@ class TestPawn(TestCase):
 
     def test_forward_moves(self):
         self.white_pawn.location = Location.init_alg("e2")
-        moves = self.white_pawn.forward_moves(self.position)
+        moves = list(self.white_pawn.forward_moves(self.position))
 
         self.assertEqual(len(moves), 2)
         self.assertEqual(moves[0], Move(end_loc=self.white_pawn.square_in_front(self.white_pawn.location),
@@ -55,7 +55,7 @@ class TestPawn(TestCase):
                                         start_rank=self.white_pawn.location.rank,
                                         start_file=self.white_pawn.location.file))
 
-        moves = self.black_pawn.forward_moves(self.position)
+        moves = list(self.black_pawn.forward_moves(self.position))
         self.assertEqual(len(moves), 2)
 
         self.assertEqual(moves[0], Move(end_loc=self.black_pawn.square_in_front(self.black_pawn.location),
@@ -93,7 +93,7 @@ class TestPawn(TestCase):
         black_pawn = self.position.piece_at_square(Location.init_alg("d4"))
         self.position.piece_at_square(Location.init_alg("e4")).just_moved_two_steps = True
 
-        move = black_pawn.en_passant_moves(self.position)
+        move = list(black_pawn.en_passant_moves(self.position))
 
         self.assertEqual(len(move), 1)
         self.assertEqual(move[0], Move(end_loc=black_pawn.square_in_front(black_pawn.location.shift_right()),
@@ -103,7 +103,7 @@ class TestPawn(TestCase):
                                      start_file=black_pawn.location.file))
 
     def test_possible_moves(self):
-        self.assertEqual(len(self.white_pawn.possible_moves(self.position)), 2)
+        self.assertEqual(len(list(self.white_pawn.possible_moves(self.position))), 2)
         self.position.move_piece(Location.init_alg("e2"), Location.init_alg("e3"))
-        self.assertEqual(len(self.white_pawn.possible_moves(self.position)), 1)
+        self.assertEqual(len(list(self.white_pawn.possible_moves(self.position))), 1)
 

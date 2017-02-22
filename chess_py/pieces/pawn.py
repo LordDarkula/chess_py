@@ -82,7 +82,7 @@ class Pawn(Piece):
         :type: location: Location
         :rtype: bool
         """
-        return (location.rank == 1 and self.color == color.black) and \
+        return (location.rank == 1 and self.color == color.black) or \
                 (location.rank == 6 and self.color == color.white)
 
     def create_promotion_moves(self, location, status):
