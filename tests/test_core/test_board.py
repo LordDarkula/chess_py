@@ -140,6 +140,17 @@ class TestBoard(TestCase):
         for index, move in enumerate(self.board.all_possible_moves(color.black)):
             self.assertEqual(moves[index], str(move))
 
+    def test_no_moves(self):
+        self.assertFalse(self.board.no_moves(color.white))
+        self.assertFalse(self.board.no_moves(color.black))
+
+        self.board.update(converter.short_alg("f4", color.white, self.board))
+        self.board.update(converter.short_alg("e5", color.black, self.board))
+        self.board.update(converter.short_alg("g4", color.white, self.board))
+        self.board.update(converter.short_alg("Qh4", color.black, self.board))
+
+        self.assertTrue(self.board.no_moves(color.white))
+
     def test_find_piece(self):
         self.assertEqual(self.board.find_piece(Rook(color.white, Location(0, 0))),
                           Location(0, 0))
