@@ -37,7 +37,8 @@ class Knight(Piece):
     def __str__(self):
         return "N"
 
-    def cycle(self, index):
+    @staticmethod
+    def cycle(index):
         """
         Cycles indexes containing shift directions perpendicular to current shift
         :type: index int

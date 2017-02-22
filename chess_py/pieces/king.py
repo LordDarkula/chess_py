@@ -172,6 +172,7 @@ class King(Piece):
         :type: position: Board
         :rtype: list
         """
+        # Chain used to combine multiple generators
         for move in itertools.chain(*[self.add(fn, position) for fn in self.cardinal_directions]):
             yield move
 
@@ -185,7 +186,6 @@ class King(Piece):
         :type: position: Board
         :return: bool
         """
-        # Loops board
         for piece in position:
 
             if piece is not None and piece.color != self.color:

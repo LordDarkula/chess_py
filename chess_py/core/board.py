@@ -50,6 +50,7 @@ class Board:
     Initialized upon startup and is used when init_default constructor is used
 
     """
+
     def __init__(self, position):
         """
         Creates a ``Board`` given an array of ``Piece`` and ``None''
@@ -70,35 +71,34 @@ class Board:
         black = color.black
         return cls([
 
-        # First rank
-        [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
-         Queen(white, Location(0, 3)), King(white, Location(0, 4)), Bishop(white, Location(0, 5)),
-         Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
+            # First rank
+            [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
+             Queen(white, Location(0, 3)), King(white, Location(0, 4)), Bishop(white, Location(0, 5)),
+             Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
 
-        # Second rank
-        [Pawn(white, Location(1, file)) for file in range(8)],
+            # Second rank
+            [Pawn(white, Location(1, file)) for file in range(8)],
 
+            # Third rank
+            [None for _ in range(8)],
 
-        # Third rank
-        [None for _ in range(8)],
+            # Fourth rank
+            [None for _ in range(8)],
 
-        # Fourth rank
-        [None for _ in range(8)],
+            # Fifth rank
+            [None for _ in range(8)],
 
-        # Fifth rank
-        [None for _ in range(8)],
+            # Sixth rank
+            [None for _ in range(8)],
 
-        # Sixth rank
-        [None for _ in range(8)],
+            # Seventh rank
+            [Pawn(black, Location(6, file)) for file in range(8)],
 
-        # Seventh rank
-        [Pawn(black, Location(6, file)) for file in range(8)],
-
-        # Eighth rank
-        [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
-         Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
-         Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]
-    ])
+            # Eighth rank
+            [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
+             Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
+             Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]
+        ])
 
     def __key(self):
         return self.position
@@ -112,7 +112,6 @@ class Board:
             raise TypeError("Cannot compare other type to Board")
 
         for i, row in enumerate(self.position):
-
             for j, piece in enumerate(row):
 
                 if piece != other.position[i][j]:
@@ -222,8 +221,7 @@ class Board:
         :type: input_color: Color
         :rtype: list
         """
-        print("all_poss_moves called")
-
+        king_loc = self.find_king(input_color)
         for piece in self:
 
             # Tests if square on the board is not empty
@@ -234,36 +232,35 @@ class Board:
                     test = cp(self)
                     test.update(move)
 
+                    old_king_loc = king_loc
+
+                    if isinstance(move.piece, King):
+                        king_loc = move.end_loc
+
                     if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
                         yield move
+                        king_loc = old_king_loc
                         continue
 
-                    king_loc = test.get_king(input_color).location
-                    if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
+                    if not test.piece_at_square(king_loc).in_check(test):
+                        king_loc = old_king_loc
                         yield move
 
     def no_moves(self, input_color):
-        king_loc = self.get_king(input_color).location
 
         # Loops through columns
-        for row in self.position:
+        for piece in self:
 
-            # Loops through rows
-            for piece in row:
+            # Tests if square on the board is not empty
+            if piece is not None and piece.color == input_color:
 
-                # Tests if square on the board is not empty
-                if piece is not None and piece.color == input_color:
+                for move in piece.possible_moves(self):
 
-                    for move in piece.possible_moves(self):
+                    test = cp(self)
+                    test.update(move)
 
-                        test = cp(self)
-                        test.update(move)
-
-                        if not isinstance(piece, King) and not test.piece_at_square(king_loc).in_check(test):
-                            return False
-
-                        if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
-                            return False
+                    if not self.get_king(input_color).in_check(self):
+                        return False
 
         return True
 
@@ -280,11 +277,10 @@ class Board:
             for j in range(len(self.position)):
                 loc = Location(i, j)
                 if not self.is_square_empty(loc) and \
-                        self.piece_at_square(loc) == piece:
+                                self.piece_at_square(loc) == piece:
                     return loc
 
         print(self)
-
         raise Exception("Piece not found: " + str(piece))
 
     def get_piece(self, piece_type, input_color):
@@ -295,8 +291,8 @@ class Board:
                 piece = self.piece_at_square(loc)
 
                 if not self.is_square_empty(loc) and \
-                    isinstance(piece_type, piece and \
-                        piece.color == input_color):
+                        isinstance(piece_type, piece and \
+                                        piece.color == input_color):
                     return loc
 
         print(self)
@@ -379,7 +375,7 @@ class Board:
             self.piece_at_square(move.start_loc).has_moved = True
 
         if move.status == notation_const.PROMOTE or \
-                move.status == notation_const.CAPTURE_AND_PROMOTE:
+                        move.status == notation_const.CAPTURE_AND_PROMOTE:
             assert isinstance(move.piece, Pawn)
 
             self.move_piece(Location(move.start_rank, move.start_file), move.get_location())
@@ -394,8 +390,8 @@ class Board:
             self.remove_piece_at_square(Location(move.start_rank, move.get_location().file))
 
         elif move.status == notation_const.MOVEMENT and \
-            type(move.piece) is Pawn and \
-                fabs(move.end_loc.rank - move.start_rank) == 2:
+                        type(move.piece) is Pawn and \
+                        fabs(move.end_loc.rank - move.start_rank) == 2:
             move.piece.just_moved_two_steps = True
             self.move_piece(Location(move.start_rank, move.start_file), move.end_loc)
 
