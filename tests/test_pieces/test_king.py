@@ -13,8 +13,6 @@ class TestKing(TestCase):
         self.board.move_piece(Location.init_alg("e1"), Location.init_alg("e3"))
         self.board.move_piece(Location.init_alg("e8"), Location.init_alg("e5"))
 
-        print(self.board)
-
         # self.assertTrue(self.board.get_king(color.white).in_check_as_result(self.board, converter.long_alg("e3e4", self.board)))
 
     def test_add(self):
@@ -24,44 +22,45 @@ class TestKing(TestCase):
 
         self.board.update(converter.long_alg("e2e4", self.board))
 
+        print("this is it " + str(self.board))
         # King should be able to move up
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_up(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_up(), self.board))),
             1)
 
         # King should not be able to move down
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_down(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_down(), self.board))),
             0)
 
         # King should not be able to move left
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_left(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_left(), self.board))),
             0)
 
         # King should not be able to move right
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_right(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_right(), self.board))),
             0)
 
         # King should not be able to move up left
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_up_left(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_up_left(), self.board))),
             0)
 
         # King should not be able to move down right
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_down_right(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_down_right(), self.board))),
             0)
 
         # King should not be able to move down left
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_down_left(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_down_left(), self.board))),
             0)
 
         # King should not be able to move up right
         self.assertEqual(
-            len(self.board.get_king(color.white).add(lambda x: x.shift_up_right(), self.board)),
+            len(list(self.board.get_king(color.white).add(lambda x: x.shift_up_right(), self.board))),
             0)
 
     def test_add_castle(self):
@@ -79,6 +78,8 @@ class TestKing(TestCase):
         my_king = King(color.white, Location.init_alg("f3"))
         self.board.place_piece_at_square(my_king, Location.init_alg("f3"))
         moves = ['f3f4', 'f3g3', 'f3f2', 'f3e3', 'f3g4', 'f3e4', 'f3g2', 'f3e2']
+
+        print(self.board)
 
         for i, move in enumerate(my_king.possible_moves(self.board)):
             self.assertEqual(move, converter.long_alg(moves[i], self.board))

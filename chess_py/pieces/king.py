@@ -67,12 +67,14 @@ class King(Piece):
         return x <= 1 and y <= 1
 
     def loc_adjacent_to_opponent_king(self, location, position):
-        enemy_king = position.get_king(self.color.opponent())
 
-        x = math.fabs(location.file - enemy_king.location.file)
-        y = math.fabs(location.rank - enemy_king.location.rank)
+        for fn in self.cardinal_directions:
+            if fn(location).on_board() and \
+                    isinstance(position.piece_at_square(fn(location)), King) and \
+                    position.piece_at_square(fn(location)).color != self.color:
+                return True
 
-        return x <= 1 and y <= 1
+        return False
 
     def add(self, function, position):
         if function(self.location).on_board():
