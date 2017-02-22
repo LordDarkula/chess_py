@@ -107,7 +107,6 @@ class TestBoard(TestCase):
         self.assertEqual(self.board.advantage_as_result(converter.long_alg("d1d7", self.board),
                                                     piece_const.Piece_values()), 0)
 
-        print(self.board)
 
         self.board.update(converter.short_alg("e3", color.white, self.board))
 

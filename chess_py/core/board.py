@@ -259,7 +259,7 @@ class Board:
                     test = cp(self)
                     test.update(move)
 
-                    if not self.get_king(input_color).in_check(self):
+                    if not test.get_king(input_color).in_check(test):
                         return False
 
         return True
