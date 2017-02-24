@@ -73,6 +73,17 @@ class TestKing(TestCase):
         self.assertEqual(
             list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
 
+        self.board.remove_piece_at_square(Location.init_alg("b1"))
+        self.board.remove_piece_at_square(Location.init_alg("c1"))
+        self.board.remove_piece_at_square(Location.init_alg("d1"))
+
+        self.assertEqual(
+            len(list(self.board.get_king(color.white).add_castle(self.board))), 2)
+        self.assertEqual(
+            list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
+        self.assertEqual(
+            list(self.board.get_king(color.white).add_castle(self.board))[1].status, notation_const.QUEEN_SIDE_CASTLE)
+
     def test_possible_moves(self):
         self.board = Board([[None for _ in range(8)] for _ in range(8)])
         my_king = King(color.white, Location.init_alg("f3"))
