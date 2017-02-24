@@ -85,6 +85,15 @@ class Piece:
                     not position.is_square_empty(square) and \
                     position.piece_at_square(square).color != self.color
 
+    def create_move(self, end_loc, status):
+        # TODO: fix circular imports
+        from chess_py import Move
+        return Move(end_loc=end_loc,
+                            piece=self,
+                            status=status,
+                            start_rank=self.location.rank,
+                            start_file=self.location.file)
+
     def set_loc(self, moves):
         """
         Adds start_rank and start_file to moves

@@ -28,7 +28,6 @@ from .piece import Piece
 from .rook import Rook
 from ..core.algebraic import notation_const
 from ..core.algebraic.location import Location
-from ..core.algebraic.move import Move
 
 
 class King(Piece):
@@ -76,13 +75,6 @@ class King(Piece):
 
         return False
 
-    def create_king_move(self, end_loc, status):
-        return Move(end_loc=end_loc,
-                            piece=self,
-                            status=status,
-                            start_rank=self.location.rank,
-                            start_file=self.location.file)
-
     def add(self, function, position):
         """
         Adds all 8 cardinal directions as moves for the King if legal.
@@ -97,10 +89,10 @@ class King(Piece):
                 return
 
             if position.is_square_empty(function(self.location)):
-                yield self.create_king_move(function(self.location), notation_const.MOVEMENT)
+                yield self.create_move(function(self.location), notation_const.MOVEMENT)
 
             elif position.piece_at_square(function(self.location)).color != self.color:
-                yield self.create_king_move(function(self.location), notation_const.CAPTURE)
+                yield self.create_move(function(self.location), notation_const.CAPTURE)
 
     def square_empty_and_not_in_check(self, position, direction, times):
         """
@@ -146,7 +138,7 @@ class King(Piece):
     def add_one_castle(self, rook, direction, status, times, position):
         if self.rook_legal_for_castle(rook) and \
                 self.square_empty_and_not_in_check(position, direction, times):
-            yield self.create_king_move(direction(direction(self.location)),
+            yield self.create_move(direction(direction(self.location)),
                                          status)
 
     def add_castle(self, position):
