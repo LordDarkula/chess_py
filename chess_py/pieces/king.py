@@ -76,27 +76,26 @@ class King(Piece):
 
         return False
 
+    def create_king_move(self, end_loc, status):
+        return Move(end_loc=end_loc,
+                            piece=self,
+                            status=status,
+                            start_rank=self.location.rank,
+                            start_file=self.location.file)
+
     def add(self, function, position):
         if function(self.location).on_board():
 
             loc_adj_in_check = self.loc_adjacent_to_opponent_king(function(self.location), position)
 
             if position.is_square_empty(function(self.location)) and not loc_adj_in_check:
-                yield Move(end_loc=function(self.location),
-                            piece=self,
-                            status=notation_const.MOVEMENT,
-                            start_rank=self.location.rank,
-                            start_file=self.location.file)
+                yield self.create_king_move(function(self.location), notation_const.MOVEMENT)
 
             if not position.is_square_empty(function(self.location)) and \
                     position.piece_at_square(function(self.location)).color != self.color and \
                     not isinstance(position.piece_at_square(function(self.location)), King) and \
                     not loc_adj_in_check:
-                yield Move(end_loc=function(self.location),
-                        piece=self,
-                        status=notation_const.CAPTURE,
-                        start_rank=self.location.rank,
-                        start_file=self.location.file)
+                yield self.create_king_move(function(self.location), notation_const.CAPTURE)
 
     def square_empty_and_not_in_check(self, position, direction, times):
         """
@@ -146,28 +145,20 @@ class King(Piece):
         :type: position: Board
         """
         if self.has_moved or self.in_check(position):
-            return []
+            return
 
-        moves = []
         rook = position.piece_at_square(Location(self.location.rank, 7))
 
         if self.rook_legal_for_castle(rook) and \
                 self.square_empty_and_not_in_check(position, lambda x: x.shift_right(), 2):
-            moves.append(Move(end_loc=self.location.shift_right().shift_right(),
-                              piece=self,
-                              status=notation_const.KING_SIDE_CASTLE,
-                              start_rank=self.location.rank,
-                              start_file=self.location.file))
+            yield self.create_king_move(self.location.shift_right().shift_right(),
+                                        notation_const.KING_SIDE_CASTLE)
 
         rook = position.piece_at_square(Location(self.location.rank, 0))
-        if self.rook_legal_for_castle(rook) and self.square_empty_and_not_in_check(position, lambda x: x.shift_left(), 3):
-            moves.append(Move(end_loc=self.location.shift_left().shift_left(),
-                              piece=self,
-                              status=notation_const.QUEEN_SIDE_CASTLE,
-                              start_rank=self.location.rank,
-                              start_file=self.location.file))
-
-        return moves
+        if self.rook_legal_for_castle(rook) and \
+                self.square_empty_and_not_in_check(position, lambda x: x.shift_left(), 3):
+            yield self.create_king_move(self.location.shift_left().shift_left(),
+                                        notation_const.QUEEN_SIDE_CASTLE)
 
     def possible_moves(self, position):
         """

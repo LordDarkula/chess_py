@@ -69,9 +69,9 @@ class TestKing(TestCase):
         self.board.update(converter.short_alg("Be2", color.white, self.board))
 
         self.assertEqual(
-            len(self.board.get_king(color.white).add_castle(self.board)), 1)
+            len(list(self.board.get_king(color.white).add_castle(self.board))), 1)
         self.assertEqual(
-            self.board.get_king(color.white).add_castle(self.board)[0].status, notation_const.KING_SIDE_CASTLE)
+            list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
 
     def test_possible_moves(self):
         self.board = Board([[None for _ in range(8)] for _ in range(8)])
