@@ -84,17 +84,22 @@ class King(Piece):
                             start_file=self.location.file)
 
     def add(self, function, position):
+        """
+        Adds all 8 cardinal directions as moves for the King if legal.
+
+        :type: function: function
+        :type: position: Board
+        :rtype: gen
+        """
         if function(self.location).on_board():
 
-            loc_adj_in_check = self.loc_adjacent_to_opponent_king(function(self.location), position)
+            if self.loc_adjacent_to_opponent_king(function(self.location), position):
+                return
 
-            if position.is_square_empty(function(self.location)) and not loc_adj_in_check:
+            if position.is_square_empty(function(self.location)):
                 yield self.create_king_move(function(self.location), notation_const.MOVEMENT)
 
-            if not position.is_square_empty(function(self.location)) and \
-                    position.piece_at_square(function(self.location)).color != self.color and \
-                    not isinstance(position.piece_at_square(function(self.location)), King) and \
-                    not loc_adj_in_check:
+            elif position.piece_at_square(function(self.location)).color != self.color:
                 yield self.create_king_move(function(self.location), notation_const.CAPTURE)
 
     def square_empty_and_not_in_check(self, position, direction, times):
