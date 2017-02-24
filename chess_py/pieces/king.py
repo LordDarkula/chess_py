@@ -138,6 +138,12 @@ class King(Piece):
        rook.color == self.color and \
                    not rook.has_moved
 
+    def add_one_castle(self, rook, direction, status, times, position):
+        if self.rook_legal_for_castle(rook) and \
+                self.square_empty_and_not_in_check(position, direction, times):
+            yield self.create_king_move(direction(direction(self.location)),
+                                         status)
+
     def add_castle(self, position):
         """
         Adds kingside and queenside castling moves if legal
@@ -149,16 +155,11 @@ class King(Piece):
 
         rook = position.piece_at_square(Location(self.location.rank, 7))
 
-        if self.rook_legal_for_castle(rook) and \
-                self.square_empty_and_not_in_check(position, lambda x: x.shift_right(), 2):
-            yield self.create_king_move(self.location.shift_right().shift_right(),
-                                        notation_const.KING_SIDE_CASTLE)
-
-        rook = position.piece_at_square(Location(self.location.rank, 0))
-        if self.rook_legal_for_castle(rook) and \
-                self.square_empty_and_not_in_check(position, lambda x: x.shift_left(), 3):
-            yield self.create_king_move(self.location.shift_left().shift_left(),
-                                        notation_const.QUEEN_SIDE_CASTLE)
+        for move in itertools.chain(self.add_one_castle(rook, lambda x: x.shift_right(),
+                                   notation_const.KING_SIDE_CASTLE, 2, position),
+                                   self.add_one_castle(rook, lambda x: x.shift_left(),
+                                   notation_const.QUEEN_SIDE_CASTLE, 3, position)):
+            yield move
 
     def possible_moves(self, position):
         """
