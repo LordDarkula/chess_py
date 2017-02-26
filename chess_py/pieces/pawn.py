@@ -195,19 +195,17 @@ class Pawn(Piece):
 
             # if there is a square on the right and it contains a pawn and the pawn is of opposite color
             if self.opposite_color_pawn_on_square(self.location.shift_right(), position):
-                yield Move(end_loc=self.square_in_front(self.location.shift_right()),
-                                     piece=self,
-                                     status=notation_const.EN_PASSANT,
-                                     start_rank=self.location.rank,
-                                     start_file=self.location.file)
+                yield self.create_move(
+                    end_loc=self.square_in_front(self.location.shift_right()),
+                    status=notation_const.EN_PASSANT
+                )
 
             # if there is a square on the left and it contains a pawn and the pawn is of opposite color
             if self.opposite_color_pawn_on_square(self.location.shift_left(), position):
-                yield Move(end_loc=self.square_in_front(self.location.shift_left()),
-                                     piece=self,
-                                     status=notation_const.EN_PASSANT,
-                                     start_rank=self.location.rank,
-                                     start_file=self.location.file)
+                yield self.create_move(
+                    end_loc=self.square_in_front(self.location.shift_left()),
+                    status=notation_const.EN_PASSANT
+                )
 
     def possible_moves(self, position):
         """
@@ -216,5 +214,7 @@ class Pawn(Piece):
         :type: position: board.Board
         :rtype list
         """
-        for move in itertools.chain(self.forward_moves(position), self.capture_moves(position), self.en_passant_moves(position)):
+        for move in itertools.chain(self.forward_moves(position),
+                                    self.capture_moves(position),
+                                    self.en_passant_moves(position)):
             yield move
