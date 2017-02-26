@@ -90,6 +90,9 @@ def incomplete_alg(algebraic_string, input_color):
     is_kingside = algebraic_string == "00"
     is_queenside = algebraic_string == "000"
 
+    if algebraic_string is None or len(algebraic_string) <= 1:
+        return None
+
     # King side castle
     if is_kingside:
         return Move(end_loc,

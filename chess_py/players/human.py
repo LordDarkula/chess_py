@@ -7,10 +7,13 @@ Prints position and takes move written in algebraic notation as string input
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from pip._vendor.distlib.compat import raw_input
 from chess_py.core.algebraic import converter
 from chess_py.players.player import Player
-import sys
+
+try:
+    input = raw_input
+except NameError:
+    pass
 
 
 class Human(Player):
@@ -29,25 +32,12 @@ class Human(Player):
         :type: position: Board
         :rtype: Move
         """
-        print(position)
-        if sys.version_info[0] < 3:
-            raw = raw_input(str(self.color) + "\'s move \n")
-        else:
+        while True:
+            print(position)
             raw = input(str(self.color) + "\'s move \n")
-        move = None
-
-        if len(raw) > 1:
-            raw.strip()
             move = converter.short_alg(raw, self.color, position)
 
-        while raw is None or move is None:
+            if move is None:
+                continue
 
-            if sys.version_info[0] < 3:
-                raw = raw_input(str(self.color) + "\'s move \n")
-            else:
-                raw = input(str(self.color) + "\'s move \n")
-
-            if len(raw) > 1:
-                move = converter.short_alg(raw, self.color, position)
-
-        return move
+            return move

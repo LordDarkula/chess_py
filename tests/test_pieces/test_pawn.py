@@ -10,8 +10,12 @@ from chess_py import color
 class TestPawn(TestCase):
     def setUp(self):
         self.position = Board.init_default()
-        self.white_pawn = self.position.piece_at_square(Location.init_alg("e2"))
-        self.black_pawn = self.position.piece_at_square(Location.init_alg("a7"))
+
+        self.white_pawn = Pawn(color.white, Location.init_alg("e2"))
+        self.position.place_piece_at_square(self.white_pawn, Location.init_alg("e2"))
+
+        self.black_pawn = Pawn(color.black, Location.init_alg("a7"))
+        self.position.place_piece_at_square(self.black_pawn, Location.init_alg("a7"))
 
     def test_square_in_front(self):
         self.assertEqual(self.white_pawn.square_in_front(self.white_pawn.location), Location.init_alg("e3"))
