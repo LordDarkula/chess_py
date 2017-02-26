@@ -20,7 +20,6 @@ Class stores King on the board
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-import math
 import itertools
 from copy import copy
 
@@ -94,6 +93,19 @@ class King(Piece):
             elif position.piece_at_square(function(self.location)).color != self.color:
                 yield self.create_move(function(self.location), notation_const.CAPTURE)
 
+    def rook_legal_for_castle(self, rook):
+        """
+        Decides if given rook exists, is of this color, and has not moved so it
+        is eligible to castle.
+
+        :type: rook: Rook
+        :rtype: bool
+        """
+        return rook is not None and \
+         isinstance(rook, Rook) and \
+       rook.color == self.color and \
+                   not rook.has_moved
+
     def square_empty_and_not_in_check(self, position, direction, times):
         """
         Checks if set of squares in between ``King`` and ``Rook`` are empty and safe
@@ -108,38 +120,18 @@ class King(Piece):
 
         for _ in range(times):
 
-            if not position.is_square_empty(location):
-                return False
-
-            position.place_piece_at_square(King(self.color, location), location)
-            in_check = position.piece_at_square(location).in_check(position)
-            position.remove_piece_at_square(location)
-
-            if in_check:
+            if not position.is_square_empty(location) or \
+                    self.in_check(position, location=location):
                 return False
 
             location = direction(location)
 
         return True
 
-    def rook_legal_for_castle(self, rook):
-        """
-        Decides if given rook exists, is off this color, and has not moved so it
-        is eligible to castle.
-
-        :type: rook: Rook
-        :rtype: bool
-        """
-        return rook is not None and \
-         isinstance(rook, Rook) and \
-       rook.color == self.color and \
-                   not rook.has_moved
-
     def add_one_castle(self, rook, direction, status, times, position):
         if self.rook_legal_for_castle(rook) and \
                 self.square_empty_and_not_in_check(position, direction, times):
-            yield self.create_move(direction(direction(self.location)),
-                                         status)
+            yield self.create_move(direction(direction(self.location)), status)
 
     def add_castle(self, position):
         """
@@ -172,27 +164,24 @@ class King(Piece):
         for move in self.add_castle(position):
             yield move
 
-    def in_check(self, position):
+    def in_check(self, position, location=None):
         """
         Finds if the king is in check or if both kings are touching.
 
         :type: position: Board
         :return: bool
         """
+        location = location or self.location
         for piece in position:
 
             if piece is not None and piece.color != self.color:
-                if isinstance(piece, King):
-                    x = math.fabs(piece.location.file - self.location.file)
-                    y = math.fabs(piece.location.rank - self.location.rank)
+                if not isinstance(piece, King):
+                    for move in piece.possible_moves(position):
 
-                    if x <= 1 and y <= 1:
+                        if move.end_loc == location:
+                            return True
+                else:
+                    if self.loc_adjacent_to_opponent_king(piece.location, position):
                         return True
 
-                    continue
-
-                for move in piece.possible_moves(position):
-
-                    if move.end_loc == self.location:
-                        return True
         return False

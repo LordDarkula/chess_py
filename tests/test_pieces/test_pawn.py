@@ -29,7 +29,8 @@ class TestPawn(TestCase):
 
     def test_create_promotion_moves(self):
         self.white_pawn.location = Location.init_alg("e7")
-        moves = list(self.white_pawn.create_promotion_moves(Location.init_alg("e7"), notation_const.CAPTURE))
+        moves = list(self.white_pawn.create_promotion_moves(notation_const.CAPTURE,
+                                                            Location.init_alg("e7")))
         self.assertEqual(len(list(moves)), 4)
         self.assertEqual(moves[0].start_loc, Location.init_alg("e7"))
 

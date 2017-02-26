@@ -45,26 +45,36 @@ class Pawn(Piece):
     def __str__(self):
         return "P"
 
-    def on_home_row(self):
+    def on_home_row(self, location=None):
         """
         Finds out if the piece is on the home row.
 
         :return: bool for whether piece is on home row or not
         """
-        return (self.color == color.white and self.location.rank == 1) or \
-               (self.color == color.black and self.location.rank == 6)
+        location = location or self.location
+        return (self.color == color.white and location.rank == 1) or \
+               (self.color == color.black and location.rank == 6)
 
-    def square_in_front(self, location):
+    def would_move_be_promotion(self, location=None):
+        """
+        Finds if move from current get_location would result in promotion
+
+        :type: location: Location
+        :rtype: bool
+        """
+        location = location or self.location
+        return (location.rank == 1 and self.color == color.black) or \
+                (location.rank == 6 and self.color == color.white)
+
+    def square_in_front(self, location=None):
         """
         Finds square directly in front of Pawn
 
         :type: location: Location
         :rtype: Location
         """
-        if self.color == color.white:
-            return location.shift_up()
-
-        return location.shift_down()
+        location = location or self.location
+        return location.shift_up() if self.color == color.white else location.shift_down()
 
     def two_squares_in_front(self, location):
         """
@@ -75,18 +85,8 @@ class Pawn(Piece):
         """
         return self.square_in_front(self.square_in_front(location))
 
-    def would_move_be_promotion(self, location):
-        """
-        Finds if move from current get_location would result in promotion
-
-        :type: location: Location
-        :rtype: bool
-        """
-        return (location.rank == 1 and self.color == color.black) or \
-                (location.rank == 6 and self.color == color.white)
-
-    def create_promotion_moves(self, location, status):
-
+    def create_promotion_moves(self, status, location=None):
+        location = location or self.square_in_front()
         def create_each_move(piece):
             return Move(end_loc=location,
                         piece=self,
@@ -112,9 +112,8 @@ class Pawn(Piece):
             """
             If square in front is empty add the move
             """
-            if self.would_move_be_promotion(self.location):
-                for move in self.create_promotion_moves(self.square_in_front(self.location),
-                                                            notation_const.PROMOTE):
+            if self.would_move_be_promotion():
+                for move in self.create_promotion_moves(notation_const.PROMOTE):
                     yield move
             else:
                 yield Move(end_loc=self.square_in_front(self.location),
@@ -150,8 +149,9 @@ class Pawn(Piece):
                 """
                 If the capture square is not empty and it contains a piece of opposing color add the move
                 """
-                if self.would_move_be_promotion(self.location):
-                    moves.extend(self.create_promotion_moves(capture_square, notation_const.CAPTURE_AND_PROMOTE))
+                if self.would_move_be_promotion():
+                    moves.extend(self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
+                                                             location=capture_square))
 
                 else:
                     move = Move(end_loc=capture_square,
