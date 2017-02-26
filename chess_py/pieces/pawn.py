@@ -116,21 +116,34 @@ class Pawn(Piece):
                 for move in self.create_promotion_moves(notation_const.PROMOTE):
                     yield move
             else:
-                yield Move(end_loc=self.square_in_front(self.location),
-                            piece=self,
-                            status=notation_const.MOVEMENT,
-                            start_rank=self.location.rank,
-                            start_file=self.location.file)
+                yield self.create_move(end_loc=self.square_in_front(self.location),
+                                       status=notation_const.MOVEMENT)
 
-            if self.on_home_row() and position.is_square_empty(self.two_squares_in_front(self.location)):
+            if self.on_home_row() and \
+                    position.is_square_empty(self.two_squares_in_front(self.location)):
                 """
-                If two squares in front of the pawn is empty add the move
+                If pawn is on home row and two squares in front of the pawn is empty
+                add the move
                 """
-                yield Move(end_loc=self.square_in_front(self.square_in_front(self.location)),
-                                     piece=self,
-                                     status=notation_const.MOVEMENT,
-                                     start_rank=self.location.rank,
-                                     start_file=self.location.file)
+                yield self.create_move(
+                    end_loc=self.square_in_front(self.square_in_front(self.location)),
+                    status=notation_const.MOVEMENT
+                )
+
+    def add_capture_square(self, capture_square, position):
+        """
+        Adds capture moves
+        """
+        if self.contains_opposite_color_piece(capture_square, position):
+            """
+            If the capture square is not empty and it contains a piece of opposing color add the move
+            """
+            if self.would_move_be_promotion():
+                yield self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
+                                                         location=capture_square)
+
+            else:
+                yield self.create_move(end_loc=capture_square, status=notation_const.CAPTURE)
 
     def capture_moves(self, position):
         """
@@ -138,37 +151,15 @@ class Pawn(Piece):
 
         :rtype: list
         """
-        moves = []
-        capture_square = self.location
-
-        def add_capture_square():
-            """
-            Adds capture moves
-            """
-            if self.contains_opposite_color_piece(capture_square, position):
-                """
-                If the capture square is not empty and it contains a piece of opposing color add the move
-                """
-                if self.would_move_be_promotion():
-                    moves.extend(self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
-                                                             location=capture_square))
-
-                else:
-                    move = Move(end_loc=capture_square,
-                                piece=self,
-                                status=notation_const.CAPTURE,
-                                start_rank=self.location.rank,
-                                start_file=self.location.file)
-
-                    moves.append(move)
-
-        capture_square = self.square_in_front(self.location.shift_right())
-        add_capture_square()
-
-        capture_square = self.square_in_front(self.location.shift_left())
-        add_capture_square()
-
-        return moves
+        for move in itertools.chain(
+                self.add_capture_square(
+                    capture_square=self.square_in_front(self.location.shift_right()),
+                    position=position),
+                self.add_capture_square(
+                    capture_square=self.square_in_front(self.location.shift_left()),
+                    position=position
+                )):
+            yield move
 
     def on_en_passant_valid_location(self):
         """
@@ -185,9 +176,11 @@ class Pawn(Piece):
 
         :rtype: bool
         """
+        pawn = position.piece_at_square(my_location)
         return my_location.on_board() and \
-               not position.is_square_empty(my_location) and \
-               position.piece_at_square(my_location) == Pawn(self.color.opponent(), my_location) and \
+               pawn is not None and \
+               isinstance(pawn, Pawn) and \
+               pawn.color != self.color and \
                position.piece_at_square(my_location).just_moved_two_steps
 
     def en_passant_moves(self, position):

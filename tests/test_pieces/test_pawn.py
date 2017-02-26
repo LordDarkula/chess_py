@@ -76,7 +76,7 @@ class TestPawn(TestCase):
         self.position.move_piece(Location.init_alg("e2"), Location.init_alg("e4"))
 
         black_pawn = self.position.piece_at_square(Location.init_alg("d5"))
-        move = self.white_pawn.capture_moves(self.position)
+        move = list(self.white_pawn.capture_moves(self.position))
 
         self.assertEqual(len(move), 1)
 
