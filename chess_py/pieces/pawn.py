@@ -183,6 +183,20 @@ class Pawn(Piece):
                pawn.color != self.color and \
                position.piece_at_square(my_location).just_moved_two_steps
 
+    def add_one_en_passant_move(self, direction, position):
+        """
+        Yields en_passant moves in given direction if it is legal.
+
+        :type: direction: function
+        :type: position: Board
+        :rtype: gen
+        """
+        if self.opposite_color_pawn_on_square(direction(self.location), position):
+            yield self.create_move(
+                end_loc=self.square_in_front(direction(self.location)),
+                status=notation_const.EN_PASSANT
+            )
+
     def en_passant_moves(self, position):
         """
         Finds possible en passant moves.
@@ -192,27 +206,18 @@ class Pawn(Piece):
 
         # if pawn is not on a valid en passant get_location then return None
         if self.on_en_passant_valid_location():
-
-            # if there is a square on the right and it contains a pawn and the pawn is of opposite color
-            if self.opposite_color_pawn_on_square(self.location.shift_right(), position):
-                yield self.create_move(
-                    end_loc=self.square_in_front(self.location.shift_right()),
-                    status=notation_const.EN_PASSANT
-                )
-
-            # if there is a square on the left and it contains a pawn and the pawn is of opposite color
-            if self.opposite_color_pawn_on_square(self.location.shift_left(), position):
-                yield self.create_move(
-                    end_loc=self.square_in_front(self.location.shift_left()),
-                    status=notation_const.EN_PASSANT
-                )
+            for move in itertools.chain(
+                self.add_one_en_passant_move(lambda x: x.shift_right(), position),
+                self.add_one_en_passant_move(lambda x: x.shift_left(), position)):
+                yield move
 
     def possible_moves(self, position):
         """
         Finds out the locations of possible moves given board.Board position.
         :pre get_location is on board and piece at specified get_location on position
-        :type: position: board.Board
-        :rtype list
+
+        :type: position: Board
+        :rtype: list
         """
         for move in itertools.chain(self.forward_moves(position),
                                     self.capture_moves(position),
