@@ -26,11 +26,11 @@ class Piece_values:
         """
         Manual init method for external piece values
 
-        :type: PAWN_VALUE: float
-        :type: KNIGHT_VALUE: float
-        :type: BISHOP_VALUE: float
-        :type: ROOK_VALUE: float
-        :type: QUEEN_VALUE: float
+        :type: PAWN_VALUE: double
+        :type: KNIGHT_VALUE: double
+        :type: BISHOP_VALUE: double
+        :type: ROOK_VALUE: double
+        :type: QUEEN_VALUE: double
         """
         piece_values = cls()
         piece_values.PAWN_VALUE = PAWN_VALUE
@@ -60,11 +60,10 @@ class Piece_values:
             return self.PAWN_VALUE * const
         elif isinstance(piece, Knight):
             return self.KNIGHT_VALUE * const
+        elif isinstance(piece, Queen):
+            return self.QUEEN_VALUE * const
         elif isinstance(piece, Bishop):
             return self.BISHOP_VALUE * const
         elif isinstance(piece, Rook):
             return self.ROOK_VALUE * const
-        elif isinstance(piece, Queen):
-            return self.QUEEN_VALUE * const
         return 0
-

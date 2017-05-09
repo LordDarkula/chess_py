@@ -62,11 +62,6 @@ class Move:
     def piece(self):
         return self._piece
 
-    @piece.setter
-    def piece(self, piece):
-        warnings.warn("Mutating piece attribute in Move should not be done")
-        self._piece = piece
-
     def __key(self):
         return self.end_loc, self.piece, self.status, \
                self.start_rank, self.start_file, self.promoted_to_piece

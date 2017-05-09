@@ -27,20 +27,14 @@ from .rook import Rook
 from .bishop import Bishop
 
 
-class Queen(Piece):
+class Queen(Bishop, Piece):
     def __init__(self, input_color, location):
-        super(Queen, self).__init__(input_color, location, "♛", "♕")
-        self.rook = Rook(input_color, location)
-        self.bishop = Bishop(input_color, location)
+        Piece.__init__(self, input_color, location, "♛", "♕")
 
     def __str__(self):
         return "Q"
 
     def possible_moves(self, position):
-        self.rook = Rook(self.color, self.location)
-        self.bishop = Bishop(self.color, self.location)
-
-        for move in itertools.chain(self.rook.possible_moves(position),
-                                    self.bishop.possible_moves(position)):
-            move.piece = self
+        for move in itertools.chain(Rook.possible_moves(self, position),
+                                    Bishop.possible_moves(self, position)):
             yield move

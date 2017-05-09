@@ -49,7 +49,7 @@ class Piece:
         return self.color, self.location
 
     def __hash__(self):
-        return hash(self.__key())
+        return hash(str(self))
 
     def __eq__(self, other):
         """

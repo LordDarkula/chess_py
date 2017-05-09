@@ -54,11 +54,7 @@ class Rook(Piece):
         current = direction(self.location)
 
         def side_move(status):
-            return Move(end_loc=current,
-                        piece=self,
-                        status=status,
-                        start_rank=self.location.rank,
-                        start_file=self.location.file)
+            return self.create_move(current, status)
 
         assert isinstance(current, Location)
         while current.on_board() and \

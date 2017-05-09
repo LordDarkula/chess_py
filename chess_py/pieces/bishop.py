@@ -26,14 +26,14 @@ from .piece import Piece
 from .rook import Rook
 
 
-class Bishop(Piece):
+class Bishop(Rook, Piece):
     def __init__(self, input_color, location):
         """
         Creates Bishop object that can be compared to and return possible moves
 
         :type: input_color: Color
         """
-        super(Bishop, self).__init__(input_color, location, "♝", "♗")
+        Piece.__init__(self, input_color, location, "♝", "♗")
 
     def __str__(self):
         return "B"
@@ -45,8 +45,6 @@ class Bishop(Piece):
         :type: position: Board
         :rtype: list
         """
-        rook = Rook(self.color, self.location)
 
-        for move in itertools.chain(*[rook.direction_moves(fn, position) for fn in self.diag_fn]):
-            move.piece = self
+        for move in itertools.chain(*[self.direction_moves(fn, position) for fn in self.diag_fn]):
             yield move

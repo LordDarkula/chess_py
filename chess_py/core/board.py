@@ -29,6 +29,7 @@ and black home row is at index 7
 
 from __future__ import print_function
 
+from multiprocessing import Process
 from copy import copy as cp
 from math import fabs
 
@@ -59,6 +60,7 @@ class Board:
         :type: position: list
         """
         self.position = position
+        self.possible_moves = dict()
 
     @classmethod
     def init_default(cls):
@@ -104,7 +106,7 @@ class Board:
         return self.position
 
     def __hash__(self):
-        return hash(self.__key())
+        return hash(tuple([hash(piece) for piece in self]))
 
     def __eq__(self, other):
 
@@ -215,6 +217,13 @@ class Board:
         return test_board.material_advantage(move.color, val_scheme)
 
     def all_possible_moves(self, input_color):
+        position_tuple = ((piece for piece in self.position[index]) for index, row in enumerate(self.position))
+        if not position_tuple in self.possible_moves:
+            self.possible_moves[position_tuple] = tuple(self.calc_all_possible_moves(input_color))
+
+        return self.possible_moves[position_tuple]
+
+    def calc_all_possible_moves(self, input_color):
         """
         Returns list of all possible moves
 
@@ -245,6 +254,20 @@ class Board:
                     if not test.piece_at_square(king_loc).in_check(test):
                         king_loc = old_king_loc
                         yield move
+
+    def runInParallel(*fns):
+        """
+        Runs multiple processes in parallel.
+
+        :type: fns: def
+        """
+        proc = []
+        for fn in fns:
+            p = Process(target=fn)
+            p.start()
+            proc.append(p)
+        for p in proc:
+            p.join()
 
     def no_moves(self, input_color):
 

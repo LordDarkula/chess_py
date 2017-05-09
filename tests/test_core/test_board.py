@@ -95,8 +95,6 @@ class TestBoard(TestCase):
         self.board = Board.init_default()
         self.board.position[7][2] = None
 
-        print(self.board)
-
         self.assertEqual(self.board.material_advantage(color.white, piece_const.Piece_values()), 3.5)
         self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -3.5)
 
@@ -144,6 +142,7 @@ class TestBoard(TestCase):
         self.assertFalse(self.board.no_moves(color.black))
 
         self.board.update(converter.short_alg("f4", color.white, self.board))
+        print(self.board)
         self.board.update(converter.short_alg("e5", color.black, self.board))
         self.board.update(converter.short_alg("g4", color.white, self.board))
         self.board.update(converter.short_alg("Qh4", color.black, self.board))
