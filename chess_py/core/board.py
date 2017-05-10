@@ -102,6 +102,10 @@ class Board:
              Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]
         ])
 
+    @property
+    def position_tuple(self):
+        return ((piece for piece in self.position[index]) for index, row in enumerate(self.position))
+
     def __key(self):
         return self.position
 
@@ -217,7 +221,15 @@ class Board:
         return test_board.material_advantage(move.color, val_scheme)
 
     def all_possible_moves(self, input_color):
-        position_tuple = ((piece for piece in self.position[index]) for index, row in enumerate(self.position))
+        """
+        Checks if all the possible moves has already been calculated
+        and is stored in `possible_moves` dictionary. If not, it is calculated
+        with `calc_all_possible_moves`.
+        
+        :type: input_color: Color
+        :rtype: list
+        """
+        position_tuple = self.position_tuple
         if not position_tuple in self.possible_moves:
             self.possible_moves[position_tuple] = tuple(self.calc_all_possible_moves(input_color))
 
@@ -307,19 +319,22 @@ class Board:
         raise Exception("Piece not found: " + str(piece))
 
     def get_piece(self, piece_type, input_color):
-        for i in range(len(self.position)):
+        """
+        Gets location of a piece on the board given the type and color.
+        
+        :type: piece_type: Piece
+        :type: input_color: Color 
+        :rtype: Location
+        """
+        for loc in self:
+            piece = self.piece_at_square(loc)
 
-            for j in range(len(self.position)):
-                loc = Location(i, j)
-                piece = self.piece_at_square(loc)
-
-                if not self.is_square_empty(loc) and \
-                        isinstance(piece_type, piece and \
-                                        piece.color == input_color):
-                    return loc
+            if not self.is_square_empty(loc) and \
+                    isinstance(piece, piece_type) and \
+                    piece.color == input_color:
+                return loc
 
         print(self)
-
         raise Exception("Piece not found: " + str(piece_type))
 
     def find_king(self, input_color):
