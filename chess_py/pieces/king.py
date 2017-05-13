@@ -22,7 +22,6 @@ Class stores King on the board
 
 import itertools
 from copy import copy as cp
-from enum import Enum
 from abc import ABCMeta, abstractmethod
 
 from .piece import Piece
