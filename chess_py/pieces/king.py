@@ -21,7 +21,9 @@ Class stores King on the board
 """
 
 import itertools
-from copy import copy
+from copy import copy as cp
+from enum import Enum
+from abc import ABCMeta, abstractmethod
 
 from .piece import Piece
 from .rook import Rook
@@ -52,7 +54,7 @@ class King(Piece):
         :type: move: Move
         :rtype: bool
         """
-        test = copy(pos)
+        test = cp(pos)
         test.update(move)
         test_king = test.get_king(move.color)
 
@@ -74,7 +76,7 @@ class King(Piece):
 
         return False
 
-    def add(self, function, position):
+    def add(self, func, position):
         """
         Adds all 8 cardinal directions as moves for the King if legal.
 
@@ -82,16 +84,16 @@ class King(Piece):
         :type: position: Board
         :rtype: gen
         """
-        if function(self.location).on_board():
+        if func(self.location).on_board():
 
-            if self.loc_adjacent_to_opponent_king(function(self.location), position):
+            if self.loc_adjacent_to_opponent_king(func(self.location), position):
                 return
 
-            if position.is_square_empty(function(self.location)):
-                yield self.create_move(function(self.location), notation_const.MOVEMENT)
+            if position.is_square_empty(func(self.location)):
+                yield self.create_move(func(self.location), notation_const.MOVEMENT)
 
-            elif position.piece_at_square(function(self.location)).color != self.color:
-                yield self.create_move(function(self.location), notation_const.CAPTURE)
+            elif position.piece_at_square(func(self.location)).color != self.color:
+                yield self.create_move(func(self.location), notation_const.CAPTURE)
 
     def rook_legal_for_castle(self, rook):
         """
@@ -102,9 +104,9 @@ class King(Piece):
         :rtype: bool
         """
         return rook is not None and \
-         isinstance(rook, Rook) and \
-       rook.color == self.color and \
-                   not rook.has_moved
+                isinstance(rook, Rook) and \
+                rook.color == self.color and \
+                not rook.has_moved
 
     def square_empty_and_not_in_check(self, position, direction, times):
         """
@@ -128,10 +130,79 @@ class King(Piece):
 
         return True
 
-    def add_one_castle(self, rook, direction, status, times, position):
-        if self.rook_legal_for_castle(rook) and \
-                self.square_empty_and_not_in_check(position, direction, times):
-            yield self.create_move(direction(direction(self.location)), status)
+    class Castle:
+        __metaclass__ = ABCMeta
+
+        @abstractmethod
+        def rook_file(self):
+            pass
+
+        @abstractmethod
+        def direction(self):
+            pass
+
+        @abstractmethod
+        def status(self):
+            pass
+
+        @abstractmethod
+        def num_squares_moved_by_king(self):
+            pass
+
+    class King_side_castle(Castle):
+        def __init__(self):
+            pass
+
+        @property
+        def rook_file(self):
+            return 7
+
+        @property
+        def direction(self):
+            return lambda x: x.shift_right()
+
+        @property
+        def status(self):
+            return notation_const.KING_SIDE_CASTLE
+
+        @property
+        def num_squares_moved_by_king(self):
+            return 2
+
+    class Queen_side_castle(Castle):
+        def __init__(self):
+            pass
+
+        @property
+        def rook_file(self):
+            return 0
+
+        @property
+        def direction(self):
+            return lambda x: x.shift_left()
+
+        @property
+        def status(self):
+            return notation_const.QUEEN_SIDE_CASTLE
+
+        @property
+        def num_squares_moved_by_king(self):
+            return 3
+
+    def add_one_castle(self, castle, position):
+        """
+        Adds a castle move given the type of castle.
+        
+        :type: castle: Castle 
+        """
+        if self.rook_legal_for_castle(position.piece_at_square(Location(self.location.rank, castle.rook_file))) and \
+                self.square_empty_and_not_in_check(position, castle.direction, castle.num_squares_moved_by_king):
+
+            king_after_castle_loc = self.location
+            for i in range(castle.num_squares_moved_by_king):
+                king_after_castle_loc = castle.direction(king_after_castle_loc)
+
+            yield self.create_move(king_after_castle_loc, castle.status)
 
     def add_castle(self, position):
         """
@@ -142,12 +213,9 @@ class King(Piece):
         if self.has_moved or self.in_check(position):
             return
 
-        rook = position.piece_at_square(Location(self.location.rank, 7))
-
-        for move in itertools.chain(self.add_one_castle(rook, lambda x: x.shift_right(),
-                                   notation_const.KING_SIDE_CASTLE, 2, position),
-                                   self.add_one_castle(rook, lambda x: x.shift_left(),
-                                   notation_const.QUEEN_SIDE_CASTLE, 3, position)):
+        # Combines 2 generators and iterates through them
+        for move in itertools.chain(self.add_one_castle(self.King_side_castle(), position),
+                                   self.add_one_castle(self.Queen_side_castle(), position)):
             yield move
 
     def possible_moves(self, position):
