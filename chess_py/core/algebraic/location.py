@@ -8,7 +8,7 @@ Class stores Locations on the Board in form ``Location(rank, file)``.
 
 Can be initialized with coordinates not
 on the chess board, however, such locations
-will not wowrk properly with other classes
+will not work properly with other classes
 such as ``Board``.
 
 Location is immutable.
@@ -187,4 +187,3 @@ class Location:
         :rtype: Location
         """
         return self.shift_down().shift_left()
-

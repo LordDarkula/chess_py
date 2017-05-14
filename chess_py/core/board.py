@@ -253,18 +253,11 @@ class Board:
                     test = cp(self)
                     test.update(move)
 
-                    old_king_loc = king_loc
+                    if isinstance(piece, King):
+                        if not test.piece_at_square(move.end_loc).in_check(test):
+                            yield move
 
-                    if isinstance(move.piece, King):
-                        king_loc = move.end_loc
-
-                    if isinstance(piece, King) and not test.piece_at_square(move.end_loc).in_check(test):
-                        yield move
-                        king_loc = old_king_loc
-                        continue
-
-                    if not test.piece_at_square(king_loc).in_check(test):
-                        king_loc = old_king_loc
+                    elif not test.piece_at_square(king_loc).in_check(test):
                         yield move
 
     def runInParallel(*fns):
