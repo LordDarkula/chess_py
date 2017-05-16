@@ -387,16 +387,16 @@ class Board:
 
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))
-            move.piece.get_location = Location(move.end_loc.rank, 6)
+            move.piece.end_loc = Location(move.end_loc.rank, 6)
             self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
-            self.piece_at_square(Location(move.end_loc.rank, 5)).get_location = Location(move.end_loc.rank, 5)
+            self.piece_at_square(Location(move.end_loc.rank, 5)).end_loc = Location(move.end_loc.rank, 5)
             return
 
         if move.status == notation_const.QUEEN_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 2))
-            move.piece.get_location = Location(move.end_loc.rank, 2)
+            move.piece.end_loc = Location(move.end_loc.rank, 2)
             self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
-            self.piece_at_square(Location(move.end_loc.rank, 3)).get_location = Location(move.end_loc.rank, 3)
+            self.piece_at_square(Location(move.end_loc.rank, 3)).end_loc = Location(move.end_loc.rank, 3)
             return
 
         if type(move.piece) is Pawn:
@@ -409,16 +409,16 @@ class Board:
                         move.status == notation_const.CAPTURE_AND_PROMOTE:
             assert isinstance(move.piece, Pawn)
 
-            self.move_piece(Location(move.start_rank, move.start_file), move.get_location())
-            self.place_piece_at_square(move.promoted_to_piece, move.get_location())
+            self.move_piece(move.start_loc, move.end_loc)
+            self.place_piece_at_square(move.promoted_to_piece, move.end_loc)
 
         elif move.status == notation_const.EN_PASSANT:
             assert isinstance(move.piece, Pawn)
 
-            self.move_piece(Location(move.start_rank, move.start_file), move.get_location())
+            self.move_piece(move.start_loc, move.end_loc)
 
-            assert isinstance(self.piece_at_square(Location(move.start_rank, move.get_location().file)), Pawn)
-            self.remove_piece_at_square(Location(move.start_rank, move.get_location().file))
+            assert isinstance(self.piece_at_square(Location(move.start_rank, move.end_loc.file)), Pawn)
+            self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
 
         elif move.status == notation_const.MOVEMENT and \
                         type(move.piece) is Pawn and \
