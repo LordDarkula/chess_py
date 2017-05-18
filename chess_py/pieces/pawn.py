@@ -139,8 +139,9 @@ class Pawn(Piece):
             If the capture square is not empty and it contains a piece of opposing color add the move
             """
             if self.would_move_be_promotion():
-                yield self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
-                                                         location=capture_square)
+                for move in self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
+                                                         location=capture_square):
+                    yield move
 
             else:
                 yield self.create_move(end_loc=capture_square, status=notation_const.CAPTURE)
@@ -220,4 +221,5 @@ class Pawn(Piece):
         for move in itertools.chain(self.forward_moves(position),
                                     self.capture_moves(position),
                                     self.en_passant_moves(position)):
+            print("Move is {}".format(move.__class__))
             yield move
