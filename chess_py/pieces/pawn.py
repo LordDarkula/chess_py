@@ -221,5 +221,4 @@ class Pawn(Piece):
         for move in itertools.chain(self.forward_moves(position),
                                     self.capture_moves(position),
                                     self.en_passant_moves(position)):
-            print("Move is {}".format(move.__class__))
             yield move
