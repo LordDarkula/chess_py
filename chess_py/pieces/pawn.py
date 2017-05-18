@@ -176,10 +176,8 @@ class Pawn(Piece):
 
         :rtype: bool
         """
-        pawn = position.piece_at_square(my_location)
-        return my_location.on_board() and \
-               pawn is not None and \
-               isinstance(pawn, Pawn) and \
+        pawn = position.piece_at_square(my_location) if my_location.on_board() else None
+        return isinstance(pawn, Pawn) and \
                pawn.color != self.color and \
                position.piece_at_square(my_location).just_moved_two_steps
 
