@@ -8,6 +8,6 @@ __pycache__/
 docs/_static/
 docs/_templates/
 /gh-pages/
-venv/
+/venv/
 *.pyc
 *.DS_Store
