@@ -421,8 +421,8 @@ class Board:
             self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
 
         elif move.status == notation_const.MOVEMENT and \
-                        type(move.piece) is Pawn and \
-                        fabs(move.end_loc.rank - move.start_rank) == 2:
+                type(move.piece) is Pawn and \
+                fabs(move.end_loc.rank - move.start_rank) == 2:
             move.piece.just_moved_two_steps = True
             self.move_piece(Location(move.start_rank, move.start_file), move.end_loc)
 
