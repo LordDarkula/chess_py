@@ -268,6 +268,7 @@ def short_alg(algebraic_string, input_color, position):
     """
     return make_legal(incomplete_alg(algebraic_string, input_color), position)
 
+
 def long_alg(alg_str, position):
     """
     Converts a string written in long algebraic form

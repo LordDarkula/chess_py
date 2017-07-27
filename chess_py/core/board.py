@@ -230,7 +230,7 @@ class Board:
         :rtype: list
         """
         position_tuple = self.position_tuple
-        if not position_tuple in self.possible_moves:
+        if position_tuple not in self.possible_moves:
             self.possible_moves[position_tuple] = tuple(self.calc_all_possible_moves(input_color))
 
         return self.possible_moves[position_tuple]
