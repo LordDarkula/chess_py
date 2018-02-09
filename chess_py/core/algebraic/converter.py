@@ -87,19 +87,8 @@ def incomplete_alg(algebraic_string, input_color):
     end_loc = Location(edge_rank(), 6)
     edge_rank = edge_rank()
 
-    is_kingside = algebraic_string == "00" or \
-                  algebraic_string == "oo" or \
-                  algebraic_string == "OO" or \
-                  algebraic_string == "0-0" or \
-                  algebraic_string == "o-o" or \
-                  algebraic_string == "O-O"
-
-    is_queenside = algebraic_string == "000" or \
-                   algebraic_string == "ooo" or \
-                   algebraic_string == "OOO" or \
-                   algebraic_string == "0-0-0" or \
-                   algebraic_string == "o-o-o" or \
-                   algebraic_string == "O-O-O"
+    is_kingside = algebraic_string in ["00", "oo", "OO", "0-0", "o-o", "O-O"]
+    is_queenside = algebraic_string in ["000", "ooo", "OOO", "0-0-0", "o-o-o", "O-O-O"]
 
     if algebraic_string is None or len(algebraic_string) <= 1:
         return None
