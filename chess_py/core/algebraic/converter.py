@@ -40,7 +40,7 @@ def incomplete_alg(algebraic_string, input_color):
 
         return 7
 
-    def set_rank(index):
+    def get_rank(index):
         """
         Returns rank given index
 
@@ -49,7 +49,7 @@ def incomplete_alg(algebraic_string, input_color):
         """
         return int(algebraic_string[index]) - 1
 
-    def set_file(index):
+    def get_file(index):
         """
         Returns file given index
 
@@ -58,7 +58,7 @@ def incomplete_alg(algebraic_string, input_color):
         """
         return ord(algebraic_string[index]) - 97
 
-    def set_piece(index, loc):
+    def get_piece(index):
         """
         Returns specific piece given index of piece.
 
@@ -68,21 +68,13 @@ def incomplete_alg(algebraic_string, input_color):
         piece = algebraic_string[index].strip()
         piece = piece.upper()
 
-        if piece == 'R':
-            return Rook(input_color, loc)
+        piece_dict = {'R': Rook,
+                      'B': Bishop,
+                      'N': Knight,
+                      'Q': Queen,
+                      'K': King}
 
-        if piece == 'N':
-            return Knight(input_color, loc)
-
-        if piece == 'B':
-            return Bishop(input_color, loc)
-
-        if piece == 'Q':
-            return Queen(input_color, loc)
-
-        if piece == 'K':
-            return King(input_color, loc)
-        return None
+        return piece_dict.get(piece, None)
 
     end_loc = Location(edge_rank(), 6)
     edge_rank = edge_rank()
@@ -117,7 +109,7 @@ def incomplete_alg(algebraic_string, input_color):
 
     # Pawn movement
     if pawn_movement:
-        end_loc = Location(set_rank(1), set_file(0))
+        end_loc = Location(get_rank(1), get_file(0))
 
         return Move(end_loc=end_loc,
                     piece=Pawn(input_color, end_loc),
@@ -125,10 +117,10 @@ def incomplete_alg(algebraic_string, input_color):
 
     # Non-pawn Piece movement
     if piece_movement:
-        end_loc = Location(set_rank(2), set_file(1))
-        if set_piece(0, end_loc) is not None:
+        end_loc = Location(get_rank(2), get_file(1))
+        if get_piece(0) is not None:
             return Move(end_loc=end_loc,
-                        piece=set_piece(0, end_loc),
+                        piece=get_piece(0)(input_color, end_loc),
                         status=notation_const.MOVEMENT)
         else:
             return None
@@ -151,34 +143,34 @@ def incomplete_alg(algebraic_string, input_color):
             """
             # If this is a pawn capture
             if pawn_capture:
-                end_loc = Location(set_rank(3), set_file(2))
+                end_loc = Location(get_rank(3), get_file(2))
                 return Move(end_loc=end_loc,
                             piece=Pawn(input_color, end_loc),
                             status=notation_const.CAPTURE,
-                            start_file=set_file(0))
+                            start_file=get_file(0))
 
             # If this is a piece capture
             elif piece_capture:
-                end_loc = Location(set_rank(3), set_file(2))
+                end_loc = Location(get_rank(3), get_file(2))
                 return Move(end_loc=end_loc,
-                            piece=set_piece(0, end_loc),
+                            piece=get_piece(0)(input_color, end_loc),
                             status=notation_const.CAPTURE)
 
             # Pawn Promotion
             elif pawn_promotion:
-                end_loc = Location(set_rank(1), set_file(0))
+                end_loc = Location(get_rank(1), get_file(0))
                 return Move(end_loc=end_loc,
                             piece=Pawn(input_color, end_loc),
                             status=notation_const.PROMOTE,
-                            promoted_to_piece=set_piece(3, end_loc))
+                            promoted_to_piece=get_piece(3)(input_color, end_loc))
 
             # Non-pawn Piece movement with file specified
             elif file_specified:
-                end_loc = Location(set_rank(3), set_file(2))
+                end_loc = Location(get_rank(3), get_file(2))
                 return Move(end_loc=end_loc,
-                            piece=set_piece(1, end_loc),
+                            piece=get_piece(1)(input_color, end_loc),
                             status=notation_const.MOVEMENT,
-                            start_file=set_file(0))
+                            start_file=get_file(0))
 
             else:
                 return None
@@ -190,12 +182,12 @@ def incomplete_alg(algebraic_string, input_color):
 
         # Non-pawn Piece movement with rank and file specified
         if rank_file_specified:
-            end_loc = Location(set_rank(4), set_file(3))
+            end_loc = Location(get_rank(4), get_file(3))
             return Move(end_loc=end_loc,
-                        piece=set_piece(2, end_loc),
+                        piece=get_piece(2)(input_color, end_loc),
                         status=notation_const.MOVEMENT,
-                        start_file=set_file(0),
-                        start_rank=set_rank(1))
+                        start_file=get_file(0),
+                        start_rank=get_rank(1))
 
     pawn_promote_capture = len(algebraic_string) == 6
 
@@ -204,12 +196,12 @@ def incomplete_alg(algebraic_string, input_color):
         exd8=Q
         """
         # Pawn promote with capture
-        end_loc = Location(set_rank(3), set_file(2))
+        end_loc = Location(get_rank(3), get_file(2))
         return Move(end_loc=end_loc,
                     piece=Pawn(input_color, end_loc),
                     status=notation_const.MOVEMENT,
-                    start_file=set_file(0),
-                    promoted_to_piece=set_piece(5, end_loc))
+                    start_file=get_file(0),
+                    promoted_to_piece=get_piece(5)(input_color, end_loc))
 
     return None
 

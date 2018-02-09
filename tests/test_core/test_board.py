@@ -99,19 +99,18 @@ class TestBoard(TestCase):
         self.assertEqual(self.board.material_advantage(color.black, piece_const.Piece_values()), -3.5)
 
     def test_advantage_as_result(self):
-        self.assertEqual(self.board.advantage_as_result(converter.long_alg("e2e4", self.board), piece_const.Piece_values()), 0)
+        self.assertEqual(self.board.advantage_as_result(converter.long_alg("e2e4", self.board),
+                                                        piece_const.Piece_values()), 0)
 
         self.board.position[1][3] = None
-        self.assertEqual(self.board.advantage_as_result(converter.long_alg("d1d7", self.board),
-                                                    piece_const.Piece_values()), 0)
-
+        self.assertEqual(
+            self.board.advantage_as_result(converter.long_alg("d1d7", self.board), piece_const.Piece_values()), 0)
 
         self.board.update(converter.short_alg("e3", color.white, self.board))
 
         self.assertEqual(
             self.board.advantage_as_result(
-                converter.short_alg("Bd2", color.white, self.board),
-                                                        piece_const.Piece_values()), -1)
+                converter.short_alg("Bd2", color.white, self.board), piece_const.Piece_values()), -1)
 
     def test_all_possible_moves(self):
         """
