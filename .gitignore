@@ -1,4 +1,4 @@
-/.cache
+.cache
 /build/
 /chess_py.egg-info/
 /dist/
@@ -11,3 +11,4 @@ docs/_templates/
 /venv/
 *.pyc
 *.DS_Store
+.pytest_cache
