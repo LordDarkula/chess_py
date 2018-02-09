@@ -35,10 +35,10 @@ class Piece:
         self.location = location
 
         self.cross_fn = [lambda x: x.shift_up(), lambda x: x.shift_right(),
-                    lambda x: x.shift_down(), lambda x: x.shift_left()]
+                         lambda x: x.shift_down(), lambda x: x.shift_left()]
 
         self.diag_fn = [lambda x: x.shift_up_right(), lambda x: x.shift_up_left(),
-                   lambda x: x.shift_down_right(), lambda x: x.shift_down_left()]
+                        lambda x: x.shift_down_right(), lambda x: x.shift_down_left()]
 
         if self.color == color.white:
             self.symbol = white_symbol
@@ -89,7 +89,7 @@ class Piece:
         # TODO: fix circular imports
         from chess_py import Move
         return Move(end_loc=end_loc,
-                            piece=self,
-                            status=status,
-                            start_rank=self.location.rank,
-                            start_file=self.location.file)
+                    piece=self,
+                    status=status,
+                    start_rank=self.location.rank,
+                    start_file=self.location.file)

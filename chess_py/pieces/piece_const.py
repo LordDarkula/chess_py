@@ -13,7 +13,7 @@ from .rook import Rook
 from .knight import Knight
 
 
-class Piece_values:
+class PieceValues:
     def __init__(self):
         self.PAWN_VALUE = 1
         self.KNIGHT_VALUE = 3

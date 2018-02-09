@@ -196,7 +196,7 @@ class Board:
         Finds the advantage a particular side possesses given a value scheme.
 
         :type: input_color: Color
-        :type: val_scheme: Piece_values
+        :type: val_scheme: PieceValues
         :rtype: double
         """
 
@@ -213,7 +213,7 @@ class Board:
         Calculates advantage after move is played
 
         :type: move: Move
-        :type: val_scheme: Piece_values
+        :type: val_scheme: PieceValues
         :rtype: double
         """
         test_board = cp(self)

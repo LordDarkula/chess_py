@@ -19,6 +19,26 @@ from ...pieces.rook import Rook
 from ...pieces.knight import Knight
 
 
+def _get_piece(string, index):
+    """
+    Returns Piece subclass given index of piece.
+
+    :type: index: int
+    :type: loc Location
+    """
+    piece = string[index].strip()
+    piece = piece.upper()
+
+    piece_dict = {'R': Rook,
+                  'P': Pawn,
+                  'B': Bishop,
+                  'N': Knight,
+                  'Q': Queen,
+                  'K': King}
+
+    return piece_dict.get(piece, None)
+
+
 def incomplete_alg(algebraic_string, input_color):
     """
     Converts a string written in short algebraic form into an incomplete move.
@@ -57,24 +77,6 @@ def incomplete_alg(algebraic_string, input_color):
         :rtype: int
         """
         return ord(algebraic_string[index]) - 97
-
-    def get_piece(index):
-        """
-        Returns specific piece given index of piece.
-
-        :type: index: int
-        :type: loc Location
-        """
-        piece = algebraic_string[index].strip()
-        piece = piece.upper()
-
-        piece_dict = {'R': Rook,
-                      'B': Bishop,
-                      'N': Knight,
-                      'Q': Queen,
-                      'K': King}
-
-        return piece_dict.get(piece, None)
 
     end_loc = Location(edge_rank(), 6)
     edge_rank = edge_rank()
@@ -118,9 +120,9 @@ def incomplete_alg(algebraic_string, input_color):
     # Non-pawn Piece movement
     if piece_movement:
         end_loc = Location(get_rank(2), get_file(1))
-        if get_piece(0) is not None:
+        if _get_piece(algebraic_string, 0) is not None:
             return Move(end_loc=end_loc,
-                        piece=get_piece(0)(input_color, end_loc),
+                        piece=_get_piece(algebraic_string, 0)(input_color, end_loc),
                         status=notation_const.MOVEMENT)
         else:
             return None
@@ -153,7 +155,7 @@ def incomplete_alg(algebraic_string, input_color):
             elif piece_capture:
                 end_loc = Location(get_rank(3), get_file(2))
                 return Move(end_loc=end_loc,
-                            piece=get_piece(0)(input_color, end_loc),
+                            piece=_get_piece(algebraic_string, 0)(input_color, end_loc),
                             status=notation_const.CAPTURE)
 
             # Pawn Promotion
@@ -162,13 +164,13 @@ def incomplete_alg(algebraic_string, input_color):
                 return Move(end_loc=end_loc,
                             piece=Pawn(input_color, end_loc),
                             status=notation_const.PROMOTE,
-                            promoted_to_piece=get_piece(3)(input_color, end_loc))
+                            promoted_to_piece=_get_piece(algebraic_string, 3)(input_color, end_loc))
 
             # Non-pawn Piece movement with file specified
             elif file_specified:
                 end_loc = Location(get_rank(3), get_file(2))
                 return Move(end_loc=end_loc,
-                            piece=get_piece(1)(input_color, end_loc),
+                            piece=_get_piece(algebraic_string, 1)(input_color, end_loc),
                             status=notation_const.MOVEMENT,
                             start_file=get_file(0))
 
@@ -184,7 +186,7 @@ def incomplete_alg(algebraic_string, input_color):
         if rank_file_specified:
             end_loc = Location(get_rank(4), get_file(3))
             return Move(end_loc=end_loc,
-                        piece=get_piece(2)(input_color, end_loc),
+                        piece=_get_piece(algebraic_string, 2)(input_color, end_loc),
                         status=notation_const.MOVEMENT,
                         start_file=get_file(0),
                         start_rank=get_rank(1))
@@ -201,7 +203,7 @@ def incomplete_alg(algebraic_string, input_color):
                     piece=Pawn(input_color, end_loc),
                     status=notation_const.MOVEMENT,
                     start_file=get_file(0),
-                    promoted_to_piece=get_piece(5)(input_color, end_loc))
+                    promoted_to_piece=_get_piece(algebraic_string, 5)(input_color, end_loc))
 
     return None
 
@@ -261,30 +263,27 @@ def long_alg(alg_str, position):
     :type: position: Board
     :rtype: Move
     """
-    end = Location.init_alg(alg_str[2] + alg_str[3])
-    start = Location.init_alg(alg_str[0] + alg_str[1])
+    end = Location.init_alg(alg_str[2:])
+    start = Location.init_alg(alg_str[:2])
+    piece = position.piece_at_square(start)
 
-    if position.piece_at_square(start) is not None:
-        piece = position.piece_at_square(start)
-    else:
+    if piece is None:
         raise Exception("Invalid move input")
 
-    pr_piece = None
-    if len(alg_str) == 5:
-        if alg_str[4] == "Q":
-            pr_piece = Queen(piece.color, end)
-        elif alg_str[4] == "R":
-            pr_piece = Rook(piece.color, end)
-        elif alg_str[4] == "B":
-            pr_piece = Bishop(piece.color, end)
-        elif alg_str[4] == "N":
-            pr_piece = Knight(piece.color, end)
-        else:
-            raise Exception("Invalid move input")
+    if len(alg_str) == 4:
+        return make_legal(Move(end_loc=end,
+                               piece=piece,
+                               status=notation_const.START_LOC_SPECIFIED,
+                               start_rank=start.rank,
+                               start_file=start.file), position)
+
+    promoted_to = _get_piece(alg_str, 4)
+    if promoted_to is None or isinstance(promoted_to, King) or isinstance(promoted_to, Pawn):
+        raise Exception("Invalid move input")
 
     return make_legal(Move(end_loc=end,
                            piece=piece,
                            status=notation_const.START_LOC_SPECIFIED,
                            start_rank=start.rank,
                            start_file=start.file,
-                           promoted_to_piece=pr_piece), position)
+                           promoted_to_piece=promoted_to(piece.color, end)), position)
