@@ -64,7 +64,7 @@ class Knight(Piece):
         """
 
         return self.cross_fn[self.cycle(ind)[0]](function(function(loc))), \
-               self.cross_fn[self.cycle(ind)[1]](function(function(loc)))
+            self.cross_fn[self.cycle(ind)[1]](function(function(loc)))
 
     def possible_moves(self, position):
         """
@@ -90,7 +90,7 @@ class Knight(Piece):
                     continue
 
                 yield Move(end_loc=dest_loc[j],
-                                      piece=self,
-                                      status=status,
-                                      start_rank=self.location.rank,
-                                      start_file=self.location.file)
+                           piece=self,
+                           status=status,
+                           start_rank=self.location.rank,
+                           start_file=self.location.file)

@@ -21,7 +21,7 @@ Default Array
 | -—╚═══════════════
 | ——-a b c d e f g h
 
-Pieces on the board are flipped so white home row is at index 0
+Pieces on the board are flipped in position array so white home row is at index 0
 and black home row is at index 7
 
 | Copyright © 2016 Aubhro Sengupta. All rights reserved.
@@ -104,7 +104,7 @@ class Board:
 
     @property
     def position_tuple(self):
-        return ((piece for piece in self.position[index]) for index, row in enumerate(self.position))
+        return ((str(piece) for piece in self.position[index]) for index, row in enumerate(self.position))
 
     def __key(self):
         return self.position
@@ -171,7 +171,9 @@ class Board:
 
         :rtype: Board
         """
-        return Board([[cp(piece) for piece in self.position[index]] for index, row in enumerate(self.position)])
+        return Board([[cp(piece) or None
+                       for piece in self.position[index]]
+                      for index, row in enumerate(self.position)])
 
     def piece_at_square(self, location):
         """
@@ -224,18 +226,18 @@ class Board:
         """
         Checks if all the possible moves has already been calculated
         and is stored in `possible_moves` dictionary. If not, it is calculated
-        with `calc_all_possible_moves`.
+        with `_calc_all_possible_moves`.
         
         :type: input_color: Color
         :rtype: list
         """
         position_tuple = self.position_tuple
         if position_tuple not in self.possible_moves:
-            self.possible_moves[position_tuple] = tuple(self.calc_all_possible_moves(input_color))
+            self.possible_moves[position_tuple] = tuple(self._calc_all_possible_moves(input_color))
 
         return self.possible_moves[position_tuple]
 
-    def calc_all_possible_moves(self, input_color):
+    def _calc_all_possible_moves(self, input_color):
         """
         Returns list of all possible moves
 
@@ -406,7 +408,7 @@ class Board:
             self.piece_at_square(move.start_loc).has_moved = True
 
         if move.status == notation_const.PROMOTE or \
-                        move.status == notation_const.CAPTURE_AND_PROMOTE:
+                move.status == notation_const.CAPTURE_AND_PROMOTE:
             assert isinstance(move.piece, Pawn)
 
             self.move_piece(move.start_loc, move.end_loc)
