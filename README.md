@@ -19,7 +19,7 @@ I gave a talk at PyGotham 2016 on this library. Abstract can be found [here](htt
 
 ## Introduction
 
-Chess_py is an open source chess library written in Python. Made to create chess engines. Handles the chess so you can focus on the engine.
+Chess_py is an open source chess library written in Python designed to aid in the creation of chess engines. Handles the chess so you can focus on the engine.
 
 ## Installation
 
@@ -69,18 +69,18 @@ import chess_py
 from chess_py import Game, Human, color
 
 # Engine which plays the move with the highest immediate material advantage
-class My_engine(chess_py.Player):
-    def __init__(self, color):
+class MyEngine(chess_py.Player):
+    def __init__(self, input_color):
     
       # Creates piece value scheme to specify value of each piece.
-      self.piece_values = chess_py.Piece_values.init_manual(PAWN_VALUE=1,
+      self.piece_values = chess_py.PieceValues.init_manual(PAWN_VALUE=1,
                                                             KNIGHT_VALUE=3,
                                                             BISHOP_VALUE=3,
                                                             ROOK_VALUE=5,
                                                             QUEEN_VALUE=9)
       
-      # Super call makes color a global
-      super(Human, self).__init__(input_color)
+      # Super call to
+      super(chess_py.Player, self).__init__(input_color)
     
     def generate_move(self, position):
       # position parameter is an object of type Board
@@ -93,7 +93,7 @@ class My_engine(chess_py.Player):
       best_move_advantage = -99
       
       # Loops through possible moves
-      for move in move:
+      for move in moves:
         """ advantage_as_result(move, piece_values) finds numerical advantage
         as specified by piece value scheme above. Returns negative values for
         positions of disadvantage. Returns +/-99 for checkmate. """
@@ -104,11 +104,11 @@ class My_engine(chess_py.Player):
             best_move = move
             best_move_advantage = advantage
       
-      return move
+      return best_move
 
 # If file is run as script, a Game is set up between My_engine and Human and result is printed.
 if __name__ == "__main__":
-    new_game = Game(My_engine(color.white), Human(color.black))
+    new_game = Game(MyEngine(color.white), Human(color.black))
     
     # white wins - 0, black wins - 1, draw - 0.5 
     print("Result: ", new_game.play())
