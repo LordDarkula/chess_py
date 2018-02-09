@@ -54,7 +54,7 @@ class Board:
 
     def __init__(self, position):
         """
-        Creates a ``Board`` given an array of ``Piece`` and ``None''
+        Creates a ``Board`` given an array of ``Piece`` and ``None``
         objects to represent the given position of the board.
 
         :type: position: list
