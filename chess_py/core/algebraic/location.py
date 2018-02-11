@@ -45,6 +45,9 @@ class Location:
         :type: rank: int
         :type: file: int
         """
+        if rank < 0 or rank > 7 or file < 0 or file > 7:
+            raise IndexError("Location must be on the board")
+
         self._rank = rank
         self._file = file
 
@@ -130,7 +133,10 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self._rank + 1, self._file)
+        try:
+            return Location(self._rank + 1, self._file)
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_down(self):
         """
@@ -138,7 +144,10 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self._rank - 1, self._file)
+        try:
+            return Location(self._rank - 1, self._file)
+        except IndexError as e:
+            return IndexError(e)
 
     def shift_right(self):
         """
@@ -146,7 +155,10 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self._rank, self._file + 1)
+        try:
+            return Location(self._rank, self._file + 1)
+        except IndexError as e:
+            return IndexError(e)
 
     def shift_left(self):
         """
@@ -154,7 +166,10 @@ class Location:
 
         :rtype: Location
         """
-        return Location(self._rank, self._file - 1)
+        try:
+            return Location(self._rank, self._file - 1)
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_up_right(self):
         """
@@ -162,7 +177,10 @@ class Location:
 
         :rtype: Location
         """
-        return self.shift_up().shift_right()
+        try:
+            return self.shift_up().shift_right()
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_up_left(self):
         """
@@ -170,7 +188,10 @@ class Location:
 
         :rtype: Location
         """
-        return self.shift_up().shift_left()
+        try:
+            return self.shift_up().shift_left()
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_down_right(self):
         """
@@ -178,7 +199,10 @@ class Location:
 
         :rtype: Location
         """
-        return self.shift_down().shift_right()
+        try:
+            return self.shift_down().shift_right()
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_down_left(self):
         """
@@ -186,4 +210,7 @@ class Location:
 
         :rtype: Location
         """
-        return self.shift_down().shift_left()
+        try:
+            return self.shift_down().shift_left()
+        except IndexError as e:
+            raise IndexError(e)
