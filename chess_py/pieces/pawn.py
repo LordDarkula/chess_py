@@ -130,21 +130,20 @@ class Pawn(Piece):
                     status=notation_const.MOVEMENT
                 )
 
-    def add_capture_square(self, capture_square, position):
+    def _one_diagonal_capture_square(self, capture_square, position):
         """
-        Adds capture moves
+        Adds specified diagonal as a capture move if it is one
         """
         if self.contains_opposite_color_piece(capture_square, position):
-            """
-            If the capture square is not empty and it contains a piece of opposing color add the move
-            """
+
             if self.would_move_be_promotion():
-                for move in self.create_promotion_moves(notation_const.CAPTURE_AND_PROMOTE,
-                                                         location=capture_square):
+                for move in self.create_promotion_moves(status=notation_const.CAPTURE_AND_PROMOTE,
+                                                        location=capture_square):
                     yield move
 
             else:
-                yield self.create_move(end_loc=capture_square, status=notation_const.CAPTURE)
+                yield self.create_move(end_loc=capture_square,
+                                       status=notation_const.CAPTURE)
 
     def capture_moves(self, position):
         """
@@ -152,15 +151,19 @@ class Pawn(Piece):
 
         :rtype: list
         """
-        for move in itertools.chain(
-                self.add_capture_square(
-                    capture_square=self.square_in_front(self.location.shift_right()),
-                    position=position),
-                self.add_capture_square(
-                    capture_square=self.square_in_front(self.location.shift_left()),
-                    position=position
-                )):
-            yield move
+        try:
+            right_diagonal = self.square_in_front(self.location.shift_right())
+            for move in self._one_diagonal_capture_square(right_diagonal, position):
+                yield move
+        except IndexError:
+            pass
+
+        try:
+            left_diagonal = self.square_in_front(self.location.shift_left())
+            for move in self._one_diagonal_capture_square(left_diagonal, position):
+                yield move
+        except IndexError:
+            pass
 
     def on_en_passant_valid_location(self):
         """
@@ -205,9 +208,8 @@ class Pawn(Piece):
 
         # if pawn is not on a valid en passant get_location then return None
         if self.on_en_passant_valid_location():
-            for move in itertools.chain(
-                self.add_one_en_passant_move(lambda x: x.shift_right(), position),
-                self.add_one_en_passant_move(lambda x: x.shift_left(), position)):
+            for move in itertools.chain(self.add_one_en_passant_move(lambda x: x.shift_right(), position),
+                                        self.add_one_en_passant_move(lambda x: x.shift_left(), position)):
                 yield move
 
     def possible_moves(self, position):

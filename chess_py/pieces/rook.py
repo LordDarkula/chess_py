@@ -59,11 +59,8 @@ class Rook(Piece):
             print(current_square)
             try:
                 current_square = direction(current_square)
-                print("try executed new location is {}".format(current_square))
-                print(position)
 
             except IndexError:
-                print("Loop finished")
                 return
 
             if self.contains_opposite_color_piece(current_square, position):
