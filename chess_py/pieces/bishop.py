@@ -46,5 +46,5 @@ class Bishop(Rook, Piece):
         :rtype: list
         """
 
-        for move in itertools.chain(*[self.direction_moves(fn, position) for fn in self.diag_fn]):
+        for move in itertools.chain(*[self.moves_in_direction(fn, position) for fn in self.diag_fn]):
             yield move

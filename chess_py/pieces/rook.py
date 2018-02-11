@@ -43,7 +43,7 @@ class Rook(Piece):
     def __str__(self):
         return "R"
 
-    def direction_moves(self, direction, position):
+    def moves_in_direction(self, direction, position):
         """
         Finds moves in a given direction
 
@@ -51,20 +51,20 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
-        current = direction(self.location)
+        current_square = self.location
+        while True:
+            try:
+                current_square = direction(current_square)
+                if self.contains_opposite_color_piece(current_square, position):
+                    yield self.create_move(current_square, notation_const.CAPTURE)
 
-        def side_move(status):
-            return self.create_move(current, status)
+                if not position.is_square_empty(current_square):
+                    return
 
-        assert isinstance(current, Location)
-        while current.on_board() and \
-                position.is_square_empty(current):
-            yield side_move(notation_const.MOVEMENT)
-            current = direction(current)
+                yield self.create_move(current_square, notation_const.MOVEMENT)
 
-        if current.on_board() and \
-                self.contains_opposite_color_piece(current, position):
-            yield side_move(notation_const.CAPTURE)
+            except IndexError:
+                return
 
     def possible_moves(self, position):
         """
@@ -73,5 +73,5 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
-        for move in itertools.chain(*[self.direction_moves(fn, position) for fn in self.cross_fn]):
+        for move in itertools.chain(*[self.moves_in_direction(fn, position) for fn in self.cross_fn]):
             yield move
