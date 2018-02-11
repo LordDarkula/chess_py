@@ -147,7 +147,7 @@ class Location:
         try:
             return Location(self._rank - 1, self._file)
         except IndexError as e:
-            return IndexError(e)
+            raise IndexError(e)
 
     def shift_right(self):
         """
@@ -158,7 +158,7 @@ class Location:
         try:
             return Location(self._rank, self._file + 1)
         except IndexError as e:
-            return IndexError(e)
+            raise IndexError(e)
 
     def shift_left(self):
         """

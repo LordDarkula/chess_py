@@ -51,20 +51,28 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
+        print(self.location)
+        print(direction)
         current_square = self.location
+
         while True:
+            print(current_square)
             try:
                 current_square = direction(current_square)
-                if self.contains_opposite_color_piece(current_square, position):
-                    yield self.create_move(current_square, notation_const.CAPTURE)
-
-                if not position.is_square_empty(current_square):
-                    return
-
-                yield self.create_move(current_square, notation_const.MOVEMENT)
+                print("try executed new location is {}".format(current_square))
+                print(position)
 
             except IndexError:
+                print("Loop finished")
                 return
+
+            if self.contains_opposite_color_piece(current_square, position):
+                yield self.create_move(current_square, notation_const.CAPTURE)
+
+            if not position.is_square_empty(current_square):
+                return
+
+            yield self.create_move(current_square, notation_const.MOVEMENT)
 
     def possible_moves(self, position):
         """

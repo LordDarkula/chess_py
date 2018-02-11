@@ -81,9 +81,8 @@ class Piece:
         :type: position: Board
         :rtype: bool
         """
-        return square.on_board() and \
-                    not position.is_square_empty(square) and \
-                    position.piece_at_square(square).color != self.color
+        return not position.is_square_empty(square) and \
+            position.piece_at_square(square).color != self.color
 
     def create_move(self, end_loc, status):
         # TODO: fix circular imports
