@@ -36,6 +36,15 @@ Examples (shown on board below):
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from enum import Enum
+
+
+class Direction(Enum):
+    UP = 0
+    DOWN = 1
+    RIGHT = 2
+    LEFT = 3
+
 
 class Location:
     def __init__(self, rank, file):
@@ -126,6 +135,24 @@ class Location:
             return True
 
         return False
+
+    def shift(self, direction):
+        """
+        Shifts in direction provided by ``Direction`` enum.
+
+        :type: direction: Direction
+        """
+        try:
+            if direction == Direction.UP:
+                self.shift_up()
+            elif direction == Direction.DOWN:
+                self.shift_down()
+            elif direction == Direction.RIGHT:
+                self.shift_right()
+            elif direction == Direction.LEFT:
+                self.shift_left()
+        except IndexError as e:
+            raise IndexError(e)
 
     def shift_up(self):
         """

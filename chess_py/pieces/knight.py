@@ -66,21 +66,24 @@ class Knight(Piece):
         return self.cross_fn[self.cycle(ind)[0]](function(function(loc))), \
             self.cross_fn[self.cycle(ind)[1]](function(function(loc)))
 
+    def _rotate_direction_ninety_degrees(self, direction_function):
+        pass
+
     def possible_moves(self, position):
         """
         Finds all possible knight moves
         :type: position Board
         :rtype: list
         """
+        for direction in self.cross_fn:
+            pass
+
         for index, func in enumerate(self.cross_fn):
             dest_loc = self.dest(self.location, func, index)
 
             for j in range(2):
 
-                if not dest_loc[j].on_board():
-                    continue
-
-                elif position.is_square_empty(dest_loc[j]):
+                if position.is_square_empty(dest_loc[j]):
                     status = notation_const.MOVEMENT
 
                 elif not position.piece_at_square(dest_loc[j]).color == self.color:
