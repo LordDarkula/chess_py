@@ -36,13 +36,11 @@ Examples (shown on board below):
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-from enum import Enum
 
-
-class Direction(Enum):
+class Direction:
     UP = 0
-    DOWN = 1
-    RIGHT = 2
+    RIGHT = 1
+    DOWN = 2
     LEFT = 3
 
 
@@ -141,16 +139,20 @@ class Location:
         Shifts in direction provided by ``Direction`` enum.
 
         :type: direction: Direction
+        :rtype: Location
         """
         try:
             if direction == Direction.UP:
-                self.shift_up()
+                return self.shift_up()
             elif direction == Direction.DOWN:
-                self.shift_down()
+                return self.shift_down()
             elif direction == Direction.RIGHT:
-                self.shift_right()
+                return self.shift_right()
             elif direction == Direction.LEFT:
-                self.shift_left()
+                return self.shift_left()
+            else:
+                print("invalid direction {}".format(direction))
+                raise IndexError("Invalid direction {}".format(direction))
         except IndexError as e:
             raise IndexError(e)
 

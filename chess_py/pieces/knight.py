@@ -38,36 +38,17 @@ class Knight(Piece):
         return "N"
 
     @staticmethod
-    def cycle(index):
-        """
-        Cycles indexes containing shift directions perpendicular to current shift
-        :type: index int
-        :rtype tuple
-        """
-        if index == 0:
-            return index + 1, index + 3
+    def _rotate_direction_ninety_degrees(direction):
+        if direction == 3:
+            return 0, 2
+        right_angles = [direction - 1, direction + 1]
+        for index, angle in enumerate(right_angles):
+            if angle == -1:
+                right_angles[index] = 3
+            elif angle == 4:
+                right_angles[index] = 0
 
-        elif index == 3:
-            return index - 1, index - 3
-
-        return index + 1, index - 1
-
-    def dest(self, loc, function, ind):
-        """
-        Returns both destinations that result when the knight is moved two steps in
-        one of the cardinal directions
-
-        :type: loc: Location
-        :type: function: def
-        :type: ind: int
-        :rtype: tuple
-        """
-
-        return self.cross_fn[self.cycle(ind)[0]](function(function(loc))), \
-            self.cross_fn[self.cycle(ind)[1]](function(function(loc)))
-
-    def _rotate_direction_ninety_degrees(self, direction_function):
-        pass
+        return right_angles
 
     def possible_moves(self, position):
         """
@@ -75,25 +56,26 @@ class Knight(Piece):
         :type: position Board
         :rtype: list
         """
-        for direction in self.cross_fn:
-            pass
+        print(self.location)
+        for direction in [0, 1, 2, 3]:
+            angles = self._rotate_direction_ninety_degrees(direction)
+            for angle in angles:
+                try:
+                    print("Direction is {}".format(direction))
+                    end_loc = self.location.shift(angle).shift(direction).shift(direction)
+                    if position.is_square_empty(end_loc):
+                        status = notation_const.MOVEMENT
+                    elif not position.piece_at_square(end_loc).color == self.color:
+                        status = notation_const.CAPTURE
+                    else:
+                        continue
 
-        for index, func in enumerate(self.cross_fn):
-            dest_loc = self.dest(self.location, func, index)
+                    yield Move(end_loc=end_loc,
+                               piece=self,
+                               status=status,
+                               start_rank=self.location.rank,
+                               start_file=self.location.file)
 
-            for j in range(2):
+                except IndexError:
+                    pass
 
-                if position.is_square_empty(dest_loc[j]):
-                    status = notation_const.MOVEMENT
-
-                elif not position.piece_at_square(dest_loc[j]).color == self.color:
-                    status = notation_const.CAPTURE
-
-                else:
-                    continue
-
-                yield Move(end_loc=dest_loc[j],
-                           piece=self,
-                           status=status,
-                           start_rank=self.location.rank,
-                           start_file=self.location.file)
