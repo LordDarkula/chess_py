@@ -180,10 +180,13 @@ class Pawn(Piece):
 
         :rtype: bool
         """
-        pawn = position.piece_at_square(my_location) if my_location.on_board() else None
-        return isinstance(pawn, Pawn) and \
-               pawn.color != self.color and \
-               position.piece_at_square(my_location).just_moved_two_steps
+        try:
+            pawn = position.piece_at_square(my_location)
+        except IndexError:
+            return False
+
+        return pawn.color != self.color and \
+            position.piece_at_square(my_location).just_moved_two_steps
 
     def add_one_en_passant_move(self, direction, position):
         """
@@ -193,11 +196,14 @@ class Pawn(Piece):
         :type: position: Board
         :rtype: gen
         """
-        if self.opposite_color_pawn_on_square(direction(self.location), position):
-            yield self.create_move(
-                end_loc=self.square_in_front(direction(self.location)),
-                status=notation_const.EN_PASSANT
-            )
+        try:
+            if self.opposite_color_pawn_on_square(direction(self.location), position):
+                yield self.create_move(
+                    end_loc=self.square_in_front(direction(self.location)),
+                    status=notation_const.EN_PASSANT
+                )
+        except IndexError:
+            pass
 
     def en_passant_moves(self, position):
         """

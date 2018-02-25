@@ -68,10 +68,13 @@ class King(Piece):
         :rtype: bool
         """
         for fn in self.cardinal_directions:
-            if fn(location).on_board() and \
-                    isinstance(position.piece_at_square(fn(location)), King) and \
-                    position.piece_at_square(fn(location)).color != self.color:
-                return True
+            try:
+                if isinstance(position.piece_at_square(fn(location)), King) and \
+                        position.piece_at_square(fn(location)).color != self.color:
+                    return True
+
+            except IndexError:
+                pass
 
         return False
 
@@ -83,16 +86,17 @@ class King(Piece):
         :type: position: Board
         :rtype: gen
         """
-        if func(self.location).on_board():
-
+        try:
             if self.loc_adjacent_to_opponent_king(func(self.location), position):
                 return
+        except IndexError:
+            return
 
-            if position.is_square_empty(func(self.location)):
-                yield self.create_move(func(self.location), notation_const.MOVEMENT)
+        if position.is_square_empty(func(self.location)):
+            yield self.create_move(func(self.location), notation_const.MOVEMENT)
 
-            elif position.piece_at_square(func(self.location)).color != self.color:
-                yield self.create_move(func(self.location), notation_const.CAPTURE)
+        elif position.piece_at_square(func(self.location)).color != self.color:
+            yield self.create_move(func(self.location), notation_const.CAPTURE)
 
     def rook_legal_for_castle(self, rook):
         """
@@ -103,9 +107,9 @@ class King(Piece):
         :rtype: bool
         """
         return rook is not None and \
-                isinstance(rook, Rook) and \
-                rook.color == self.color and \
-                not rook.has_moved
+            isinstance(rook, Rook) and \
+            rook.color == self.color and \
+            not rook.has_moved
 
     def square_empty_and_not_in_check(self, position, direction, times):
         """

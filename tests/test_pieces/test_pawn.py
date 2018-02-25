@@ -102,10 +102,10 @@ class TestPawn(TestCase):
 
         self.assertEqual(len(move), 1)
         self.assertEqual(move[0], Move(end_loc=black_pawn.square_in_front(black_pawn.location.shift_right()),
-                                     piece=black_pawn,
-                                     status=notation_const.EN_PASSANT,
-                                     start_rank=black_pawn.location.rank,
-                                     start_file=black_pawn.location.file))
+                                       piece=black_pawn,
+                                       status=notation_const.EN_PASSANT,
+                                       start_rank=black_pawn.location.rank,
+                                       start_file=black_pawn.location.file))
 
     def test_possible_moves(self):
         self.assertEqual(len(list(self.white_pawn.possible_moves(self.position))), 2)
