@@ -307,11 +307,10 @@ class Board:
             for j in range(len(self.position)):
                 loc = Location(i, j)
                 if not self.is_square_empty(loc) and \
-                                self.piece_at_square(loc) == piece:
+                        self.piece_at_square(loc) == piece:
                     return loc
 
-        print(self)
-        raise Exception("Piece not found: " + str(piece))
+        raise Exception("{} \nPiece not found: {}".format(self, piece))
 
     def get_piece(self, piece_type, input_color):
         """
@@ -329,8 +328,7 @@ class Board:
                     piece.color == input_color:
                 return loc
 
-        print(self)
-        raise Exception("Piece not found: " + str(piece_type))
+        raise Exception("{} \nPiece not found: {}".format(self, piece_type))
 
     def find_king(self, input_color):
         """

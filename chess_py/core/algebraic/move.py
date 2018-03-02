@@ -75,8 +75,7 @@ class Move:
         :type: other: Move
         """
         if not isinstance(other, self.__class__):
-            print(type(other))
-            raise TypeError("Cannot compare other types with Move")
+            raise TypeError("Cannot compare type {} with Move".format(type(other)))
 
         for index, item in enumerate(self.__key()):
             if not self._check_equals_or_none(item, other.__key()[index]):

@@ -151,7 +151,6 @@ class Location:
             elif direction == Direction.LEFT:
                 return self.shift_left()
             else:
-                print("invalid direction {}".format(direction))
                 raise IndexError("Invalid direction {}".format(direction))
         except IndexError as e:
             raise IndexError(e)

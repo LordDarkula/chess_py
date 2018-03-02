@@ -51,15 +51,11 @@ class Rook(Piece):
         :type: position: Board
         :rtype: list
         """
-        print(self.location)
-        print(direction)
         current_square = self.location
 
         while True:
-            print(current_square)
             try:
                 current_square = direction(current_square)
-
             except IndexError:
                 return
 
