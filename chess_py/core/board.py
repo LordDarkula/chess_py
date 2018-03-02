@@ -302,10 +302,10 @@ class Board:
         :type: piece: Piece
         :rtype: Location
         """
-        for i in range(len(self.position)):
-
-            for j in range(len(self.position)):
+        for i, _ in enumerate(self.position):
+            for j, _ in enumerate(self.position):
                 loc = Location(i, j)
+
                 if not self.is_square_empty(loc) and \
                         self.piece_at_square(loc) == piece:
                     return loc
