@@ -174,19 +174,19 @@ class Pawn(Piece):
         return (self.color == color.white and self.location.rank == 4) or \
                (self.color == color.black and self.location.rank == 3)
 
-    def opposite_color_pawn_on_square(self, my_location, position):
+    def _is_en_passant_valid(self, opponent_pawn_location, position):
         """
-        Finds if their is opponent's pawn is next to this pawn
+        Finds if their opponent's pawn is next to this pawn
 
         :rtype: bool
         """
         try:
-            pawn = position.piece_at_square(my_location)
+            pawn = position.piece_at_square(opponent_pawn_location)
+            return pawn is not None and \
+                pawn.color != self.color and \
+                position.piece_at_square(opponent_pawn_location).just_moved_two_steps
         except IndexError:
             return False
-
-        return pawn.color != self.color and \
-            position.piece_at_square(my_location).just_moved_two_steps
 
     def add_one_en_passant_move(self, direction, position):
         """
@@ -197,7 +197,7 @@ class Pawn(Piece):
         :rtype: gen
         """
         try:
-            if self.opposite_color_pawn_on_square(direction(self.location), position):
+            if self._is_en_passant_valid(direction(self.location), position):
                 yield self.create_move(
                     end_loc=self.square_in_front(direction(self.location)),
                     status=notation_const.EN_PASSANT
