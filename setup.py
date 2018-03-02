@@ -4,17 +4,14 @@ from setuptools import setup
 import setuptools
 
 setup(name='chess_py',
-      version='2.6.6',
+      version='2.7.0',
       description='Python chess client',
-      platforms='MacOS X',
+      platforms='MacOS X, Windows',
       classifiers=[
           'Development Status :: 4 - Beta',
           'Environment :: Console',
-          'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 2.7',
-          'Operating System :: MacOS :: MacOS X',
-          'Operating System :: Microsoft :: Windows',
       ],
       author='Aubhro Sengupta',
       author_email='aubhrosengupta@gmail.com',
