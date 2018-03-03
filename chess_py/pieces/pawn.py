@@ -183,6 +183,7 @@ class Pawn(Piece):
         try:
             pawn = position.piece_at_square(opponent_pawn_location)
             return pawn is not None and \
+                isinstance(pawn, Pawn) and \
                 pawn.color != self.color and \
                 position.piece_at_square(opponent_pawn_location).just_moved_two_steps
         except IndexError:
