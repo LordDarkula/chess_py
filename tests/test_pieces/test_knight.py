@@ -7,8 +7,8 @@ class TestKnight(TestCase):
         self.empty_pos = Board([[None for _ in range(8)] for _ in range(8)])
 
     def test_possible_moves(self):
-        self.empty_pos.place_piece_at_square(Knight(color.white, Location.init_alg("e4")), Location.init_alg("e4"))
-        knight = self.empty_pos.piece_at_square(Location.init_alg("e4"))
+        self.empty_pos.place_piece_at_square(Knight(color.white, Location.from_string("e4")), Location.from_string("e4"))
+        knight = self.empty_pos.piece_at_square(Location.from_string("e4"))
 
         moves = knight.possible_moves(self.empty_pos)
         self.assertEqual(len(list(moves)), 8)

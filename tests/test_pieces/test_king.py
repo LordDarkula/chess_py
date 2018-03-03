@@ -10,8 +10,8 @@ class TestKing(TestCase):
         self.assertFalse(self.board.get_king(color.white).in_check_as_result(self.board,
                                                  converter.long_alg("e2e4", self.board)))
 
-        self.board.move_piece(Location.init_alg("e1"), Location.init_alg("e3"))
-        self.board.move_piece(Location.init_alg("e8"), Location.init_alg("e5"))
+        self.board.move_piece(Location.from_string("e1"), Location.from_string("e3"))
+        self.board.move_piece(Location.from_string("e8"), Location.from_string("e5"))
 
         # self.assertTrue(self.board.get_king(color.white).in_check_as_result(self.board, converter.long_alg("e3e4", self.board)))
 
@@ -73,9 +73,9 @@ class TestKing(TestCase):
         self.assertEqual(
             list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
 
-        self.board.remove_piece_at_square(Location.init_alg("b1"))
-        self.board.remove_piece_at_square(Location.init_alg("c1"))
-        self.board.remove_piece_at_square(Location.init_alg("d1"))
+        self.board.remove_piece_at_square(Location.from_string("b1"))
+        self.board.remove_piece_at_square(Location.from_string("c1"))
+        self.board.remove_piece_at_square(Location.from_string("d1"))
 
         self.assertEqual(
             len(list(self.board.get_king(color.white).add_castle(self.board))), 2)
@@ -86,8 +86,8 @@ class TestKing(TestCase):
 
     def test_possible_moves(self):
         self.board = Board([[None for _ in range(8)] for _ in range(8)])
-        my_king = King(color.white, Location.init_alg("f3"))
-        self.board.place_piece_at_square(my_king, Location.init_alg("f3"))
+        my_king = King(color.white, Location.from_string("f3"))
+        self.board.place_piece_at_square(my_king, Location.from_string("f3"))
         moves = ['f3f4', 'f3g3', 'f3f2', 'f3e3', 'f3g4', 'f3e4', 'f3g2', 'f3e2']
 
         print(self.board)
@@ -97,14 +97,14 @@ class TestKing(TestCase):
 
     def test_in_check(self):
         self.board = Board([[None for _ in range(8)] for _ in range(8)])
-        my_king = King(color.white, Location.init_alg("f3"))
-        self.board.place_piece_at_square(my_king, Location.init_alg("f3"))
-        self.board.place_piece_at_square(Rook(color.black, Location.init_alg("f1")), Location.init_alg("f1"))
+        my_king = King(color.white, Location.from_string("f3"))
+        self.board.place_piece_at_square(my_king, Location.from_string("f3"))
+        self.board.place_piece_at_square(Rook(color.black, Location.from_string("f1")), Location.from_string("f1"))
 
         self.assertTrue(my_king.in_check(self.board))
 
         self.board = Board.init_default()
         self.board.update(converter.long_alg("f2f3", self.board))
-        self.board.move_piece(Location.init_alg("d8"), Location.init_alg("g3"))
+        self.board.move_piece(Location.from_string("d8"), Location.from_string("g3"))
 
         self.assertTrue(self.board.get_king(color.white).in_check(self.board))

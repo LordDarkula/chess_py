@@ -59,7 +59,7 @@ class Location:
         self._file = file
 
     @classmethod
-    def init_alg(cls, alg_str):
+    def from_string(cls, alg_str):
         """
         Creates a location from a two character string consisting of 
         the file then rank written in algebraic notation.

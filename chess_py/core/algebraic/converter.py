@@ -38,11 +38,11 @@ def _get_piece(string, index):
                   'K': King}
     try:
         return piece_dict[piece]
-    except KeyError as e:
+    except KeyError:
         raise ValueError("Piece {} is invalid".format(piece))
 
 
-def incomplete_alg(algebraic_string, input_color):
+def incomplete_alg(alg_str, input_color):
     """
     Converts a string written in short algebraic form into an incomplete move.
     These incomplete moves do not have the initial location specified and
@@ -54,7 +54,7 @@ def incomplete_alg(algebraic_string, input_color):
 
     Examples: e4, Nf3, exd5, Qxf3, 00, 000, e8=Q
 
-    :type: algebraic_string: str
+    :type: alg_str: str
     :type: input_color: Color
     """
     def edge_rank():
@@ -63,29 +63,11 @@ def incomplete_alg(algebraic_string, input_color):
 
         return 7
 
-    def get_rank(index):
-        """
-        Returns rank given index
-
-        :type: index: int
-        :rtype: int
-        """
-        return int(algebraic_string[index]) - 1
-
-    def get_file(index):
-        """
-        Returns file given index
-
-        :type: index: int
-        :rtype: int
-        """
-        return ord(algebraic_string[index]) - 97
-
-    if algebraic_string is None or len(algebraic_string) <= 1:
-        raise ValueError("algebraic string {} is invalid".format(algebraic_string))
+    if alg_str is None or len(alg_str) <= 1:
+        raise ValueError("algebraic string {} is invalid".format(alg_str))
 
     # King side castle
-    if algebraic_string in ["00", "oo", "OO", "0-0", "o-o", "O-O"]:
+    if alg_str in ["00", "oo", "OO", "0-0", "o-o", "O-O"]:
         return Move(Location(edge_rank(), 6),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.KING_SIDE_CASTLE,
@@ -93,91 +75,89 @@ def incomplete_alg(algebraic_string, input_color):
                     start_file=4)
 
     # Queen side castle
-    if algebraic_string in ["000", "ooo", "OOO", "0-0-0", "o-o-o", "O-O-O"]:
+    if alg_str in ["000", "ooo", "OOO", "0-0-0", "o-o-o", "O-O-O"]:
         return Move(end_loc=Location(edge_rank(), 2),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE,
                     start_rank=edge_rank,
                     start_file=4)
 
+    end_location = Location.from_string(alg_str[-2:])
+
     # Pawn movement
-    if len(algebraic_string) == 2:
-        return Move(end_loc=Location(get_rank(1), get_file(0)),
-                    piece=Pawn(input_color, end_loc),
+    if len(alg_str) == 2:
+        return Move(end_loc=end_location,
+                    piece=Pawn(input_color, Location.from_string(alg_str)),
                     status=notation_const.MOVEMENT)
 
     # Non-pawn Piece movement
-    if len(algebraic_string) == 3:
-        end_loc = Location(get_rank(2), get_file(1))
+    if len(alg_str) == 3:
         try:
-            return Move(end_loc=end_loc,
-                        piece=_get_piece(algebraic_string, 0)(input_color, end_loc),
+            return Move(end_loc=end_location,
+                        piece=_get_piece(alg_str, 0)(input_color, end_location),
                         status=notation_const.MOVEMENT)
         except ValueError as error:
             raise ValueError(error)
 
     # multiple options
-    if len(algebraic_string) == 4:
+    if len(alg_str) == 4:
 
         # capture
-        if algebraic_string[1].upper() == "X":
+        if alg_str[1].upper() == "X":
 
             # pawn capture
-            if not algebraic_string[0].isupper():
-                end_loc = Location(get_rank(3), get_file(2))
-                return Move(end_loc=end_loc,
-                            piece=Pawn(input_color, end_loc),
+            if not alg_str[0].isupper():
+                return Move(end_loc=end_location,
+                            piece=Pawn(input_color, end_location),
                             status=notation_const.CAPTURE,
-                            start_file=get_file(0))
+                            start_file=ord(alg_str[0]) - 97)
 
             # piece capture
-            elif algebraic_string[0].isupper():
-                end_loc = Location(get_rank(3), get_file(2))
-                return Move(end_loc=end_loc,
-                            piece=_get_piece(algebraic_string, 0)(input_color, end_loc),
+            elif alg_str[0].isupper():
+                return Move(end_loc=end_location,
+                            piece=_get_piece(alg_str, 0)(input_color, end_location),
                             status=notation_const.CAPTURE)
 
             # Pawn Promotion
-            elif algebraic_string[2] == "=":
-                end_loc = Location(get_rank(1), get_file(0))
-                return Move(end_loc=end_loc,
-                            piece=Pawn(input_color, end_loc),
+            elif alg_str[2] == "=":
+                promote_end_loc = Location.from_string(alg_str[:2])
+                return Move(end_loc=promote_end_loc,
+                            piece=Pawn(input_color, promote_end_loc),
                             status=notation_const.PROMOTE,
-                            promoted_to_piece=_get_piece(algebraic_string, 3)(input_color, end_loc))
+                            promoted_to_piece=_get_piece(alg_str, 3)(input_color, promote_end_loc))
 
             # Non-pawn Piece movement with file specified
-            elif algebraic_string[1].isupper():
-                end_loc = Location(get_rank(3), get_file(2))
-                return Move(end_loc=end_loc,
-                            piece=_get_piece(algebraic_string, 1)(input_color, end_loc),
+            elif alg_str[1].isupper():
+                return Move(end_loc=end_location,
+                            piece=_get_piece(alg_str, 1)(input_color, end_location),
                             status=notation_const.MOVEMENT,
-                            start_file=get_file(0))
+                            start_file=ord(alg_str[0]) - 97)
 
             else:
-                raise ValueError("algebraic string {} is invalid".format(algebraic_string))
+                raise ValueError("algebraic string {} is invalid".format(alg_str))
 
     # Multiple options
-    if len(algebraic_string) == 5:
+    if len(alg_str) == 5:
 
         # Non-pawn Piece movement with rank and file specified
-        if algebraic_string[2].isupper():
-            return Move(end_loc=Location(get_rank(4), get_file(3)),
-                        piece=_get_piece(algebraic_string, 2)(input_color, end_loc),
+        if alg_str[2].isupper():
+            start_loc = Location.from_string(alg_str[:2])
+            return Move(end_loc=end_location,
+                        piece=_get_piece(alg_str, 2)(input_color, end_location),
                         status=notation_const.MOVEMENT,
-                        start_file=get_file(0),
-                        start_rank=get_rank(1))
+                        start_file=start_loc.file,
+                        start_rank=start_loc.rank)
 
     # pawn promotion with capture
-    if len(algebraic_string) == 6:
-
-        # Pawn promote with capture
-        return Move(end_loc=Location(get_rank(3), get_file(2)),
-                    piece=Pawn(input_color, end_loc),
+    if len(alg_str) == 6 and alg_str[4] == "=":
+        promote_capture_end_loc = Location.from_string(alg_str[2:4])
+        return Move(end_loc=promote_capture_end_loc,
+                    piece=Pawn(input_color, promote_capture_end_loc),
                     status=notation_const.MOVEMENT,
-                    start_file=get_file(0),
-                    promoted_to_piece=_get_piece(algebraic_string, 5)(input_color, end_loc))
+                    start_file=ord(alg_str[0]) - 97,
+                    promoted_to_piece=_get_piece(alg_str, 5)(input_color, promote_capture_end_loc))
 
-    raise ValueError("algebraic string {} is invalid".format(algebraic_string))
+    raise ValueError("algebraic string {} is invalid".format(alg_str))
 
 
 def make_legal(move, position):
@@ -235,8 +215,8 @@ def long_alg(alg_str, position):
     :type: position: Board
     :rtype: Move
     """
-    end = Location.init_alg(alg_str[2:])
-    start = Location.init_alg(alg_str[:2])
+    end = Location.from_string(alg_str[2:])
+    start = Location.from_string(alg_str[:2])
     piece = position.piece_at_square(start)
 
     if piece is None:

@@ -158,10 +158,10 @@ class TestBoard(TestCase):
                              Location(3, 0))
 
         self.assertEqual(self.board.find_piece(Pawn(color.white, Location(0, 0))),
-                         Location.init_alg("a2"))
+                         Location.from_string("a2"))
 
         self.assertEqual(self.board.find_piece(Knight(color.white, Location(0, 0))),
-                         Location.init_alg("b1"))
+                         Location.from_string("b1"))
 
     def test_find_king(self):
         self.assertEqual(self.board.find_king(color.white),
@@ -185,11 +185,11 @@ class TestBoard(TestCase):
 
     def test_place_piece_at_square(self):
         test = Board.init_default()
-        pawn = Pawn(color.white, Location.init_alg("e3"))
+        pawn = Pawn(color.white, Location.from_string("e3"))
 
         test.position[2][4] = pawn
 
-        self.board.place_piece_at_square(pawn, Location.init_alg("e3"))
+        self.board.place_piece_at_square(pawn, Location.from_string("e3"))
 
         self.assertEqual(self.board, test)
 
@@ -199,7 +199,7 @@ class TestBoard(TestCase):
         test.position[1][4] = None
         test.position[3][4] = pawn
 
-        self.board.move_piece(Location.init_alg("e2"), Location.init_alg("e4"))
+        self.board.move_piece(Location.from_string("e2"), Location.from_string("e4"))
 
         self.assertEqual(self.board, test)
 
