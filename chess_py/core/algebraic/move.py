@@ -12,18 +12,19 @@ to initialize Move.
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
-import warnings
-
 from .location import Location
 
 
 class Move:
-    def __init__(self, end_loc, piece, status,
+    def __init__(self,
+                 end_loc,
+                 piece,
+                 status,
                  start_rank=None,
                  start_file=None,
                  promoted_to_piece=None):
         """
-        Constructor to create move using object Location
+        Constructor to create move using ``Location``
 
         :type: end_loc: Location
         :type: piece: Piece
@@ -37,34 +38,25 @@ class Move:
         self.start_file = start_file
         self.promoted_to_piece = promoted_to_piece
 
-        if not self.on_board():
-            warnings.warn("Location of move must be on the board")
-
     @property
     def end_loc(self):
         return self._end_loc
 
-    @end_loc.setter
-    def end_loc(self, end_loc):
-        warnings.warn("Mutating end_loc attribute in Move should not be done")
-        self._end_loc = end_loc
-
     @property
     def status(self):
         return self._status
-
-    @status.setter
-    def status(self, status):
-        warnings.warn("Mutating status attribute in Move should not be done")
-        self._status = status
 
     @property
     def piece(self):
         return self._piece
 
     def __key(self):
-        return self.end_loc, self.piece, self.status, \
-               self.start_rank, self.start_file, self.promoted_to_piece
+        return self.end_loc, \
+               self.piece, \
+               self.status, \
+               self.start_rank, \
+               self.start_file, \
+               self.promoted_to_piece
 
     def __hash__(self):
         return hash(self.__key())
@@ -142,4 +134,4 @@ class Move:
         Finds if move from current location would be a promotion
         """
         return (self._end_loc.rank == 0 and not self.color) or \
-                (self._end_loc.rank == 7 and self.color)
+            (self._end_loc.rank == 7 and self.color)
