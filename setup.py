@@ -3,11 +3,11 @@
 from setuptools import setup
 import setuptools
 
-with open("README", 'r') as f:
+with open("README.md", 'r') as f:
     long_description = f.read()
 
 setup(name='chess_py',
-      version='2.7.1',
+      version='2.7.2',
       description='Python chess client',
       long_description=long_description,
       platforms='MacOS X, Windows, Linux',
