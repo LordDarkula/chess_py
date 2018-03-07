@@ -33,7 +33,7 @@ from multiprocessing import Process
 from copy import copy as cp
 from math import fabs
 
-from . import color
+from .color import white, black
 from .algebraic import notation_const
 from .algebraic.location import Location
 from ..pieces.piece import Piece
@@ -61,6 +61,11 @@ class Board:
         """
         self.position = position
         self.possible_moves = dict()
+        try:
+            self.king_loc_dict = {white: self.find_king(white),
+                                  black: self.find_king(black)}
+        except ValueError:
+            self.king_loc_dict = None
 
     @classmethod
     def init_default(cls):
@@ -69,8 +74,6 @@ class Board:
 
         :rtype: Board
         """
-        white = color.white
-        black = color.black
         return cls([
 
             # First rank
@@ -130,35 +133,23 @@ class Board:
 
     def __str__(self):
         """
-        Prints current position in console
+        String representation of board
         """
-        b_str = ""
-        # Loops through rows
+        board_string = ""
         for i, row in enumerate(self.position):
-
-            b_str += (str(8 - i) + " ")
-            # Loops through squares in each row
+            board_string += str(8 - i) + " "
             for j, square in enumerate(row):
 
                 piece = self.piece_at_square(Location(7 - i, j))
-
-                # If there is a piece on the square
                 if isinstance(piece, Piece):
-
-                    # Prints out symbol of piece
-                    b_str += (str(self.position[7 - i][j].symbol) + " ")
-
-                elif piece is None:
-                    b_str += "_ "
-
+                    board_string += piece.symbol + " "
                 else:
-                    b_str += str(piece) + " "
+                    board_string += "_ "
 
-            b_str += "\n"
+            board_string += "\n"
 
-        b_str += "  a b c d e f g h"
-
-        return b_str
+        board_string += "  a b c d e f g h"
+        return board_string
 
     def __iter__(self):
         for row in self.position:
@@ -244,7 +235,6 @@ class Board:
         :type: input_color: Color
         :rtype: list
         """
-        king_loc = self.find_king(input_color)
         for piece in self:
 
             # Tests if square on the board is not empty
@@ -255,11 +245,19 @@ class Board:
                     test = cp(self)
                     test.update(move)
 
-                    if isinstance(piece, King):
-                        if not test.piece_at_square(move.end_loc).in_check(test):
-                            yield move
+                    if self.king_loc_dict is None:
+                        yield move
+                        continue
 
-                    elif not test.piece_at_square(king_loc).in_check(test):
+                    my_king = test.piece_at_square(self.king_loc_dict[input_color])
+
+                    if my_king is None or \
+                            not isinstance(my_king, King) or \
+                            my_king.color != input_color:
+                        self.king_loc_dict[input_color] = test.find_king(input_color)
+                        my_king = test.piece_at_square(self.king_loc_dict[input_color])
+
+                    if not my_king.in_check(test):
                         yield move
 
     def runInParallel(*fns):
@@ -310,7 +308,7 @@ class Board:
                         self.piece_at_square(loc) == piece:
                     return loc
 
-        raise Exception("{} \nPiece not found: {}".format(self, piece))
+        raise ValueError("{} \nPiece not found: {}".format(self, piece))
 
     def get_piece(self, piece_type, input_color):
         """
@@ -384,6 +382,9 @@ class Board:
         """
         if move is None:
             raise Exception("Move cannot be None")
+
+        if self.king_loc_dict is not None and isinstance(move.piece, King):
+            self.king_loc_dict[move.color] = move.end_loc
 
         if move.status == notation_const.KING_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))
