@@ -61,8 +61,11 @@ class Board:
         """
         self.position = position
         self.possible_moves = dict()
-        self.king_loc_dict = {white: self.find_king(white),
-                              black: self.find_king(black)}
+        try:
+            self.king_loc_dict = {white: self.find_king(white),
+                                  black: self.find_king(black)}
+        except ValueError:
+            self.king_loc_dict = None
 
     @classmethod
     def init_default(cls):
@@ -242,7 +245,19 @@ class Board:
                     test = cp(self)
                     test.update(move)
 
-                    if not test.piece_at_square(self.king_loc_dict[input_color]).in_check(test):
+                    if self.king_loc_dict is None:
+                        yield move
+                        continue
+
+                    my_king = test.piece_at_square(self.king_loc_dict[input_color])
+
+                    if my_king is None or \
+                            not isinstance(my_king, King) or \
+                            my_king.color != input_color:
+                        self.king_loc_dict[input_color] = test.find_king(input_color)
+                        my_king = test.piece_at_square(self.king_loc_dict[input_color])
+
+                    if not my_king.in_check(test):
                         yield move
 
     def runInParallel(*fns):
@@ -293,7 +308,7 @@ class Board:
                         self.piece_at_square(loc) == piece:
                     return loc
 
-        raise Exception("{} \nPiece not found: {}".format(self, piece))
+        raise ValueError("{} \nPiece not found: {}".format(self, piece))
 
     def get_piece(self, piece_type, input_color):
         """
@@ -368,7 +383,7 @@ class Board:
         if move is None:
             raise Exception("Move cannot be None")
 
-        if isinstance(move.piece, King):
+        if self.king_loc_dict is not None and isinstance(move.piece, King):
             self.king_loc_dict[move.color] = move.end_loc
 
         if move.status == notation_const.KING_SIDE_CASTLE:
