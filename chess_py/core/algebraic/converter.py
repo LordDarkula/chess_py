@@ -57,18 +57,16 @@ def incomplete_alg(alg_str, input_color):
     :type: alg_str: str
     :type: input_color: Color
     """
-    def edge_rank():
-        if input_color == color.white:
-            return 0
-
-        return 7
+    edge_rank = 0 \
+        if input_color == color.white \
+        else 7
 
     if alg_str is None or len(alg_str) <= 1:
         raise ValueError("algebraic string {} is invalid".format(alg_str))
 
     # King side castle
     if alg_str in ["00", "oo", "OO", "0-0", "o-o", "O-O"]:
-        return Move(Location(edge_rank(), 6),
+        return Move(Location(edge_rank, 6),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.KING_SIDE_CASTLE,
                     start_rank=edge_rank,
@@ -76,7 +74,7 @@ def incomplete_alg(alg_str, input_color):
 
     # Queen side castle
     if alg_str in ["000", "ooo", "OOO", "0-0-0", "o-o-o", "O-O-O"]:
-        return Move(end_loc=Location(edge_rank(), 2),
+        return Move(end_loc=Location(edge_rank, 2),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE,
                     start_rank=edge_rank,
