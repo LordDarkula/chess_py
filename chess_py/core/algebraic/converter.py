@@ -132,7 +132,7 @@ def incomplete_alg(alg_str, input_color):
                             start_file=ord(alg_str[0]) - 97)
 
             else:
-                raise ValueError("algebraic string {} is invalid".format(alg_str))
+                raise ValueError("algebraic string of length 4 {} is invalid".format(alg_str))
 
     # Multiple options
     if len(alg_str) == 5:
