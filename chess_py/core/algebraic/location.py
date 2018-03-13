@@ -69,7 +69,10 @@ class Location:
         :type: alg_str: str
         :rtype: Location
         """
-        return cls(int(alg_str[1]) - 1, ord(alg_str[0]) - 97)
+        try:
+            return cls(int(alg_str[1]) - 1, ord(alg_str[0]) - 97)
+        except ValueError as e:
+            print("Location string {} invalid: {}".format(alg_str, e))
 
     @property
     def rank(self):
