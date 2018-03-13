@@ -21,7 +21,7 @@ class TestMove(unittest.TestCase):
                                     start_file=5)
 
     def testStr(self):
-        self.assertEquals(str(self.start_specified), "f4a3")
+        self.assertEqual(str(self.start_specified), "f4a3")
 
         self.white_pawn_move = Move(Location(7, 0),
                                     piece=self.white_pawn,

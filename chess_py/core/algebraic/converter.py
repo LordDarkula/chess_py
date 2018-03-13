@@ -79,8 +79,10 @@ def incomplete_alg(alg_str, input_color):
                     status=notation_const.QUEEN_SIDE_CASTLE,
                     start_rank=edge_rank,
                     start_file=4)
-
-    end_location = Location.from_string(alg_str[-2:])
+    try:
+        end_location = Location.from_string(alg_str[-2:])
+    except ValueError:
+        end_location = Location.from_string(alg_str[-4:-2])
 
     # Pawn movement
     if len(alg_str) == 2:
