@@ -66,7 +66,7 @@ def incomplete_alg(alg_str, input_color):
 
     # King-side castle
     if alg_str in ["00", "oo", "OO", "0-0", "o-o", "O-O"]:
-        return Move(Location(edge_rank, 6),
+        return Move(end_loc=Location(edge_rank, 6),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.KING_SIDE_CASTLE,
                     start_rank=edge_rank,
@@ -119,6 +119,8 @@ def incomplete_alg(alg_str, input_color):
         # Pawn Promotion
         elif alg_str[2] == "=":
             promote_end_loc = Location.from_string(alg_str[:2])
+            if promote_end_loc.rank != 0 and promote_end_loc.rank != 7:
+                raise ValueError("Promotion {} must be on the last rank".format(alg_str))
             return Move(end_loc=promote_end_loc,
                         piece=Pawn(input_color, promote_end_loc),
                         status=notation_const.PROMOTE,
@@ -136,7 +138,7 @@ def incomplete_alg(alg_str, input_color):
             return Move(end_loc=end_location,
                         piece=_get_piece(alg_str, 0)(input_color, end_location),
                         status=notation_const.MOVEMENT,
-                        start_file=ord(alg_str[1] - 97))
+                        start_file=ord(alg_str[1]) - 97)
 
     # Multiple options
     if len(alg_str) == 5:
@@ -150,14 +152,14 @@ def incomplete_alg(alg_str, input_color):
                         start_file=start_loc.file,
                         start_rank=start_loc.rank)
 
-        # Pawn promotion with capture
-        if len(alg_str) == 6 and alg_str[4] == "=":
-            promote_capture_end_loc = Location.from_string(alg_str[2:4])
-            return Move(end_loc=promote_capture_end_loc,
-                        piece=Pawn(input_color, promote_capture_end_loc),
-                        status=notation_const.MOVEMENT,
-                        start_file=ord(alg_str[0]) - 97,
-                        promoted_to_piece=_get_piece(alg_str, 5)(input_color, promote_capture_end_loc))
+    # Pawn promotion with capture
+    if len(alg_str) == 6 and alg_str[4] == "=":
+        promote_capture_end_loc = Location.from_string(alg_str[2:4])
+        return Move(end_loc=promote_capture_end_loc,
+                    piece=Pawn(input_color, promote_capture_end_loc),
+                    status=notation_const.MOVEMENT,
+                    start_file=ord(alg_str[0]) - 97,
+                    promoted_to_piece=_get_piece(alg_str, 5)(input_color, promote_capture_end_loc))
 
     raise ValueError("algebraic string {} is invalid".format(alg_str))
 
@@ -232,7 +234,9 @@ def long_alg(alg_str, position):
                                start_file=start.file), position)
 
     promoted_to = _get_piece(alg_str, 4)
-    if promoted_to is None or isinstance(promoted_to, King) or isinstance(promoted_to, Pawn):
+    if promoted_to is None or \
+            isinstance(promoted_to, King) or \
+            isinstance(promoted_to, Pawn):
         raise Exception("Invalid move input")
 
     return make_legal(Move(end_loc=end,
