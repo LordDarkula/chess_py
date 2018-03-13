@@ -159,7 +159,7 @@ def incomplete_alg(alg_str, input_color):
         promote_capture_end_loc = Location.from_string(alg_str[2:4])
         return Move(end_loc=promote_capture_end_loc,
                     piece=Pawn(input_color, promote_capture_end_loc),
-                    status=notation_const.MOVEMENT,
+                    status=notation_const.CAPTURE_AND_PROMOTE,
                     start_file=ord(alg_str[0]) - 97,
                     promoted_to_piece=_get_piece(alg_str, 5)(input_color, promote_capture_end_loc))
 

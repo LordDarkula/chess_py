@@ -94,9 +94,12 @@ class Move:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __repr__(self):
+        return "Move({})".format(self.__dict__)
+
     def __str__(self):
         """
-        Finds string representation in long algebraic noatation
+        Finds string representation in long algebraic notation
 
         :rtype: str
         """

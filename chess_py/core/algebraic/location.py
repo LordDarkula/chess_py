@@ -105,6 +105,9 @@ class Location:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __repr__(self):
+        return "Location({})".format(self.__dict__)
+
     def __str__(self):
         """
         Finds string representation of Location in algebraic form ie "e4"
