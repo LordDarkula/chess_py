@@ -28,11 +28,25 @@ class Color:
         return cls("black")
 
     @classmethod
+    def from_string(cls, string):
+        """
+        Converts string "white" or "black" into
+        corresponding color
+
+        :type: string: str
+        :rtype: Color
+        """
+        return cls(string.lower())
+
+    @classmethod
     def _boolean(cls, boolean):
         if boolean:
             return cls.pwhite()
 
         return cls.pblack()
+
+    def __repr__(self):
+        return "color.{}".format(self._string)
 
     def __str__(self):
         return self._string
@@ -70,12 +84,3 @@ white = Color.pwhite()
 black = Color.pblack()
 
 
-def from_string(string):
-    """
-    Converts string "white" or "black" into
-    corresponding color
-
-    :type: string: str
-    :rtype: Color
-    """
-    return Color(string.lower())
