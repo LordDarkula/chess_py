@@ -61,6 +61,9 @@ class Piece:
     def __ne__(self, other):
         return not self.__eq__(other)
 
+    def __repr__(self):
+        return "{}({}, {})".format(self.__class__, self.color, self.location)
+
     @abstractmethod
     def __str__(self):
         raise NotImplementedError
