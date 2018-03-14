@@ -387,15 +387,15 @@ class Board:
             self.king_loc_dict[move.color] = move.end_loc
 
         if move.status == notation_const.KING_SIDE_CASTLE:
-            self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 6))
-            move.piece.end_loc = Location(move.end_loc.rank, 6)
+            self.move_piece(move.piece.location, move.end_loc)
+            move.piece.location = move.end_loc
             self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
             self.piece_at_square(Location(move.end_loc.rank, 5)).end_loc = Location(move.end_loc.rank, 5)
             return
 
         if move.status == notation_const.QUEEN_SIDE_CASTLE:
-            self.move_piece(Location(move.end_loc.rank, 4), Location(move.end_loc.rank, 2))
-            move.piece.end_loc = Location(move.end_loc.rank, 2)
+            self.move_piece(move.piece.location, move.end_loc)
+            move.piece.location = move.end_loc
             self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
             self.piece_at_square(Location(move.end_loc.rank, 3)).end_loc = Location(move.end_loc.rank, 3)
             return
