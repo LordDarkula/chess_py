@@ -1,5 +1,5 @@
 from unittest import TestCase
-from chess_py import color, Location, Board, King, converter, notation_const, Rook
+from chess_py import color, Location, Move, Board, King, converter, notation_const, Rook
 
 
 class TestKing(TestCase):
@@ -63,26 +63,35 @@ class TestKing(TestCase):
             len(list(self.board.get_king(color.white).add(lambda x: x.shift_up_right(), self.board))),
             0)
 
-    def test_add_castle(self):
+    def test_kingside_castle(self):
         self.board.update(converter.short_alg("e4", color.white, self.board))
         self.board.update(converter.short_alg("Nf3", color.white, self.board))
         self.board.update(converter.short_alg("Be2", color.white, self.board))
 
+        castle_move = Move(
+            end_loc=Location.from_string("g1"),
+            piece=King(color.white, Location.from_string("g1")),
+            status=notation_const.KING_SIDE_CASTLE
+        )
+
         self.assertEqual(
-            len(list(self.board.get_king(color.white).add_castle(self.board))), 1)
-        self.assertEqual(
-            list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
+            list(self.board.get_king(color.white).add_castle(self.board))[0], castle_move)
+
+    def test_queenside_castle(self):
 
         self.board.remove_piece_at_square(Location.from_string("b1"))
         self.board.remove_piece_at_square(Location.from_string("c1"))
         self.board.remove_piece_at_square(Location.from_string("d1"))
 
+        castle_move = Move(
+            end_loc=Location.from_string("c1"),
+            piece=King(color.white, Location.from_string("c1")),
+            status=notation_const.QUEEN_SIDE_CASTLE
+        )
+        print(self.board)
+
         self.assertEqual(
-            len(list(self.board.get_king(color.white).add_castle(self.board))), 2)
-        self.assertEqual(
-            list(self.board.get_king(color.white).add_castle(self.board))[0].status, notation_const.KING_SIDE_CASTLE)
-        self.assertEqual(
-            list(self.board.get_king(color.white).add_castle(self.board))[1].status, notation_const.QUEEN_SIDE_CASTLE)
+            list(self.board.get_king(color.white).add_castle(self.board))[0], castle_move)
 
     def test_possible_moves(self):
         self.board = Board([[None for _ in range(8)] for _ in range(8)])

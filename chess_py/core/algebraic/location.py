@@ -161,90 +161,90 @@ class Location:
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_up(self):
+    def shift_up(self, times=1):
         """
         Finds Location shifted up by 1
 
         :rtype: Location
         """
         try:
-            return Location(self._rank + 1, self._file)
+            return Location(self._rank + times, self._file)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_down(self):
+    def shift_down(self, times=1):
         """
         Finds Location shifted down by 1
 
         :rtype: Location
         """
         try:
-            return Location(self._rank - 1, self._file)
+            return Location(self._rank - times, self._file)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_right(self):
+    def shift_right(self, times=1):
         """
         Finds Location shifted right by 1
 
         :rtype: Location
         """
         try:
-            return Location(self._rank, self._file + 1)
+            return Location(self._rank, self._file + times)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_left(self):
+    def shift_left(self, times=1):
         """
         Finds Location shifted left by 1
 
         :rtype: Location
         """
         try:
-            return Location(self._rank, self._file - 1)
+            return Location(self._rank, self._file - times)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_up_right(self):
+    def shift_up_right(self, times=1):
         """
         Finds Location shifted up right by 1
 
         :rtype: Location
         """
         try:
-            return self.shift_up().shift_right()
+            return Location(self._rank + times, self._file + times)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_up_left(self):
+    def shift_up_left(self, times=1):
         """
         Finds Location shifted up left by 1
 
         :rtype: Location
         """
         try:
-            return self.shift_up().shift_left()
+            return Location(self._rank + times, self._file - times)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_down_right(self):
+    def shift_down_right(self, times=1):
         """
         Finds Location shifted down right by 1
 
         :rtype: Location
         """
         try:
-            return self.shift_down().shift_right()
+            return Location(self._rank - times, self._file + times)
         except IndexError as e:
             raise IndexError(e)
 
-    def shift_down_left(self):
+    def shift_down_left(self, times=1):
         """
         Finds Location shifted down left by 1
 
         :rtype: Location
         """
         try:
-            return self.shift_down().shift_left()
+            return Location(self._rank - times, self._file - times)
         except IndexError as e:
             raise IndexError(e)
