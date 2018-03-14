@@ -8,7 +8,7 @@ with open("README.md", 'r') as f:
 
 setup(
     name='chess_py',
-    version='2.7.5',
+    version='2.7.6',
     description='Python chess client',
     long_description=long_description,
     platforms='MacOS X, Windows, Linux',
