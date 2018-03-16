@@ -13,34 +13,34 @@ class TestBoard(TestCase):
         black = color.black
         test = Board([
 
-        # First rank
-        [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
-         Queen(white, Location(0, 3)), King(white, Location(0, 4)), Bishop(white, Location(0, 5)),
-         Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
+         # First rank
+         [Rook(white, Location(0, 0)), Knight(white, Location(0, 1)), Bishop(white, Location(0, 2)),
+          Queen(white, Location(0, 3)), King(white, Location(0, 4)), Bishop(white, Location(0, 5)),
+          Knight(white, Location(0, 6)), Rook(white, Location(0, 7))],
 
-        # Second rank
-        [Pawn(white, Location(1, file)) for file in range(8)],
+         # Second rank
+         [Pawn(white, Location(1, file)) for file in range(8)],
 
 
-        # Third rank
-        [None for _ in range(8)],
+         # Third rank
+         [None for _ in range(8)],
 
-        # Fourth rank
-        [None for _ in range(8)],
+         # Fourth rank
+         [None for _ in range(8)],
 
-        # Fifth rank
-        [None for _ in range(8)],
+         # Fifth rank
+         [None for _ in range(8)],
 
-        # Sixth rank
-        [None for _ in range(8)],
+         # Sixth rank
+         [None for _ in range(8)],
 
-        # Seventh rank
-        [Pawn(black, Location(6, file)) for file in range(8)],
+         # Seventh rank
+         [Pawn(black, Location(6, file)) for file in range(8)],
 
-        # Eighth rank
-        [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
-         Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
-         Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]])
+         # Eighth rank
+         [Rook(black, Location(7, 0)), Knight(black, Location(7, 1)), Bishop(black, Location(7, 2)),
+             Queen(black, Location(7, 3)), King(black, Location(7, 4)), Bishop(black, Location(7, 5)),
+             Knight(black, Location(7, 6)), Rook(black, Location(7, 7))]])
 
         self.assertEqual(self.board, test)
 
@@ -53,22 +53,23 @@ class TestBoard(TestCase):
 
     def test_piece_at_square(self):
         self.assertEqual(self.board.piece_at_square(Location(0, 0)),
-                          Rook(color.white, Location(0, 0)))
+                         Rook(color.white, Location(0, 0)))
 
         self.assertEqual(self.board.piece_at_square(Location(1, 0)),
-                          Pawn(color.white, Location(1, 0)))
+                         Pawn(color.white, Location(1, 0)))
 
         self.assertEqual(self.board.piece_at_square(Location(0, 1)),
-                          Knight(color.white, Location(0, 1)))
+                         Knight(color.white, Location(0, 1)))
 
     def test_is_square_empty(self):
         self.assertTrue(self.board.is_square_empty(Location(2, 0)))
         self.assertFalse(self.board.is_square_empty(Location(0, 3)))
 
-    def test_material_advantage(self):
+    def test_material_advantage_parity(self):
         self.assertEqual(self.board.material_advantage(color.white, piece_const.PieceValues()), 0)
         self.assertEqual(self.board.material_advantage(color.black, piece_const.PieceValues()), 0)
 
+    def test_material_advantage_black_advantage(self):
         self.board.position[0][0] = None
 
         self.assertEqual(self.board.material_advantage(color.white, piece_const.PieceValues()), -5)
@@ -80,6 +81,7 @@ class TestBoard(TestCase):
         self.assertEqual(self.board.material_advantage(color.white, piece_const.PieceValues()), -3)
         self.assertEqual(self.board.material_advantage(color.black, piece_const.PieceValues()), 3)
 
+    def test_material_advantage_white_advantage(self):
         self.board = Board.init_default()
         self.board.position[7][0] = None
 
@@ -139,8 +141,8 @@ class TestBoard(TestCase):
         self.assertFalse(self.board.no_moves(color.white))
         self.assertFalse(self.board.no_moves(color.black))
 
+        # Scholar's Mate
         self.board.update(converter.short_alg("f4", color.white, self.board))
-        print(self.board)
         self.board.update(converter.short_alg("e5", color.black, self.board))
         self.board.update(converter.short_alg("g4", color.white, self.board))
         self.board.update(converter.short_alg("Qh4", color.black, self.board))
@@ -149,13 +151,13 @@ class TestBoard(TestCase):
 
     def test_find_piece(self):
         self.assertEqual(self.board.find_piece(Rook(color.white, Location(0, 0))),
-                          Location(0, 0))
+                         Location(0, 0))
 
         self.assertEqual(self.board.find_piece(Rook(color.black, Location(7, 0))),
-                          Location(7, 0))
+                         Location(7, 0))
 
         self.assertNotEqual(self.board.find_piece(Rook(color.black, Location(7, 0))),
-                             Location(3, 0))
+                            Location(3, 0))
 
         self.assertEqual(self.board.find_piece(Pawn(color.white, Location(0, 0))),
                          Location.from_string("a2"))
@@ -165,17 +167,17 @@ class TestBoard(TestCase):
 
     def test_find_king(self):
         self.assertEqual(self.board.find_king(color.white),
-                          Location(0, 4))
+                         Location(0, 4))
 
         self.assertEqual(self.board.find_king(color.black),
-                          Location(7, 4))
+                         Location(7, 4))
 
     def test_get_king(self):
         self.assertEqual(self.board.get_king(color.white),
-                          King(color.white, Location(0, 4)))
+                         King(color.white, Location(0, 4)))
 
         self.assertEqual(self.board.get_king(color.black),
-                          King(color.black, Location(7, 4)))
+                         King(color.black, Location(7, 4)))
 
     def test_remove_piece_at_square(self):
         test_board = Board.init_default()
