@@ -32,10 +32,6 @@ class TestMove(unittest.TestCase):
                                                             Location(7, 0)))
 
     def testEquals(self):
-        print(self.white_pawn_move.status == notation_const.MOVEMENT)
-
-        test_copy = copy.copy(self.white_pawn_move)
-        print(self.white_pawn_move == test_copy)
         self.assertEqual(self.white_pawn_move, Move(end_loc=Location(2, 0),
                                                     piece=self.white_pawn,
                                                     status=notation_const.MOVEMENT))

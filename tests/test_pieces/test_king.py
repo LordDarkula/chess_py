@@ -22,7 +22,6 @@ class TestKing(TestCase):
 
         self.board.update(converter.long_alg("e2e4", self.board))
 
-        print("this is it " + str(self.board))
         # King should be able to move up
         self.assertEqual(
             len(list(self.board.get_king(color.white).add(lambda x: x.shift_up(), self.board))),
@@ -88,7 +87,6 @@ class TestKing(TestCase):
             piece=King(color.white, Location.from_string("c1")),
             status=notation_const.QUEEN_SIDE_CASTLE
         )
-        print(self.board)
 
         self.assertEqual(
             list(self.board.get_king(color.white).add_castle(self.board))[0], castle_move)
@@ -98,8 +96,6 @@ class TestKing(TestCase):
         my_king = King(color.white, Location.from_string("f3"))
         self.board.place_piece_at_square(my_king, Location.from_string("f3"))
         moves = ['f3f4', 'f3g3', 'f3f2', 'f3e3', 'f3g4', 'f3e4', 'f3g2', 'f3e2']
-
-        print(self.board)
 
         for i, move in enumerate(my_king.possible_moves(self.board)):
             self.assertEqual(move, converter.long_alg(moves[i], self.board))
