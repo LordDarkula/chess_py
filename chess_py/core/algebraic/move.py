@@ -103,7 +103,10 @@ class Move:
 
         :rtype: str
         """
-        move_str = str(Location(self.start_rank, self.start_file)) + str(self._end_loc)
+        try:
+            move_str = str(Location(self.start_rank, self.start_file)) + str(self._end_loc)
+        except TypeError:
+            return repr(self)
 
         if self.promoted_to_piece is not None:
             move_str += str(self.promoted_to_piece)
