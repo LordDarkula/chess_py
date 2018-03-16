@@ -14,7 +14,7 @@ class TestConverter(unittest.TestCase):
     def test_short_alg(self):
         self.assertEqual(converter.short_alg("e4", color.white, self.test_board), self.e_four_move)
 
-    def test_incomplete_alg(self):
+    def test_incomplete_alg_pawn_movement(self):
         self.assertEqual(
             converter.incomplete_alg("e4", color.white),
             Move(
@@ -24,6 +24,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_piece_movement(self):
         self.assertEqual(
             converter.incomplete_alg("Nb5", color.white),
             Move(
@@ -33,6 +34,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_pawn_capture(self):
         self.assertEqual(
             converter.incomplete_alg("dxe5", color.black),
             Move(
@@ -43,6 +45,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_piece_capture(self):
         self.assertEqual(
             converter.incomplete_alg("Nxa5", color.black),
             Move(
@@ -52,6 +55,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_pawn_promotion(self):
         self.assertEqual(
             converter.incomplete_alg("e8=Q", color.white),
             Move(
@@ -62,6 +66,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_piece_movement_with_file_specified(self):
         self.assertEqual(
             converter.incomplete_alg("aRb7", color.white),
             Move(
@@ -72,6 +77,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_piece_movement_with_file_specified_alt(self):
         self.assertEqual(
             converter.incomplete_alg("Rab7", color.white),
             Move(
@@ -82,6 +88,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_piece_movement_with_rank_and_file_specified(self):
         self.assertEqual(
             converter.incomplete_alg("a1Ra2", color.white),
             Move(
@@ -93,6 +100,7 @@ class TestConverter(unittest.TestCase):
             )
         )
 
+    def test_incomplete_alg_pawn_promotion_with_capture(self):
         self.assertEqual(
             converter.incomplete_alg("exd8=R", color.white),
             Move(
