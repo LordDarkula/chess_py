@@ -178,20 +178,18 @@ def make_legal(move, position):
     :rtype: Move
     """
     assert isinstance(move, Move)
-    for test_move in position.all_possible_moves(move.color):
+    for legal_move in position.all_possible_moves(move.color):
 
-        if move.status == notation_const.START_LOC_SPECIFIED:
-            if move.end_loc == test_move.end_loc and \
-                            move.start_rank == test_move.start_rank and \
-                            move.start_file == test_move.start_file:
-                return test_move
-            else:
-                continue
+        if move.status == notation_const.LONG_ALG:
+            if move.end_loc == legal_move.end_loc and \
+                    move.start_rank == legal_move.start_rank and \
+                    move.start_file == legal_move.start_file:
+                return legal_move
 
-        if move == test_move:
-            return test_move
+        elif move == legal_move:
+            return legal_move
 
-    return None
+    raise ValueError("Move {} not legal".format(move))
 
 
 def short_alg(algebraic_string, input_color, position):
@@ -231,7 +229,7 @@ def long_alg(alg_str, position):
     if len(alg_str) == 4:
         return make_legal(Move(end_loc=end,
                                piece=piece,
-                               status=notation_const.START_LOC_SPECIFIED,
+                               status=notation_const.LONG_ALG,
                                start_rank=start.rank,
                                start_file=start.file), position)
 
@@ -243,7 +241,7 @@ def long_alg(alg_str, position):
 
     return make_legal(Move(end_loc=end,
                            piece=piece,
-                           status=notation_const.START_LOC_SPECIFIED,
+                           status=notation_const.LONG_ALG,
                            start_rank=start.rank,
                            start_file=start.file,
                            promoted_to_piece=promoted_to(piece.color, end)), position)
