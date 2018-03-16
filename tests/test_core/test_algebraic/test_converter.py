@@ -62,7 +62,7 @@ class TestConverter(unittest.TestCase):
                 end_loc=Location.from_string("e8"),
                 piece=Pawn(color.white, Location.from_string("e8")),
                 status=notation_const.PROMOTE,
-                promoted_to_piece=Queen(color.white, Location.from_string("e8"))
+                promoted_to_piece=Queen
             )
         )
 
@@ -107,6 +107,6 @@ class TestConverter(unittest.TestCase):
                 end_loc=Location.from_string("d8"),
                 piece=Pawn(color.white, Location.from_string("d8")),
                 status=notation_const.CAPTURE_AND_PROMOTE,
-                promoted_to_piece=Rook(color.white, Location.from_string("d8"))
+                promoted_to_piece=Rook
             )
         )

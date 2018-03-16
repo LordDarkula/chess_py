@@ -116,7 +116,6 @@ class Board:
         return hash(tuple([hash(piece) for piece in self]))
 
     def __eq__(self, other):
-
         if not isinstance(other, self.__class__):
             raise TypeError("Cannot compare other type to Board")
 
@@ -132,9 +131,6 @@ class Board:
         return not self.__eq__(other)
 
     def __str__(self):
-        """
-        String representation of board
-        """
         board_string = ""
         for i, row in enumerate(self.position):
             board_string += str(8 - i) + " "
@@ -170,7 +166,7 @@ class Board:
         """
         Finds the chess piece at a square of the position.
 
-        :type:: location Location
+        :type: location: Location
         :rtype: Piece
         """
         return self.position[location.rank][location.file]
@@ -381,51 +377,38 @@ class Board:
         :type: move: Move
         """
         if move is None:
-            raise Exception("Move cannot be None")
+            raise TypeError("Move cannot be type None")
 
         if self.king_loc_dict is not None and isinstance(move.piece, King):
             self.king_loc_dict[move.color] = move.end_loc
 
+        # Invalidates en-passant
+        for square in self:
+            pawn = square
+            if isinstance(pawn, Pawn):
+                pawn.just_moved_two_steps = False
+
         if move.status == notation_const.KING_SIDE_CASTLE:
-            self.move_piece(move.piece.location, move.end_loc)
-            move.piece.location = move.end_loc
             self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
-            self.piece_at_square(Location(move.end_loc.rank, 5)).end_loc = Location(move.end_loc.rank, 5)
-            return
 
-        if move.status == notation_const.QUEEN_SIDE_CASTLE:
-            self.move_piece(move.piece.location, move.end_loc)
-            move.piece.location = move.end_loc
+        elif move.status == notation_const.QUEEN_SIDE_CASTLE:
             self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
-            self.piece_at_square(Location(move.end_loc.rank, 3)).end_loc = Location(move.end_loc.rank, 3)
-            return
-
-        if type(move.piece) is Pawn:
-            self.piece_at_square(move.start_loc).just_moved_two_steps = False
-
-        if type(move.piece) is King or type(move.piece) is Rook:
-            self.piece_at_square(move.start_loc).has_moved = True
-
-        if move.status == notation_const.PROMOTE or \
-                move.status == notation_const.CAPTURE_AND_PROMOTE:
-            assert isinstance(move.piece, Pawn)
-
-            self.move_piece(move.start_loc, move.end_loc)
-            self.place_piece_at_square(move.promoted_to_piece, move.end_loc)
 
         elif move.status == notation_const.EN_PASSANT:
-            assert isinstance(move.piece, Pawn)
-
-            self.move_piece(move.start_loc, move.end_loc)
-
-            assert isinstance(self.piece_at_square(Location(move.start_rank, move.end_loc.file)), Pawn)
             self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
 
         elif move.status == notation_const.MOVEMENT and \
-                type(move.piece) is Pawn and \
+                isinstance(move.piece, Pawn) and \
                 fabs(move.end_loc.rank - move.start_rank) == 2:
             move.piece.just_moved_two_steps = True
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_loc)
 
-        else:
-            self.move_piece(Location(move.start_rank, move.start_file), move.end_loc)
+        elif isinstance(move.piece, King) or isinstance(move.piece, Rook):
+            self.piece_at_square(move.start_loc).has_moved = True
+
+        elif move.status == notation_const.PROMOTE or \
+                move.status == notation_const.CAPTURE_AND_PROMOTE:
+            self.remove_piece_at_square(Location(move.start_rank, move.start_file))
+            self.place_piece_at_square(move.promoted_to_piece(move.color, move.end_loc), move.end_loc)
+            return
+
+        self.move_piece(move.piece.location, move.end_loc)

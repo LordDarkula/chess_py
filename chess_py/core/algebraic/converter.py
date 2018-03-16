@@ -126,7 +126,7 @@ def incomplete_alg(alg_str, input_color):
             return Move(end_loc=promote_end_loc,
                         piece=Pawn(input_color, promote_end_loc),
                         status=notation_const.PROMOTE,
-                        promoted_to_piece=_get_piece(alg_str, 3)(input_color, promote_end_loc))
+                        promoted_to_piece=_get_piece(alg_str, 3))
 
         # Non-pawn Piece movement with file specified (aRb7)
         elif alg_str[1].isupper():
@@ -161,7 +161,7 @@ def incomplete_alg(alg_str, input_color):
                     piece=Pawn(input_color, promote_capture_end_loc),
                     status=notation_const.CAPTURE_AND_PROMOTE,
                     start_file=ord(alg_str[0]) - 97,
-                    promoted_to_piece=_get_piece(alg_str, 5)(input_color, promote_capture_end_loc))
+                    promoted_to_piece=_get_piece(alg_str, 5))
 
     raise ValueError("algebraic string {} is invalid".format(alg_str))
 
