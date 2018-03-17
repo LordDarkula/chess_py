@@ -90,7 +90,6 @@ class TestPawn(TestCase):
                                        start_rank=self.white_pawn.location.rank,
                                        start_file=self.white_pawn.location.file))
 
-
     def test_en_passant_moves(self):
         self.position.move_piece(Location.from_string("d7"), Location.from_string("d4"))
         self.position.move_piece(Location.from_string("e2"), Location.from_string("e4"))

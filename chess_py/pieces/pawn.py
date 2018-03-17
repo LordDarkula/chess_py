@@ -40,7 +40,10 @@ class Pawn(Piece):
         :type: location: Location
         """
         self.just_moved_two_steps = False
-        super(Pawn, self).__init__(input_color, location, "♟", "♙")
+        super(Pawn, self).__init__(input_color, location)
+
+    def _symbols(self):
+        return {color.white: "♟", color.black: "♙"}
 
     def __str__(self):
         return "P"

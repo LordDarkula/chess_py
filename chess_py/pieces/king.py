@@ -38,9 +38,12 @@ class King(Piece):
         :type: input_color: Color
         :type: location: Location
         """
-        super(King, self).__init__(input_color, location, "♚", "♔")
+        super(King, self).__init__(input_color, location)
         self.has_moved = False
         self.cardinal_directions = self.cross_fn + self.diag_fn
+
+    def _symbols(self):
+        return {color.white: "♚", color.black: "♔"}
 
     def __str__(self):
         return "K"

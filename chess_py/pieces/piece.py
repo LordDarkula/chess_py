@@ -17,7 +17,7 @@ class Piece:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def __init__(self, input_color, location, white_symbol, black_symbol):
+    def __init__(self, input_color, location):
         """
         Initializes a piece that is capable of moving
 
@@ -28,8 +28,6 @@ class Piece:
         """
         assert isinstance(input_color, Color)
         assert isinstance(location, Location)
-        assert isinstance(white_symbol, str)
-        assert isinstance(black_symbol, str)
 
         self.color = input_color
         self.location = location
@@ -39,11 +37,6 @@ class Piece:
 
         self.diag_fn = [lambda x: x.shift_up_right(), lambda x: x.shift_up_left(),
                         lambda x: x.shift_down_right(), lambda x: x.shift_down_left()]
-
-        if self.color == color.white:
-            self.symbol = white_symbol
-        else:
-            self.symbol = black_symbol
 
     def __key(self):
         return self.color, self.location
@@ -66,14 +59,23 @@ class Piece:
 
     @abstractmethod
     def __str__(self):
-        raise NotImplementedError
+        pass
+
+    @abstractmethod
+    @property
+    def _symbols(self):
+        pass
 
     @abstractmethod
     def possible_moves(self, position):
         pass
 
     def __copy__(self):
-        return type(self)(self.color, self.location)
+        return self.__class__(self.color, self.location)
+
+    @property
+    def symbol(self):
+        return self._symbols[self.color]
 
     def contains_opposite_color_piece(self, square, position):
         """

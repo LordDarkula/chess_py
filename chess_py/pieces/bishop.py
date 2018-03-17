@@ -24,6 +24,7 @@ import itertools
 
 from .piece import Piece
 from .rook import Rook
+from ..core import color
 
 
 class Bishop(Rook, Piece):
@@ -33,7 +34,10 @@ class Bishop(Rook, Piece):
 
         :type: input_color: Color
         """
-        Piece.__init__(self, input_color, location, "♝", "♗")
+        Piece.__init__(self, input_color, location)
+
+    def _symbols(self):
+        return {color.white: "♝", color.black: "♗"}
 
     def __str__(self):
         return "B"

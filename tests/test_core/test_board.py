@@ -205,12 +205,39 @@ class TestBoard(TestCase):
 
         self.assertEqual(self.board, test)
 
-    def test_update(self):
-        test = Board.init_default()
-        pawn = test.position[1][4]
-        test.position[1][4] = None
-        test.position[3][4] = pawn
+    def test_update_pawn_moves_one_step(self):
+        pawn = self.board.piece_at_square(Location.from_string("e2"))
+        self.board.update(converter.long_alg("e2e3", self.board))
 
+        self.assertIsInstance(pawn, Pawn)
+        self.assertEqual(self.board.piece_at_square(Location.from_string("e3")), pawn)
+        self.assertIsNone(self.board.piece_at_square(Location.from_string("e2")))
+        self.assertFalse(pawn.just_moved_two_steps)
+
+    def test_update_pawn_moves_two_steps(self):
+        pawn = self.board.piece_at_square(Location.from_string("e2"))
         self.board.update(converter.long_alg("e2e4", self.board))
 
-        self.assertEqual(self.board, test)
+        self.assertIsInstance(pawn, Pawn)
+        self.assertEqual(self.board.piece_at_square(Location.from_string("e4")), pawn)
+        self.assertIsNone(self.board.piece_at_square(Location.from_string("e2")))
+        self.assertIsNone(self.board.piece_at_square(Location.from_string("e3")))
+        self.assertTrue(pawn.just_moved_two_steps)
+
+        self.board.update(converter.long_alg("d2d4", self.board))
+
+        self.assertFalse(pawn.just_moved_two_steps)
+
+    def test_update_moves_king_side_castle(self):
+        self.board.update(converter.short_alg("e4", color.white, self.board))
+        self.board.update(converter.short_alg("Nf3", color.white, self.board))
+        self.board.update(converter.short_alg("Be2", color.white, self.board))
+        self.board.update(converter.short_alg("o-o", color.white, self.board))
+
+        king = self.board.piece_at_square(Location.from_string("g1"))
+        self.assertIsInstance(king, King)
+        self.assertTrue(king.has_moved)
+
+        rook = self.board.piece_at_square(Location.from_string("f1"))
+        self.assertIsInstance(rook, Rook)
+        self.assertTrue(rook.has_moved)

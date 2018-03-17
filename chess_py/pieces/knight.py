@@ -23,6 +23,7 @@ Class stores Knight on the board
 from ..core.algebraic import notation_const
 from ..pieces.piece import Piece
 from ..core.algebraic.move import Move
+from ..core import color
 
 
 class Knight(Piece):
@@ -32,7 +33,10 @@ class Knight(Piece):
         :type: input_color: Color
         :type: location Location
         """
-        super(Knight, self).__init__(input_color, location, "♞", "♘")
+        super(Knight, self).__init__(input_color, location)
+
+    def _symbols(self):
+        return {color.white: "♞", color.black: "♘"}
 
     def __str__(self):
         return "N"
