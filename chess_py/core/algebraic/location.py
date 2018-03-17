@@ -106,7 +106,7 @@ class Location:
         return not self.__eq__(other)
 
     def __repr__(self):
-        return "Location({})".format(self.__dict__)
+        return "Location({}, {} ({}))".format(self._rank, self._file, str(self))
 
     def __str__(self):
         """

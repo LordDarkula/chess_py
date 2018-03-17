@@ -219,12 +219,12 @@ def long_alg(alg_str, position):
     :type: position: Board
     :rtype: Move
     """
+    if alg_str is None or len(alg_str) < 4 or len(alg_str) > 6:
+        raise ValueError("Invalid string input {}".format(alg_str))
+
     end = Location.from_string(alg_str[2:])
     start = Location.from_string(alg_str[:2])
     piece = position.piece_at_square(start)
-
-    if piece is None:
-        raise Exception("Invalid move input")
 
     if len(alg_str) == 4:
         return make_legal(Move(end_loc=end,

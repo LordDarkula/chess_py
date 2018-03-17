@@ -388,22 +388,29 @@ class Board:
             if isinstance(pawn, Pawn):
                 pawn.just_moved_two_steps = False
 
-        if move.status == notation_const.KING_SIDE_CASTLE:
-            self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
-
-        elif move.status == notation_const.QUEEN_SIDE_CASTLE:
-            self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
-
-        elif move.status == notation_const.EN_PASSANT:
-            self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
+        # Sets King and Rook has_moved property to True is piece has moved
+        if type(move.piece) is King or type(move.piece) is Rook:
+            print("Has moved set to True with move {} and piece {}".format(repr(move), move.piece))
+            print(move)
+            print(self)
+            print(move.piece.__class__)
+            move.piece.has_moved = True
 
         elif move.status == notation_const.MOVEMENT and \
                 isinstance(move.piece, Pawn) and \
                 fabs(move.end_loc.rank - move.start_rank) == 2:
             move.piece.just_moved_two_steps = True
 
-        elif isinstance(move.piece, King) or isinstance(move.piece, Rook):
-            self.piece_at_square(move.start_loc).has_moved = True
+        if move.status == notation_const.KING_SIDE_CASTLE:
+            self.move_piece(Location(move.end_loc.rank, 7), Location(move.end_loc.rank, 5))
+            self.piece_at_square(Location(move.end_loc.rank, 5)).has_moved = True
+
+        elif move.status == notation_const.QUEEN_SIDE_CASTLE:
+            self.move_piece(Location(move.end_loc.rank, 0), Location(move.end_loc.rank, 3))
+            self.piece_at_square(Location(move.end_loc.rank, 3)).has_moved = True
+
+        elif move.status == notation_const.EN_PASSANT:
+            self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
 
         elif move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:
