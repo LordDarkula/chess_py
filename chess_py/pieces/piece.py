@@ -62,7 +62,6 @@ class Piece:
         pass
 
     @abstractmethod
-    @property
     def _symbols(self):
         pass
 
@@ -75,7 +74,7 @@ class Piece:
 
     @property
     def symbol(self):
-        return self._symbols[self.color]
+        return self._symbols()[self.color]
 
     def contains_opposite_color_piece(self, square, position):
         """

@@ -24,8 +24,7 @@ import itertools
 
 from .piece import Piece
 from ..core.algebraic import notation_const
-from ..core.algebraic.location import Location
-from ..core.algebraic.move import Move
+from ..core import color
 
 
 class Rook(Piece):
@@ -37,8 +36,11 @@ class Rook(Piece):
         :type: input_color: Color
         :type: location: Location
         """
-        super(Rook, self).__init__(input_color, location, "♜", "♖")
+        super(Rook, self).__init__(input_color, location)
         self.has_moved = False
+
+    def _symbols(self):
+        return {color.white: "♜", color.black: "♖"}
 
     def __str__(self):
         return "R"

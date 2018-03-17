@@ -25,11 +25,15 @@ import itertools
 from .piece import Piece
 from .rook import Rook
 from .bishop import Bishop
+from ..core import color
 
 
 class Queen(Bishop, Piece):
     def __init__(self, input_color, location):
-        Piece.__init__(self, input_color, location, "♛", "♕")
+        Piece.__init__(self, input_color, location)
+
+    def _symbols(self):
+        return {color.white: "♛", color.black: "♕"}
 
     def __str__(self):
         return "Q"
