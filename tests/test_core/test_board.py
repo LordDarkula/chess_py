@@ -232,6 +232,7 @@ class TestBoard(TestCase):
         self.board.update(converter.short_alg("e4", color.white, self.board))
         self.board.update(converter.short_alg("Nf3", color.white, self.board))
         self.board.update(converter.short_alg("Be2", color.white, self.board))
+        print("King props {}".format(self.board.get_king(color.white).has_moved))
         self.board.update(converter.short_alg("o-o", color.white, self.board))
 
         king = self.board.piece_at_square(Location.from_string("g1"))

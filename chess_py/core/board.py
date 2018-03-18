@@ -29,6 +29,7 @@ and black home row is at index 7
 
 from __future__ import print_function
 
+import inspect
 from multiprocessing import Process
 from copy import copy as cp
 from math import fabs
@@ -36,6 +37,7 @@ from math import fabs
 from .color import white, black
 from .algebraic import notation_const
 from .algebraic.location import Location
+from .algebraic.move import Move
 from ..pieces.piece import Piece
 from ..pieces.bishop import Bishop
 from ..pieces.king import King
@@ -239,7 +241,12 @@ class Board:
                 for move in piece.possible_moves(self):
 
                     test = cp(self)
-                    test.update(move)
+                    test_move = Move(end_loc=move.end_loc,
+                                     piece=test.piece_at_square(Location(move.start_rank, move.start_file)),
+                                     status=move.status,
+                                     start_rank=move.start_rank,
+                                     start_file=move.start_file)
+                    test.update(test_move)
 
                     if self.king_loc_dict is None:
                         yield move
@@ -390,10 +397,7 @@ class Board:
 
         # Sets King and Rook has_moved property to True is piece has moved
         if type(move.piece) is King or type(move.piece) is Rook:
-            print("Has moved set to True with move {} and piece {}".format(repr(move), move.piece))
-            print(move)
-            print(self)
-            print(move.piece.__class__)
+            print('caller name:', inspect.stack()[1][3])
             move.piece.has_moved = True
 
         elif move.status == notation_const.MOVEMENT and \
