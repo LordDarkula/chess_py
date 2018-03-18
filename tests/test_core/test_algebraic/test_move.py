@@ -12,13 +12,13 @@ class TestMove(unittest.TestCase):
 
         self.white_pawn_move = Move(Location(2, 0),
                                     piece=self.white_pawn,
-                                    status=notation_const.MOVEMENT)
+                                    status=notation_const.MOVEMENT,
+                                    start_loc=Location(1, 0))
 
         self.start_specified = Move(Location(2, 0),
                                     piece=self.white_pawn,
                                     status=notation_const.MOVEMENT,
-                                    start_rank=3,
-                                    start_file=5)
+                                    start_loc=Location(3, 5))
 
     def testStr(self):
         self.assertEqual(str(self.start_specified), "f4a3")

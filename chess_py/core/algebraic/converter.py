@@ -42,7 +42,7 @@ def _get_piece(string, index):
         raise ValueError("Piece {} is invalid".format(piece))
 
 
-def incomplete_alg(alg_str, input_color):
+def incomplete_alg(alg_str, input_color, position):
     """
     Converts a string written in short algebraic form into an incomplete move.
     These incomplete moves do not have the initial location specified and
@@ -69,16 +69,14 @@ def incomplete_alg(alg_str, input_color):
         return Move(end_loc=Location(edge_rank, 6),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.KING_SIDE_CASTLE,
-                    start_rank=edge_rank,
-                    start_file=4)
+                    start_loc=Location(edge_rank, 4))
 
     # Queen-side castle
     if alg_str in ["000", "ooo", "OOO", "0-0-0", "o-o-o", "O-O-O"]:
         return Move(end_loc=Location(edge_rank, 2),
                     piece=King(input_color, Location(edge_rank, 4)),
                     status=notation_const.QUEEN_SIDE_CASTLE,
-                    start_rank=edge_rank,
-                    start_file=4)
+                    start_loc=Location(edge_rank, 4))
     try:
         end_location = Location.from_string(alg_str[-2:])
     except ValueError:
@@ -86,16 +84,26 @@ def incomplete_alg(alg_str, input_color):
 
     # Pawn movement
     if len(alg_str) == 2:
+        if type(position.piece_at_square(end_location.shift_back(input_color))) == Pawn and \
+                position.piece_at_square(end_location.shift_back(input_color)).color == input_color:
+            start_location = end_location.shift_back(input_color)
+        else:
+            start_location = end_location.shift_back(input_color, times=2)
         return Move(end_loc=end_location,
-                    piece=Pawn(input_color, Location.from_string(alg_str)),
-                    status=notation_const.MOVEMENT)
+                    piece=position.piece_at_square(start_location),
+                    status=notation_const.MOVEMENT,
+                    start_loc=start_location)
 
     # Non-pawn Piece movement
     if len(alg_str) == 3:
         try:
-            return Move(end_loc=end_location,
-                        piece=_get_piece(alg_str, 0)(input_color, end_location),
-                        status=notation_const.MOVEMENT)
+            test_piece = _get_piece(alg_str, 0)(input_color, end_location)
+            for move in test_piece.possible_moves(position):
+                if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
+                    return Move(end_loc=end_location,
+                                piece=position.piece_at_square(move.end_loc),
+                                status=notation_const.MOVEMENT,
+                                start_loc=move.end_loc)
         except ValueError as error:
             raise ValueError(error)
 
@@ -107,16 +115,24 @@ def incomplete_alg(alg_str, input_color):
 
             # Pawn capture
             if not alg_str[0].isupper():
+                start_file = ord(alg_str[0]) - 97
                 return Move(end_loc=end_location,
                             piece=Pawn(input_color, end_location),
                             status=notation_const.CAPTURE,
-                            start_file=ord(alg_str[0]) - 97)
+                            start_loc=Location(end_location.rank, start_file).shift_back(input_color))
 
             # Piece capture
             elif alg_str[0].isupper():
-                return Move(end_loc=end_location,
-                            piece=_get_piece(alg_str, 0)(input_color, end_location),
-                            status=notation_const.CAPTURE)
+                try:
+                    test_piece = _get_piece(alg_str, 0)(input_color, end_location)
+                    for move in test_piece.possible_moves(position):
+                        if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
+                            return Move(end_loc=end_location,
+                                        piece=position.piece_at_square(move.end_loc),
+                                        status=notation_const.CAPTURE,
+                                        start_loc=move.end_loc)
+                except ValueError as error:
+                    raise ValueError(error)
 
         # Pawn Promotion
         elif alg_str[2] == "=":
@@ -126,21 +142,38 @@ def incomplete_alg(alg_str, input_color):
             return Move(end_loc=promote_end_loc,
                         piece=Pawn(input_color, promote_end_loc),
                         status=notation_const.PROMOTE,
-                        promoted_to_piece=_get_piece(alg_str, 3))
+                        promoted_to_piece=_get_piece(alg_str, 3),
+                        start_loc=promote_end_loc.shift_back(input_color))
 
         # Non-pawn Piece movement with file specified (aRb7)
         elif alg_str[1].isupper():
-            return Move(end_loc=end_location,
-                        piece=_get_piece(alg_str, 1)(input_color, end_location),
-                        status=notation_const.MOVEMENT,
-                        start_file=ord(alg_str[0]) - 97)
+            try:
+                test_piece = _get_piece(alg_str, 1)(input_color, end_location)
+                start_file = ord(alg_str[0]) - 97
+                for move in test_piece.possible_moves(position):
+                    if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 1) and \
+                            move.end_loc.file == start_file:
+                        return Move(end_loc=end_location,
+                                    piece=position.piece_at_square(move.end_loc),
+                                    status=notation_const.MOVEMENT,
+                                    start_loc=move.end_loc)
+            except ValueError as error:
+                raise ValueError(error)
 
         # (alt) Non-pawn Piece movement with file specified (Rab7)
         elif alg_str[0].isupper():
-            return Move(end_loc=end_location,
-                        piece=_get_piece(alg_str, 0)(input_color, end_location),
-                        status=notation_const.MOVEMENT,
-                        start_file=ord(alg_str[1]) - 97)
+            try:
+                test_piece = _get_piece(alg_str, 0)(input_color, end_location)
+                start_file = ord(alg_str[1]) - 97
+                for move in test_piece.possible_moves(position):
+                    if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0) and \
+                            move.end_loc.file == start_file:
+                        return Move(end_loc=end_location,
+                                    piece=position.piece_at_square(move.end_loc),
+                                    status=notation_const.MOVEMENT,
+                                    start_loc=move.end_loc)
+            except ValueError as error:
+                raise ValueError(error)
 
     # Multiple options
     if len(alg_str) == 5:
@@ -151,17 +184,17 @@ def incomplete_alg(alg_str, input_color):
             return Move(end_loc=end_location,
                         piece=_get_piece(alg_str, 2)(input_color, end_location),
                         status=notation_const.MOVEMENT,
-                        start_file=start_loc.file,
-                        start_rank=start_loc.rank)
+                        start_loc=start_loc)
 
     # Pawn promotion with capture
     if len(alg_str) == 6 and alg_str[4] == "=":
+        start_file = ord(alg_str[0]) - 97
         promote_capture_end_loc = Location.from_string(alg_str[2:4])
         return Move(end_loc=promote_capture_end_loc,
                     piece=Pawn(input_color, promote_capture_end_loc),
                     status=notation_const.CAPTURE_AND_PROMOTE,
-                    start_file=ord(alg_str[0]) - 97,
-                    promoted_to_piece=_get_piece(alg_str, 5))
+                    promoted_to_piece=_get_piece(alg_str, 5),
+                    start_loc=Location(end_location.shift_back(input_color).rank, start_file))
 
     raise ValueError("algebraic string {} is invalid".format(alg_str))
 

@@ -20,8 +20,7 @@ class Move:
                  end_loc,
                  piece,
                  status,
-                 start_rank=None,
-                 start_file=None,
+                 start_loc,
                  promoted_to_piece=None):
         """
         Constructor to create move using ``Location``
@@ -33,9 +32,8 @@ class Move:
         self._end_loc = end_loc
         self._status = status
         self._piece = piece
+        self._start_loc = start_loc
         self.color = piece.color
-        self.start_rank = start_rank
-        self.start_file = start_file
         self.promoted_to_piece = promoted_to_piece
 
     @property
@@ -54,8 +52,7 @@ class Move:
         return self.end_loc, \
                self.piece, \
                self.status, \
-               self.start_rank, \
-               self.start_file, \
+               self.start_loc, \
                self.promoted_to_piece
 
     def __hash__(self):
@@ -103,10 +100,7 @@ class Move:
 
         :rtype: str
         """
-        try:
-            move_str = str(Location(self.start_rank, self.start_file)) + str(self._end_loc)
-        except TypeError:
-            return repr(self)
+        move_str = str(self._start_loc) + str(self._end_loc)
 
         if self.promoted_to_piece is not None:
             move_str += str(self.promoted_to_piece)
@@ -121,19 +115,7 @@ class Move:
 
         :rtype: Location
         """
-        if self.start_rank is None or self.start_file is None:
-            raise AttributeError("start_rank and start_file must be specified")
-
-        return Location(self.start_rank, self.start_file)
-
-    def on_board(self):
-        """
-        Determines whether end Location of this Move
-        is on the board.
-
-        :rtype: bool
-        """
-        return self.end_loc.on_board()
+        return self._start_loc
 
     def would_move_be_promotion(self):
         """

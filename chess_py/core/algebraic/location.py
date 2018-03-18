@@ -36,6 +36,7 @@ Examples (shown on board below):
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
 
+from .. import color
 
 class Direction:
     UP = 0
@@ -180,6 +181,20 @@ class Location:
         """
         try:
             return Location(self._rank - times, self._file)
+        except IndexError as e:
+            raise IndexError(e)
+
+    def shift_forward(self, ref_color, times=1):
+        direction = 1 if ref_color == color.white else -1
+        try:
+            return Location(self._rank + times*direction, self._file)
+        except IndexError as e:
+            raise IndexError(e)
+
+    def shift_back(self, ref_color, times=1):
+        direction = -1 if ref_color == color.white else 1
+        try:
+            return Location(self._rank + times*direction, self._file)
         except IndexError as e:
             raise IndexError(e)
 
