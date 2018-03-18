@@ -101,9 +101,11 @@ def incomplete_alg(alg_str, input_color, position):
             test_piece = _get_piece(alg_str, 0)(input_color, end_location)
             empty_board = Board([[None for _ in range(8)] for _ in range(8)])
             for move in test_piece.possible_moves(empty_board):
-                if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
+                possible_piece = position.piece_at_square(move.end_loc)
+                if type(possible_piece) is _get_piece(alg_str, 0) and \
+                        possible_piece.color == input_color:
                     return Move(end_loc=end_location,
-                                piece=position.piece_at_square(move.end_loc),
+                                piece=possible_piece,
                                 status=notation_const.MOVEMENT,
                                 start_loc=move.end_loc)
         except ValueError as error:
@@ -129,7 +131,9 @@ def incomplete_alg(alg_str, input_color, position):
                     test_piece = _get_piece(alg_str, 0)(input_color, end_location)
                     empty_board = Board([[None for _ in range(8)] for _ in range(8)])
                     for move in test_piece.possible_moves(empty_board):
-                        if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
+                        possible_piece = position.piece_at_square(move.end_loc)
+                        if type(possible_piece) is _get_piece(alg_str, 0) and \
+                                possible_piece.color == input_color:
                             return Move(end_loc=end_location,
                                         piece=position.piece_at_square(move.end_loc),
                                         status=notation_const.CAPTURE,
@@ -155,8 +159,10 @@ def incomplete_alg(alg_str, input_color, position):
                 empty_board = Board([[None for _ in range(8)] for _ in range(8)])
                 start_file = ord(alg_str[0]) - 97
                 for move in test_piece.possible_moves(empty_board):
-                    if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 1) and \
-                            move.end_loc.file == start_file:
+                    possible_piece = position.piece_at_square(move.end_loc)
+                    if type(possible_piece) is _get_piece(alg_str, 1) and \
+                            move.end_loc.file == start_file and \
+                            possible_piece.color == input_color:
                         return Move(end_loc=end_location,
                                     piece=position.piece_at_square(move.end_loc),
                                     status=notation_const.MOVEMENT,
@@ -171,8 +177,10 @@ def incomplete_alg(alg_str, input_color, position):
                 start_file = ord(alg_str[1]) - 97
                 empty_board = Board([[None for _ in range(8)] for _ in range(8)])
                 for move in test_piece.possible_moves(empty_board):
-                    if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0) and \
-                            move.end_loc.file == start_file:
+                    possible_piece = position.piece_at_square(move.end_loc)
+                    if type(possible_piece) is _get_piece(alg_str, 0) and \
+                            move.end_loc.file == start_file and \
+                            possible_piece.color == input_color:
                         return Move(end_loc=end_location,
                                     piece=position.piece_at_square(move.end_loc),
                                     status=notation_const.MOVEMENT,
