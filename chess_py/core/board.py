@@ -244,7 +244,8 @@ class Board:
                     test_move = Move(end_loc=move.end_loc,
                                      piece=test.piece_at_square(move.start_loc),
                                      status=move.status,
-                                     start_loc=move.start_loc)
+                                     start_loc=move.start_loc,
+                                     promoted_to_piece=move.promoted_to_piece)
                     test.update(test_move)
 
                     if self.king_loc_dict is None:
