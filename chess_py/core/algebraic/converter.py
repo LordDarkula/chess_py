@@ -343,12 +343,12 @@ def long_alg(alg_str, position):
 
     promoted_to = _get_piece(alg_str, 4)
     if promoted_to is None or \
-            isinstance(promoted_to, King) or \
-            isinstance(promoted_to, Pawn):
+            promoted_to is King or \
+            promoted_to is Pawn:
         raise Exception("Invalid move input")
 
     return make_legal(Move(end_loc=end,
                            piece=piece,
                            status=notation_const.LONG_ALG,
                            start_loc=start,
-                           promoted_to_piece=promoted_to(piece.color, end)), position)
+                           promoted_to_piece=promoted_to), position)
