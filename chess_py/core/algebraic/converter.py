@@ -234,6 +234,13 @@ def make_legal(move, position):
         elif move == legal_move:
             return legal_move
 
+    # If incomplete alg made a mistake
+    for legal_move in position.all_possible_moves(move.color):
+        if move.end_loc == legal_move.end_loc and \
+                type(move.piece) is type(legal_move.piece) and \
+                move.color == legal_move.color:
+            return legal_move
+
     raise ValueError("Move {} not legal in \n{}".format(move, position))
 
 
