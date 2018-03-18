@@ -412,11 +412,11 @@ class Board:
             self.piece_at_square(Location(move.end_loc.rank, 3)).has_moved = True
 
         elif move.status == notation_const.EN_PASSANT:
-            self.remove_piece_at_square(Location(move.start_rank, move.end_loc.file))
+            self.remove_piece_at_square(Location(move.start_loc.rank, move.end_loc.file))
 
         elif move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:
-            self.remove_piece_at_square(Location(move.start_rank, move.start_file))
+            self.remove_piece_at_square(move.start_loc)
             self.place_piece_at_square(move.promoted_to_piece(move.color, move.end_loc), move.end_loc)
             return
 
