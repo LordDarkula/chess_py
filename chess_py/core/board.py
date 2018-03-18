@@ -396,7 +396,6 @@ class Board:
 
         # Sets King and Rook has_moved property to True is piece has moved
         if type(move.piece) is King or type(move.piece) is Rook:
-            print('caller name:', inspect.stack()[1][3])
             move.piece.has_moved = True
 
         elif move.status == notation_const.MOVEMENT and \

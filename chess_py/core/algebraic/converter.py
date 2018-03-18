@@ -101,7 +101,6 @@ def incomplete_alg(alg_str, input_color, position):
             test_piece = _get_piece(alg_str, 0)(input_color, end_location)
             empty_board = Board([[None for _ in range(8)] for _ in range(8)])
             for move in test_piece.possible_moves(empty_board):
-                print(move)
                 if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
                     return Move(end_loc=end_location,
                                 piece=position.piece_at_square(move.end_loc),
@@ -227,7 +226,7 @@ def make_legal(move, position):
         elif move == legal_move:
             return legal_move
 
-    raise ValueError("Move {} not legal".format(move))
+    raise ValueError("Move {} not legal in \n{}".format(move, position))
 
 
 def short_alg(algebraic_string, input_color, position):
