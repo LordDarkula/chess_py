@@ -94,8 +94,7 @@ class Pawn(Piece):
             return Move(end_loc=location,
                         piece=self,
                         status=status,
-                        start_rank=self.location.rank,
-                        start_file=self.location.file,
+                        start_loc=self.location,
                         promoted_to_piece=piece(self.color, location))
 
         yield create_each_move(Queen)

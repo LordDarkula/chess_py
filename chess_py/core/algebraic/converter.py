@@ -11,6 +11,7 @@ from .. import color
 from . import notation_const
 from .location import Location
 from .move import Move
+from ..board import Board
 from ...pieces.bishop import Bishop
 from ...pieces.king import King
 from ...pieces.pawn import Pawn
@@ -98,7 +99,9 @@ def incomplete_alg(alg_str, input_color, position):
     if len(alg_str) == 3:
         try:
             test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-            for move in test_piece.possible_moves(position):
+            empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+            for move in test_piece.possible_moves(empty_board):
+                print(move)
                 if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
                     return Move(end_loc=end_location,
                                 piece=position.piece_at_square(move.end_loc),
@@ -125,7 +128,8 @@ def incomplete_alg(alg_str, input_color, position):
             elif alg_str[0].isupper():
                 try:
                     test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                    for move in test_piece.possible_moves(position):
+                    empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+                    for move in test_piece.possible_moves(empty_board):
                         if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0):
                             return Move(end_loc=end_location,
                                         piece=position.piece_at_square(move.end_loc),
@@ -149,8 +153,9 @@ def incomplete_alg(alg_str, input_color, position):
         elif alg_str[1].isupper():
             try:
                 test_piece = _get_piece(alg_str, 1)(input_color, end_location)
+                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
                 start_file = ord(alg_str[0]) - 97
-                for move in test_piece.possible_moves(position):
+                for move in test_piece.possible_moves(empty_board):
                     if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 1) and \
                             move.end_loc.file == start_file:
                         return Move(end_loc=end_location,
@@ -165,7 +170,8 @@ def incomplete_alg(alg_str, input_color, position):
             try:
                 test_piece = _get_piece(alg_str, 0)(input_color, end_location)
                 start_file = ord(alg_str[1]) - 97
-                for move in test_piece.possible_moves(position):
+                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+                for move in test_piece.possible_moves(empty_board):
                     if type(position.piece_at_square(move.end_loc)) is _get_piece(alg_str, 0) and \
                             move.end_loc.file == start_file:
                         return Move(end_loc=end_location,
@@ -196,7 +202,7 @@ def incomplete_alg(alg_str, input_color, position):
                     promoted_to_piece=_get_piece(alg_str, 5),
                     start_loc=Location(end_location.shift_back(input_color).rank, start_file))
 
-    raise ValueError("algebraic string {} is invalid".format(alg_str))
+    raise ValueError("algebraic string {} is invalid in \n{}".format(alg_str, position))
 
 
 def make_legal(move, position):
@@ -215,8 +221,7 @@ def make_legal(move, position):
 
         if move.status == notation_const.LONG_ALG:
             if move.end_loc == legal_move.end_loc and \
-                    move.start_rank == legal_move.start_rank and \
-                    move.start_file == legal_move.start_file:
+                    move.start_loc == legal_move.start_loc:
                 return legal_move
 
         elif move == legal_move:
@@ -238,7 +243,7 @@ def short_alg(algebraic_string, input_color, position):
     :type: input_color: Color
     :type: position: Board
     """
-    return make_legal(incomplete_alg(algebraic_string, input_color), position)
+    return make_legal(incomplete_alg(algebraic_string, input_color, position), position)
 
 
 def long_alg(alg_str, position):
@@ -263,8 +268,7 @@ def long_alg(alg_str, position):
         return make_legal(Move(end_loc=end,
                                piece=piece,
                                status=notation_const.LONG_ALG,
-                               start_rank=start.rank,
-                               start_file=start.file), position)
+                               start_loc=start), position)
 
     promoted_to = _get_piece(alg_str, 4)
     if promoted_to is None or \
@@ -275,6 +279,5 @@ def long_alg(alg_str, position):
     return make_legal(Move(end_loc=end,
                            piece=piece,
                            status=notation_const.LONG_ALG,
-                           start_rank=start.rank,
-                           start_file=start.file,
+                           start_loc=start,
                            promoted_to_piece=promoted_to(piece.color, end)), position)

@@ -64,17 +64,14 @@ class TestKing(TestCase):
 
     def test_kingside_castle(self):
         self.board.update(converter.short_alg("e4", color.white, self.board))
-        print("King has moved {}".format(self.board.get_king(color.white).has_moved))
         self.board.update(converter.short_alg("Nf3", color.white, self.board))
-        print("King has moved {}".format(self.board.get_king(color.white).has_moved))
         self.board.update(converter.short_alg("Be2", color.white, self.board))
-
-        print("King has moved {}".format(self.board.get_king(color.white).has_moved))
 
         castle_move = Move(
             end_loc=Location.from_string("g1"),
             piece=King(color.white, Location.from_string("g1")),
-            status=notation_const.KING_SIDE_CASTLE
+            status=notation_const.KING_SIDE_CASTLE,
+            start_loc=Location.from_string("e1")
         )
 
         self.assertEqual(
@@ -89,7 +86,8 @@ class TestKing(TestCase):
         castle_move = Move(
             end_loc=Location.from_string("c1"),
             piece=King(color.white, Location.from_string("c1")),
-            status=notation_const.QUEEN_SIDE_CASTLE
+            status=notation_const.QUEEN_SIDE_CASTLE,
+            start_loc=Location.from_string("e1")
         )
 
         self.assertEqual(

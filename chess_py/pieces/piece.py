@@ -94,5 +94,4 @@ class Piece:
         return Move(end_loc=end_loc,
                     piece=self,
                     status=status,
-                    start_rank=self.location.rank,
-                    start_file=self.location.file)
+                    start_loc=self.location)

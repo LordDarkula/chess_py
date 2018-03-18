@@ -242,10 +242,9 @@ class Board:
 
                     test = cp(self)
                     test_move = Move(end_loc=move.end_loc,
-                                     piece=test.piece_at_square(Location(move.start_rank, move.start_file)),
+                                     piece=test.piece_at_square(move.start_loc),
                                      status=move.status,
-                                     start_rank=move.start_rank,
-                                     start_file=move.start_file)
+                                     start_loc=move.start_loc)
                     test.update(test_move)
 
                     if self.king_loc_dict is None:
@@ -402,7 +401,7 @@ class Board:
 
         elif move.status == notation_const.MOVEMENT and \
                 isinstance(move.piece, Pawn) and \
-                fabs(move.end_loc.rank - move.start_rank) == 2:
+                fabs(move.end_loc.rank - move.start_loc.rank) == 2:
             move.piece.just_moved_two_steps = True
 
         if move.status == notation_const.KING_SIDE_CASTLE:
