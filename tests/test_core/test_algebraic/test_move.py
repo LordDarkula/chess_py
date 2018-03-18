@@ -26,21 +26,15 @@ class TestMove(unittest.TestCase):
         self.white_pawn_move = Move(Location(7, 0),
                                     piece=self.white_pawn,
                                     status=notation_const.MOVEMENT,
-                                    start_rank=6,
-                                    start_file=0,
+                                    start_loc=Location(6, 0),
                                     promoted_to_piece=Queen(color.white,
                                                             Location(7, 0)))
 
     def testEquals(self):
         self.assertEqual(self.white_pawn_move, Move(end_loc=Location(2, 0),
                                                     piece=self.white_pawn,
-                                                    status=notation_const.MOVEMENT))
-
-        self.assertEqual(self.white_pawn_move, Move(end_loc=Location(2, 0),
-                                                    piece=self.white_pawn,
                                                     status=notation_const.MOVEMENT,
-                                                    start_rank=1,
-                                                    start_file=0))
+                                                    start_loc=Location(1, 0)))
 
 
 if __name__ == '__main__':
