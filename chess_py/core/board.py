@@ -416,8 +416,11 @@ class Board:
 
         elif move.status == notation_const.PROMOTE or \
                 move.status == notation_const.CAPTURE_AND_PROMOTE:
-            self.remove_piece_at_square(move.start_loc)
-            self.place_piece_at_square(move.promoted_to_piece(move.color, move.end_loc), move.end_loc)
+            try:
+                self.remove_piece_at_square(move.start_loc)
+                self.place_piece_at_square(move.promoted_to_piece(move.color, move.end_loc), move.end_loc)
+            except TypeError as e:
+                raise ValueError("Promoted to piece cannot be None in Move {}\n{}".format(repr(move), e))
             return
 
         self.move_piece(move.piece.location, move.end_loc)
