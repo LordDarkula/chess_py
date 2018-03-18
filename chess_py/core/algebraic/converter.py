@@ -188,23 +188,23 @@ def incomplete_alg(alg_str, input_color, position):
             except ValueError as error:
                 raise ValueError(error)
 
-    # Non-pawn Piece movement with rank specified (R1b7)
-    elif alg_str[0].isupper() and alg_str[1].isdigit():
-        try:
-            test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-            start_rank = int(alg_str[1]) - 1
-            empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-            for move in test_piece.possible_moves(empty_board):
-                possible_piece = position.piece_at_square(move.end_loc)
-                if type(possible_piece) is _get_piece(alg_str, 0) and \
-                        move.end_loc.rank == start_rank and \
-                        possible_piece.color == input_color:
-                    return Move(end_loc=end_location,
-                                piece=position.piece_at_square(move.end_loc),
-                                status=notation_const.MOVEMENT,
-                                start_loc=move.end_loc)
-        except ValueError as error:
-            raise ValueError(error)
+        # Non-pawn Piece movement with rank specified (R1b7)
+        elif alg_str[0].isupper() and alg_str[1].isdigit():
+            try:
+                test_piece = _get_piece(alg_str, 0)(input_color, end_location)
+                start_rank = int(alg_str[1]) - 1
+                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+                for move in test_piece.possible_moves(empty_board):
+                    possible_piece = position.piece_at_square(move.end_loc)
+                    if type(possible_piece) is _get_piece(alg_str, 0) and \
+                            move.end_loc.rank == start_rank and \
+                            possible_piece.color == input_color:
+                        return Move(end_loc=end_location,
+                                    piece=position.piece_at_square(move.end_loc),
+                                    status=notation_const.MOVEMENT,
+                                    start_loc=move.end_loc)
+            except ValueError as error:
+                raise ValueError(error)
 
     # Multiple options
     if len(alg_str) == 5:
