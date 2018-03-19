@@ -95,7 +95,7 @@ class Pawn(Piece):
                         piece=self,
                         status=status,
                         start_loc=self.location,
-                        promoted_to_piece=piece(self.color, location))
+                        promoted_to_piece=piece)
 
         yield create_each_move(Queen)
         yield create_each_move(Rook)

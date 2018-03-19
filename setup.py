@@ -2,17 +2,22 @@
 
 from setuptools import setup
 import setuptools
+from setuptools import setup
+try:
+    from pypandoc import convert
+    read_md = lambda f: convert(f, 'rst')
+except ImportError:
+    print("warning: pypandoc module not found, could not convert Markdown to RST")
+    read_md = lambda f: open(f, 'r').read()
 
-with open("README.md", 'r') as f:
-    long_description = f.read()
 
 setup(
     name='chess_py',
-    version='3.1.1',
+    version='3.1.3',
     description='Python chess client',
-    long_description=long_description,
-    long_description_content_type='text/markdown',
+    long_description=read_md("README.md"),
     platforms='MacOS X, Windows, Linux',
+    install_requires=['pypandoc', 'pandoc'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
