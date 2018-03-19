@@ -110,7 +110,7 @@ class King(Piece):
         :rtype: bool
         """
         return rook is not None and \
-            isinstance(rook, Rook) and \
+            type(rook) is Rook and \
             rook.color == self.color and \
             not rook.has_moved
 
