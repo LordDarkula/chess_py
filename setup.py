@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
-from setuptools import setup
 import setuptools
 from setuptools import setup
 try:
-    from pypandoc import convert
-    read_md = lambda f: convert(f, 'rst')
+    import pypandoc
+    pypandoc.download_pandoc()
+    read_md = lambda f: pypandoc.convert(f, 'rst')
 except ImportError:
     print("warning: pypandoc module not found, could not convert Markdown to RST")
     read_md = lambda f: open(f, 'r').read()

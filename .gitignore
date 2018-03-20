@@ -12,3 +12,4 @@ docs/_templates/
 *.pyc
 *.DS_Store
 .pytest_cache
+pandoc-*.*
