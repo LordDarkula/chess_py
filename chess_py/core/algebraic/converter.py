@@ -49,6 +49,10 @@ def _get_piece_start_location(end_location,
                               position,
                               start_rank=None,
                               start_file=None):
+    if start_rank is not None:
+        start_rank = start_rank - 1
+    if start_file is not None:
+        start_file = ord(start_file) - 97
 
     def _is_at_start_rank_and_file(potential_start):
         if start_rank is not None and start_file is not None:
@@ -153,19 +157,14 @@ def incomplete_alg(alg_str, input_color, position):
 
             # Piece capture
             elif alg_str[0].isupper():
-                try:
-                    test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                    empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                    for move in test_piece.possible_moves(empty_board):
-                        possible_piece = position.piece_at_square(move.end_loc)
-                        if type(possible_piece) is _get_piece(alg_str, 0) and \
-                                possible_piece.color == input_color:
-                            return Move(end_loc=end_location,
-                                        piece=position.piece_at_square(move.end_loc),
-                                        status=notation_const.CAPTURE,
-                                        start_loc=move.end_loc)
-                except ValueError as error:
-                    raise ValueError(error)
+                possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                           input_color,
+                                                                           _get_piece(alg_str, 0),
+                                                                           position)
+                return Move(end_loc=end_location,
+                            piece=possible_piece,
+                            status=notation_const.CAPTURE,
+                            start_loc=start_location)
 
         # Pawn Promotion
         elif alg_str[2] == "=":
@@ -179,64 +178,50 @@ def incomplete_alg(alg_str, input_color, position):
                         start_loc=promote_end_loc.shift_back(input_color))
 
         # Non-pawn Piece movement with file specified (aRb7)
-        elif alg_str[1].isupper():
-            try:
-                test_piece = _get_piece(alg_str, 1)(input_color, end_location)
-                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                start_file = ord(alg_str[0]) - 97
-                for move in test_piece.possible_moves(empty_board):
-                    possible_piece = position.piece_at_square(move.end_loc)
-                    if type(possible_piece) is _get_piece(alg_str, 1) and \
-                            move.end_loc.file == start_file and \
-                            possible_piece.color == input_color:
-                        return Move(end_loc=end_location,
-                                    piece=position.piece_at_square(move.end_loc),
-                                    status=notation_const.MOVEMENT,
-                                    start_loc=move.end_loc)
-            except ValueError as error:
-                raise ValueError(error)
+        elif alg_str[1].isupper() and not alg_str[0].isdigit():
+            possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                       input_color,
+                                                                       _get_piece(alg_str, 1),
+                                                                       position,
+                                                                       start_file=alg_str[0])
+            return Move(end_loc=end_location,
+                        piece=possible_piece,
+                        status=notation_const.MOVEMENT,
+                        start_loc=start_location)
 
         # (alt) Non-pawn Piece movement with file specified (Rab7)
         elif alg_str[0].isupper() and not alg_str[1].isdigit():
-            try:
-                test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                start_file = ord(alg_str[1]) - 97
-                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                for move in test_piece.possible_moves(empty_board):
-                    possible_piece = position.piece_at_square(move.end_loc)
-                    if type(possible_piece) is _get_piece(alg_str, 0) and \
-                            move.end_loc.file == start_file and \
-                            possible_piece.color == input_color:
-                        return Move(end_loc=end_location,
-                                    piece=position.piece_at_square(move.end_loc),
-                                    status=notation_const.MOVEMENT,
-                                    start_loc=move.end_loc)
-            except ValueError as error:
-                raise ValueError(error)
+            possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                       input_color,
+                                                                       _get_piece(alg_str, 0),
+                                                                       position,
+                                                                       start_file=alg_str[1])
+            return Move(end_loc=end_location,
+                        piece=possible_piece,
+                        status=notation_const.MOVEMENT,
+                        start_loc=start_location)
 
         # Non-pawn Piece movement with rank specified (R1b7)
         elif alg_str[0].isupper() and alg_str[1].isdigit():
-            try:
-                test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                start_rank = int(alg_str[1]) - 1
-                empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                for move in test_piece.possible_moves(empty_board):
-                    possible_piece = position.piece_at_square(move.end_loc)
-                    if type(possible_piece) is _get_piece(alg_str, 0) and \
-                            move.end_loc.rank == start_rank and \
-                            possible_piece.color == input_color:
-                        return Move(end_loc=end_location,
-                                    piece=position.piece_at_square(move.end_loc),
-                                    status=notation_const.MOVEMENT,
-                                    start_loc=move.end_loc)
-            except ValueError as error:
-                raise ValueError(error)
+            possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                       input_color,
+                                                                       _get_piece(alg_str, 0),
+                                                                       position,
+                                                                       start_rank=alg_str[1])
+            return Move(end_loc=end_location,
+                        piece=possible_piece,
+                        status=notation_const.MOVEMENT,
+                        start_loc=start_location)
 
     # Multiple options
     if len(alg_str) == 5:
 
-        # Non-pawn Piece movement with rank and file specified
-        if alg_str[2].isupper():
+        # Non-pawn Piece movement with rank and file specified (a2Ra1
+        if not alg_str[0].isdigit() and \
+                alg_str[1].isdigit() and \
+                alg_str[2].isupper() and \
+                not alg_str[3].isdigit() and \
+                alg_str[4].isdigit:
             start_loc = Location.from_string(alg_str[:2])
             return Move(end_loc=end_location,
                         piece=_get_piece(alg_str, 2)(input_color, end_location),
@@ -248,39 +233,27 @@ def incomplete_alg(alg_str, input_color, position):
 
             # Piece capture with rank specified (R1xa1)
             if alg_str[1].isdigit():
-                try:
-                    test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                    start_rank = int(alg_str[1]) - 1
-                    empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                    for move in test_piece.possible_moves(empty_board):
-                        possible_piece = position.piece_at_square(move.end_loc)
-                        if type(possible_piece) is _get_piece(alg_str, 0) and \
-                                move.end_loc.rank == start_rank and \
-                                possible_piece.color == input_color:
-                            return Move(end_loc=end_location,
-                                        piece=position.piece_at_square(move.end_loc),
-                                        status=notation_const.MOVEMENT,
-                                        start_loc=move.end_loc)
-                except ValueError as error:
-                    raise ValueError(error)
+                possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                           input_color,
+                                                                           _get_piece(alg_str, 0),
+                                                                           position,
+                                                                           start_rank=alg_str[1])
+                return Move(end_loc=end_location,
+                            piece=possible_piece,
+                            status=notation_const.MOVEMENT,
+                            start_loc=start_location)
 
             # Piece capture with file specified (Rdxd7)
             else:
-                try:
-                    test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-                    start_file = ord(alg_str[1]) - 97
-                    empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-                    for move in test_piece.possible_moves(empty_board):
-                        possible_piece = position.piece_at_square(move.end_loc)
-                        if type(possible_piece) is _get_piece(alg_str, 0) and \
-                                move.end_loc.file == start_file and \
-                                possible_piece.color == input_color:
-                            return Move(end_loc=end_location,
-                                        piece=position.piece_at_square(move.end_loc),
-                                        status=notation_const.MOVEMENT,
-                                        start_loc=move.end_loc)
-                except ValueError as e:
-                    raise ValueError(e)
+                possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                           input_color,
+                                                                           _get_piece(alg_str, 0),
+                                                                           position,
+                                                                           start_file=alg_str[1])
+                return Move(end_loc=end_location,
+                            piece=possible_piece,
+                            status=notation_const.MOVEMENT,
+                            start_loc=start_location)
 
     # Pawn promotion with capture
     if len(alg_str) == 6 and alg_str[4] == "=":
