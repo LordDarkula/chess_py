@@ -65,18 +65,24 @@ def _get_piece_start_location(end_location,
         else:
             return True
 
+    def _is_valid_move_option(move):
+        possible_piece = position.piece_at_square(move.end_loc)
+        return type(possible_piece) is piece_in_move and \
+            possible_piece.color == input_color and \
+            _is_at_start_rank_and_file(move.end_loc)
+
     try:
         test_piece = piece_in_move(input_color, end_location)
         empty_board = Board([[None for _ in range(8)] for _ in range(8)])
 
-        for move in test_piece.possible_moves(empty_board):
-            possible_piece = position.piece_at_square(move.end_loc)
+        possible_valid_piece_moves = [move for move in test_piece.possible_moves(empty_board)
+                                      if _is_valid_move_option(move)]
 
-            if type(possible_piece) is piece_in_move and \
-                    possible_piece.color == input_color and \
-                    _is_at_start_rank_and_file(move.end_loc):
+        if len(possible_valid_piece_moves) == 1:
+            return possible_valid_piece_moves[0].piece, possible_valid_piece_moves[0].end_loc
 
-                return possible_piece, move.end_loc
+        else:
+            pass
 
         raise ValueError("No valid piece move found")
     except ValueError as error:
