@@ -74,15 +74,17 @@ def _get_piece_start_location(end_location,
     try:
         test_piece = piece_in_move(input_color, end_location)
         empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-
-        possible_valid_piece_moves = [move for move in test_piece.possible_moves(empty_board)
+        empty_board_valid_moves = [move for move in test_piece.possible_moves(empty_board)
                                       if _is_valid_move_option(move)]
 
-        if len(possible_valid_piece_moves) == 1:
-            return possible_valid_piece_moves[0].piece, possible_valid_piece_moves[0].end_loc
-
+        if len(empty_board_valid_moves) == 1:
+            return empty_board_valid_moves[0].piece, empty_board_valid_moves[0].end_loc
         else:
-            pass
+            for empty_board_move in empty_board_valid_moves:
+                poss_piece = position.piece_at_square(empty_board_move.end_loc)
+                for real_board_move in poss_piece.possible_moves(position):
+                    if real_board_move.end_loc == end_location:
+                        return poss_piece, real_board_move.end_loc
 
         raise ValueError("No valid piece move found")
     except ValueError as error:
@@ -299,13 +301,6 @@ def make_legal(move, position):
                 return legal_move
 
         elif move == legal_move:
-            return legal_move
-
-    # If incomplete alg made a mistake
-    for legal_move in position.all_possible_moves(move.color):
-        if move.end_loc == legal_move.end_loc and \
-                type(move.piece) is type(legal_move.piece) and \
-                move.color == legal_move.color:
             return legal_move
 
     raise ValueError("Move {} not legal in \n{}".format(move, position))
