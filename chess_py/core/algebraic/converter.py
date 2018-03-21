@@ -130,7 +130,7 @@ def incomplete_alg(alg_str, input_color, position):
     if len(alg_str) == 3:
         possible_piece, start_location = _get_piece_start_location(end_location,
                                                                    input_color,
-                                                                   alg_str[0],
+                                                                   _get_piece(alg_str, 0),
                                                                    position)
         return Move(end_loc=end_location,
                     piece=possible_piece,
