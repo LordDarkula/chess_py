@@ -13,11 +13,10 @@ except ImportError:
 
 setup(
     name='chess_py',
-    version='3.1.4',
+    version='3.1.5',
     description='Python chess client',
     long_description=read_md("README.md"),
     platforms='MacOS X, Windows, Linux',
-    install_requires=['pypandoc', 'pandoc'],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
