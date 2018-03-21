@@ -50,7 +50,7 @@ def _get_piece_start_location(end_location,
                               start_rank=None,
                               start_file=None):
     if start_rank is not None:
-        start_rank = start_rank - 1
+        start_rank = int(start_rank) - 1
     if start_file is not None:
         start_file = ord(start_file) - 97
 
