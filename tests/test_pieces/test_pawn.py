@@ -38,10 +38,10 @@ class TestPawn(TestCase):
         self.assertEqual(len(list(moves)), 4)
         self.assertEqual(moves[0].start_loc, Location.from_string("e7"))
 
-        self.assertEqual(moves[0].promoted_to_piece, Queen(color.white, Location.from_string("e8")))
-        self.assertEqual(moves[1].promoted_to_piece, Rook(color.white, Location.from_string("e8")))
-        self.assertEqual(moves[2].promoted_to_piece, Bishop(color.white, Location.from_string("e8")))
-        self.assertEqual(moves[3].promoted_to_piece, Knight(color.white, Location.from_string("e8")))
+        self.assertEqual(moves[0].promoted_to_piece, Queen)
+        self.assertEqual(moves[1].promoted_to_piece, Rook)
+        self.assertEqual(moves[2].promoted_to_piece, Bishop)
+        self.assertEqual(moves[3].promoted_to_piece, Knight)
 
     def test_forward_moves(self):
         self.white_pawn.location = Location.from_string("e2")

@@ -43,6 +43,37 @@ def _get_piece(string, index):
         raise ValueError("Piece {} is invalid".format(piece))
 
 
+def _get_piece_start_location(end_location,
+                              input_color,
+                              piece_in_move,
+                              position,
+                              start_rank=None,
+                              start_file=None):
+
+    def _is_at_start_rank_and_file(potential_start):
+        if start_rank is not None and start_file is not None:
+            return start_rank == potential_start.rank and \
+                   start_file == potential_start.file
+        elif start_rank is not None:
+            return start_rank == potential_start.rank
+        elif start_file is not None:
+            return start_file == potential_start.file
+        else:
+            return True
+
+    try:
+        test_piece = piece_in_move(input_color, end_location)
+        empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+        for move in test_piece.possible_moves(empty_board):
+            possible_piece = position.piece_at_square(move.end_loc)
+            if type(possible_piece) is piece_in_move and \
+                    possible_piece.color == input_color and \
+                    _is_at_start_rank_and_file(move.end_loc):
+                return possible_piece, move.end_loc
+    except ValueError as error:
+        raise ValueError(error)
+
+
 def incomplete_alg(alg_str, input_color, position):
     """
     Converts a string written in short algebraic form into an incomplete move.
@@ -97,19 +128,14 @@ def incomplete_alg(alg_str, input_color, position):
 
     # Non-pawn Piece movement
     if len(alg_str) == 3:
-        try:
-            test_piece = _get_piece(alg_str, 0)(input_color, end_location)
-            empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-            for move in test_piece.possible_moves(empty_board):
-                possible_piece = position.piece_at_square(move.end_loc)
-                if type(possible_piece) is _get_piece(alg_str, 0) and \
-                        possible_piece.color == input_color:
-                    return Move(end_loc=end_location,
-                                piece=possible_piece,
-                                status=notation_const.MOVEMENT,
-                                start_loc=move.end_loc)
-        except ValueError as error:
-            raise ValueError(error)
+        possible_piece, start_location = _get_piece_start_location(end_location,
+                                                                   input_color,
+                                                                   alg_str[0],
+                                                                   position)
+        return Move(end_loc=end_location,
+                    piece=possible_piece,
+                    status=notation_const.MOVEMENT,
+                    start_loc=start_location)
 
     # Multiple options (Capture or Piece movement with file specified)
     if len(alg_str) == 4:
