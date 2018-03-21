@@ -50,7 +50,7 @@ def _get_piece_start_location(end_location,
                               start_rank=None,
                               start_file=None):
     if start_rank is not None:
-        start_rank = start_rank - 1
+        start_rank = int(start_rank) - 1
     if start_file is not None:
         start_file = ord(start_file) - 97
 
@@ -68,12 +68,17 @@ def _get_piece_start_location(end_location,
     try:
         test_piece = piece_in_move(input_color, end_location)
         empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+
         for move in test_piece.possible_moves(empty_board):
             possible_piece = position.piece_at_square(move.end_loc)
+
             if type(possible_piece) is piece_in_move and \
                     possible_piece.color == input_color and \
                     _is_at_start_rank_and_file(move.end_loc):
+
                 return possible_piece, move.end_loc
+
+        raise ValueError("No valid piece move found")
     except ValueError as error:
         raise ValueError(error)
 
