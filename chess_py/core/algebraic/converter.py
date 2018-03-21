@@ -49,10 +49,14 @@ def _get_piece_start_location(end_location,
                               position,
                               start_rank=None,
                               start_file=None):
-    if start_rank is not None:
+    try:
         start_rank = int(start_rank) - 1
-    if start_file is not None:
+    except TypeError:
+        pass
+    try:
         start_file = ord(start_file) - 97
+    except TypeError:
+        pass
 
     def _is_at_start_rank_and_file(potential_start):
         if start_rank is not None and start_file is not None:
@@ -71,24 +75,21 @@ def _get_piece_start_location(end_location,
             possible_piece.color == input_color and \
             _is_at_start_rank_and_file(move.end_loc)
 
-    try:
-        test_piece = piece_in_move(input_color, end_location)
-        empty_board = Board([[None for _ in range(8)] for _ in range(8)])
-        empty_board_valid_moves = [move for move in test_piece.possible_moves(empty_board)
-                                      if _is_valid_move_option(move)]
+    test_piece = piece_in_move(input_color, end_location)
+    empty_board = Board([[None for _ in range(8)] for _ in range(8)])
+    empty_board_valid_moves = [move for move in test_piece.possible_moves(empty_board)
+                                  if _is_valid_move_option(move)]
 
-        if len(empty_board_valid_moves) == 1:
-            return empty_board_valid_moves[0].piece, empty_board_valid_moves[0].end_loc
-        else:
-            for empty_board_move in empty_board_valid_moves:
-                poss_piece = position.piece_at_square(empty_board_move.end_loc)
-                for real_board_move in poss_piece.possible_moves(position):
-                    if real_board_move.end_loc == end_location:
-                        return poss_piece, real_board_move.end_loc
+    if len(empty_board_valid_moves) == 1:
+        return empty_board_valid_moves[0].piece, empty_board_valid_moves[0].end_loc
+    else:
+        for empty_board_move in empty_board_valid_moves:
+            poss_piece = position.piece_at_square(empty_board_move.end_loc)
+            for real_board_move in poss_piece.possible_moves(position):
+                if real_board_move.end_loc == end_location:
+                    return poss_piece, real_board_move.end_loc
 
-        raise ValueError("No valid piece move found")
-    except ValueError as error:
-        raise ValueError(error)
+    raise ValueError("No valid piece move found")
 
 
 def incomplete_alg(alg_str, input_color, position):
