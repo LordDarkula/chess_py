@@ -13,7 +13,7 @@ except ImportError:
 
 setup(
     name='chess_py',
-    version='3.2.6',
+    version='3.2.7',
     description='Python chess client',
     long_description=read_md("README.md"),
     platforms='MacOS X, Windows, Linux',

@@ -89,7 +89,7 @@ def _get_piece_start_location(end_location,
             for real_board_move in poss_piece.possible_moves(position):
 
                 if real_board_move.end_loc == end_location and \
-                        position.get_king(input_color).in_check_as_result(position, real_board_move):
+                        not position.get_king(input_color).in_check_as_result(position, real_board_move):
                     return poss_piece, real_board_move.start_loc
 
     raise ValueError("No valid piece move found")
