@@ -309,7 +309,7 @@ def make_legal(move, position):
         elif move == legal_move:
             return legal_move
 
-    raise ValueError("Move {} not legal in \n{}".format(move, position))
+    raise ValueError("Move {} not legal in \n{}".format(repr(move), position))
 
 
 def short_alg(algebraic_string, input_color, position):
