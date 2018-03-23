@@ -134,8 +134,9 @@ def incomplete_alg(alg_str, input_color, position):
 
     # Pawn movement
     if len(alg_str) == 2:
-        if type(position.piece_at_square(end_location.shift_back(input_color))) == Pawn and \
-                position.piece_at_square(end_location.shift_back(input_color)).color == input_color:
+        possible_pawn = position.piece_at_square(end_location.shift_back(input_color))
+        if type(possible_pawn) is Pawn and \
+                possible_pawn.color == input_color:
             start_location = end_location.shift_back(input_color)
         else:
             start_location = end_location.shift_back(input_color, times=2)
@@ -163,11 +164,14 @@ def incomplete_alg(alg_str, input_color, position):
 
             # Pawn capture
             if not alg_str[0].isupper():
-                start_file = ord(alg_str[0]) - 97
-                return Move(end_loc=end_location,
-                            piece=Pawn(input_color, end_location),
-                            status=notation_const.CAPTURE,
-                            start_loc=Location(end_location.rank, start_file).shift_back(input_color))
+                pawn_location = Location(end_location.rank, ord(alg_str[0]) - 97).shift_back(input_color)
+                possible_pawn = position.piece_at_square(pawn_location)
+                if type(possible_pawn) is Pawn and \
+                        possible_pawn.color == input_color:
+                    return Move(end_loc=end_location,
+                                piece=position.piece_at_square(pawn_location),
+                                status=notation_const.CAPTURE,
+                                start_loc=pawn_location)
 
             # Piece capture
             elif alg_str[0].isupper():
