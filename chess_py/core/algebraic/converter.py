@@ -170,7 +170,9 @@ def incomplete_alg(alg_str, input_color, position):
                 if type(possible_pawn) is Pawn and \
                         possible_pawn.color == input_color:
                     en_passant_pawn = position.piece_at_square(end_location.shift_back(input_color))
-                    if type(en_passant_pawn) is Pawn and en_passant_pawn.color != input_color:
+                    if type(en_passant_pawn) is Pawn and \
+                            en_passant_pawn.color != input_color and \
+                            position.is_square_empty(end_location):
                         return Move(end_loc=end_location,
                                     piece=position.piece_at_square(pawn_location),
                                     status=notation_const.EN_PASSANT,
