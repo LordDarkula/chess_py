@@ -173,6 +173,11 @@ def incomplete_alg(alg_str, input_color, position):
                                 piece=position.piece_at_square(pawn_location),
                                 status=notation_const.CAPTURE,
                                 start_loc=pawn_location)
+                else:
+                    return Move(end_loc=end_location,
+                                piece=position.piece_at_square(pawn_location),
+                                status=notation_const.EN_PASSANT,
+                                start_loc=pawn_location)
 
             # Piece capture
             elif alg_str[0].isupper():
