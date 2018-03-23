@@ -259,7 +259,7 @@ def incomplete_alg(alg_str, input_color, position):
                                                                            start_rank=alg_str[1])
                 return Move(end_loc=end_location,
                             piece=possible_piece,
-                            status=notation_const.MOVEMENT,
+                            status=notation_const.CAPTURE,
                             start_loc=start_location)
 
             # Piece capture with file specified (Rdxd7)
@@ -271,7 +271,7 @@ def incomplete_alg(alg_str, input_color, position):
                                                                            start_file=alg_str[1])
                 return Move(end_loc=end_location,
                             piece=possible_piece,
-                            status=notation_const.MOVEMENT,
+                            status=notation_const.CAPTURE,
                             start_loc=start_location)
 
     # Pawn promotion with capture
