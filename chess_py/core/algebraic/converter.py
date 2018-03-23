@@ -70,18 +70,19 @@ def _get_piece_start_location(end_location,
             return True
 
     def _is_valid_move_option(move):
-        possible_piece = position.piece_at_square(move.end_loc)
-        return type(possible_piece) is piece_in_move and \
-            possible_piece.color == input_color and \
+        real_piece = position.piece_at_square(move.end_loc)
+        return type(real_piece) is piece_in_move and \
+            real_piece.color == input_color and \
             _is_at_start_rank_and_file(move.end_loc)
 
     test_piece = piece_in_move(input_color, end_location)
     empty_board = Board([[None for _ in range(8)] for _ in range(8)])
     empty_board_valid_moves = [move for move in test_piece.possible_moves(empty_board)
-                                  if _is_valid_move_option(move)]
+                               if _is_valid_move_option(move)]
 
     if len(empty_board_valid_moves) == 1:
-        return empty_board_valid_moves[0].piece, empty_board_valid_moves[0].end_loc
+        return position.piece_at_square(empty_board_valid_moves[0].end_loc), \
+               empty_board_valid_moves[0].end_loc
     else:
         for empty_board_move in empty_board_valid_moves:
             poss_piece = position.piece_at_square(empty_board_move.end_loc)
