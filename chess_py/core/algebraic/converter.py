@@ -6,6 +6,7 @@ to turn them into usable commands.
 
 Copyright © 2016 Aubhro Sengupta. All rights reserved.
 """
+from copy import copy as cp
 
 from .. import color
 from . import notation_const
@@ -87,9 +88,15 @@ def _get_piece_start_location(end_location,
         for empty_board_move in empty_board_valid_moves:
             poss_piece = position.piece_at_square(empty_board_move.end_loc)
             for real_board_move in poss_piece.possible_moves(position):
-
+                test_in_check_board = cp(position)
+                test_move = Move(end_loc=real_board_move.end_loc,
+                                 piece=test_in_check_board.piece_at_square(real_board_move.start_loc),
+                                 status=real_board_move.status,
+                                 start_loc=real_board_move.start_loc,
+                                 promoted_to_piece=real_board_move.promoted_to_piece)
+                test_in_check_board.update(test_move)
                 if real_board_move.end_loc == end_location and \
-                        not position.get_king(input_color).in_check_as_result(position, real_board_move):
+                        not test_in_check_board.get_king(input_color).in_check(test_in_check_board):
                     return poss_piece, real_board_move.start_loc
 
     raise ValueError("No valid piece move found")
