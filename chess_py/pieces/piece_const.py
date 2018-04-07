@@ -11,6 +11,7 @@ from .pawn import Pawn
 from .queen import Queen
 from .rook import Rook
 from .knight import Knight
+from .king import King
 
 
 class PieceValues:
@@ -60,12 +61,14 @@ class PieceValues:
 
         if isinstance(piece, Pawn):
             return self.PAWN_VALUE * const
-        elif isinstance(piece, Knight):
-            return self.KNIGHT_VALUE * const
         elif isinstance(piece, Queen):
             return self.QUEEN_VALUE * const
         elif isinstance(piece, Bishop):
             return self.BISHOP_VALUE * const
         elif isinstance(piece, Rook):
             return self.ROOK_VALUE * const
+        elif isinstance(piece, Knight):
+            return self.KNIGHT_VALUE * const
+        elif isinstance(piece, King):
+            return self.KING_VALUE  * const
         return 0

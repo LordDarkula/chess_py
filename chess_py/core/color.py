@@ -48,6 +48,12 @@ class Color:
     def __bool__(self):
         return self._bool
 
+    def __int__(self):
+        if self._bool:
+            return 1
+        else:
+            return -1
+
     def __key(self):
         return bool(self)
 
