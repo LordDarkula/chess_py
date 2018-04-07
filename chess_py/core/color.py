@@ -9,23 +9,24 @@ Copyright © 2016 Aubhro Sengupta. All rights reserved.
 
 
 class Color:
+
+    _color_dict = {
+        'white': True,
+        'black': False,
+    }
+
     def __init__(self, raw):
         """
-        Initializes new color using a string
+        Initializes new color using a boolean
+        True is white and False is black
 
-        :type: raw: str
-        :rtype: Color
+        :type: raw: bool
         """
-        self._color = raw.upper() == "WHITE"
-        self._string = raw
-
-    @classmethod
-    def pwhite(cls):
-        return cls("white")
-
-    @classmethod
-    def pblack(cls):
-        return cls("black")
+        self._bool = raw
+        self._color_dict = {
+            'white': True,
+            'black': False,
+        }
 
     @classmethod
     def from_string(cls, string):
@@ -36,26 +37,25 @@ class Color:
         :type: string: str
         :rtype: Color
         """
-        return cls(string.lower())
-
-    @classmethod
-    def _boolean(cls, boolean):
-        if boolean:
-            return cls.pwhite()
-
-        return cls.pblack()
+        return cls(cls._color_dict[string])
 
     def __repr__(self):
-        return "color.{}".format(self._string)
+        return "color.{}".format(self._color_dict[self._bool])
 
     def __str__(self):
-        return self._string
+        return self._color_dict[self._bool]
+
+    def __bool__(self):
+        return self._bool
 
     def __key(self):
-        return self._color, self._string
+        return bool(self)
 
     def __hash__(self):
         return hash(self.__key())
+
+    def __neg__(self):
+        return Color(not self._bool)
 
     def __eq__(self, other):
         """
@@ -64,23 +64,11 @@ class Color:
         :type: other: Color
         :rtype: bool
         """
-        if isinstance(other, Color):
-            return self._string == str(other)
-
-        return self._color == other
+        return bool(self) == bool(self)
 
     def __ne__(self, other):
         return not self.__eq__(other)
 
-    def opponent(self):
-        """
-        Finds other color
 
-        :rtype: Color
-        """
-        return self._boolean(not self._color)
-
-white = Color.pwhite()
-black = Color.pblack()
-
-
+white = Color(True)
+black = Color(False)
