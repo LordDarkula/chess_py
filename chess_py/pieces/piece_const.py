@@ -20,24 +20,26 @@ class PieceValues:
         self.BISHOP_VALUE = 3.5
         self.ROOK_VALUE = 5
         self.QUEEN_VALUE = 9
+        self.KING_VALUE = 999
 
     @classmethod
-    def init_manual(cls, PAWN_VALUE, KNIGHT_VALUE, BISHOP_VALUE, ROOK_VALUE, QUEEN_VALUE):
+    def init_manual(cls, pawn_value, knight_value, bishop_value, rook_value, queen_value, king_value):
         """
         Manual init method for external piece values
 
-        :type: PAWN_VALUE: double
-        :type: KNIGHT_VALUE: double
-        :type: BISHOP_VALUE: double
-        :type: ROOK_VALUE: double
-        :type: QUEEN_VALUE: double
+        :type: PAWN_VALUE: int
+        :type: KNIGHT_VALUE: int
+        :type: BISHOP_VALUE: int
+        :type: ROOK_VALUE: int
+        :type: QUEEN_VALUE: int
         """
         piece_values = cls()
-        piece_values.PAWN_VALUE = PAWN_VALUE
-        piece_values.KNIGHT_VALUE = KNIGHT_VALUE
-        piece_values.BISHOP_VALUE = BISHOP_VALUE
-        piece_values.ROOK_VALUE = ROOK_VALUE
-        piece_values.QUEEN_VALUE = QUEEN_VALUE
+        piece_values.PAWN_VALUE = pawn_value
+        piece_values.KNIGHT_VALUE = knight_value
+        piece_values.BISHOP_VALUE = bishop_value
+        piece_values.ROOK_VALUE = rook_value
+        piece_values.QUEEN_VALUE = queen_value
+        piece_values.KING_VALUE = king_value
         return piece_values
 
     def val(self, piece, ref_color):
