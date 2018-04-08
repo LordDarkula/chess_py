@@ -23,10 +23,6 @@ class Color:
         :type: raw: bool
         """
         self._bool = raw
-        self._color_dict = {
-            'white': True,
-            'black': False,
-        }
 
     @classmethod
     def from_string(cls, string):
@@ -40,10 +36,13 @@ class Color:
         return cls(cls._color_dict[string])
 
     def __repr__(self):
-        return "color.{}".format(self._color_dict[self._bool])
+        return "color.{}".format(str(self))
 
     def __str__(self):
-        return self._color_dict[self._bool]
+        if self._bool:
+            return "white"
+        else:
+            return "black"
 
     def __bool__(self):
         return self._bool
@@ -70,7 +69,7 @@ class Color:
         :type: other: Color
         :rtype: bool
         """
-        return bool(self) == bool(self)
+        return bool(self) == bool(other)
 
     def __ne__(self, other):
         return not self.__eq__(other)

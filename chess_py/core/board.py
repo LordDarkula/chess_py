@@ -194,7 +194,7 @@ class Board:
         if self.get_king(input_color).in_check(self) and self.no_moves(input_color):
             return -100
 
-        if self.get_king(input_color.opponent()).in_check(self) and self.no_moves(input_color.opponent()):
+        if self.get_king(-input_color).in_check(self) and self.no_moves(-input_color):
             return 100
 
         return sum([val_scheme.val(piece, input_color) for piece in self])

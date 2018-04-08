@@ -108,6 +108,11 @@ class TestKing(TestCase):
         self.board.place_piece_at_square(my_king, Location.from_string("f3"))
         self.board.place_piece_at_square(Rook(color.black, Location.from_string("f1")), Location.from_string("f1"))
 
+        print(self.board.piece_at_square(Location.from_string("f1")).color)
+
+        print(self.board)
+        print(my_king.color)
+        print(color.white == color.black)
         self.assertTrue(my_king.in_check(self.board))
 
         self.board = Board.init_default()

@@ -70,5 +70,5 @@ class PieceValues:
         elif isinstance(piece, Knight):
             return self.KNIGHT_VALUE * const
         elif isinstance(piece, King):
-            return self.KING_VALUE  * const
+            return self.KING_VALUE * const
         return 0
